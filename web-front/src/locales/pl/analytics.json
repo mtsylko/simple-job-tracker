@@ -1,0 +1,119 @@
+{
+  "route": {
+    "loadingTitle": "Ładowanie",
+    "loadingSubtitle": "Pobieranie danych…",
+    "errorTitle": "Nie udało się załadować",
+    "retry": "Spróbuj ponownie"
+  },
+  "page": {
+    "title": "Analityka"
+  },
+  "finding": {
+    "none": "W tym okresie nic nie wysłano",
+    "plain": "Odpowiedź na {{heard}} z {{sent}}",
+    "best": "Odpowiedź na {{heard}} z {{sent}} — najlepiej radzi sobie {{best}}: {{bestHeard}} z {{bestSent}}",
+    "compare": "Odpowiedź na {{heard}} z {{sent}} — najlepiej radzi sobie {{best}} ({{bestPct}}%), najczęściej wysyłane CV ma {{topPct}}%"
+  },
+  "range": {
+    "options": {
+      "all": "Cały okres",
+      "1m": "Ostatni miesiąc",
+      "3m": "Ostatnie 3 miesiące",
+      "6m": "Ostatnie 6 miesięcy",
+      "12m": "Ostatnie 12 miesięcy"
+    }
+  },
+  "kpi": {
+    "label": "Podsumowanie",
+    "sent": {
+      "label": "Wysłane",
+      "since": "od {{date}}"
+    },
+    "heard": {
+      "label": "Z odpowiedzią",
+      "detail": "dalej niż {{status}}"
+    },
+    "interviewing": {
+      "label": "Trwające rozmowy",
+      "none": "Brak otwartych rozmów"
+    },
+    "final": {
+      "label": "Oferty",
+      "none": "Brak otwartych",
+      "one_one": "{{company}}, {{count}} dzień na tym etapie",
+      "one_few": "{{company}}, {{count}} dni na tym etapie",
+      "one_many": "{{company}}, {{count}} dni na tym etapie",
+      "one_other": "{{company}}, {{count}} dnia na tym etapie",
+      "two": "{{first}} i {{second}}",
+      "many_one": "{{companies}} i jeszcze {{count}}",
+      "many_few": "{{companies}} i jeszcze {{count}}",
+      "many_many": "{{companies}} i jeszcze {{count}}",
+      "many_other": "{{companies}} i jeszcze {{count}}"
+    }
+  },
+  "sent": {
+    "titleWeek": "Wysłane tygodniowo",
+    "titleMonth": "Wysłane miesięcznie",
+    "metaWeek": "W tym tygodniu {{current}} · średnio {{average}} tygodniowo",
+    "metaMonth": "W tym miesiącu {{current}} · średnio {{average}} miesięcznie",
+    "chartLabel_one": "{{count}} aplikacja wysłana między {{from}} a {{to}}",
+    "chartLabel_few": "{{count}} aplikacje wysłane między {{from}} a {{to}}",
+    "chartLabel_many": "{{count}} aplikacji wysłanych między {{from}} a {{to}}",
+    "chartLabel_other": "{{count}} aplikacji wysłanych między {{from}} a {{to}}"
+  },
+  "pipeline": {
+    "title": "Na jakim są etapie",
+    "meta": "otwarte: {{open}}, zamknięte: {{closed}}",
+    "unstaged": "Zarchiwizowany status",
+    "closed": "Zamknięte"
+  },
+  "cvs": {
+    "title": "Wersje CV",
+    "meta_one": "{{count}} wersja",
+    "meta_few": "{{count}} wersje",
+    "meta_many": "{{count}} wersji",
+    "meta_other": "{{count}} wersji",
+    "metaDisabled_one": ", wyłączone: {{count}}",
+    "metaDisabled_few": ", wyłączone: {{count}}",
+    "metaDisabled_many": ", wyłączone: {{count}}",
+    "metaDisabled_other": ", wyłączone: {{count}}",
+    "empty": "Te aplikacje nie mają przypisanego CV",
+    "columns": {
+      "cv": "CV",
+      "sent": "Wysłane",
+      "heard": "Z odpowiedzią",
+      "rate": "Odsetek odpowiedzi"
+    },
+    "disabled": "Wyłączona",
+    "tooFew": "za mało danych",
+    "total": "Wszystkie CV",
+    "withoutCv_one": "{{count}} wysłana bez CV",
+    "withoutCv_few": "{{count}} wysłane bez CV",
+    "withoutCv_many": "{{count}} wysłanych bez CV",
+    "withoutCv_other": "{{count}} wysłanych bez CV",
+    "showMore_one": "Pokaż jeszcze {{count}}",
+    "showMore_few": "Pokaż jeszcze {{count}}",
+    "showMore_many": "Pokaż jeszcze {{count}}",
+    "showMore_other": "Pokaż jeszcze {{count}}",
+    "showLess": "Pokaż mniej"
+  },
+  "closed": {
+    "title": "Jak się zakończyły",
+    "meta_one": "zamknięte: {{count}}",
+    "meta_few": "zamknięte: {{count}}",
+    "meta_many": "zamknięte: {{count}}",
+    "meta_other": "zamknięte: {{count}}",
+    "empty": "Nic jeszcze się nie zakończyło",
+    "columns": {
+      "outcome": "Wynik",
+      "atEntry": "Na etapie {{status}}",
+      "past": "Po etapie {{status}}",
+      "total": "Razem"
+    },
+    "total": "Wszystkie zamknięte",
+    "finding_one": "{{count}} z {{total}} zamkniętych nie wyszła poza etap {{status}}",
+    "finding_few": "{{count}} z {{total}} zamkniętych nie wyszły poza etap {{status}}",
+    "finding_many": "{{count}} z {{total}} zamkniętych nie wyszło poza etap {{status}}",
+    "finding_other": "{{count}} z {{total}} zamkniętych nie wyszło poza etap {{status}}"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "page": {
+    "title": "Opinie",
+    "summary_one": "Otwarte: {{open}} z {{count}} wiadomości",
+    "summary_few": "Otwarte: {{open}} z {{count}} wiadomości",
+    "summary_many": "Otwarte: {{open}} z {{count}} wiadomości",
+    "summary_other": "Otwarte: {{open}} z {{count}} wiadomości"
+  },
+  "tabs": {
+    "open": "Otwarte",
+    "resolved": "Rozwiązane"
+  },
+  "list": {
+    "emptyOpen": "Nic nie czeka na odpowiedź",
+    "emptyResolved": "Nie ma jeszcze rozwiązanych wiadomości",
+    "loadFailed": "Nie udało się załadować opinii"
+  },
+  "item": {
+    "from": "{{name}} · {{email}}",
+    "page": "Strona",
+    "browser": "Przeglądarka",
+    "reply": "Odpowiedz",
+    "replySubject": "Re: Twoja opinia o Job Tracker",
+    "resolve": "Oznacz jako rozwiązane",
+    "reopen": "Otwórz ponownie",
+    "updateFailed": "Nie udało się zaktualizować wiadomości"
+  }
+}

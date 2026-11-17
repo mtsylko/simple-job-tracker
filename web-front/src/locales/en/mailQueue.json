@@ -1,0 +1,30 @@
+{
+  "page": {
+    "title": "Inbox",
+    "subtitle": "Recruiter mail that reached your forwarding address, each with the status change it suggests — nothing changes until you confirm",
+    "loading": "Loading…",
+    "unexpectedError": "Could not read the queue"
+  },
+  "tabs": {
+    "pending": "Waiting",
+    "updated": "Updated",
+    "dismissed": "Dismissed",
+    "ignored": "Bulk"
+  },
+  "empty": {
+    "pending": "Nothing is waiting — forwarded mail turns up here as it arrives",
+    "updated": "No message has updated an application yet",
+    "dismissed": "Nothing has been dismissed",
+    "ignored": "No bulk mail has arrived — alerts and digests are filed here instead of the queue"
+  },
+  "card": {
+    "noSubject": "No subject",
+    "matches": "Matched applications",
+    "nothingScored": "No application scored against this message, so there is no application to update",
+    "dismiss": "Dismiss",
+    "dismissHint": "Takes it out of the queue without touching an application",
+    "updated": "Updated {{resolved}}",
+    "dismissed": "Dismissed {{resolved}}",
+    "ignored": "Filed as bulk mail {{resolved}}"
+  }
+}

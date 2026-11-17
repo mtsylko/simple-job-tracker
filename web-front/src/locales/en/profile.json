@@ -1,0 +1,153 @@
+{
+  "page": {
+    "title": "Profile",
+    "loading": "Loading…"
+  },
+  "form": {
+    "sections": {
+      "personal": "Personal",
+      "links": "Links",
+      "defaults": "Application defaults",
+      "experience": "Experience and education",
+      "background": "What answers are written from"
+    },
+    "sectionHints": {
+      "personal": "The basics an application form asks for first — forms get the email for applications in place of your sign-in one",
+      "links": "Full URLs, including https://",
+      "defaults": "What you'd otherwise retype into every form.",
+      "experience": "Where you work now, and what you studied — the fields a longer form asks for.",
+      "background": "Your CV in plain text, and how you want an open question written — the material and the manner"
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "phone": "Phone",
+      "applicationEmail": "Email for applications",
+      "location": "Location",
+      "linkedinUrl": "LinkedIn",
+      "githubUrl": "GitHub",
+      "portfolioUrl": "Portfolio",
+      "salaryExpectations": "Salary expectations",
+      "noticePeriod": "Notice period",
+      "workAuthorization": "Work authorization",
+      "addressLine": "Address",
+      "postalCode": "Postal code",
+      "country": "Country",
+      "nationality": "Nationality",
+      "currentCompany": "Current company",
+      "currentTitle": "Current title",
+      "yearsOfExperience": "Years of experience",
+      "university": "University",
+      "degree": "Degree",
+      "workAuthorized": "Authorized to work",
+      "needsSponsorship": "Needs visa sponsorship",
+      "background": "Experience in your own words",
+      "answerGuidance": "How you want open questions answered"
+    },
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Smith",
+      "phone": "+48 123 456 789",
+      "applicationEmail": "you+jobs@gmail.com",
+      "location": "Warsaw, Poland",
+      "linkedinUrl": "https://linkedin.com/in/username",
+      "githubUrl": "https://github.com/username",
+      "portfolioUrl": "https://example.com",
+      "salaryExpectations": "e.g. 25 000 PLN net / month",
+      "noticePeriod": "e.g. 1 month",
+      "workAuthorization": "e.g. EU citizen, no sponsorship needed",
+      "addressLine": "ul. Przykładowa 1/2",
+      "postalCode": "00-001",
+      "country": "Poland",
+      "nationality": "Ukrainian",
+      "currentCompany": "Acme",
+      "currentTitle": "Senior Frontend Engineer",
+      "yearsOfExperience": "e.g. 10",
+      "university": "Warsaw University of Technology",
+      "degree": "e.g. BSc Computer Science",
+      "background": "Paste your CV here",
+      "answerGuidance": "e.g. first person, plain language, no buzzwords — and never claim I led a team"
+    },
+    "save": "Save profile",
+    "discard": "Discard changes",
+    "allSaved": "All changes saved",
+    "saveFailed": "Profile could not be saved",
+    "flags": {
+      "unset": "Not answered",
+      "yes": "Yes",
+      "no": "No"
+    }
+  },
+  "validation": {
+    "urlInvalid": "Enter a full URL, including https://",
+    "tooLong": "Keep this under {{max}} characters",
+    "flagInvalid": "Answer yes or no, or leave it unanswered",
+    "emailInvalid": "Enter a full email address"
+  },
+  "tabs": {
+    "details": "Details",
+    "answers": "Answers",
+    "account": "Account"
+  },
+  "answers": {
+    "title": "Prepared answers",
+    "subtitle": "Written once, reused wherever a form asks the same thing in its own words",
+    "add": "Add answer",
+    "loading": "Loading…",
+    "empty": "Nothing here yet — add the answer you keep retyping, and a form asking for it differently will still get it",
+    "full": "You can keep {{count}} answers — edit or remove one to add another",
+    "card": {
+      "edit": "Edit answer",
+      "delete": "Delete",
+      "deleteTitle": "Delete this answer?",
+      "deleteBody": "\"{{title}}\" will no longer be used to answer open questions",
+      "deleteFailed": "Answer could not be deleted"
+    },
+    "form": {
+      "titleLabel": "What it is about",
+      "titlePlaceholder": "e.g. Migrating Vue to React under a release freeze",
+      "titleHint": "Shown next to a filled field, so you can tell at a glance which answer was used",
+      "contentLabel": "The answer",
+      "contentPlaceholder": "Tell it the way you would tell it — what the problem was, what you did, how it ended",
+      "contentHint": "Kept as written and adapted only to the wording and length a form asks for",
+      "aliasesLabel": "Questions it answers",
+      "aliasesPlaceholder": "The hardest problem you have solved\nWhat are you most proud of",
+      "aliasesHint": "One per line, optional — examples only, a question worded differently can still be answered from this",
+      "required": "A title and an answer are both needed",
+      "save": "Save answer",
+      "cancel": "Cancel",
+      "saveFailed": "Answer could not be saved"
+    }
+  },
+  "asked": {
+    "title": "Questions you have been asked",
+    "subtitle": "Open boxes employers put in front of you — the ones with no answer yet are worth writing once",
+    "noAnswer": "No answer yet",
+    "answeredFrom": "Answered from \"{{title}}\"",
+    "seen": "asked {{count}} times",
+    "write": "Write an answer",
+    "dismiss": "Remove from the list",
+    "dismissFailed": "Question could not be removed from the list"
+  },
+  "account": {
+    "export": {
+      "title": "Export your data",
+      "body": "Download everything your account holds as one JSON file — CV PDFs download from each CV version",
+      "action": "Download my data",
+      "pending": "Preparing…",
+      "failed": "Could not prepare the export — please try again"
+    },
+    "delete": {
+      "title": "Delete account",
+      "body": "Deletes your applications, CV versions and their files, profile and settings for good — this cannot be undone",
+      "action": "Delete account…",
+      "confirmTitle": "Delete your account?",
+      "confirmBody": "Everything in your account is deleted at once and cannot be restored — download your data first if you want a copy",
+      "phrase": "delete my account",
+      "phraseLabel": "Type “{{phrase}}” to confirm",
+      "confirm": "Delete account",
+      "cancel": "Cancel",
+      "failed": "Could not delete the account — please try again"
+    }
+  }
+}

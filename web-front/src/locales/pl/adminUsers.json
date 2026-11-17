@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Użytkownicy",
+    "searchLabel": "Szukaj użytkowników",
+    "searchPlaceholder": "Szukaj po imieniu lub adresie e-mail",
+    "summary_one": "Aktywne konta w ciągu ostatnich {{days}} dni: {{active}} z {{count}} — wywołania AI dzisiaj: {{ai}}",
+    "summary_few": "Aktywne konta w ciągu ostatnich {{days}} dni: {{active}} z {{count}} — wywołania AI dzisiaj: {{ai}}",
+    "summary_many": "Aktywne konta w ciągu ostatnich {{days}} dni: {{active}} z {{count}} — wywołania AI dzisiaj: {{ai}}",
+    "summary_other": "Aktywne konta w ciągu ostatnich {{days}} dni: {{active}} z {{count}} — wywołania AI dzisiaj: {{ai}}",
+    "matches": "{{shown}} z {{count}}"
+  },
+  "list": {
+    "user": "Użytkownik",
+    "role": "Rola",
+    "joined": "Rejestracja",
+    "lastActive": "Ostatnia aktywność",
+    "applications": "Aplikacje",
+    "cvVersions": "CV",
+    "aiToday": "AI dzisiaj",
+    "empty": "Brak użytkowników",
+    "noMatch": "Żaden użytkownik nie pasuje do wyszukiwania",
+    "loadFailed": "Nie udało się załadować użytkowników",
+    "actions": "Akcje",
+    "today": "Dzisiaj",
+    "yesterday": "Wczoraj"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "user": "Użytkownik"
+  },
+  "viewAs": {
+    "open": "Otwórz konto: {{name}}",
+    "openFailed": "Nie udało się otworzyć tego konta",
+    "banner": "Przeglądasz konto: {{name}} — tylko do odczytu",
+    "exit": "Wyjdź",
+    "view": "Podgląd",
+    "opening": "Otwieranie…"
+  }
+}

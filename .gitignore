@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+
+# Yarn install state/cache
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Env files (contain secrets)
+.env
+**/.env
+.env.prod
+
+# Local preview servers, one per worktree
+.claude/launch.json
+
+# IDE / OS files
+.idea/
+.vscode/
+.DS_Store
+
+# Uploaded files (user data written at runtime)
+uploads/
+**/uploads/

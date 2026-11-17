@@ -1,0 +1,280 @@
+{
+  "taxonomy": {
+    "status": {
+      "applied": "Отклик отправлен",
+      "hr": "HR",
+      "technical": "Техническое",
+      "contacted-me": "Написали мне",
+      "test-task": "Тестовое задание",
+      "offer": "Оффер"
+    }
+  },
+  "list": {
+    "title": "Отклики",
+    "export": "Экспорт",
+    "newApplication": "Новый отклик",
+    "tabs": {
+      "all": "Все",
+      "applied": "Отправленные",
+      "hr": "HR",
+      "technical": "Технические",
+      "offer": "Офферы"
+    },
+    "filters": {
+      "allRoles": "Все должности",
+      "allTypes": "Все форматы",
+      "allEmploymentTypes": "Все типы занятости",
+      "allContractTypes": "Все типы договора",
+      "allLevels": "Все уровни",
+      "allOutcomes": "Все результаты",
+      "scopeActive": "Только активные",
+      "scopeArchived": "Только архивные",
+      "scopeAll": "Все отклики",
+      "scopeLabel": "Показать",
+      "productCompanyCheckbox": "Продуктовая компания",
+      "companyLabel": "Фильтр по компании",
+      "companyPlaceholder": "Фильтр по компании…",
+      "button": "Фильтры",
+      "roleLabel": "Должность",
+      "levelLabel": "Уровень",
+      "typeLabel": "Формат",
+      "employmentTypeLabel": "Тип занятости",
+      "contractTypeLabel": "Тип договора",
+      "outcomeLabel": "Результат",
+      "appliedFromLabel": "Отклик с",
+      "appliedToLabel": "Отклик по",
+      "appliedFromPlaceholder": "Отклик с",
+      "appliedToPlaceholder": "Отклик по",
+      "clearDate": "Очистить дату",
+      "clearFilter": "Сбросить фильтр",
+      "clearAll": "Сбросить всё",
+      "matchingCount": "Подходит <filtered>{{filtered}}</filtered> из <total>{{total}}</total>"
+    },
+    "columns": {
+      "button": "Столбцы",
+      "title": "Видимые столбцы",
+      "narrower": "Сузить столбец «{{column}}»",
+      "wider": "Расширить столбец «{{column}}»",
+      "reset": "Сбросить",
+      "hiddenCount_one": "скрыто: {{count}}",
+      "hiddenCount_few": "скрыто: {{count}}",
+      "hiddenCount_many": "скрыто: {{count}}",
+      "hiddenCount_other": "скрыто: {{count}}"
+    },
+    "grouping": {
+      "label": "Группировать по",
+      "none": "Без группировки"
+    },
+    "table": {
+      "columns": {
+        "company": "Компания",
+        "status": "Статус",
+        "statusChanged": "Статус изменён",
+        "outcome": "Результат",
+        "post": "Вакансия",
+        "role": "Должность",
+        "level": "Уровень",
+        "type": "Формат",
+        "employmentType": "Тип занятости",
+        "contractType": "Тип договора",
+        "salary": "Зарплата",
+        "cv": "Резюме",
+        "applied": "Отклик",
+        "notes": "Заметки",
+        "applicationQuestions": "Вопросы в отклике"
+      },
+      "open": "Открыть",
+      "previewCv": "Просмотреть резюме",
+      "resizeColumn": "Изменить ширину столбца «{{column}}»",
+      "columnWidth": "{{width}} пикселей",
+      "rowMenu": "Действия для {{company}}",
+      "menuEdit": "Изменить",
+      "menuArchive": "В архив",
+      "menuUnarchive": "Восстановить",
+      "menuBlacklist": "Компанию в чёрный список",
+      "menuDelete": "Удалить",
+      "archivedMarker": "В архиве",
+      "archivedAt": "В архиве с {{date}}",
+      "noMatch": "Нет откликов, подходящих под эти фильтры",
+      "noMatchHint": "Попробуйте сбросить фильтр или добавить новый отклик.",
+      "loadedCount": "Загружено {{count}} из {{total}}",
+      "productCompany": "Продуктовая компания",
+      "agencyStudio": "Агентство / студия",
+      "askPrefix": "ожидаю {{value}}",
+      "noCompany": "Без названия компании",
+      "groupNoValue": "Не указано",
+      "groupCount_one": "{{count}} отклик",
+      "groupCount_few": "{{count}} отклика",
+      "groupCount_many": "{{count}} откликов",
+      "groupCount_other": "{{count}} отклика"
+    },
+    "deleteDialog": {
+      "title": "Удалить отклик в {{company}}?",
+      "body": "Отклик будет удалён безвозвратно вместе со статусом, заметками и ссылкой на резюме. Это действие нельзя отменить.",
+      "confirm": "Удалить",
+      "cancel": "Отмена"
+    }
+  },
+  "empty": {
+    "title": "Откликов пока нет",
+    "subtitle": "Добавьте первую вакансию, на которую вы откликнулись, и она появится здесь",
+    "cta": "Новый отклик",
+    "features": {
+      "capture": {
+        "title": "Данные отклика",
+        "description": "Компания, должность, уровень, вилка зарплаты и ваши заметки"
+      },
+      "funnel": {
+        "title": "Обзор воронки",
+        "description": "Сколько откликов на каждом этапе — от отправки до оффера"
+      },
+      "stayOut": {
+        "title": "Версии резюме",
+        "description": "Какое резюме вы отправили в каждую компанию и как сработала каждая версия"
+      }
+    }
+  },
+  "combobox": {
+    "placeholder": "Найдите или введите компанию",
+    "useValue": "Использовать «{{value}}»"
+  },
+  "route": {
+    "loadingTitle": "Загрузка откликов",
+    "loadingSubtitle": "Получаем список откликов из API...",
+    "loadErrorTitle": "Не удалось загрузить отклики",
+    "loadJobErrorTitle": "Не удалось загрузить отклик",
+    "retry": "Повторить"
+  },
+  "form": {
+    "backToApplications": "Назад к откликам",
+    "newApplicationTitle": "Новый отклик",
+    "editApplicationTitle": "Редактирование отклика",
+    "appliedPrefix": "· Отклик от {{date}}",
+    "submit": "Создать",
+    "saveChanges": "Сохранить изменения",
+    "sections": {
+      "applicationDetails": "Данные отклика",
+      "roleDetails": "Данные вакансии",
+      "applicationStatus": "Статус отклика",
+      "compensation": "Зарплата",
+      "notesQuestions": "Заметки и вопросы",
+      "customFields": "Дополнительные поля",
+      "attachments": "Вложения"
+    },
+    "reorderField": "Переместить поле",
+    "reorderSaveFailed": "Не удалось сохранить порядок полей",
+    "fields": {
+      "companyName": "Название компании",
+      "jobPostLink": "Ссылка на вакансию",
+      "jobPostLinkRefresh": "Получить данные вакансии по ссылке",
+      "dateOfApplication": "Дата отклика",
+      "companyType": "Тип компании",
+      "productCompanyCheckbox": "Это продуктовая компания (не агентство и не студия)",
+      "location": "Местоположение",
+      "role": "Должность",
+      "level": "Уровень",
+      "workType": "Формат работы",
+      "employmentType": "Тип занятости",
+      "contractType": "Тип договора",
+      "cvUsed": "Отправленное резюме",
+      "status": "Статус",
+      "outcome": "Результат",
+      "outcomeOptional": "Результат (необязательно)",
+      "postedSalaryRange": "Вилка из вакансии",
+      "mySalaryExpectation": "Мои ожидания по зарплате",
+      "notes": "Заметки",
+      "applicationQuestions": "Вопросы в отклике",
+      "applicationQuestionsHint": "Нестандартные вопросы, которые вам задали",
+      "customFields": "Свои поля"
+    },
+    "placeholders": {
+      "location": "Город или страна",
+      "selectRole": "Выберите должность",
+      "selectLevel": "Выберите уровень",
+      "selectType": "Выберите формат",
+      "selectEmploymentType": "Выберите тип занятости",
+      "selectContractType": "Выберите тип договора",
+      "selectCv": "Выберите резюме",
+      "selectOutcome": "Выберите результат",
+      "typeNewRole": "Введите новую должность",
+      "typeNewLevel": "Введите новый уровень",
+      "typeNewType": "Введите новый формат",
+      "typeNewEmploymentType": "Введите новый тип занятости",
+      "typeNewContractType": "Введите новый тип договора",
+      "noOutcomeYet": "Результата пока нет"
+    },
+    "addNew": {
+      "role": "Добавить должность",
+      "level": "Добавить уровень",
+      "type": "Добавить формат",
+      "employmentType": "Добавить тип занятости",
+      "contractType": "Добавить тип договора"
+    },
+    "validation": {
+      "valueRequired": "Укажите значение",
+      "failedToSaveOption": "Не удалось сохранить вариант",
+      "companyRequired": "Укажите название компании",
+      "jobPostLinkRequired": "Укажите ссылку на вакансию",
+      "jobPostLinkInvalid": "Ссылка на вакансию должна быть корректным URL",
+      "roleRequired": "Укажите должность",
+      "levelRequired": "Укажите уровень",
+      "dateRequired": "Укажите дату отклика",
+      "typeRequired": "Укажите формат",
+      "cvRequired": "Укажите резюме",
+      "statusRequired": "Укажите статус",
+      "customFieldRequired": "Заполните поле «{{label}}»",
+      "genericValidationError": "Ошибка проверки данных",
+      "failedToSaveJob": "Не удалось сохранить отклик",
+      "extractNoData": "Не удалось извлечь данные по этой ссылке. Заполните поля вручную.",
+      "extractFailed": "Не удалось получить данные вакансии по этой ссылке"
+    },
+    "attachments": {
+      "add": "Добавить файл",
+      "list": "Прикреплённые файлы",
+      "loading": "Загружаем файлы…",
+      "emptyTitle": "Файлов пока нет",
+      "emptyHint": "Транскрипты интервью, тестовые задания, офферы",
+      "loadFailed": "Не удалось загрузить вложения",
+      "uploadsOnSave": "загрузится при сохранении",
+      "removedOnSave": "Удалится при сохранении",
+      "undo": "Отменить",
+      "undoRemove": "Оставить {{name}}",
+      "download": "Скачать {{name}}",
+      "remove": "Удалить {{name}}",
+      "downloadFailed": "Не удалось скачать {{name}}",
+      "limitReached": "К заявке можно прикрепить до {{limit}} файлов",
+      "saveFailed": "Заявка сохранена, но эти файлы — нет: {{names}}"
+    }
+  },
+  "export": {
+    "headers": {
+      "id": "id",
+      "companyName": "Название компании",
+      "isProductCompany": "Продуктовая компания",
+      "notes": "Заметки",
+      "applicationQuestions": "Вопросы в отклике",
+      "jobPostLink": "Ссылка на вакансию",
+      "role": "Должность",
+      "level": "Уровень",
+      "stage": "Этап",
+      "outcome": "Результат",
+      "customCv": "Своё резюме",
+      "salaryRange": "Вилка зарплаты",
+      "mySalaryExpectations": "Мои ожидания по зарплате",
+      "cv": "Резюме",
+      "dateOfApplication": "Дата отклика",
+      "statusChanged": "Статус изменён",
+      "type": "Формат",
+      "employmentType": "Тип занятости",
+      "contractType": "Тип договора",
+      "location": "Местоположение",
+      "blacklisted": "В чёрном списке"
+    },
+    "booleanTrue": "Да",
+    "booleanFalse": "Нет"
+  },
+  "api": {
+    "invalidJobId": "API вернул некорректный id отклика",
+    "aiLimitReached": "Вы исчерпали дневной лимит извлечений с помощью ИИ ({{limit}}). Попробуйте завтра."
+  }
+}

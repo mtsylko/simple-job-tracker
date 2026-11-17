@@ -1,0 +1,75 @@
+{
+  "page": {
+    "title": "Konfiguracja przekazywania",
+    "subtitle": "Twój adres do przekazywania i kroki w Gmailu, które kierują na niego wiadomości od rekruterów — to, co dotrze, trafia do Skrzynki do przejrzenia",
+    "loading": "Ładowanie połączenia…",
+    "unexpectedError": "Nie udało się połączyć z usługą poczty"
+  },
+  "stage": {
+    "unconfigured": "Niedostępne",
+    "unconfiguredHint": "Ten serwer nie ma strefy poczty przychodzącej, więc nie można wydać adresu — ustaw MAIL_INBOUND_DOMAIN i uruchom API ponownie",
+    "unissued": "Nie połączono",
+    "unissuedHint": "Utwórz własny adres, a potem przekazuj na niego wiadomości od rekruterów ze swojej skrzynki",
+    "paused": "Wstrzymano",
+    "pausedHint": "Adres nadal należy do Ciebie, ale nic, co na niego przychodzi, nie jest czytane",
+    "waiting": "Oczekiwanie",
+    "waitingHint": "Adres działa, ale nic jeszcze nie przyszło — przekaż wiadomość, żeby zobaczyć, jak dociera",
+    "receiving": "Odbieranie",
+    "receivingHint": "Przekazane tutaj wiadomości są czytane i dopasowywane do Twoich aplikacji"
+  },
+  "address": {
+    "title": "Twój adres do przekazywania",
+    "issue": "Utwórz adres",
+    "copyFailed": "Nie udało się skopiować — zaznacz adres i skopiuj go ręcznie",
+    "issued": "Utworzono",
+    "lastMessage": "Ostatnia wiadomość",
+    "messages": "Odebrane wiadomości",
+    "never": "jeszcze brak",
+    "pause": "Wstrzymaj odczyt",
+    "resume": "Wznów odczyt",
+    "replace": "Zmień adres",
+    "replaceTitle": "Zmienić adres do przekazywania?",
+    "replaceBody": "Obecny adres przestanie przyjmować wiadomości, a regułę przekazywania w Twojej skrzynce trzeba będzie skierować na nowy",
+    "cancel": "Anuluj"
+  },
+  "copy": {
+    "label": "Kopiuj",
+    "done": "Skopiowano"
+  },
+  "setup": {
+    "title": "Łączenie z Gmailem",
+    "loading": "Odczytywanie konfiguracji Gmaila…",
+    "unexpectedError": "Nie udało się odczytać konfiguracji Gmaila",
+    "apply": {
+      "title": "Aplikuj z własnego adresu",
+      "unset": "Gmail dostarcza wiadomości na {{email}} do Twojej skrzynki jak na Twój własny adres — filtr przekazuje tylko pocztę wysłaną na niego, więc aplikuj z tym adresem",
+      "use": "Aplikuj z {{email}}",
+      "set": "Rozszerzenie wpisuje {{email}} w formularze aplikacji, a filtr przekazuje tylko pocztę wysłaną na ten adres",
+      "change": "Zmień go w profilu"
+    },
+    "forward": {
+      "title": "Włącz przekazywanie",
+      "body": "W ustawieniach przekazywania w Gmailu dodaj {{address}} jako adres do przekazywania — Gmail wyśle na niego potwierdzenie, które pojawi się tutaj",
+      "open": "Otwórz ustawienia przekazywania",
+      "waiting": "Gmail jeszcze nie przysłał potwierdzenia",
+      "readd": "Nic po minucie? Gmail nie ma przycisku ponownego wysłania — usuń adres w sekcji Przekazywanie i dodaj go jeszcze raz, aby dostać nowe potwierdzenie",
+      "check": "Sprawdź ponownie",
+      "confirm": "Potwierdź w Gmailu",
+      "linkFor": "Gmail prosi o potwierdzenie przekazywania z {{account}} — otwórz jego stronę i kliknij Potwierdź",
+      "link": "Gmail prosi o potwierdzenie przekazywania — otwórz jego stronę i kliknij Potwierdź",
+      "codeFor": "Kod Gmaila dla {{account}} — wpisz go w sekcji Przekazywanie i kliknij Zweryfikuj",
+      "code": "Kod potwierdzający z Gmaila — wpisz go w sekcji Przekazywanie i kliknij Zweryfikuj",
+      "copyFailed": "Nie udało się skopiować — zaznacz kod i skopiuj go ręcznie"
+    },
+    "filter": {
+      "title": "Utwórz filtr",
+      "waiting": "Najpierw ustaw adres do aplikacji — filtr przekazuje tylko pocztę wysłaną na niego",
+      "body": "Gmail otworzy się z wypełnionym filtrem: kliknij „Utwórz filtr”, zaznacz „Przekaż do”, wybierz {{address}} i ponownie kliknij „Utwórz filtr” — Gmail pokaże ten adres, gdy przekazywanie zostanie potwierdzone",
+      "open": "Utwórz filtr w Gmailu",
+      "paste": "Albo wklej go samodzielnie w polu „Zawiera słowa” w Gmailu — wskazuje tylko ten adres, więc nie trzeba go już nigdy kopiować ponownie",
+      "copyFailed": "Nie udało się skopiować — zaznacz zapytanie i skopiuj je ręcznie"
+    },
+    "manual": "Poczta na inne adresy zostaje w Gmailu — przekaż wiadomość ręcznie na {{address}}, a zostanie odczytana tak samo",
+    "privacy": "Czytamy tylko to, co przekażesz — z wiadomości zapisujemy nadawcę, temat, datę i linijkę, która zadecydowała o wyniku, a nie jej treść"
+  }
+}

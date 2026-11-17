@@ -1,0 +1,232 @@
+{
+  "brand": {
+    "name": "Job Tracker"
+  },
+  "breadcrumbs": {
+    "workspace": "Працоўная прастора",
+    "applications": "Водгукі",
+    "cvVersions": "Версіі рэзюмэ",
+    "taxonomies": "Катэгорыі",
+    "newApplication": "Новы водгук",
+    "edit": "Рэдагаванне",
+    "new": "Стварэнне",
+    "jobFields": "Уласныя палі",
+    "companies": "Кампаніі",
+    "profile": "Профіль",
+    "admin": "Адміністраванне",
+    "users": "Карыстальнікі",
+    "feedback": "Зваротная сувязь",
+    "translations": "Пераклады"
+  },
+  "sidebar": {
+    "workspaceGroup": "Працоўная прастора",
+    "goToApplications": "Перайсці да водгукаў",
+    "logOut": "Выйсці",
+    "profile": "Профіль",
+    "userMenu": "Уліковы запіс і налады",
+    "primaryNavigation": "Асноўная навігацыя",
+    "toggle": "Паказаць або схаваць бакавую панэль",
+    "mobileDescription": "Спасылкі на ўсе старонкі праграмы",
+    "nav": {
+      "applications": "Водгукі",
+      "cvVersions": "Версіі рэзюмэ",
+      "analytics": "Аналітыка",
+      "taxonomies": "Катэгорыі",
+      "jobFields": "Уласныя палі",
+      "companies": "Кампаніі",
+      "mail": "Пошта",
+      "mailConnection": "Налада перасылкі",
+      "mailMatch": "Праверыць ліст",
+      "mailQueue": "Уваходныя",
+      "admin": "Адміністраванне",
+      "adminUsers": "Карыстальнікі",
+      "adminFeedback": "Зваротная сувязь",
+      "adminTranslations": "Пераклады"
+    }
+  },
+  "header": {
+    "logOut": "Выйсці"
+  },
+  "dialog": {
+    "close": "Закрыць"
+  },
+  "theme": {
+    "label": "Тэма",
+    "light": "Светлая",
+    "dark": "Цёмная",
+    "system": "Сістэмная"
+  },
+  "language": {
+    "label": "Мова",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "be": "Беларуская",
+    "uk": "Українська"
+  },
+  "layout": {
+    "skipToContent": "Перайсці да змесціва",
+    "documentTitle": "{{page}} — {{brand}}",
+    "openMenu": "Адкрыць меню навігацыі"
+  },
+  "notifications": {
+    "entities": {
+      "job": "Водгук",
+      "cvVersion": "Версія рэзюмэ",
+      "jobRole": "Пасада",
+      "jobLevel": "Узровень",
+      "jobType": "Фармат працы",
+      "jobEmploymentType": "Тып занятасці",
+      "jobContractType": "Тып дагавора",
+      "jobStatus": "Статус",
+      "jobOutcome": "Вынік",
+      "jobField": "Поле",
+      "candidateProfile": "Профіль"
+    },
+    "success": {
+      "created": "{{entity}}: створана",
+      "updated": "{{entity}}: змены захаваны",
+      "deleted": "{{entity}}: выдалена",
+      "archived": "{{entity}}: перанесена ў архіў",
+      "restored": "{{entity}}: адноўлена"
+    },
+    "error": {
+      "created": "{{entity}}: не ўдалося стварыць",
+      "updated": "{{entity}}: не ўдалося захаваць змены",
+      "deleted": "{{entity}}: не ўдалося выдаліць",
+      "archived": "{{entity}}: не ўдалося перанесці ў архіў",
+      "restored": "{{entity}}: не ўдалося аднавіць"
+    }
+  },
+  "form": {
+    "saving": "Захаванне...",
+    "cancel": "Скасаваць",
+    "unsavedChanges": "Незахаваныя змены",
+    "discardDialog": {
+      "title": "Скасаваць незахаваныя змены?",
+      "body": "Вы змянілі гэты водгук, але яшчэ не захавалі яго. Калі сысці зараз, праўкі страцяцца.",
+      "keepEditing": "Працягнуць рэдагаванне",
+      "discardChanges": "Скасаваць змены"
+    }
+  },
+  "routes": {
+    "default": {
+      "title": "Job Tracker",
+      "subtitle": "Кіруйце сваімі водгукамі на вакансіі"
+    },
+    "jobsCreate": {
+      "title": "Новы водгук",
+      "subtitle": "Адсочвайце новы водгук на вакансію",
+      "backToApplications": "Назад да водгукаў"
+    },
+    "jobsEdit": {
+      "title": "Рэдагаванне водгуку",
+      "subtitle": "Абнавіце даныя водгуку",
+      "backToApplications": "Назад да водгукаў"
+    },
+    "cvVersions": {
+      "title": "Версіі рэзюмэ",
+      "subtitle": "Прагляд і кіраванне версіямі рэзюмэ",
+      "addCvVersion": "Дадаць версію рэзюмэ"
+    },
+    "cvVersionsCreate": {
+      "title": "Новая версія рэзюмэ",
+      "subtitle": "Стварыце запіс пра новую версію рэзюмэ",
+      "backToCvVersions": "Назад да версій рэзюмэ"
+    },
+    "cvVersionsEdit": {
+      "title": "Рэдагаванне версіі рэзюмэ",
+      "subtitle": "Абнавіце даныя версіі рэзюмэ",
+      "backToCvVersions": "Назад да версій рэзюмэ"
+    },
+    "applications": {
+      "title": "Водгукі",
+      "subtitle": "Прагляд і кіраванне вашымі водгукамі",
+      "addJob": "Дадаць водгук"
+    },
+    "taxonomies": {
+      "title": "Катэгорыі",
+      "subtitle": "Значэнні пасад, узроўняў і фарматаў працы, якія выкарыстоўваюцца ў вашых водгуках"
+    },
+    "jobFields": {
+      "title": "Уласныя палі",
+      "subtitle": "Дадайце ў форму водгуку ўласныя палі — яны з’явяцца ў раздзеле «Дадатковыя палі»"
+    },
+    "companies": {
+      "title": "Кампаніі",
+      "subtitle": "Усе кампаніі з вашых водгукаў і тыя, якіх вы вырашылі пазбягаць"
+    },
+    "analytics": {
+      "title": "Аналітыка"
+    },
+    "mailConnection": {
+      "title": "Падключэнне пошты"
+    },
+    "mailMatch": {
+      "title": "Супастаўленне лістоў"
+    },
+    "mailQueue": {
+      "title": "Чарга лістоў"
+    },
+    "profile": {
+      "title": "Профіль",
+      "subtitle": "Вашы даныя захоўваюцца ў адным месцы, каб не ўводзіць іх нанава для кожнага водгуку"
+    },
+    "adminUsers": {
+      "title": "Карыстальнікі"
+    },
+    "adminFeedback": {
+      "title": "Зваротная сувязь"
+    },
+    "adminTranslations": {
+      "title": "Пераклады"
+    }
+  },
+  "api": {
+    "requestFailed": "Запыт не выкананы"
+  },
+  "errors": {
+    "unexpected": "Нечаканая памылка"
+  },
+  "fileUpload": {
+    "upload": "Загрузіць файл",
+    "dropTitle": "Перацягніце файл сюды",
+    "dropHint": "або націсніце, каб выбраць яго на прыладзе",
+    "uploadingTitle": "Загрузка файла...",
+    "uploadingHint": "Калі ласка, пачакайце",
+    "acceptedFormats": "Дапушчальныя фарматы: {{formats}}",
+    "maxSize": "Максімальны памер: {{size}} МБ",
+    "unsupportedFormat": "Фармат файла не падтрымліваецца — дапушчальныя фарматы: {{formats}}",
+    "tooLarge": "Файл большы за {{size}} МБ",
+    "uploadFailed": "Не ўдалося загрузіць файл",
+    "clearFile": "Прыбраць выбраны файл"
+  },
+  "search": {
+    "searching": "Пошук...",
+    "failed": "Не ўдалося выканаць пошук",
+    "minLetters_one": "Увядзіце хаця б {{count}} літару для пошуку",
+    "minLetters_few": "Увядзіце хаця б {{count}} літары для пошуку",
+    "minLetters_many": "Увядзіце хаця б {{count}} літар для пошуку",
+    "minLetters_other": "Увядзіце хаця б {{count}} літары для пошуку",
+    "noResults": "Нічога не знойдзена"
+  },
+  "multiSelect": {
+    "empty": "Няма даступных варыянтаў"
+  },
+  "selectField": {
+    "accept": "Ужыць",
+    "cancel": "Скасаваць"
+  },
+  "cookieConsent": {
+    "title": "Аналітычныя cookie",
+    "body": "Мы хацелі б выкарыстоўваць cookie Google Analytics, каб бачыць, якімі старонкамі і функцыямі карыстаюцца, — у іх ніколі не трапляюць вашы водгукі, кампаніі ці рэзюмэ",
+    "withdraw": "Перадумаць можна ў любы момант у наладах cookie",
+    "current": {
+      "granted": "Аналітычныя cookie зараз дазволены",
+      "denied": "Аналітычныя cookie зараз заблакіраваны"
+    },
+    "accept": "Прыняць",
+    "reject": "Адхіліць",
+    "settings": "Налады cookie"
+  }
+}

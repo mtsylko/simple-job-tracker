@@ -1,0 +1,63 @@
+{
+  "page": {
+    "title": "Translations",
+    "summary_one": "{{count}} string — {{edited}} edited",
+    "summary_other": "{{count}} strings — {{edited}} edited",
+    "searchLabel": "Search translations",
+    "searchPlaceholder": "Search by key or text",
+    "namespaceLabel": "Section",
+    "allNamespaces": "All sections",
+    "matches": "{{shown}} of {{count}}"
+  },
+  "tabs": {
+    "all": "All",
+    "edited": "Edited"
+  },
+  "list": {
+    "key": "Key",
+    "empty": "No strings match this search",
+    "emptyEdited": "No edited strings yet",
+    "loadFailed": "Failed to load translations",
+    "edited": "Edited"
+  },
+  "orphans": {
+    "notice_one": "{{count}} edit belongs to a string the app no longer has",
+    "notice_other": "{{count}} edits belong to strings the app no longer has",
+    "remove": "Remove",
+    "confirmTitle": "Remove unused edits?",
+    "confirmDescription": "They no longer change anything in the app — removing them can't be undone",
+    "removeFailed": "Could not remove the unused edits"
+  },
+  "edit": {
+    "title": "Edit translation",
+    "save": "Save",
+    "cancel": "Cancel",
+    "shipped": "Default",
+    "reset": "Reset to default",
+    "empty": "Text can't be empty",
+    "missingTokens": "Missing from the default: {{tokens}}",
+    "unknownTokens": "Not in the default: {{tokens}}",
+    "saved": "Translation saved",
+    "saveFailed": "Could not save this translation"
+  },
+  "namespaces": {
+    "adminFeedback": "Admin · Feedback",
+    "adminTranslations": "Admin · Translations",
+    "adminUsers": "Admin · Users",
+    "analytics": "Analytics",
+    "apiErrors": "Error messages",
+    "legal": "Legal pages",
+    "auth": "Sign-in",
+    "common": "General",
+    "companies": "Companies",
+    "cvVersions": "CV versions",
+    "feedback": "Feedback form",
+    "jobFields": "Custom fields",
+    "jobs": "Applications",
+    "mailConnection": "Email · Forwarding setup",
+    "mailMatch": "Email · Check a message",
+    "mailQueue": "Email · Inbox",
+    "profile": "Profile",
+    "taxonomies": "Categories"
+  }
+}

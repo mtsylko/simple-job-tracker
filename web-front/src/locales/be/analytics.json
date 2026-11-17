@@ -1,0 +1,119 @@
+{
+  "route": {
+    "loadingTitle": "Загрузка",
+    "loadingSubtitle": "Атрымліваем даныя…",
+    "errorTitle": "Не ўдалося загрузіць",
+    "retry": "Паўтарыць"
+  },
+  "page": {
+    "title": "Аналітыка"
+  },
+  "finding": {
+    "none": "За гэты перыяд нічога не адпраўлена",
+    "plain": "Адказалі на {{heard}} з {{sent}}",
+    "best": "Адказалі на {{heard}} з {{sent}} — найлепш працуе {{best}}: {{bestHeard}} з {{bestSent}}",
+    "compare": "Адказалі на {{heard}} з {{sent}} — найлепш працуе {{best}} ({{bestPct}}%), ваша рэзюмэ, якое адпраўляецца найчасцей, — {{topPct}}%"
+  },
+  "range": {
+    "options": {
+      "all": "За ўвесь час",
+      "1m": "Апошні месяц",
+      "3m": "Апошнія 3 месяцы",
+      "6m": "Апошнія 6 месяцаў",
+      "12m": "Апошнія 12 месяцаў"
+    }
+  },
+  "kpi": {
+    "label": "Вынікі",
+    "sent": {
+      "label": "Адпраўлена",
+      "since": "з {{date}}"
+    },
+    "heard": {
+      "label": "Адказалі",
+      "detail": "далей за этап «{{status}}»"
+    },
+    "interviewing": {
+      "label": "Сумоўі зараз",
+      "none": "Няма адкрытых перамоў"
+    },
+    "final": {
+      "label": "Оферы",
+      "none": "Адкрытых няма",
+      "one_one": "{{company}}, {{count}} дзень на этапе",
+      "one_few": "{{company}}, {{count}} дні на этапе",
+      "one_many": "{{company}}, {{count}} дзён на этапе",
+      "one_other": "{{company}}, {{count}} дня на этапе",
+      "two": "{{first}} і {{second}}",
+      "many_one": "{{companies}} і яшчэ {{count}}",
+      "many_few": "{{companies}} і яшчэ {{count}}",
+      "many_many": "{{companies}} і яшчэ {{count}}",
+      "many_other": "{{companies}} і яшчэ {{count}}"
+    }
+  },
+  "sent": {
+    "titleWeek": "Адпраўлена па тыднях",
+    "titleMonth": "Адпраўлена па месяцах",
+    "metaWeek": "На гэтым тыдні {{current}} · у сярэднім {{average}} за тыдзень",
+    "metaMonth": "У гэтым месяцы {{current}} · у сярэднім {{average}} за месяц",
+    "chartLabel_one": "{{count}} водгук адпраўлены ў перыяд з {{from}} па {{to}}",
+    "chartLabel_few": "{{count}} водгукі адпраўлены ў перыяд з {{from}} па {{to}}",
+    "chartLabel_many": "{{count}} водгукаў адпраўлена ў перыяд з {{from}} па {{to}}",
+    "chartLabel_other": "{{count}} водгуку адпраўлена ў перыяд з {{from}} па {{to}}"
+  },
+  "pipeline": {
+    "title": "Дзе яны зараз",
+    "meta": "Адкрыта: {{open}}, закрыта: {{closed}}",
+    "unstaged": "Статус у архіве",
+    "closed": "Закрытыя"
+  },
+  "cvs": {
+    "title": "Версіі рэзюмэ",
+    "meta_one": "{{count}} версія",
+    "meta_few": "{{count}} версіі",
+    "meta_many": "{{count}} версій",
+    "meta_other": "{{count}} версіі",
+    "metaDisabled_one": ", {{count}} адключана",
+    "metaDisabled_few": ", {{count}} адключаны",
+    "metaDisabled_many": ", {{count}} адключана",
+    "metaDisabled_other": ", {{count}} адключаны",
+    "empty": "У гэтых водгуках не пазначана рэзюмэ",
+    "columns": {
+      "cv": "Рэзюмэ",
+      "sent": "Адпраўлена",
+      "heard": "Адказалі",
+      "rate": "Доля адказаў"
+    },
+    "disabled": "Адключана",
+    "tooFew": "занадта мала для ацэнкі",
+    "total": "Усе рэзюмэ",
+    "withoutCv_one": "{{count}} водгук без рэзюмэ",
+    "withoutCv_few": "{{count}} водгукі без рэзюмэ",
+    "withoutCv_many": "{{count}} водгукаў без рэзюмэ",
+    "withoutCv_other": "{{count}} водгуку без рэзюмэ",
+    "showMore_one": "Паказаць яшчэ {{count}}",
+    "showMore_few": "Паказаць яшчэ {{count}}",
+    "showMore_many": "Паказаць яшчэ {{count}}",
+    "showMore_other": "Паказаць яшчэ {{count}}",
+    "showLess": "Згарнуць"
+  },
+  "closed": {
+    "title": "Чым завяршыліся",
+    "meta_one": "Закрыта: {{count}}",
+    "meta_few": "Закрыта: {{count}}",
+    "meta_many": "Закрыта: {{count}}",
+    "meta_other": "Закрыта: {{count}}",
+    "empty": "Пакуль нічога не закрыта",
+    "columns": {
+      "outcome": "Вынік",
+      "atEntry": "На этапе «{{status}}»",
+      "past": "Пасля «{{status}}»",
+      "total": "Усяго"
+    },
+    "total": "Усе закрытыя",
+    "finding_one": "{{count}} з {{total}} закрыўся, не прайшоўшы далей за «{{status}}»",
+    "finding_few": "{{count}} з {{total}} закрыліся, не прайшоўшы далей за «{{status}}»",
+    "finding_many": "{{count}} з {{total}} закрыліся, не прайшоўшы далей за «{{status}}»",
+    "finding_other": "{{count}} з {{total}} закрыліся, не прайшоўшы далей за «{{status}}»"
+  }
+}

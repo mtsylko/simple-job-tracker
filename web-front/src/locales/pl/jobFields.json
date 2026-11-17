@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Pola własne",
+    "subtitle": "Dodaj własne pola do formularza aplikacji — pojawiają się w sekcji „Dodatkowe pola” przy dodawaniu lub edycji aplikacji",
+    "empty": "Nie ma jeszcze pól własnych — dodaj pierwsze poniżej",
+    "loadFailed": "Nie udało się załadować pól"
+  },
+  "list": {
+    "requiredBadge": "Wymagane",
+    "optionsLabel": "Opcje"
+  },
+  "types": {
+    "text": "Tekst",
+    "textarea": "Długi tekst",
+    "number": "Liczba",
+    "date": "Data",
+    "boolean": "Pole wyboru",
+    "select": "Jednokrotny wybór",
+    "multiselect": "Wielokrotny wybór"
+  },
+  "form": {
+    "addTitle": "Dodaj pole",
+    "labelLabel": "Etykieta",
+    "labelPlaceholder": "np. Osoba polecająca",
+    "typeLabel": "Typ",
+    "typeLockedHint": "Typu nie można zmienić po utworzeniu pola",
+    "requiredLabel": "Wymagane",
+    "optionsLabel": "Opcje",
+    "optionPlaceholder": "Dodaj opcję…",
+    "optionAdd": "Dodaj",
+    "optionsHint": "Pola wyboru potrzebują co najmniej jednej opcji",
+    "add": "Dodaj pole",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "edit": "Edytuj",
+    "delete": "Usuń"
+  },
+  "deleteDialog": {
+    "title": "Usunąć „{{label}}”?",
+    "body": "Pole zniknie z formularza. Wartości zapisane we wcześniejszych aplikacjach zostaną zachowane, ale nie będą już wyświetlane."
+  },
+  "validation": {
+    "labelRequired": "Etykieta jest wymagana",
+    "optionsRequired": "Dodaj co najmniej jedną opcję",
+    "duplicateOption": "Taka opcja już istnieje"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Firmy",
+    "subtitle": "Wszystkie firmy z Twoich aplikacji oraz te, których chcesz unikać",
+    "searchLabel": "Szukaj firm",
+    "searchPlaceholder": "Szukaj firm",
+    "loadFailed": "Nie udało się załadować firm"
+  },
+  "tabs": {
+    "all": "Wszystkie",
+    "blacklisted": "Czarna lista"
+  },
+  "list": {
+    "company": "Firma",
+    "latestStatus": "Ostatni status",
+    "roles": "Stanowiska",
+    "applications": "Aplikacje",
+    "lastApplied": "Ostatnio wysłano",
+    "actions": "Akcje",
+    "productCompany": "Firma produktowa",
+    "agencyStudio": "Agencja / studio",
+    "noApplications": "Brak aplikacji",
+    "empty": "Nie ma jeszcze firm — pojawią się tutaj, gdy dodasz aplikację",
+    "noMatch": "Żadna firma nie pasuje do wyszukiwania",
+    "blacklistAction": "Dodaj do czarnej listy",
+    "unblacklistAction": "Usuń z czarnej listy"
+  },
+  "marker": {
+    "label": "Na czarnej liście",
+    "reason": "Na czarnej liście — {{reason}}",
+    "hint": "Ta firma jest na Twojej czarnej liście"
+  },
+  "blacklisted": {
+    "reason": "Powód",
+    "date": "Dodano do listy",
+    "empty": "Czarna lista jest pusta",
+    "noReason": "Nie podano powodu",
+    "editReason": "Edytuj powód"
+  },
+  "form": {
+    "addTitle": "Dodaj firmę",
+    "companyLabel": "Firma",
+    "companyPlaceholder": "np. Acme Corp",
+    "reasonLabel": "Powód (opcjonalnie)",
+    "reasonPlaceholder": "Dlaczego unikasz tej firmy",
+    "add": "Dodaj",
+    "save": "Zapisz",
+    "cancel": "Anuluj"
+  },
+  "validation": {
+    "companyRequired": "Firma jest wymagana"
+  },
+  "blacklistDialog": {
+    "title": "Dodać {{company}} do czarnej listy?",
+    "body": "Firma zostanie oznaczona we wszystkich aplikacjach jako ta, której warto unikać — możesz ją usunąć w każdej chwili w zakładce Firmy",
+    "confirm": "Dodaj do czarnej listy"
+  },
+  "reasonDialog": {
+    "title": "Dlaczego unikać {{company}}?",
+    "body": "Wyświetla się po najechaniu na znacznik czarnej listy w aplikacjach"
+  },
+  "removeDialog": {
+    "title": "Usunąć {{company}} z czarnej listy?",
+    "body": "Powód zostanie usunięty — możesz dodać firmę ponownie, jeśli zmienisz zdanie",
+    "confirm": "Usuń"
+  },
+  "blacklist": {
+    "added": "Dodano {{company}} do czarnej listy",
+    "already": "{{company}} jest już na czarnej liście",
+    "failed": "Nie udało się dodać {{company}} do czarnej listy",
+    "removed": "Usunięto {{company}} z czarnej listy",
+    "removeFailed": "Nie udało się usunąć {{company}} z czarnej listy",
+    "reasonSaved": "Zapisano powód",
+    "reasonFailed": "Nie udało się zapisać powodu dla {{company}}"
+  }
+}

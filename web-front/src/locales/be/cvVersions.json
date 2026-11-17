@@ -1,0 +1,128 @@
+{
+  "list": {
+    "title": "Версіі рэзюмэ",
+    "newCvVersion": "Новая версія рэзюмэ",
+    "searchLabel": "Фільтр версій рэзюмэ",
+    "searchPlaceholder": "Фільтр па назве або файле…",
+    "tabs": {
+      "all": "Усе",
+      "enabled": "Уключаныя",
+      "disabled": "Адключаныя"
+    },
+    "shownOfTotal": "Паказана <strong>{{shown}}</strong> з <strong>{{total}}</strong>",
+    "versionCount_one": "<strong>{{count}}</strong> версія",
+    "versionCount_few": "<strong>{{count}}</strong> версіі",
+    "versionCount_many": "<strong>{{count}}</strong> версій",
+    "versionCount_other": "<strong>{{count}}</strong> версіі",
+    "disabledCount_one": "{{count}} адключана",
+    "disabledCount_few": "{{count}} адключаны",
+    "disabledCount_many": "{{count}} адключана",
+    "disabledCount_other": "{{count}} адключаны",
+    "columns": {
+      "version": "Версія рэзюмэ",
+      "description": "Апісанне",
+      "source": "Крыніца",
+      "enabled": "Уключана"
+    },
+    "openSource": "Адкрыць",
+    "toggle": {
+      "on": "Укл.",
+      "off": "Адкл.",
+      "onHint": "Уключана — даступная пры выбары рэзюмэ",
+      "offHint": "Адключана — схаваная пры выбары рэзюмэ"
+    },
+    "deleteLabel": "Выдаліць {{name}}",
+    "noMatch": "Няма версій рэзюмэ, якія адпавядаюць фільтру",
+    "footer": {
+      "showing_one": "Паказана <strong>{{count}}</strong> версія",
+      "showing_few": "Паказаны <strong>{{count}}</strong> версіі",
+      "showing_many": "Паказана <strong>{{count}}</strong> версій",
+      "showing_other": "Паказаны <strong>{{count}}</strong> версіі",
+      "enabled": "уключана: {{enabled}}",
+      "enabledAndDisabled": "уключана: {{enabled}}, адключана: {{disabled}}"
+    },
+    "addAnother": "Дадаць яшчэ версію",
+    "disabledInfo": "Адключаныя версіі захоўваюцца для гісторыі, каб старыя водгукі па-ранейшаму на іх спасылаліся, але не прапануюцца пры выбары рэзюмэ для новага водгуку"
+  },
+  "route": {
+    "loadingListTitle": "Загрузка версій рэзюмэ",
+    "loadingListSubtitle": "Атрымліваем версіі рэзюмэ з API...",
+    "loadListErrorTitle": "Не ўдалося загрузіць версіі рэзюмэ",
+    "loadingTitle": "Загрузка версіі рэзюмэ",
+    "loadingSubtitle": "Атрымліваем даныя версіі рэзюмэ з API...",
+    "loadErrorTitle": "Не ўдалося загрузіць версію рэзюмэ",
+    "notFoundTitle": "Версія рэзюмэ не знойдзена",
+    "notFoundBody": "Такой версіі рэзюмэ няма або яна была выдалена",
+    "retry": "Паўтарыць"
+  },
+  "form": {
+    "backToCvVersions": "Назад да версій рэзюмэ",
+    "newCvVersionTitle": "Новая версія рэзюмэ",
+    "editCvVersionTitle": "Рэдагаванне версіі рэзюмэ",
+    "submit": "Стварыць",
+    "saveChanges": "Захаваць змены",
+    "sections": {
+      "details": "Даныя версіі рэзюмэ",
+      "visibility": "Бачнасць"
+    },
+    "fields": {
+      "name": "Назва",
+      "sourceLink": "Спасылка на зыходны файл",
+      "attachment": "Укладанне",
+      "description": "Апісанне",
+      "enabledTitle": "Паказваць пры выбары рэзюмэ",
+      "enabledDescription": "Уключаная версія прапануецца пры даданні новага водгуку. Адключыце яе, каб перанесці ў архіў без выдалення."
+    },
+    "placeholders": {
+      "sourceLink": "https://..."
+    },
+    "attachmentUpload": {
+      "label": "Ход загрузкі ўкладання"
+    },
+    "validation": {
+      "nameRequired": "Пазначце назву",
+      "sourceLinkInvalid": "Спасылка на зыходны файл павінна быць карэктным URL",
+      "attachmentUploading": "Дачакайцеся заканчэння загрузкі ўкладання",
+      "failedToSave": "Не ўдалося захаваць версію рэзюмэ"
+    }
+  },
+  "viewer": {
+    "preview": "Прагляд PDF",
+    "openInNewTab": "Адкрыць у новай укладцы",
+    "download": "Спампаваць",
+    "close": "Закрыць",
+    "downloadFailed": "Не ўдалося спампаваць укладанне",
+    "frameTitle": "{{name}} — прагляд PDF"
+  },
+  "deleteDialog": {
+    "title": "Выдаліць гэту версію рэзюмэ?",
+    "body": "<name>{{name}}</name> будзе выдалена назаўсёды. Водгукі, якія на яе спасылаліся, страцяць спасылку на рэзюмэ",
+    "confirm": "Выдаліць",
+    "cancel": "Скасаваць"
+  },
+  "empty": {
+    "title": "Версій рэзюмэ пакуль няма",
+    "subtitle": "Дадайце адаптаванае рэзюмэ для кожнага тыпу пасад, і яно з’явіцца тут",
+    "cta": "Дадаць першую версію рэзюмэ",
+    "features": {
+      "tailor": {
+        "title": "Пад кожную ролю",
+        "description": "Frontend, full-stack, lead — асобныя файлы, асобныя гісторыі"
+      },
+      "usage": {
+        "title": "Сачыце за выкарыстаннем",
+        "description": "Глядзіце, якая версія пайшла ў якую кампанію і як яна спрацавала"
+      },
+      "source": {
+        "title": "Зыходны файл пад рукой",
+        "description": "Адкрывайце рэдагаваны арыгінал адным клікам, без паўторнай загрузкі"
+      }
+    }
+  },
+  "api": {
+    "invalidId": "API вярнуў некарэктны id версіі рэзюмэ",
+    "invalidUploadResponse": "Некарэктны адказ на загрузку ўкладання",
+    "uploadFailed": "Не ўдалося загрузіць укладанне",
+    "uploadCancelled": "Загрузка ўкладання скасавана"
+  }
+}

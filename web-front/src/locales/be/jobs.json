@@ -1,0 +1,280 @@
+{
+  "taxonomy": {
+    "status": {
+      "applied": "Водгук адпраўлены",
+      "hr": "HR",
+      "technical": "Тэхнічнае",
+      "contacted-me": "Напісалі мне",
+      "test-task": "Тэставае заданне",
+      "offer": "Офер"
+    }
+  },
+  "list": {
+    "title": "Водгукі",
+    "export": "Экспарт",
+    "newApplication": "Новы водгук",
+    "tabs": {
+      "all": "Усе",
+      "applied": "Адпраўленыя",
+      "hr": "HR",
+      "technical": "Тэхнічныя",
+      "offer": "Оферы"
+    },
+    "filters": {
+      "allRoles": "Усе пасады",
+      "allTypes": "Усе фарматы",
+      "allEmploymentTypes": "Усе тыпы занятасці",
+      "allContractTypes": "Усе тыпы дагавора",
+      "allLevels": "Усе ўзроўні",
+      "allOutcomes": "Усе вынікі",
+      "scopeActive": "Толькі актыўныя",
+      "scopeArchived": "Толькі архіўныя",
+      "scopeAll": "Усе водгукі",
+      "scopeLabel": "Паказаць",
+      "productCompanyCheckbox": "Прадуктовая кампанія",
+      "companyLabel": "Фільтр па кампаніі",
+      "companyPlaceholder": "Фільтр па кампаніі…",
+      "button": "Фільтры",
+      "roleLabel": "Пасада",
+      "levelLabel": "Узровень",
+      "typeLabel": "Фармат",
+      "employmentTypeLabel": "Тып занятасці",
+      "contractTypeLabel": "Тып дагавора",
+      "outcomeLabel": "Вынік",
+      "appliedFromLabel": "Водгук з",
+      "appliedToLabel": "Водгук па",
+      "appliedFromPlaceholder": "Водгук з",
+      "appliedToPlaceholder": "Водгук па",
+      "clearDate": "Ачысціць дату",
+      "clearFilter": "Скінуць фільтр",
+      "clearAll": "Скінуць усё",
+      "matchingCount": "Падыходзіць <filtered>{{filtered}}</filtered> з <total>{{total}}</total>"
+    },
+    "columns": {
+      "button": "Слупкі",
+      "title": "Бачныя слупкі",
+      "narrower": "Звузіць слупок «{{column}}»",
+      "wider": "Пашырыць слупок «{{column}}»",
+      "reset": "Скінуць",
+      "hiddenCount_one": "схавана: {{count}}",
+      "hiddenCount_few": "схавана: {{count}}",
+      "hiddenCount_many": "схавана: {{count}}",
+      "hiddenCount_other": "схавана: {{count}}"
+    },
+    "grouping": {
+      "label": "Групаваць па",
+      "none": "Без групавання"
+    },
+    "table": {
+      "columns": {
+        "company": "Кампанія",
+        "status": "Статус",
+        "statusChanged": "Статус зменены",
+        "outcome": "Вынік",
+        "post": "Вакансія",
+        "role": "Пасада",
+        "level": "Узровень",
+        "type": "Фармат",
+        "employmentType": "Тып занятасці",
+        "contractType": "Тып дагавора",
+        "salary": "Зарплата",
+        "cv": "Рэзюмэ",
+        "applied": "Водгук",
+        "notes": "Нататкі",
+        "applicationQuestions": "Пытанні ў водгуку"
+      },
+      "open": "Адкрыць",
+      "previewCv": "Праглядзець рэзюмэ",
+      "resizeColumn": "Змяніць шырыню слупка «{{column}}»",
+      "columnWidth": "{{width}} пікселяў",
+      "rowMenu": "Дзеянні для {{company}}",
+      "menuEdit": "Змяніць",
+      "menuArchive": "У архіў",
+      "menuUnarchive": "Аднавіць",
+      "menuBlacklist": "Кампанію ў чорны спіс",
+      "menuDelete": "Выдаліць",
+      "archivedMarker": "У архіве",
+      "archivedAt": "У архіве з {{date}}",
+      "noMatch": "Няма водгукаў, якія адпавядаюць гэтым фільтрам",
+      "noMatchHint": "Паспрабуйце скінуць фільтр або дадаць новы водгук.",
+      "loadedCount": "Загружана {{count}} з {{total}}",
+      "productCompany": "Прадуктовая кампанія",
+      "agencyStudio": "Агенцтва / студыя",
+      "askPrefix": "чакаю {{value}}",
+      "noCompany": "Без назвы кампаніі",
+      "groupNoValue": "Не пазначана",
+      "groupCount_one": "{{count}} водгук",
+      "groupCount_few": "{{count}} водгукі",
+      "groupCount_many": "{{count}} водгукаў",
+      "groupCount_other": "{{count}} водгуку"
+    },
+    "deleteDialog": {
+      "title": "Выдаліць водгук у {{company}}?",
+      "body": "Водгук будзе выдалены назаўсёды разам са статусам, нататкамі і спасылкай на рэзюмэ. Гэта дзеянне нельга адмяніць.",
+      "confirm": "Выдаліць",
+      "cancel": "Скасаваць"
+    }
+  },
+  "empty": {
+    "title": "Водгукаў пакуль няма",
+    "subtitle": "Дадайце першую вакансію, на якую вы адгукнуліся, і яна з’явіцца тут",
+    "cta": "Новы водгук",
+    "features": {
+      "capture": {
+        "title": "Даныя водгуку",
+        "description": "Кампанія, пасада, узровень, вілка зарплаты і вашы нататкі"
+      },
+      "funnel": {
+        "title": "Агляд варонкі",
+        "description": "Колькі водгукаў на кожным этапе — ад адпраўкі да офера"
+      },
+      "stayOut": {
+        "title": "Версіі рэзюмэ",
+        "description": "Якое рэзюмэ вы адправілі ў кожную кампанію і як спрацавала кожная версія"
+      }
+    }
+  },
+  "combobox": {
+    "placeholder": "Знайдзіце або ўвядзіце кампанію",
+    "useValue": "Выкарыстаць «{{value}}»"
+  },
+  "route": {
+    "loadingTitle": "Загрузка водгукаў",
+    "loadingSubtitle": "Атрымліваем спіс водгукаў з API...",
+    "loadErrorTitle": "Не ўдалося загрузіць водгукі",
+    "loadJobErrorTitle": "Не ўдалося загрузіць водгук",
+    "retry": "Паўтарыць"
+  },
+  "form": {
+    "backToApplications": "Назад да водгукаў",
+    "newApplicationTitle": "Новы водгук",
+    "editApplicationTitle": "Рэдагаванне водгуку",
+    "appliedPrefix": "· Водгук ад {{date}}",
+    "submit": "Стварыць",
+    "saveChanges": "Захаваць змены",
+    "sections": {
+      "applicationDetails": "Даныя водгуку",
+      "roleDetails": "Даныя вакансіі",
+      "applicationStatus": "Статус водгуку",
+      "compensation": "Зарплата",
+      "notesQuestions": "Нататкі і пытанні",
+      "customFields": "Дадатковыя палі",
+      "attachments": "Укладанні"
+    },
+    "reorderField": "Перамясціць поле",
+    "reorderSaveFailed": "Не ўдалося захаваць парадак палёў",
+    "fields": {
+      "companyName": "Назва кампаніі",
+      "jobPostLink": "Спасылка на вакансію",
+      "jobPostLinkRefresh": "Атрымаць даныя вакансіі па спасылцы",
+      "dateOfApplication": "Дата водгуку",
+      "companyType": "Тып кампаніі",
+      "productCompanyCheckbox": "Гэта прадуктовая кампанія (не агенцтва і не студыя)",
+      "location": "Месцазнаходжанне",
+      "role": "Пасада",
+      "level": "Узровень",
+      "workType": "Фармат працы",
+      "employmentType": "Тып занятасці",
+      "contractType": "Тып дагавора",
+      "cvUsed": "Адпраўленае рэзюмэ",
+      "status": "Статус",
+      "outcome": "Вынік",
+      "outcomeOptional": "Вынік (неабавязкова)",
+      "postedSalaryRange": "Вілка з вакансіі",
+      "mySalaryExpectation": "Мае чаканні па зарплаце",
+      "notes": "Нататкі",
+      "applicationQuestions": "Пытанні ў водгуку",
+      "applicationQuestionsHint": "Нестандартныя пытанні, якія вам задалі",
+      "customFields": "Уласныя палі"
+    },
+    "placeholders": {
+      "location": "Горад або краіна",
+      "selectRole": "Выберыце пасаду",
+      "selectLevel": "Выберыце ўзровень",
+      "selectType": "Выберыце фармат",
+      "selectEmploymentType": "Выберыце тып занятасці",
+      "selectContractType": "Выберыце тып дагавора",
+      "selectCv": "Выберыце рэзюмэ",
+      "selectOutcome": "Выберыце вынік",
+      "typeNewRole": "Увядзіце новую пасаду",
+      "typeNewLevel": "Увядзіце новы ўзровень",
+      "typeNewType": "Увядзіце новы фармат",
+      "typeNewEmploymentType": "Увядзіце новы тып занятасці",
+      "typeNewContractType": "Увядзіце новы тып дагавора",
+      "noOutcomeYet": "Выніку пакуль няма"
+    },
+    "addNew": {
+      "role": "Дадаць пасаду",
+      "level": "Дадаць узровень",
+      "type": "Дадаць фармат",
+      "employmentType": "Дадаць тып занятасці",
+      "contractType": "Дадаць тып дагавора"
+    },
+    "validation": {
+      "valueRequired": "Пазначце значэнне",
+      "failedToSaveOption": "Не ўдалося захаваць варыянт",
+      "companyRequired": "Пазначце назву кампаніі",
+      "jobPostLinkRequired": "Пазначце спасылку на вакансію",
+      "jobPostLinkInvalid": "Спасылка на вакансію павінна быць карэктным URL",
+      "roleRequired": "Пазначце пасаду",
+      "levelRequired": "Пазначце ўзровень",
+      "dateRequired": "Пазначце дату водгуку",
+      "typeRequired": "Пазначце фармат",
+      "cvRequired": "Пазначце рэзюмэ",
+      "statusRequired": "Пазначце статус",
+      "customFieldRequired": "Запоўніце поле «{{label}}»",
+      "genericValidationError": "Памылка праверкі даных",
+      "failedToSaveJob": "Не ўдалося захаваць водгук",
+      "extractNoData": "Не ўдалося здабыць даныя па гэтай спасылцы. Запоўніце палі ўручную.",
+      "extractFailed": "Не ўдалося атрымаць даныя вакансіі па гэтай спасылцы"
+    },
+    "attachments": {
+      "add": "Дадаць файл",
+      "list": "Прымацаваныя файлы",
+      "loading": "Загружаем файлы…",
+      "emptyTitle": "Файлаў пакуль няма",
+      "emptyHint": "Транскрыпты сумоўяў, тэставыя заданні, оферы",
+      "loadFailed": "Не ўдалося загрузіць укладанні",
+      "uploadsOnSave": "загрузіцца пры захаванні",
+      "removedOnSave": "Выдаліцца пры захаванні",
+      "undo": "Адмяніць",
+      "undoRemove": "Пакінуць {{name}}",
+      "download": "Спампаваць {{name}}",
+      "remove": "Выдаліць {{name}}",
+      "downloadFailed": "Не ўдалося спампаваць {{name}}",
+      "limitReached": "Да заяўкі можна прымацаваць да {{limit}} файлаў",
+      "saveFailed": "Заяўку захавана, але гэтыя файлы — не: {{names}}"
+    }
+  },
+  "export": {
+    "headers": {
+      "id": "id",
+      "companyName": "Назва кампаніі",
+      "isProductCompany": "Прадуктовая кампанія",
+      "notes": "Нататкі",
+      "applicationQuestions": "Пытанні ў водгуку",
+      "jobPostLink": "Спасылка на вакансію",
+      "role": "Пасада",
+      "level": "Узровень",
+      "stage": "Этап",
+      "outcome": "Вынік",
+      "customCv": "Уласнае рэзюмэ",
+      "salaryRange": "Вілка зарплаты",
+      "mySalaryExpectations": "Мае чаканні па зарплаце",
+      "cv": "Рэзюмэ",
+      "dateOfApplication": "Дата водгуку",
+      "statusChanged": "Статус зменены",
+      "type": "Фармат",
+      "employmentType": "Тып занятасці",
+      "contractType": "Тып дагавора",
+      "location": "Месцазнаходжанне",
+      "blacklisted": "У чорным спісе"
+    },
+    "booleanTrue": "Так",
+    "booleanFalse": "Не"
+  },
+  "api": {
+    "invalidJobId": "API вярнуў некарэктны id водгуку",
+    "aiLimitReached": "Вы вычарпалі дзённы ліміт здабыванняў з дапамогай ШІ ({{limit}}). Паспрабуйце заўтра."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "page": {
+    "title": "Feedback",
+    "summary_one": "{{open}} open of {{count}} message",
+    "summary_other": "{{open}} open of {{count}} messages"
+  },
+  "tabs": {
+    "open": "Open",
+    "resolved": "Resolved"
+  },
+  "list": {
+    "emptyOpen": "Nothing waiting for an answer",
+    "emptyResolved": "No resolved messages yet",
+    "loadFailed": "Failed to load feedback"
+  },
+  "item": {
+    "from": "{{name}} · {{email}}",
+    "page": "Page",
+    "browser": "Browser",
+    "reply": "Reply",
+    "replySubject": "Re: your feedback on Job Tracker",
+    "resolve": "Mark resolved",
+    "reopen": "Reopen",
+    "updateFailed": "Could not update this message"
+  }
+}

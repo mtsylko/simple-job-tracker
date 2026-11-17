@@ -1,0 +1,67 @@
+{
+  "page": {
+    "title": "Tłumaczenia",
+    "summary_one": "{{count}} tekst — zmienione: {{edited}}",
+    "summary_few": "{{count}} teksty — zmienione: {{edited}}",
+    "summary_many": "{{count}} tekstów — zmienione: {{edited}}",
+    "summary_other": "{{count}} tekstu — zmienione: {{edited}}",
+    "searchLabel": "Szukaj tłumaczeń",
+    "searchPlaceholder": "Szukaj po kluczu lub tekście",
+    "namespaceLabel": "Sekcja",
+    "allNamespaces": "Wszystkie sekcje",
+    "matches": "{{shown}} z {{count}}"
+  },
+  "tabs": {
+    "all": "Wszystkie",
+    "edited": "Zmienione"
+  },
+  "list": {
+    "key": "Klucz",
+    "empty": "Żaden tekst nie pasuje do wyszukiwania",
+    "emptyEdited": "Nie zmieniono jeszcze żadnego tekstu",
+    "loadFailed": "Nie udało się wczytać tłumaczeń",
+    "edited": "Zmienione"
+  },
+  "orphans": {
+    "notice_one": "{{count}} zmiana dotyczy tekstu, którego aplikacja już nie ma",
+    "notice_few": "{{count}} zmiany dotyczą tekstów, których aplikacja już nie ma",
+    "notice_many": "{{count}} zmian dotyczy tekstów, których aplikacja już nie ma",
+    "notice_other": "{{count}} zmiany dotyczy tekstów, których aplikacja już nie ma",
+    "remove": "Usuń",
+    "confirmTitle": "Usunąć nieużywane zmiany?",
+    "confirmDescription": "Niczego już w aplikacji nie zmieniają — tego nie da się cofnąć",
+    "removeFailed": "Nie udało się usunąć nieużywanych zmian"
+  },
+  "edit": {
+    "title": "Edytuj tłumaczenie",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "shipped": "Domyślnie",
+    "reset": "Przywróć domyślny",
+    "empty": "Tekst nie może być pusty",
+    "missingTokens": "Brakuje względem domyślnego: {{tokens}}",
+    "unknownTokens": "Nie ma w domyślnym: {{tokens}}",
+    "saved": "Zapisano tłumaczenie",
+    "saveFailed": "Nie udało się zapisać tłumaczenia"
+  },
+  "namespaces": {
+    "adminFeedback": "Administracja · Opinie",
+    "adminTranslations": "Administracja · Tłumaczenia",
+    "adminUsers": "Administracja · Użytkownicy",
+    "analytics": "Analityka",
+    "apiErrors": "Komunikaty błędów",
+    "legal": "Dokumenty prawne",
+    "auth": "Logowanie",
+    "common": "Ogólne",
+    "companies": "Firmy",
+    "cvVersions": "Wersje CV",
+    "feedback": "Formularz opinii",
+    "jobFields": "Pola własne",
+    "jobs": "Aplikacje",
+    "mailConnection": "E-mail · Konfiguracja przekazywania",
+    "mailMatch": "E-mail · Sprawdź wiadomość",
+    "mailQueue": "E-mail · Skrzynka",
+    "profile": "Profil",
+    "taxonomies": "Kategorie"
+  }
+}

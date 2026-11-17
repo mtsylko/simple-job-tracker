@@ -1,0 +1,230 @@
+{
+  "brand": {
+    "name": "Job Tracker"
+  },
+  "breadcrumbs": {
+    "workspace": "Workspace",
+    "applications": "Applications",
+    "cvVersions": "CV Versions",
+    "taxonomies": "Categories",
+    "newApplication": "New Application",
+    "edit": "Edit",
+    "new": "New",
+    "jobFields": "Custom fields",
+    "companies": "Companies",
+    "profile": "Profile",
+    "admin": "Admin",
+    "users": "Users",
+    "feedback": "Feedback",
+    "translations": "Translations"
+  },
+  "sidebar": {
+    "workspaceGroup": "Workspace",
+    "goToApplications": "Go to Applications page",
+    "logOut": "Log out",
+    "profile": "Profile",
+    "userMenu": "Account and preferences",
+    "primaryNavigation": "Primary navigation",
+    "toggle": "Toggle sidebar",
+    "mobileDescription": "Links to every page of the app",
+    "nav": {
+      "applications": "Applications",
+      "cvVersions": "CV versions",
+      "analytics": "Analytics",
+      "taxonomies": "Categories",
+      "jobFields": "Custom fields",
+      "companies": "Companies",
+      "mail": "Email",
+      "mailConnection": "Forwarding setup",
+      "mailMatch": "Check a message",
+      "mailQueue": "Inbox",
+      "admin": "Admin",
+      "adminUsers": "Users",
+      "adminFeedback": "Feedback",
+      "adminTranslations": "Translations"
+    }
+  },
+  "header": {
+    "logOut": "Log out"
+  },
+  "dialog": {
+    "close": "Close"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "be": "Беларуская",
+    "uk": "Українська"
+  },
+  "layout": {
+    "skipToContent": "Skip to content",
+    "documentTitle": "{{page}} — {{brand}}",
+    "openMenu": "Open navigation menu"
+  },
+  "notifications": {
+    "entities": {
+      "job": "Application",
+      "cvVersion": "CV version",
+      "jobRole": "Role",
+      "jobLevel": "Level",
+      "jobType": "Type",
+      "jobEmploymentType": "Employment type",
+      "jobContractType": "Contract type",
+      "jobStatus": "Status",
+      "jobOutcome": "Outcome",
+      "jobField": "Field",
+      "candidateProfile": "Profile"
+    },
+    "success": {
+      "created": "{{entity}} created",
+      "updated": "{{entity}} updated",
+      "deleted": "{{entity}} deleted",
+      "archived": "{{entity}} archived",
+      "restored": "{{entity}} restored"
+    },
+    "error": {
+      "created": "{{entity}} could not be created",
+      "updated": "{{entity}} could not be updated",
+      "deleted": "{{entity}} could not be deleted",
+      "archived": "{{entity}} could not be archived",
+      "restored": "{{entity}} could not be restored"
+    }
+  },
+  "form": {
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "unsavedChanges": "Unsaved changes",
+    "discardDialog": {
+      "title": "Discard unsaved changes?",
+      "body": "You've edited this application but haven't saved yet. If you leave now, your edits will be lost.",
+      "keepEditing": "Keep editing",
+      "discardChanges": "Discard changes"
+    }
+  },
+  "routes": {
+    "default": {
+      "title": "Job Tracker",
+      "subtitle": "Manage your job applications"
+    },
+    "jobsCreate": {
+      "title": "Add Job",
+      "subtitle": "Track a new job application",
+      "backToApplications": "Back to Applications"
+    },
+    "jobsEdit": {
+      "title": "Edit Job",
+      "subtitle": "Update job application details",
+      "backToApplications": "Back to Applications"
+    },
+    "cvVersions": {
+      "title": "CV versions",
+      "subtitle": "View and manage CV versions",
+      "addCvVersion": "Add CV version"
+    },
+    "cvVersionsCreate": {
+      "title": "Add CV version",
+      "subtitle": "Create a new CV version record",
+      "backToCvVersions": "Back to CV versions"
+    },
+    "cvVersionsEdit": {
+      "title": "Edit CV version",
+      "subtitle": "Update CV version details",
+      "backToCvVersions": "Back to CV versions"
+    },
+    "applications": {
+      "title": "Applications",
+      "subtitle": "View and manage your applications",
+      "addJob": "Add Job"
+    },
+    "taxonomies": {
+      "title": "Categories",
+      "subtitle": "Manage the role, level, and type values used across your applications"
+    },
+    "jobFields": {
+      "title": "Custom fields",
+      "subtitle": "Add your own fields to the application form — they appear under \"Additional fields\""
+    },
+    "companies": {
+      "title": "Companies",
+      "subtitle": "Every company from your applications, and the ones you've decided to avoid"
+    },
+    "analytics": {
+      "title": "Analytics"
+    },
+    "mailConnection": {
+      "title": "Email connection"
+    },
+    "mailMatch": {
+      "title": "Mail match"
+    },
+    "mailQueue": {
+      "title": "Mail queue"
+    },
+    "profile": {
+      "title": "Profile",
+      "subtitle": "Your details, stored once so they don't have to be retyped on every application"
+    },
+    "adminUsers": {
+      "title": "Users"
+    },
+    "adminFeedback": {
+      "title": "Feedback"
+    },
+    "adminTranslations": {
+      "title": "Translations"
+    }
+  },
+  "api": {
+    "requestFailed": "Request failed"
+  },
+  "errors": {
+    "unexpected": "Unexpected error"
+  },
+  "fileUpload": {
+    "upload": "Upload file",
+    "dropTitle": "Drag and drop your file here",
+    "dropHint": "or click to browse from your device",
+    "uploadingTitle": "Uploading file...",
+    "uploadingHint": "Please wait",
+    "acceptedFormats": "Accepted formats: {{formats}}",
+    "maxSize": "Max size: {{size}} MB",
+    "unsupportedFormat": "Unsupported file format — accepted formats: {{formats}}",
+    "tooLarge": "File exceeds max size of {{size}} MB",
+    "uploadFailed": "Failed to upload file",
+    "clearFile": "Clear selected file"
+  },
+  "search": {
+    "searching": "Searching...",
+    "failed": "Search failed",
+    "minLetters_one": "Type at least {{count}} letter to search",
+    "minLetters_other": "Type at least {{count}} letters to search",
+    "noResults": "No results found"
+  },
+  "multiSelect": {
+    "empty": "No options available"
+  },
+  "selectField": {
+    "accept": "Accept",
+    "cancel": "Cancel"
+  },
+  "cookieConsent": {
+    "title": "Analytics cookies",
+    "body": "We'd like to use Google Analytics cookies to see which pages and features get used — they never carry your applications, companies or CVs",
+    "withdraw": "You can change your mind any time under Cookie settings",
+    "current": {
+      "granted": "Analytics cookies are currently allowed",
+      "denied": "Analytics cookies are currently blocked"
+    },
+    "accept": "Accept",
+    "reject": "Reject",
+    "settings": "Cookie settings"
+  }
+}

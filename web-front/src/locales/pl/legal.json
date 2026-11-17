@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "back": "Wróć do Job Tracker",
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin",
+    "updated": "Ostatnia aktualizacja: {{date}}",
+    "contents": "Spis treści",
+    "bindingVersion": "W razie rozbieżności między tłumaczeniami wiążąca jest wersja polska"
+  },
+  "signInConsent": "Kontynuując, akceptujesz <terms>Regulamin</terms> i potwierdzasz zapoznanie się z <privacy>Polityką prywatności</privacy>",
+  "accountLinks": {
+    "title": "Dokumenty",
+    "body": "Jak Job Tracker przetwarza Twoje dane i zasady korzystania z serwisu"
+  },
+  "privacy": {
+    "title": "Polityka prywatności",
+    "intro": "Ta polityka wyjaśnia, jakie dane osobowe przetwarza Job Tracker, w jakim celu, komu są przekazywane i jakie prawa Ci przysługują. Jest krótka celowo: Job Tracker zbiera tylko to, czego potrzebuje do działania",
+    "sections": {
+      "controller": {
+        "title": "Kto odpowiada za Twoje dane",
+        "body": "{{name}} prowadzi serwis Job Tracker pod adresem simplejobtracker.com i jest administratorem Twoich danych osobowych.\n\nWe wszystkich sprawach dotyczących Twoich danych napisz na {{email}}"
+      },
+      "data": {
+        "title": "Jakie dane przetwarzamy",
+        "body": "- Dane konta: imię i nazwisko, adres e-mail i zdjęcie profilowe z Google oraz identyfikator konta Google. Nigdy nie otrzymujemy Twojego hasła do Google i niczego nie publikujemy w Twoim imieniu\n- To, co wpisujesz: aplikacje, firmy, statusy, notatki i pola własne, wersje CV i przesłane pliki, pliki dołączone do aplikacji oraz przygotowane odpowiedzi\n- Profil kandydata, jeśli go wypełnisz: dane kontaktowe, adres, linki, obecna praca, wykształcenie, doświadczenie, oczekiwania finansowe, okres wypowiedzenia, obywatelstwo i uprawnienia do pracy\n- Wiadomości wysłane przez Pomoc i opinie\n- Dane techniczne: plik cookie sesji oraz logi serwera z adresem IP, czasem i adresem żądania\n- Statystyki korzystania, tylko jeśli zaakceptujesz analityczne pliki cookie\n\nProsimy nie zapisywać w Job Tracker szczególnych kategorii danych, takich jak zdrowie, wyznanie czy poglądy polityczne. Serwis ich nie potrzebuje"
+      },
+      "purposes": {
+        "title": "W jakim celu i na jakiej podstawie",
+        "body": "- Świadczenie usługi, z której korzystasz: wykonanie umowy, art. 6 ust. 1 lit. b RODO\n- Bezpieczeństwo serwisu, zapobieganie nadużyciom i usuwanie błędów: nasz prawnie uzasadniony interes w bezpiecznym, działającym serwisie, art. 6 ust. 1 lit. f RODO\n- Odpowiadanie na Twoje wiadomości i opinie: nasz prawnie uzasadniony interes w udzieleniu Ci pomocy, art. 6 ust. 1 lit. f RODO\n- Pomiar korzystania z aplikacji: Twoja zgoda, art. 6 ust. 1 lit. a RODO. Możesz ją wycofać w każdej chwili w ustawieniach plików cookie, co nie wpływa na zgodność z prawem przetwarzania przed jej wycofaniem\n\nJob Tracker nie podejmuje wobec Ciebie zautomatyzowanych decyzji wywołujących skutki prawne lub w podobny sposób istotnie na Ciebie wpływających"
+      },
+      "support": {
+        "title": "Dostęp w celach pomocy",
+        "body": "Administrator może otworzyć Twoje konto w trybie tylko do odczytu, aby rozwiązać zgłoszony przez Ciebie problem lub zbadać nadużycie. Każdy taki dostęp jest rejestrowany wraz z czasem"
+      },
+      "recipients": {
+        "title": "Kto otrzymuje Twoje dane",
+        "body": "Nie sprzedajemy Twoich danych i nie wyświetlamy reklam. Twoje dane przetwarzają następujący dostawcy, tylko w zakresie potrzebnym do świadczenia ich usługi:\n\n- Hetzner Online GmbH, Niemcy: serwery, baza danych i przechowywanie plików, w Unii Europejskiej\n- Google Ireland Limited i Google LLC: logowanie przez Google oraz Google Analytics, jeśli zaakceptujesz analityczne pliki cookie\n- komoot GmbH, Niemcy: podpowiedzi lokalizacji. Nasz serwer wysyła tylko tekst wpisany w pole lokalizacji\n- Namecheap, Inc., USA: przekazywanie wiadomości wysłanych na {{email}}\n\nMożemy też ujawnić dane organom publicznym, gdy wymaga tego prawo"
+      },
+      "transfers": {
+        "title": "Przekazywanie danych poza UE",
+        "body": "Google i Namecheap mogą przetwarzać dane w USA. Podstawą tego przekazania są Ramy ochrony danych UE-USA (EU-US Data Privacy Framework) lub standardowe klauzule umowne zatwierdzone przez Komisję Europejską. Możesz poprosić nas o kopię tych zabezpieczeń"
+      },
+      "retention": {
+        "title": "Jak długo przechowujemy dane",
+        "body": "Przechowujemy Twoje dane, dopóki istnieje Twoje konto. Gdy usuniesz konto, Twoje aplikacje, wersje CV, pliki, profil, odpowiedzi, opinie i ustawienia zostaną od razu usunięte.\n\nLogi serwera przechowujemy tylko tak długo, jak jest to potrzebne do zapewnienia bezpieczeństwa i usuwania błędów. Dane analityczne Google przechowuje do 14 miesięcy"
+      },
+      "rights": {
+        "title": "Twoje prawa",
+        "body": "Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz sprzeciwu wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie. Jeśli przetwarzanie opiera się na zgodzie, możesz ją wycofać w każdej chwili.\n\nWiększość z tego zrobisz sam: edytujesz wszystko w aplikacji, pobierzesz wszystkie swoje dane w Profil, Konto i tam też usuniesz konto. W pozostałych sprawach napisz na {{email}}. Odpowiadamy w ciągu miesiąca.\n\nMasz też prawo wnieść skargę do organu nadzorczego. W Polsce jest to Prezes Urzędu Ochrony Danych Osobowych (Prezes UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl"
+      },
+      "cookies": {
+        "title": "Pliki cookie i pamięć lokalna",
+        "body": "- access_token: plik cookie sesji, który utrzymuje Cię zalogowanym przez 7 dni. Jest niezbędny do działania serwisu\n- Pamięć lokalna przeglądarki: Twój język, motyw, układ tabeli, filtry, okres statystyk i Twój wybór dotyczący plików cookie. Zostaje na Twoim urządzeniu\n- Pliki cookie Google Analytics (_ga i _ga_*): ustawiane tylko po zaakceptowaniu analitycznych plików cookie\n\nSwój wybór możesz zmienić w każdej chwili przez link do ustawień plików cookie na stronie logowania"
+      },
+      "age": {
+        "title": "Wiek",
+        "body": "Job Tracker jest przeznaczony dla osób, które ukończyły 16 lat"
+      },
+      "changes": {
+        "title": "Zmiany tej polityki",
+        "body": "Jeśli zmienimy tę politykę w sposób, który ma dla Ciebie znaczenie, poinformujemy Cię e-mailem lub w aplikacji przed wejściem zmiany w życie. Data na górze strony wskazuje aktualną wersję"
+      }
+    }
+  },
+  "terms": {
+    "title": "Regulamin",
+    "intro": "Ten regulamin określa zasady korzystania z Job Tracker. Jest regulaminem świadczenia usług drogą elektroniczną w rozumieniu ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną",
+    "sections": {
+      "provider": {
+        "title": "Usługodawca",
+        "body": "Serwis Job Tracker pod adresem simplejobtracker.com prowadzi {{name}}, e-mail {{email}}"
+      },
+      "service": {
+        "title": "Czym jest serwis",
+        "body": "Job Tracker pomaga uporządkować Twoje własne poszukiwanie pracy. Możesz śledzić aplikacje i ich etapy, przechowywać wersje CV i pliki, prowadzić listę firm i oglądać statystyki poszukiwań.\n\nSerwis jest bezpłatny. Możemy z czasem dodawać, zmieniać lub usuwać funkcje"
+      },
+      "requirements": {
+        "title": "Wymagania techniczne",
+        "body": "Potrzebujesz urządzenia z dostępem do internetu, aktualnej wersji popularnej przeglądarki z włączoną obsługą JavaScript i plików cookie oraz konta Google do logowania"
+      },
+      "account": {
+        "title": "Konto i umowa",
+        "body": "Umowa zostaje zawarta przy pierwszym zalogowaniu i akceptacji regulaminu. Jest zawarta na czas nieokreślony.\n\nMusisz mieć ukończone 16 lat. Konto jest przeznaczone dla jednej osoby. Dbaj o bezpieczeństwo swojego konta Google, bo to ono daje dostęp do konta w Job Tracker.\n\nMożesz rozwiązać umowę w każdej chwili, usuwając konto w Profil, Konto"
+      },
+      "rules": {
+        "title": "Zasady korzystania",
+        "body": "- Korzystaj z Job Tracker zgodnie z prawem i wyłącznie na potrzeby własnego poszukiwania pracy\n- Nie przesyłaj treści bezprawnych ani plików ze złośliwym oprogramowaniem\n- Nie próbuj zakłócać działania serwisu, przeciążać go ani obchodzić jego zabezpieczeń i nie korzystaj z niego za pomocą narzędzi automatycznych w zakresie wykraczającym poza zwykłe użytkowanie\n- Przesyłaj tylko dane, do których wykorzystania masz prawo. Jeśli zapisujesz dane innych osób, na przykład rekruterów, odpowiadasz za nie"
+      },
+      "availability": {
+        "title": "Dostępność i odpowiedzialność",
+        "body": "Dbamy o dostępność Job Tracker i bezpieczeństwo Twoich danych, ale jako bezpłatny serwis nie gwarantujemy nieprzerwanego działania. Możemy wstrzymać go na czas prac technicznych. Przechowuj własną kopię ważnych danych: wszystko pobierzesz w Profil, Konto.\n\nW zakresie dopuszczalnym przez prawo nie odpowiadamy za szkody wynikłe z przerw w działaniu serwisu, utraty danych lub decyzji podjętych na podstawie jego treści. Nie ogranicza to odpowiedzialności za szkody wyrządzone umyślnie lub przez rażące niedbalstwo ani praw, które przepisy przyznają konsumentom"
+      },
+      "suspension": {
+        "title": "Blokada konta i zakończenie świadczenia usługi",
+        "body": "Jeśli poważnie naruszysz regulamin, możemy zablokować Twoje konto. Możemy też rozwiązać umowę z ważnych przyczyn, na przykład w razie zamknięcia serwisu. Jeśli zamkniemy serwis, postaramy się poinformować Cię wcześniej, aby można było pobrać dane"
+      },
+      "complaints": {
+        "title": "Reklamacje",
+        "body": "Reklamacje wysyłaj na {{email}}. Opisz problem i podaj adres e-mail swojego konta. Odpowiadamy w ciągu 14 dni.\n\nJeśli jesteś konsumentem, możesz też zwrócić się o pomoc do miejskiego lub powiatowego rzecznika konsumentów albo do Inspekcji Handlowej"
+      },
+      "withdrawal": {
+        "title": "Prawo odstąpienia od umowy",
+        "body": "Jako konsument możesz odstąpić od umowy w ciągu 14 dni od rejestracji bez podawania przyczyny. Ponieważ serwis jest bezpłatny, wystarczy usunąć konto. Możesz to zrobić także w dowolnym późniejszym momencie"
+      },
+      "changes": {
+        "title": "Zmiany regulaminu",
+        "body": "Możemy zmienić regulamin z ważnych przyczyn, takich jak nowe funkcje, zmiany przepisów lub bezpieczeństwo. Poinformujemy Cię e-mailem lub w aplikacji co najmniej 14 dni przed wejściem zmiany w życie. Jeśli się nie zgadzasz, możesz wcześniej usunąć konto"
+      },
+      "law": {
+        "title": "Prawo właściwe",
+        "body": "Zastosowanie ma prawo polskie. Jeśli jesteś konsumentem, zachowujesz ochronę, którą zapewniają Ci bezwzględnie obowiązujące przepisy Twojego kraju. Spory rozstrzygają sądy właściwe według przepisów ogólnych"
+      }
+    }
+  }
+}

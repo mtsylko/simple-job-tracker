@@ -1,0 +1,37 @@
+{
+  "page": {
+    "title": "Users",
+    "searchLabel": "Search users",
+    "searchPlaceholder": "Search by name or email",
+    "summary_one": "{{active}} of {{count}} account active in the last {{days}} days — {{ai}} AI calls today",
+    "summary_other": "{{active}} of {{count}} accounts active in the last {{days}} days — {{ai}} AI calls today",
+    "matches": "{{shown}} of {{count}}"
+  },
+  "list": {
+    "user": "User",
+    "role": "Role",
+    "joined": "Joined",
+    "lastActive": "Last active",
+    "applications": "Applications",
+    "cvVersions": "CVs",
+    "aiToday": "AI today",
+    "empty": "No users yet",
+    "noMatch": "No users match this search",
+    "loadFailed": "Failed to load users",
+    "actions": "Actions",
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "roles": {
+    "admin": "Admin",
+    "user": "User"
+  },
+  "viewAs": {
+    "open": "Open {{name}}'s account",
+    "openFailed": "Could not open this account",
+    "banner": "Viewing {{name}}'s account — read only",
+    "exit": "Exit",
+    "view": "View",
+    "opening": "Opening…"
+  }
+}

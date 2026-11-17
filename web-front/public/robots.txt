@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Application screens live behind auth and render no crawlable content.
+Disallow: /applications
+Disallow: /jobs
+Disallow: /analytics
+Disallow: /cv-versions
+Disallow: /taxonomies
+Disallow: /job-fields
+Disallow: /interviews
+
+Sitemap: https://simplejobtracker.com/sitemap.xml

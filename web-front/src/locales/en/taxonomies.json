@@ -1,0 +1,196 @@
+{
+  "sections": {
+    "role": {
+      "title": "Roles",
+      "description": "The kind of position you're applying for",
+      "addLabel": "New role",
+      "addPlaceholder": "Add a role (e.g. Engineering Manager)…"
+    },
+    "level": {
+      "title": "Levels",
+      "description": "Seniority tags applied to each role",
+      "addLabel": "New level",
+      "addPlaceholder": "Add a level (e.g. Director)…"
+    },
+    "type": {
+      "title": "Work type",
+      "description": "Where the work happens — remote, hybrid or on-site",
+      "addLabel": "New work type",
+      "addPlaceholder": "Add a work type (e.g. Hybrid)…"
+    },
+    "employmentType": {
+      "title": "Employment types",
+      "description": "How much time the role takes — full-time, part-time and the like",
+      "addLabel": "New employment type",
+      "addPlaceholder": "Add an employment type (e.g. Part-time)…"
+    },
+    "contractType": {
+      "title": "Contract types",
+      "description": "The contract a role is offered under — Contract of Employment, B2B and the like",
+      "addLabel": "New contract type",
+      "addPlaceholder": "Add a contract type (e.g. B2B)…"
+    },
+    "status": {
+      "title": "Statuses",
+      "description": "Pipeline stages an application moves through — each has a color and can be a tab on the Applications page",
+      "addLabel": "New status",
+      "addPlaceholder": "Add a status (e.g. Screening)…",
+      "colorLabel": "Color",
+      "tabLabel": "Show as a tab on Applications"
+    },
+    "outcome": {
+      "title": "Outcomes",
+      "description": "Reasons an application ended — set on an application once it's closed",
+      "addLabel": "New outcome",
+      "addPlaceholder": "Add an outcome (e.g. Offer declined)…"
+    }
+  },
+  "columns": {
+    "name": "Name",
+    "applications": "Applications",
+    "tab": "Tab on Applications"
+  },
+  "menu": {
+    "move": "Move {{value}}",
+    "moveUp": "Move up",
+    "moveDown": "Move down"
+  },
+  "colors": {
+    "presets": "Preset colors",
+    "slate": "Slate",
+    "blue": "Blue",
+    "teal": "Teal",
+    "green": "Green",
+    "amber": "Amber",
+    "violet": "Violet",
+    "red": "Red",
+    "grey": "Grey"
+  },
+  "addButton": "Add",
+  "cancel": "Cancel",
+  "save": "Save",
+  "edit": "Edit",
+  "renameLabel": "Rename {{value}}",
+  "delete": "Delete",
+  "default": "Default",
+  "setDefault": "Set default",
+  "empty": "No values yet.",
+  "usageCount_one": "{{count}} application",
+  "usageCount_other": "{{count}} applications",
+  "duplicate": "This value already exists.",
+  "loadError": "Failed to load values.",
+  "loadStatusesError": "Failed to load statuses.",
+  "addError": "Failed to add value.",
+  "renameError": "Failed to rename value.",
+  "retry": "Retry",
+  "deleteDialog": {
+    "title": "Delete \"{{value}}\"?",
+    "body": "Removing this value won't change past applications — it just hides it from new ones."
+  },
+  "presets": {
+    "step": "Step {{current}} of {{total}}",
+    "stepNumber": "Step {{current}}",
+    "pickTitle": "What do you do?",
+    "pickSubtitle": "We'll set up job titles, levels and work types for your field. Before anything is added, you can untick what you don't need",
+    "directionTitle": "Which area do you work in?",
+    "directionSubtitle": "Pick one or more. Next you'll narrow it down where an area has more to choose from",
+    "specializeTitle": "What's your specialization?",
+    "specializeSubtitle": "Pick one or more. They decide which job titles and levels go into your lists",
+    "includedTitle": "Added in full, nothing to choose there",
+    "reviewTitle": "What to add to your lists",
+    "reviewSubtitle": "Untick what you don't need. You can rename or delete values later on the Categories page",
+    "fieldsGroup": "Custom fields",
+    "selectedOf": "{{selected}} of {{total}}",
+    "selectAll": "Select all",
+    "clearAll": "Clear all",
+    "next": "Next",
+    "back": "Back",
+    "skip": "Start with empty lists",
+    "skipConfirmTitle": "Start with empty lists?",
+    "skipConfirmBody": "Nothing you picked will be added, and this screen will not come back. You can still add values one by one on the Categories page",
+    "skipConfirmCancel": "Keep choosing",
+    "skipConfirm": "Start empty",
+    "add_one": "Add {{count}} value",
+    "add_other": "Add {{count}} values",
+    "addNone": "Continue without values",
+    "skipError": "Could not save your choice",
+    "applyError": "Could not apply the preset",
+    "options": {
+      "generic": {
+        "label": "Other / general",
+        "description": "A neutral starter set for any field"
+      },
+      "software": {
+        "label": "Software & IT",
+        "directions": {
+          "engineering": "Software engineering",
+          "qa": "Testing & QA",
+          "management": "Engineering management",
+          "product": "Product & project management"
+        },
+        "specializations": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "fullstack": "Full-stack",
+          "mobile": "Mobile development",
+          "qa": "Testing & QA",
+          "devops": "DevOps & infrastructure",
+          "data": "Data & ML",
+          "security": "Security",
+          "management": "Engineering management",
+          "product": "Product & projects"
+        }
+      },
+      "design": {
+        "label": "Design",
+        "specializations": {
+          "product-ux": "Product & UX design",
+          "ui": "UI & visual design",
+          "graphic": "Graphic & brand",
+          "motion": "Motion & 3D",
+          "research": "Research & UX writing"
+        }
+      },
+      "healthcare": {
+        "label": "Healthcare",
+        "specializations": {
+          "physicians": "Physicians",
+          "nursing": "Nursing",
+          "pharmacy": "Pharmacy",
+          "lab": "Lab & diagnostics",
+          "allied": "Rehabilitation & therapy",
+          "care": "Care"
+        }
+      },
+      "finance": {
+        "label": "Finance & accounting",
+        "specializations": {
+          "accounting": "Accounting",
+          "audit": "Audit & compliance",
+          "analysis": "Financial analysis",
+          "tax": "Tax",
+          "controlling": "Controlling & treasury"
+        }
+      },
+      "education": {
+        "label": "Education",
+        "specializations": {
+          "school": "School",
+          "higher": "Higher education & research",
+          "tutoring": "Tutoring & courses",
+          "early": "Early childhood",
+          "admin": "Administration"
+        }
+      },
+      "sales-marketing": {
+        "label": "Sales & marketing",
+        "specializations": {
+          "sales": "Sales",
+          "accounts": "Account management",
+          "marketing": "Marketing",
+          "content": "Content & SEO"
+        }
+      }
+    }
+  }
+}

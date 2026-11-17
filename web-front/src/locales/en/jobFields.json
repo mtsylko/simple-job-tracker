@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Custom fields",
+    "subtitle": "Add your own fields to the application form — drag-free list, shown under \"Additional fields\" when adding or editing an application",
+    "empty": "No custom fields yet — add one below",
+    "loadFailed": "Failed to load fields"
+  },
+  "list": {
+    "requiredBadge": "Required",
+    "optionsLabel": "Options"
+  },
+  "types": {
+    "text": "Text",
+    "textarea": "Long text",
+    "number": "Number",
+    "date": "Date",
+    "boolean": "Checkbox",
+    "select": "Single choice",
+    "multiselect": "Multiple choice"
+  },
+  "form": {
+    "addTitle": "Add a field",
+    "labelLabel": "Label",
+    "labelPlaceholder": "e.g. Referral name",
+    "typeLabel": "Type",
+    "typeLockedHint": "Type can't be changed after a field is created",
+    "requiredLabel": "Required",
+    "optionsLabel": "Options",
+    "optionPlaceholder": "Add an option…",
+    "optionAdd": "Add",
+    "optionsHint": "At least one option is needed for choice fields",
+    "add": "Add field",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "deleteDialog": {
+    "title": "Delete \"{{label}}\"?",
+    "body": "The field is removed from the form. Values saved on past applications are kept but no longer shown."
+  },
+  "validation": {
+    "labelRequired": "Label is required",
+    "optionsRequired": "Add at least one option",
+    "duplicateOption": "This option already exists"
+  }
+}

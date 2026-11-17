@@ -1,0 +1,101 @@
+{
+  "route": {
+    "loadingTitle": "Loading",
+    "loadingSubtitle": "Fetching data…",
+    "errorTitle": "Failed to load",
+    "retry": "Retry"
+  },
+  "page": {
+    "title": "Analytics"
+  },
+  "finding": {
+    "none": "Nothing sent in this period",
+    "plain": "{{heard}} of {{sent}} heard back",
+    "best": "{{heard}} of {{sent}} heard back — {{best}} does best, {{bestHeard}} of {{bestSent}}",
+    "compare": "{{heard}} of {{sent}} heard back — {{best}} does best at {{bestPct}}%, your most sent CV at {{topPct}}%"
+  },
+  "range": {
+    "options": {
+      "all": "All time",
+      "1m": "Last month",
+      "3m": "Last 3 months",
+      "6m": "Last 6 months",
+      "12m": "Last 12 months"
+    }
+  },
+  "kpi": {
+    "label": "Totals",
+    "sent": {
+      "label": "Sent",
+      "since": "since {{date}}"
+    },
+    "heard": {
+      "label": "Heard back",
+      "detail": "moved past {{status}}"
+    },
+    "interviewing": {
+      "label": "Interviewing now",
+      "none": "No open conversations"
+    },
+    "final": {
+      "label": "Offers",
+      "none": "None open",
+      "one_one": "{{company}}, {{count}} day in stage",
+      "one_other": "{{company}}, {{count}} days in stage",
+      "two": "{{first}} and {{second}}",
+      "many_one": "{{companies}} and {{count}} more",
+      "many_other": "{{companies}} and {{count}} more"
+    }
+  },
+  "sent": {
+    "titleWeek": "Sent per week",
+    "titleMonth": "Sent per month",
+    "metaWeek": "This week {{current}} · {{average}} a week on average",
+    "metaMonth": "This month {{current}} · {{average}} a month on average",
+    "chartLabel_one": "{{count}} application sent between {{from}} and {{to}}",
+    "chartLabel_other": "{{count}} applications sent between {{from}} and {{to}}"
+  },
+  "pipeline": {
+    "title": "Where they stand",
+    "meta": "{{open}} open, {{closed}} closed",
+    "unstaged": "Archived status",
+    "closed": "Closed"
+  },
+  "cvs": {
+    "title": "CV versions",
+    "meta_one": "{{count}} version",
+    "meta_other": "{{count}} versions",
+    "metaDisabled_one": ", {{count}} disabled",
+    "metaDisabled_other": ", {{count}} disabled",
+    "empty": "No CV recorded on these applications",
+    "columns": {
+      "cv": "CV",
+      "sent": "Sent",
+      "heard": "Heard back",
+      "rate": "Reply rate"
+    },
+    "disabled": "Disabled",
+    "tooFew": "too few to rate",
+    "total": "All CVs",
+    "withoutCv_one": "{{count}} sent without a CV",
+    "withoutCv_other": "{{count}} sent without a CV",
+    "showMore_one": "Show {{count}} more",
+    "showMore_other": "Show {{count}} more",
+    "showLess": "Show less"
+  },
+  "closed": {
+    "title": "How they closed",
+    "meta_one": "{{count}} closed",
+    "meta_other": "{{count}} closed",
+    "empty": "Nothing has closed yet",
+    "columns": {
+      "outcome": "Outcome",
+      "atEntry": "At {{status}}",
+      "past": "Past {{status}}",
+      "total": "Total"
+    },
+    "total": "All closed",
+    "finding_one": "{{count}} of {{total}} closed without moving past {{status}}",
+    "finding_other": "{{count}} of {{total}} closed without moving past {{status}}"
+  }
+}

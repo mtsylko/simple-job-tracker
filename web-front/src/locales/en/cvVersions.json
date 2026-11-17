@@ -1,0 +1,122 @@
+{
+  "list": {
+    "title": "CV versions",
+    "newCvVersion": "New CV version",
+    "searchLabel": "Filter CV versions",
+    "searchPlaceholder": "Filter by name or file…",
+    "tabs": {
+      "all": "All",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "shownOfTotal": "<strong>{{shown}}</strong> of <strong>{{total}}</strong> shown",
+    "versionCount_one": "<strong>{{count}}</strong> version",
+    "versionCount_other": "<strong>{{count}}</strong> versions",
+    "disabledCount_one": "{{count}} disabled",
+    "disabledCount_other": "{{count}} disabled",
+    "columns": {
+      "version": "CV version",
+      "description": "Description",
+      "source": "Source",
+      "enabled": "Enabled"
+    },
+    "openSource": "Open",
+    "toggle": {
+      "on": "On",
+      "off": "Off",
+      "onHint": "Enabled — appears in CV picker",
+      "offHint": "Disabled — hidden from CV picker"
+    },
+    "deleteLabel": "Delete {{name}}",
+    "noMatch": "No CV versions match this filter",
+    "footer": {
+      "showing_one": "Showing <strong>{{count}}</strong> version",
+      "showing_other": "Showing <strong>{{count}}</strong> versions",
+      "enabled": "{{enabled}} enabled",
+      "enabledAndDisabled": "{{enabled}} enabled, {{disabled}} disabled"
+    },
+    "addAnother": "Add another version",
+    "disabledInfo": "Disabled versions are kept for history so old applications still reference them, but won't appear in the CV picker when logging a new application"
+  },
+  "route": {
+    "loadingListTitle": "Loading CV versions",
+    "loadingListSubtitle": "Fetching CV versions from API...",
+    "loadListErrorTitle": "Failed to load CV versions",
+    "loadingTitle": "Loading CV version",
+    "loadingSubtitle": "Fetching CV version details from API...",
+    "loadErrorTitle": "Failed to load CV version",
+    "notFoundTitle": "CV version not found",
+    "notFoundBody": "This CV version does not exist or has been removed",
+    "retry": "Retry"
+  },
+  "form": {
+    "backToCvVersions": "Back to CV versions",
+    "newCvVersionTitle": "New CV version",
+    "editCvVersionTitle": "Edit CV version",
+    "submit": "Submit",
+    "saveChanges": "Save changes",
+    "sections": {
+      "details": "CV version details",
+      "visibility": "Visibility"
+    },
+    "fields": {
+      "name": "Name",
+      "sourceLink": "Source link",
+      "attachment": "Attachment",
+      "description": "Description",
+      "enabledTitle": "Show in CV picker",
+      "enabledDescription": "When enabled, this version appears when logging a new application. Disable to archive it without deleting."
+    },
+    "placeholders": {
+      "sourceLink": "https://..."
+    },
+    "attachmentUpload": {
+      "label": "Attachment upload progress"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "sourceLinkInvalid": "Source link must be a valid URL",
+      "attachmentUploading": "Wait for the attachment upload to finish",
+      "failedToSave": "Failed to save CV version"
+    }
+  },
+  "viewer": {
+    "preview": "Preview PDF",
+    "openInNewTab": "Open in new tab",
+    "download": "Download",
+    "close": "Close",
+    "downloadFailed": "Could not download the attachment",
+    "frameTitle": "{{name}} — PDF preview"
+  },
+  "deleteDialog": {
+    "title": "Delete this CV version?",
+    "body": "<name>{{name}}</name> will be permanently removed. Applications that referenced it will lose the CV link",
+    "confirm": "Delete",
+    "cancel": "Cancel"
+  },
+  "empty": {
+    "title": "No CV versions yet",
+    "subtitle": "Add a tailored CV per role family and it will show up here",
+    "cta": "Add first CV version",
+    "features": {
+      "tailor": {
+        "title": "Tailor per role",
+        "description": "Frontend, full-stack, lead — separate files, separate stories"
+      },
+      "usage": {
+        "title": "Track usage",
+        "description": "See which version went to which company and how it performed"
+      },
+      "source": {
+        "title": "Keep the source close",
+        "description": "Open the editable original in one click, with no re-uploads"
+      }
+    }
+  },
+  "api": {
+    "invalidId": "Invalid CV version id returned by API",
+    "invalidUploadResponse": "Invalid attachment upload response",
+    "uploadFailed": "Failed to upload attachment",
+    "uploadCancelled": "Attachment upload was cancelled"
+  }
+}

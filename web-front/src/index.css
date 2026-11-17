@@ -1,0 +1,460 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/newsreader';
+/* Newsreader has no Cyrillic; its unicode-range lets Literata draw only those glyphs. */
+@import '@fontsource-variable/literata';
+@import '@fontsource-variable/jetbrains-mono';
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================================
+   Job Tracker — cool neutral palette
+   Blue accent on slate. Newsreader (serif) for headings only, Inter for UI,
+   body and figures (tabular), JetBrains Mono for code and raw text.
+
+   The --warm-* / --clay-* token names predate this palette and are kept
+   because ~80 call sites generate Tailwind utilities from them (bg-clay,
+   text-ink-2, border-warm-line). Renaming is mechanical but belongs in its
+   own commit — read them as "surface" and "accent".
+   ========================================================================= */
+
+:root {
+  /* Type stacks */
+  --sans:    'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --serif:   'Newsreader Variable', 'Literata Variable', 'Newsreader', 'Source Serif Pro', Georgia, serif;
+  --heading: var(--serif);
+  --mono:    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  /* Raw brand palette ------------------------------------------------------ */
+  --warm-bg:        #f5f7fa;   /* page background */
+  --warm-surface:   #ffffff;   /* cards / inputs hover */
+  --warm-surface-2: #eceff4;   /* sidebar / muted strip */
+  --warm-line:      #dde2ea;   /* hairline border — decorative, 1.2:1 */
+  /* Stronger border: rims checkboxes and inputs, which are UI components under
+     WCAG 1.4.11 and therefore need 3:1, not the hairline's decorative weight.
+     3.65:1 on --warm-surface, 3.17:1 on the darker --warm-surface-2. */
+  --warm-line-2:    #79879b;
+
+  /* Text colours are tuned so every one of them clears WCAG AA (4.5:1) against
+     all three light surfaces — --warm-surface-2 is the darkest and therefore
+     the binding constraint. Verify with the ratios in the comments below
+     before retuning any of them; --ink-3 alone backs ~100 call sites via
+     --muted-foreground, so a small nudge here is a site-wide change. */
+  --ink:    #1b2431;           /* primary text        — 13.6:1 on surface-2 */
+  --ink-2:  #4a5568;           /* secondary text      —  6.5:1 on surface-2 */
+  --ink-3:  #616b7e;           /* tertiary / placeholder — 4.7:1 on surface-2 */
+
+  /* Table row hover. Opaque on purpose: the jobs table pins its first and last
+     column, and a translucent tint would let the scrolled columns show through
+     them. Both inputs flip per theme, so this needs no dark counterpart. */
+  --row-hover: color-mix(in srgb, var(--ink) 3%, var(--warm-surface));
+
+  --clay:        #1d5bbf;      /* primary accent — 5.5:1 as text, 6.4:1 under white */
+  --clay-hover:  #17499a;
+  --clay-soft:   #dde8f9;      /* accent backgrounds (chips, focus halo) */
+  --clay-ink:    #17427f;      /* accent foreground on light — 8.0:1 on clay-soft */
+
+  --ok:     #1c6b45;
+  --warn:   #7d5a12;
+  /* --danger is the solid fill (button backgrounds under white text); it must
+     stay dark in BOTH themes for `bg-danger text-white` to hold up. Danger text
+     and icons on a surface use --danger-ink, which flips per theme. */
+  --danger:     #b02a1d;
+  --danger-ink: var(--danger);
+
+  font: 16px/1.55 var(--sans);
+  letter-spacing: -0.005em;
+  color-scheme: light;
+  color: var(--ink);
+  background: var(--warm-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (width < theme(--breakpoint-lg)) {
+    font-size: 15px;
+  }
+
+  /* shadcn token mapping --------------------------------------------------- */
+  --background:           var(--warm-bg);
+  --foreground:           var(--ink);
+  --card:                 var(--warm-surface);
+  --card-foreground:      var(--ink);
+  --popover:              var(--warm-surface);
+  --popover-foreground:   var(--ink);
+  --primary:              var(--clay);
+  --primary-foreground:   #ffffff;
+  --secondary:            var(--warm-surface-2);
+  --secondary-foreground: var(--ink);
+  --muted:                var(--warm-surface-2);
+  --muted-foreground:     var(--ink-3);
+  --accent:               var(--clay-soft);
+  --accent-foreground:    var(--clay-ink);
+  --destructive:          var(--danger);
+  --input:                var(--warm-line);
+  --border:               var(--warm-line);
+  --ring:                 color-mix(in srgb, var(--clay) 55%, transparent);
+
+  --radius: 0.5rem;
+
+  --sidebar:                       var(--warm-surface-2);
+  --sidebar-foreground:            var(--ink-2);
+  --sidebar-primary:               var(--clay);
+  --sidebar-primary-foreground:    #ffffff;
+  --sidebar-accent:                var(--warm-surface);
+  --sidebar-accent-foreground:     var(--ink);
+  --sidebar-border:                var(--warm-line);
+  --sidebar-ring:                  var(--ring);
+}
+
+/* Dark theme: the same roles, retuned for a dark surface ------------------ */
+.dark {
+  color-scheme: dark;
+
+  --warm-bg:        #111620;
+  --warm-surface:   #161c27;
+  --warm-surface-2: #1d2532;
+  --warm-line:      #2a3444;
+  --warm-line-2:    #586880;    /* 3.0:1 on surface — see the light-mode note */
+
+  --ink:    #e7ecf4;           /* 13.0:1 on surface-2 */
+  --ink-2:  #b2bccd;           /*  8.1:1 on surface-2 */
+  --ink-3:  #8a95a8;           /*  5.1:1 on surface-2 */
+
+  --clay:        #6aa5f5;
+  /* Hover LIGHTENS here — the light theme darkens on hover, and inheriting that
+     direction made link hover drop contrast (4.05:1) instead of raising it. */
+  --clay-hover:  #8dbcff;
+  --clay-soft:   rgba(106, 165, 245, 0.18);
+  --clay-ink:    #a8c9fb;
+
+  /* Status colours inherit from :root, where they are tuned for dark-on-light.
+     On a dark surface they invert: the light --danger sits at 2.34:1 and --ok at
+     2.38:1. --danger itself stays put so `bg-danger text-white` keeps working;
+     only the text-role tokens lighten. */
+  --danger-ink: #e0796c;
+  --ok:         #5aa87c;
+  --warn:       #c9a03c;
+
+  --background:           var(--warm-bg);
+  --foreground:           var(--ink);
+  --card:                 var(--warm-surface);
+  --card-foreground:      var(--ink);
+  --popover:              var(--warm-surface);
+  --popover-foreground:   var(--ink);
+  --primary:              var(--clay);
+  --primary-foreground:   #111620;
+  --secondary:            var(--warm-surface-2);
+  --secondary-foreground: var(--ink);
+  --muted:                var(--warm-surface-2);
+  --muted-foreground:     var(--ink-3);
+  --accent:               var(--clay-soft);
+  --accent-foreground:    var(--clay-ink);
+  --destructive:          #c33b2b;
+  --input:                var(--warm-line);
+  --border:               var(--warm-line);
+  --ring:                 color-mix(in srgb, var(--clay) 60%, transparent);
+
+  --sidebar:                       var(--warm-surface-2);
+  --sidebar-foreground:            var(--ink-2);
+  --sidebar-primary:               var(--clay);
+  --sidebar-primary-foreground:    #111620;
+  --sidebar-accent:                var(--warm-surface);
+  --sidebar-accent-foreground:     var(--ink);
+  --sidebar-border:                var(--warm-line);
+  --sidebar-ring:                  var(--ring);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Typography -------------------------------------------------------------- */
+/* Layered, so a class on the element wins; unlayered, these beat every utility. */
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--heading);
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 24px 0 6px;
+    @media (width < theme(--breakpoint-lg)) {
+      font-size: 30px;
+      margin: 18px 0 6px;
+    }
+  }
+  h2 {
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    @media (width < theme(--breakpoint-lg)) {
+      font-size: 19px;
+    }
+  }
+  h3 { font-size: 18px; line-height: 1.25; margin: 0 0 4px; }
+
+  a { color: var(--clay); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--clay-hover); }
+
+  code, kbd, samp, pre {
+    font-family: var(--mono);
+    font-feature-settings: 'tnum';
+  }
+}
+
+::placeholder { color: var(--ink-3); }
+
+::selection { background: var(--clay-soft); color: var(--clay-ink); }
+
+/* Status badges ------------------------------------------------------------ */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 500;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.status-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+/* Badge fill/border/text/dot are computed from the status's accent hex at render
+   time (see `statusBadgeStyle`) and applied via inline style, so no per-colour
+   classes live here — only the shared shape above. */
+
+/* Page tabs ---------------------------------------------------------------- */
+.jt-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--warm-line);
+  padding: 0 28px;
+}
+/* On small screens align with the 16px page gutters and let a long tab strip
+   scroll sideways instead of overflowing the viewport. */
+@media (width < theme(--breakpoint-sm)) {
+  .jt-tabs {
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .jt-tabs::-webkit-scrollbar { display: none; }
+}
+.jt-tab {
+  padding: 10px 14px 12px;
+  font-size: 13px;
+  /* --ink-2 (6.6:1) rather than --ink-3 (4.5:1): the label is 13px, so the
+     tertiary tone sat right on the AA floor. Active stays --ink + weight 500. */
+  color: var(--ink-2);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.jt-tab:hover { color: var(--ink); }
+.jt-tab.active,
+.jt-tab[data-active] {
+  color: var(--ink);
+  border-bottom-color: var(--clay);
+  font-weight: 500;
+}
+.jt-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 11px;
+  background: var(--warm-surface-2);
+  color: var(--ink-2);
+}
+.jt-tab.active .jt-tab-count,
+.jt-tab[data-active] .jt-tab-count {
+  background: var(--clay-soft);
+  color: var(--clay-ink);
+}
+
+/* CV versions table ------------------------------------------------------- */
+.cv-th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--ink-3);
+  background: var(--warm-surface);
+  border-bottom: 1px solid var(--warm-line);
+  white-space: nowrap;
+}
+.cv-td {
+  padding: 14px 14px;
+  vertical-align: middle;
+  color: var(--ink);
+}
+.cv-icon-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  /* Borderless at rest, like the other row actions; the hover fill is the affordance. */
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.cv-icon-btn:hover {
+  background: var(--warm-surface-2);
+  color: var(--ink);
+}
+.cv-icon-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+tr.group:last-child { border-bottom: 0 !important; }
+
+/* Tailwind layer ---------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--sans);
+  }
+  html {
+    font-family: var(--sans);
+  }
+
+  /* Headings only — data cells (company, CV names) stay in the text face. */
+  .font-serif {
+    font-family: var(--serif);
+    letter-spacing: -0.005em;
+  }
+  .font-mono {
+    font-family: var(--mono);
+    font-feature-settings: 'tnum';
+  }
+  /* Figures stay in the text face; tabular digits keep columns aligned. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Section labels — use class="section-label" */
+  .section-label {
+    font-size: 13px;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+}
+
+/* Theme inline (Tailwind v4 token export) --------------------------------- */
+@theme inline {
+  --font-sans:  'Inter Variable', sans-serif;
+  --font-serif: 'Newsreader Variable', 'Literata Variable', serif;
+  --font-mono:  'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --color-background:            var(--background);
+  --color-foreground:            var(--foreground);
+  --color-card:                  var(--card);
+  --color-card-foreground:       var(--card-foreground);
+  --color-popover:               var(--popover);
+  --color-popover-foreground:    var(--popover-foreground);
+  --color-primary:               var(--primary);
+  --color-primary-foreground:    var(--primary-foreground);
+  --color-secondary:             var(--secondary);
+  --color-secondary-foreground:  var(--secondary-foreground);
+  --color-muted:                 var(--muted);
+  --color-muted-foreground:      var(--muted-foreground);
+  --color-accent:                var(--accent);
+  --color-accent-foreground:     var(--accent-foreground);
+  --color-destructive:           var(--destructive);
+  --color-border:                var(--border);
+  --color-input:                 var(--input);
+  --color-ring:                  var(--ring);
+
+  --color-sidebar:                       var(--sidebar);
+  --color-sidebar-foreground:            var(--sidebar-foreground);
+  --color-sidebar-primary:               var(--sidebar-primary);
+  --color-sidebar-primary-foreground:    var(--sidebar-primary-foreground);
+  --color-sidebar-accent:                var(--sidebar-accent);
+  --color-sidebar-accent-foreground:     var(--sidebar-accent-foreground);
+  --color-sidebar-border:                var(--sidebar-border);
+  --color-sidebar-ring:                  var(--sidebar-ring);
+
+  /* Raw brand palette — usable as Tailwind utilities (bg-clay, text-ink-2, etc.) */
+  --color-warm-bg:        var(--warm-bg);
+  --color-warm-surface:   var(--warm-surface);
+  --color-warm-surface-2: var(--warm-surface-2);
+  --color-warm-line:      var(--warm-line);
+  --color-warm-line-2:    var(--warm-line-2);
+  --color-row-hover:      var(--row-hover);
+  --color-ink:            var(--ink);
+  --color-ink-2:          var(--ink-2);
+  --color-ink-3:          var(--ink-3);
+  --color-clay:           var(--clay);
+  --color-clay-hover:     var(--clay-hover);
+  --color-clay-soft:      var(--clay-soft);
+  --color-clay-ink:       var(--clay-ink);
+  --color-ok:             var(--ok);
+  --color-warn:           var(--warn);
+  --color-danger:         var(--danger);
+  --color-danger-ink:     var(--danger-ink);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Sits ALONGSIDE Tailwind's built-in type scale — never redefines it.
+     `text-xs` and `text-sm` have ~120 call sites between them, so retuning
+     either would silently resize the whole app behind a one-line diff.
+     Everything else this design needs is within 2px of a built-in step and
+     uses that instead; only 11px falls off the bottom of the scale. */
+  --text-2xs: 0.6875rem;  /* 11px — micro labels, kbd hints, counters */
+
+  /* Display headings need tighter leading and a touch of negative tracking
+     than any built-in provides: leading-none (1) is 2.5px looser at 30px, and
+     tracking-tight (-0.025em) is more than twice this. */
+  --leading-display:  1.08;
+  --tracking-display: -0.01em;
+
+  --color-danger-hover: #93231a;
+
+  --shadow-popover: 0 1px 2px rgba(0, 0, 0, .05), 0 12px 24px -8px rgba(27, 36, 49, .18), 0 32px 64px -16px rgba(27, 36, 49, .22);
+  --shadow-danger: 0 1px 0 rgba(0, 0, 0, .05), 0 1px 2px rgba(176, 42, 29, .25);
+}

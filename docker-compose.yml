@@ -1,0 +1,70 @@
+services:
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: job_tracker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d job_tracker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    command: sh -c "yarn install --immutable --mode=skip-build && yarn workspace job-tracker-api dev"
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/job_tracker
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./package.json:/app/package.json:ro
+      - ./yarn.lock:/app/yarn.lock:ro
+      - ./.yarnrc.yml:/app/.yarnrc.yml:ro
+      - ./web-front/package.json:/app/web-front/package.json:ro
+      - ./web-api:/app/web-api
+      - ./shared:/app/shared
+
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile.front
+    command: sh -c "yarn install --immutable --mode=skip-build && yarn dev --host 0.0.0.0 --port 5173"
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      VITE_API_URL: http://api:3000
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./package.json:/app/package.json:ro
+      - ./yarn.lock:/app/yarn.lock:ro
+      - ./.yarnrc.yml:/app/.yarnrc.yml:ro
+      - ./web-api/package.json:/app/web-api/package.json:ro
+      - ./web-front:/app/web-front
+      # A host Vite shares the bind mount and would delete this one's optimized deps.
+      - front_vite_cache:/app/web-front/node_modules/.vite
+      - ./shared:/app/shared
+      - front_node_modules:/app/node_modules
+
+
+volumes:
+  postgres_data:
+  front_node_modules:
+  front_vite_cache:

@@ -1,0 +1,30 @@
+{
+  "page": {
+    "title": "Skrzynka",
+    "subtitle": "Wiadomości od rekruterów, które dotarły na Twój adres do przekazywania, każda z proponowaną zmianą statusu — nic się nie zmienia, dopóki tego nie potwierdzisz",
+    "loading": "Ładowanie…",
+    "unexpectedError": "Nie udało się odczytać kolejki"
+  },
+  "tabs": {
+    "pending": "Oczekujące",
+    "updated": "Zaktualizowane",
+    "dismissed": "Odrzucone",
+    "ignored": "Masowe"
+  },
+  "empty": {
+    "pending": "Nic nie czeka — przekazane wiadomości pojawią się tutaj, gdy dotrą",
+    "updated": "Żadna wiadomość nie zaktualizowała jeszcze aplikacji",
+    "dismissed": "Nic nie zostało odrzucone",
+    "ignored": "Nie dotarła żadna masowa wiadomość — alerty i podsumowania trafiają tutaj zamiast do kolejki"
+  },
+  "card": {
+    "noSubject": "Bez tematu",
+    "matches": "Dopasowane aplikacje",
+    "nothingScored": "Żadna aplikacja nie została dopasowana do tej wiadomości, więc nie ma czego aktualizować",
+    "dismiss": "Odrzuć",
+    "dismissHint": "Usuwa wiadomość z kolejki bez zmiany aplikacji",
+    "updated": "Zaktualizowano {{resolved}}",
+    "dismissed": "Odrzucono {{resolved}}",
+    "ignored": "Oznaczono jako masową {{resolved}}"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "brand": {
+    "name": "Job Tracker"
+  },
+  "breadcrumbs": {
+    "workspace": "Obszar roboczy",
+    "applications": "Aplikacje",
+    "cvVersions": "Wersje CV",
+    "taxonomies": "Kategorie",
+    "newApplication": "Nowa aplikacja",
+    "edit": "Edycja",
+    "new": "Nowa",
+    "jobFields": "Pola własne",
+    "companies": "Firmy",
+    "profile": "Profil",
+    "admin": "Administracja",
+    "users": "Użytkownicy",
+    "feedback": "Opinie",
+    "translations": "Tłumaczenia"
+  },
+  "sidebar": {
+    "workspaceGroup": "Obszar roboczy",
+    "goToApplications": "Przejdź do aplikacji",
+    "logOut": "Wyloguj się",
+    "profile": "Profil",
+    "userMenu": "Konto i ustawienia",
+    "primaryNavigation": "Nawigacja główna",
+    "toggle": "Zwiń lub rozwiń menu boczne",
+    "mobileDescription": "Linki do wszystkich stron aplikacji",
+    "nav": {
+      "applications": "Aplikacje",
+      "cvVersions": "Wersje CV",
+      "analytics": "Analityka",
+      "taxonomies": "Kategorie",
+      "jobFields": "Pola własne",
+      "companies": "Firmy",
+      "mail": "E-mail",
+      "mailConnection": "Konfiguracja przekazywania",
+      "mailMatch": "Sprawdź wiadomość",
+      "mailQueue": "Skrzynka",
+      "admin": "Administracja",
+      "adminUsers": "Użytkownicy",
+      "adminFeedback": "Opinie",
+      "adminTranslations": "Tłumaczenia"
+    }
+  },
+  "header": {
+    "logOut": "Wyloguj się"
+  },
+  "dialog": {
+    "close": "Zamknij"
+  },
+  "theme": {
+    "label": "Motyw",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "system": "Systemowy"
+  },
+  "language": {
+    "label": "Język",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "be": "Беларуская",
+    "uk": "Українська"
+  },
+  "layout": {
+    "skipToContent": "Przejdź do treści",
+    "documentTitle": "{{page}} — {{brand}}",
+    "openMenu": "Otwórz menu nawigacji"
+  },
+  "notifications": {
+    "entities": {
+      "job": "Aplikacja",
+      "cvVersion": "Wersja CV",
+      "jobRole": "Stanowisko",
+      "jobLevel": "Poziom",
+      "jobType": "Tryb pracy",
+      "jobEmploymentType": "Wymiar pracy",
+      "jobContractType": "Rodzaj umowy",
+      "jobStatus": "Status",
+      "jobOutcome": "Wynik",
+      "jobField": "Pole",
+      "candidateProfile": "Profil"
+    },
+    "success": {
+      "created": "{{entity}}: utworzono",
+      "updated": "{{entity}}: zapisano zmiany",
+      "deleted": "{{entity}}: usunięto",
+      "archived": "{{entity}}: zarchiwizowano",
+      "restored": "{{entity}}: przywrócono"
+    },
+    "error": {
+      "created": "{{entity}}: nie udało się utworzyć",
+      "updated": "{{entity}}: nie udało się zapisać zmian",
+      "deleted": "{{entity}}: nie udało się usunąć",
+      "archived": "{{entity}}: nie udało się zarchiwizować",
+      "restored": "{{entity}}: nie udało się przywrócić"
+    }
+  },
+  "form": {
+    "saving": "Zapisywanie...",
+    "cancel": "Anuluj",
+    "unsavedChanges": "Niezapisane zmiany",
+    "discardDialog": {
+      "title": "Odrzucić niezapisane zmiany?",
+      "body": "Ta aplikacja ma zmiany, które nie zostały jeszcze zapisane. Jeśli teraz wyjdziesz, przepadną.",
+      "keepEditing": "Edytuj dalej",
+      "discardChanges": "Odrzuć zmiany"
+    }
+  },
+  "routes": {
+    "default": {
+      "title": "Job Tracker",
+      "subtitle": "Zarządzaj swoimi aplikacjami"
+    },
+    "jobsCreate": {
+      "title": "Dodaj aplikację",
+      "subtitle": "Śledź nową aplikację",
+      "backToApplications": "Wróć do aplikacji"
+    },
+    "jobsEdit": {
+      "title": "Edytuj aplikację",
+      "subtitle": "Zaktualizuj szczegóły aplikacji",
+      "backToApplications": "Wróć do aplikacji"
+    },
+    "cvVersions": {
+      "title": "Wersje CV",
+      "subtitle": "Przeglądaj wersje CV i zarządzaj nimi",
+      "addCvVersion": "Dodaj wersję CV"
+    },
+    "cvVersionsCreate": {
+      "title": "Dodaj wersję CV",
+      "subtitle": "Utwórz nową wersję CV",
+      "backToCvVersions": "Wróć do wersji CV"
+    },
+    "cvVersionsEdit": {
+      "title": "Edytuj wersję CV",
+      "subtitle": "Zaktualizuj szczegóły wersji CV",
+      "backToCvVersions": "Wróć do wersji CV"
+    },
+    "applications": {
+      "title": "Aplikacje",
+      "subtitle": "Przeglądaj swoje aplikacje i zarządzaj nimi",
+      "addJob": "Dodaj aplikację"
+    },
+    "taxonomies": {
+      "title": "Kategorie",
+      "subtitle": "Zarządzaj stanowiskami, poziomami i trybami pracy używanymi w aplikacjach"
+    },
+    "jobFields": {
+      "title": "Pola własne",
+      "subtitle": "Dodaj własne pola do formularza aplikacji — pojawią się w sekcji „Dodatkowe pola”"
+    },
+    "companies": {
+      "title": "Firmy",
+      "subtitle": "Wszystkie firmy z Twoich aplikacji oraz te, których chcesz unikać"
+    },
+    "analytics": {
+      "title": "Analityka"
+    },
+    "mailConnection": {
+      "title": "Połączenie e-mail"
+    },
+    "mailMatch": {
+      "title": "Dopasowanie wiadomości"
+    },
+    "mailQueue": {
+      "title": "Kolejka wiadomości"
+    },
+    "profile": {
+      "title": "Profil",
+      "subtitle": "Twoje dane, zapisane raz, żeby nie trzeba było ich wpisywać przy każdej aplikacji"
+    },
+    "adminUsers": {
+      "title": "Użytkownicy"
+    },
+    "adminFeedback": {
+      "title": "Opinie"
+    },
+    "adminTranslations": {
+      "title": "Tłumaczenia"
+    }
+  },
+  "api": {
+    "requestFailed": "Żądanie nie powiodło się"
+  },
+  "errors": {
+    "unexpected": "Nieoczekiwany błąd"
+  },
+  "fileUpload": {
+    "upload": "Prześlij plik",
+    "dropTitle": "Przeciągnij i upuść plik tutaj",
+    "dropHint": "lub kliknij, aby wybrać plik z urządzenia",
+    "uploadingTitle": "Przesyłanie pliku...",
+    "uploadingHint": "Proszę czekać",
+    "acceptedFormats": "Dozwolone formaty: {{formats}}",
+    "maxSize": "Maks. rozmiar: {{size}} MB",
+    "unsupportedFormat": "Nieobsługiwany format pliku — dozwolone formaty: {{formats}}",
+    "tooLarge": "Plik przekracza maksymalny rozmiar {{size}} MB",
+    "uploadFailed": "Nie udało się przesłać pliku",
+    "clearFile": "Usuń wybrany plik"
+  },
+  "search": {
+    "searching": "Wyszukiwanie...",
+    "failed": "Wyszukiwanie nie powiodło się",
+    "minLetters_one": "Wpisz co najmniej {{count}} literę, aby wyszukać",
+    "minLetters_few": "Wpisz co najmniej {{count}} litery, aby wyszukać",
+    "minLetters_many": "Wpisz co najmniej {{count}} liter, aby wyszukać",
+    "minLetters_other": "Wpisz co najmniej {{count}} litery, aby wyszukać",
+    "noResults": "Brak wyników"
+  },
+  "multiSelect": {
+    "empty": "Brak dostępnych opcji"
+  },
+  "selectField": {
+    "accept": "Zatwierdź",
+    "cancel": "Anuluj"
+  },
+  "cookieConsent": {
+    "title": "Analityczne pliki cookie",
+    "body": "Chcielibyśmy używać plików cookie Google Analytics, aby sprawdzać, które strony i funkcje są używane — nigdy nie przekazują one Twoich aplikacji, firm ani CV",
+    "withdraw": "Możesz zmienić zdanie w każdej chwili w Ustawieniach plików cookie",
+    "current": {
+      "granted": "Analityczne pliki cookie są obecnie dozwolone",
+      "denied": "Analityczne pliki cookie są obecnie zablokowane"
+    },
+    "accept": "Akceptuję",
+    "reject": "Odrzucam",
+    "settings": "Ustawienia plików cookie"
+  }
+}

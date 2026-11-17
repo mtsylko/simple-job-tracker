@@ -1,0 +1,232 @@
+{
+  "brand": {
+    "name": "Job Tracker"
+  },
+  "breadcrumbs": {
+    "workspace": "Рабочее пространство",
+    "applications": "Отклики",
+    "cvVersions": "Версии резюме",
+    "taxonomies": "Категории",
+    "newApplication": "Новый отклик",
+    "edit": "Редактирование",
+    "new": "Создание",
+    "jobFields": "Свои поля",
+    "companies": "Компании",
+    "profile": "Профиль",
+    "admin": "Администрирование",
+    "users": "Пользователи",
+    "feedback": "Обратная связь",
+    "translations": "Переводы"
+  },
+  "sidebar": {
+    "workspaceGroup": "Рабочее пространство",
+    "goToApplications": "Перейти к откликам",
+    "logOut": "Выйти",
+    "profile": "Профиль",
+    "userMenu": "Аккаунт и настройки",
+    "primaryNavigation": "Основная навигация",
+    "toggle": "Показать или скрыть боковую панель",
+    "mobileDescription": "Ссылки на все страницы приложения",
+    "nav": {
+      "applications": "Отклики",
+      "cvVersions": "Версии резюме",
+      "analytics": "Аналитика",
+      "taxonomies": "Категории",
+      "jobFields": "Свои поля",
+      "companies": "Компании",
+      "mail": "Почта",
+      "mailConnection": "Настройка пересылки",
+      "mailMatch": "Проверить письмо",
+      "mailQueue": "Входящие",
+      "admin": "Администрирование",
+      "adminUsers": "Пользователи",
+      "adminFeedback": "Обратная связь",
+      "adminTranslations": "Переводы"
+    }
+  },
+  "header": {
+    "logOut": "Выйти"
+  },
+  "dialog": {
+    "close": "Закрыть"
+  },
+  "theme": {
+    "label": "Тема",
+    "light": "Светлая",
+    "dark": "Тёмная",
+    "system": "Системная"
+  },
+  "language": {
+    "label": "Язык",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "be": "Беларуская",
+    "uk": "Українська"
+  },
+  "layout": {
+    "skipToContent": "Перейти к содержимому",
+    "documentTitle": "{{page}} — {{brand}}",
+    "openMenu": "Открыть меню навигации"
+  },
+  "notifications": {
+    "entities": {
+      "job": "Отклик",
+      "cvVersion": "Версия резюме",
+      "jobRole": "Должность",
+      "jobLevel": "Уровень",
+      "jobType": "Формат работы",
+      "jobEmploymentType": "Тип занятости",
+      "jobContractType": "Тип договора",
+      "jobStatus": "Статус",
+      "jobOutcome": "Результат",
+      "jobField": "Поле",
+      "candidateProfile": "Профиль"
+    },
+    "success": {
+      "created": "{{entity}}: создано",
+      "updated": "{{entity}}: изменения сохранены",
+      "deleted": "{{entity}}: удалено",
+      "archived": "{{entity}}: перенесено в архив",
+      "restored": "{{entity}}: восстановлено"
+    },
+    "error": {
+      "created": "{{entity}}: не удалось создать",
+      "updated": "{{entity}}: не удалось сохранить изменения",
+      "deleted": "{{entity}}: не удалось удалить",
+      "archived": "{{entity}}: не удалось перенести в архив",
+      "restored": "{{entity}}: не удалось восстановить"
+    }
+  },
+  "form": {
+    "saving": "Сохранение...",
+    "cancel": "Отмена",
+    "unsavedChanges": "Несохранённые изменения",
+    "discardDialog": {
+      "title": "Отменить несохранённые изменения?",
+      "body": "Вы изменили этот отклик, но ещё не сохранили его. Если уйти сейчас, правки пропадут.",
+      "keepEditing": "Продолжить редактирование",
+      "discardChanges": "Отменить изменения"
+    }
+  },
+  "routes": {
+    "default": {
+      "title": "Job Tracker",
+      "subtitle": "Управляйте своими откликами на вакансии"
+    },
+    "jobsCreate": {
+      "title": "Новый отклик",
+      "subtitle": "Отслеживайте новый отклик на вакансию",
+      "backToApplications": "Назад к откликам"
+    },
+    "jobsEdit": {
+      "title": "Редактирование отклика",
+      "subtitle": "Обновите данные отклика",
+      "backToApplications": "Назад к откликам"
+    },
+    "cvVersions": {
+      "title": "Версии резюме",
+      "subtitle": "Просмотр и управление версиями резюме",
+      "addCvVersion": "Добавить версию резюме"
+    },
+    "cvVersionsCreate": {
+      "title": "Новая версия резюме",
+      "subtitle": "Создайте запись о новой версии резюме",
+      "backToCvVersions": "Назад к версиям резюме"
+    },
+    "cvVersionsEdit": {
+      "title": "Редактирование версии резюме",
+      "subtitle": "Обновите данные версии резюме",
+      "backToCvVersions": "Назад к версиям резюме"
+    },
+    "applications": {
+      "title": "Отклики",
+      "subtitle": "Просмотр и управление вашими откликами",
+      "addJob": "Добавить отклик"
+    },
+    "taxonomies": {
+      "title": "Категории",
+      "subtitle": "Значения должностей, уровней и форматов работы, которые используются в ваших откликах"
+    },
+    "jobFields": {
+      "title": "Свои поля",
+      "subtitle": "Добавьте в форму отклика собственные поля — они появятся в разделе «Дополнительные поля»"
+    },
+    "companies": {
+      "title": "Компании",
+      "subtitle": "Все компании из ваших откликов и те, которых вы решили избегать"
+    },
+    "analytics": {
+      "title": "Аналитика"
+    },
+    "mailConnection": {
+      "title": "Подключение почты"
+    },
+    "mailMatch": {
+      "title": "Сопоставление писем"
+    },
+    "mailQueue": {
+      "title": "Очередь писем"
+    },
+    "profile": {
+      "title": "Профиль",
+      "subtitle": "Ваши данные хранятся в одном месте, чтобы не вводить их заново для каждого отклика"
+    },
+    "adminUsers": {
+      "title": "Пользователи"
+    },
+    "adminFeedback": {
+      "title": "Обратная связь"
+    },
+    "adminTranslations": {
+      "title": "Переводы"
+    }
+  },
+  "api": {
+    "requestFailed": "Запрос не выполнен"
+  },
+  "errors": {
+    "unexpected": "Непредвиденная ошибка"
+  },
+  "fileUpload": {
+    "upload": "Загрузить файл",
+    "dropTitle": "Перетащите файл сюда",
+    "dropHint": "или нажмите, чтобы выбрать его на устройстве",
+    "uploadingTitle": "Загрузка файла...",
+    "uploadingHint": "Пожалуйста, подождите",
+    "acceptedFormats": "Допустимые форматы: {{formats}}",
+    "maxSize": "Максимальный размер: {{size}} МБ",
+    "unsupportedFormat": "Неподдерживаемый формат файла — допустимые форматы: {{formats}}",
+    "tooLarge": "Файл больше {{size}} МБ",
+    "uploadFailed": "Не удалось загрузить файл",
+    "clearFile": "Убрать выбранный файл"
+  },
+  "search": {
+    "searching": "Поиск...",
+    "failed": "Не удалось выполнить поиск",
+    "minLetters_one": "Введите хотя бы {{count}} букву для поиска",
+    "minLetters_few": "Введите хотя бы {{count}} буквы для поиска",
+    "minLetters_many": "Введите хотя бы {{count}} букв для поиска",
+    "minLetters_other": "Введите хотя бы {{count}} буквы для поиска",
+    "noResults": "Ничего не найдено"
+  },
+  "multiSelect": {
+    "empty": "Нет доступных вариантов"
+  },
+  "selectField": {
+    "accept": "Применить",
+    "cancel": "Отмена"
+  },
+  "cookieConsent": {
+    "title": "Аналитические cookie",
+    "body": "Мы хотели бы использовать cookie Google Analytics, чтобы видеть, какими страницами и функциями пользуются, — в них никогда не попадают ваши отклики, компании или резюме",
+    "withdraw": "Передумать можно в любой момент в настройках cookie",
+    "current": {
+      "granted": "Аналитические cookie сейчас разрешены",
+      "denied": "Аналитические cookie сейчас заблокированы"
+    },
+    "accept": "Принять",
+    "reject": "Отклонить",
+    "settings": "Настройки cookie"
+  }
+}

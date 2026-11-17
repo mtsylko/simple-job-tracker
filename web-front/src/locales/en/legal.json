@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "back": "Back to Job Tracker",
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
+    "updated": "Last updated {{date}}",
+    "contents": "Contents",
+    "bindingVersion": "If translations differ, the Polish version applies"
+  },
+  "signInConsent": "By continuing you accept the <terms>Terms of service</terms> and confirm you have read the <privacy>Privacy policy</privacy>",
+  "accountLinks": {
+    "title": "Legal",
+    "body": "How Job Tracker handles your data and the rules for using it"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "intro": "This policy explains what personal data Job Tracker processes, why, who else receives it and what rights you have. It is short on purpose: Job Tracker collects only what it needs to work",
+    "sections": {
+      "controller": {
+        "title": "Who is responsible for your data",
+        "body": "{{name}} runs Job Tracker at simplejobtracker.com and is the controller of your personal data.\n\nFor anything about your data, write to {{email}}"
+      },
+      "data": {
+        "title": "What data we process",
+        "body": "- Account data: your name, email address and profile picture from Google, and the identifier of your Google account. We never get your Google password and never post anything on your behalf\n- What you enter: applications, companies, statuses, notes and custom fields, CV versions and the files you upload, files attached to applications, and the prepared answers you write\n- Your candidate profile, if you fill it in: contact details, address, links, current job, education, experience, salary expectations, notice period, nationality and work authorisation\n- Messages you send through Help and feedback\n- Technical data: a session cookie and server logs with IP address, time and the requested address\n- Usage statistics, only if you accept analytics cookies\n\nPlease do not store special categories of data in Job Tracker, such as health, religion or political views. The service does not need them"
+      },
+      "purposes": {
+        "title": "Why we process it and on what legal basis",
+        "body": "- To provide the service you signed up for: performance of the agreement, Art. 6(1)(b) GDPR\n- To keep the service secure, prevent abuse and fix errors: our legitimate interest in a safe, working service, Art. 6(1)(f) GDPR\n- To answer your messages and feedback: our legitimate interest in helping you, Art. 6(1)(f) GDPR\n- To measure how the app is used: your consent, Art. 6(1)(a) GDPR. You can withdraw it at any time in the cookie settings, which does not affect processing before the withdrawal\n\nJob Tracker makes no automated decisions about you that have legal or similarly significant effects"
+      },
+      "support": {
+        "title": "Support access",
+        "body": "The administrator can open your account in read-only mode to solve a problem you reported or to investigate abuse. Every such access is logged with its time"
+      },
+      "recipients": {
+        "title": "Who receives your data",
+        "body": "We do not sell your data and do not show ads. Your data is processed by these providers, only as far as their service needs:\n\n- Hetzner Online GmbH, Germany: servers, database and file storage, in the European Union\n- Google Ireland Limited and Google LLC: sign-in with Google, and Google Analytics if you accept analytics cookies\n- komoot GmbH, Germany: location suggestions. Our server sends only the text you type into a location field\n- Namecheap, Inc., USA: forwarding of email sent to {{email}}\n\nWe may also disclose data to public authorities when the law requires it"
+      },
+      "transfers": {
+        "title": "Transfers outside the EU",
+        "body": "Google and Namecheap may process data in the USA. These transfers rely on the EU-US Data Privacy Framework or on the standard contractual clauses approved by the European Commission. You can ask us for a copy of the safeguards"
+      },
+      "retention": {
+        "title": "How long we keep it",
+        "body": "We keep your data while your account exists. When you delete your account, your applications, CV versions, files, profile, answers, feedback and settings are deleted at once.\n\nServer logs are kept only as long as needed for security and troubleshooting. Analytics data is kept by Google for up to 14 months"
+      },
+      "rights": {
+        "title": "Your rights",
+        "body": "You have the right to access your data, correct it, delete it, restrict its processing, receive it in a portable format and object to processing based on our legitimate interest. Where processing is based on consent, you can withdraw it at any time.\n\nYou can do much of this yourself: edit anything in the app, download all your data in Profile, Account, and delete your account there. For anything else, write to {{email}}. We answer within one month.\n\nYou can also complain to a data protection authority. In Poland this is the President of the Personal Data Protection Office (Prezes UODO), ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl"
+      },
+      "cookies": {
+        "title": "Cookies and local storage",
+        "body": "- access_token: a session cookie that keeps you signed in for 7 days. It is needed for the service to work\n- Local storage in your browser: your language, theme, table layout, filters, analytics period and your cookie choice. It stays on your device\n- Google Analytics cookies (_ga and _ga_*): set only after you accept analytics cookies\n\nYou can change your cookie choice at any time with the cookie settings link on the sign-in page"
+      },
+      "age": {
+        "title": "Age",
+        "body": "Job Tracker is meant for people aged 16 and over"
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "body": "If we change this policy in a way that matters to you, we will tell you by email or in the app before the change takes effect. The date at the top shows the current version"
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of service",
+    "intro": "These terms set the rules for using Job Tracker. They are the terms of service required by the Polish Act of 18 July 2002 on providing services by electronic means",
+    "sections": {
+      "provider": {
+        "title": "Provider",
+        "body": "Job Tracker at simplejobtracker.com is provided by {{name}}, email {{email}}"
+      },
+      "service": {
+        "title": "What the service is",
+        "body": "Job Tracker helps you organise your own job search. You can keep track of applications and their stages, store CV versions and files, keep a list of companies, and see statistics about your search.\n\nThe service is free of charge. We may add, change or remove features over time"
+      },
+      "requirements": {
+        "title": "Technical requirements",
+        "body": "You need a device with internet access, a current version of a common web browser with JavaScript and cookies enabled, and a Google account to sign in"
+      },
+      "account": {
+        "title": "Your account and the agreement",
+        "body": "The agreement starts when you first sign in and accept these terms. It runs for an indefinite period.\n\nYou must be at least 16. An account is for one person. Keep access to your Google account secure, because it is the key to your Job Tracker account.\n\nYou can end the agreement at any time by deleting your account in Profile, Account"
+      },
+      "rules": {
+        "title": "Rules of use",
+        "body": "- Use Job Tracker lawfully and only for your own job search\n- Do not upload unlawful content or files with malware\n- Do not try to break, overload or bypass the security of the service, and do not access it with automated tools beyond normal use\n- Upload only data you have the right to use. If you store data about other people, such as recruiters, you are responsible for it"
+      },
+      "availability": {
+        "title": "Availability and liability",
+        "body": "We work to keep Job Tracker available and your data safe, but as a free service it comes without a guarantee of uninterrupted operation. We may pause it for maintenance. Keep your own copy of important data: you can download everything in Profile, Account.\n\nTo the extent the law allows, we are not liable for damage caused by service interruptions, data loss or decisions based on the content of the service. This does not limit liability for damage caused intentionally or through gross negligence, or any rights that the law gives consumers"
+      },
+      "suspension": {
+        "title": "Blocking an account and ending the service",
+        "body": "If you seriously break these terms, we may block your account. We may also end the agreement for important reasons, such as closing the service. If we close the service, we will try to tell you in advance so you can download your data"
+      },
+      "complaints": {
+        "title": "Complaints",
+        "body": "Send complaints to {{email}}. Describe the problem and tell us the email address of your account. We answer within 14 days.\n\nIf you are a consumer, you can also ask your local consumer ombudsman or consumer protection authority for help"
+      },
+      "withdrawal": {
+        "title": "Right of withdrawal",
+        "body": "As a consumer you may withdraw from the agreement within 14 days of signing up without giving a reason. Because the service is free, deleting your account is enough. You can still do it at any time later"
+      },
+      "changes": {
+        "title": "Changes to these terms",
+        "body": "We may change these terms for important reasons, such as new features, changes in the law or security. We will tell you by email or in the app at least 14 days before a change takes effect. If you do not agree, you can delete your account before then"
+      },
+      "law": {
+        "title": "Applicable law",
+        "body": "Polish law applies. If you are a consumer, you keep the protection given to you by the mandatory laws of your country. Disputes are settled by the courts competent under general rules"
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "page": {
+    "title": "Forwarding setup",
+    "subtitle": "Your forwarding address and the Gmail steps that send recruiter mail to it — what arrives lands in the Inbox for review",
+    "loading": "Loading the connection…",
+    "unexpectedError": "Could not reach the email connection"
+  },
+  "stage": {
+    "unconfigured": "Unavailable",
+    "unconfiguredHint": "This server has no inbound mail zone, so no address can be issued — set MAIL_INBOUND_DOMAIN and restart the API",
+    "unissued": "Not connected",
+    "unissuedHint": "Take an address of your own, then forward recruiter mail to it from your mail client",
+    "paused": "Paused",
+    "pausedHint": "The address is still yours, but nothing arriving at it is read",
+    "waiting": "Waiting",
+    "waitingHint": "The address is live and has taken nothing yet — forward a message to see it arrive",
+    "receiving": "Receiving",
+    "receivingHint": "Mail forwarded here is read and matched against your applications"
+  },
+  "address": {
+    "title": "Your forwarding address",
+    "issue": "Create the address",
+    "copyFailed": "Could not copy — select the address and copy it by hand",
+    "issued": "Issued",
+    "lastMessage": "Last message",
+    "messages": "Messages taken",
+    "never": "none yet",
+    "pause": "Pause reading",
+    "resume": "Resume reading",
+    "replace": "Replace address",
+    "replaceTitle": "Replace the forwarding address?",
+    "replaceBody": "The address you have stops taking mail, and the forwarding rule in your mail client has to be pointed at the new one",
+    "cancel": "Cancel"
+  },
+  "copy": {
+    "label": "Copy",
+    "done": "Copied"
+  },
+  "setup": {
+    "title": "Connecting Gmail",
+    "loading": "Reading the Gmail setup…",
+    "unexpectedError": "Could not read the Gmail setup",
+    "apply": {
+      "title": "Apply with an address of your own",
+      "unset": "Gmail delivers {{email}} to your inbox like your own address — the filter forwards only mail sent to it, so apply with it",
+      "use": "Apply with {{email}}",
+      "set": "The extension fills {{email}} into application forms, and the filter forwards only mail sent to it",
+      "change": "Change it in your profile"
+    },
+    "forward": {
+      "title": "Connect forwarding",
+      "body": "In Gmail's forwarding settings, add {{address}} as a forwarding address — Gmail mails it a confirmation, which shows up here",
+      "open": "Open forwarding settings",
+      "waiting": "No confirmation from Gmail yet",
+      "readd": "Nothing after a minute? Gmail has no resend button — remove the address under Forwarding and add it again to get a new confirmation",
+      "check": "Check again",
+      "confirm": "Confirm in Gmail",
+      "linkFor": "Gmail asks to confirm forwarding from {{account}} — open its page and click Confirm",
+      "link": "Gmail asks to confirm forwarding — open its page and click Confirm",
+      "codeFor": "Gmail's code for {{account}} — enter it under Forwarding and click Verify",
+      "code": "Gmail's confirmation code — enter it under Forwarding and click Verify",
+      "copyFailed": "Could not copy — select the code and copy it by hand"
+    },
+    "filter": {
+      "title": "Create the filter",
+      "waiting": "Set the address for applications first — the filter forwards only mail sent to it",
+      "body": "Gmail opens with the filter filled in: click \"Create filter\", tick \"Forward it to\", choose {{address}} and click \"Create filter\" again — Gmail lists the address once forwarding is confirmed",
+      "open": "Create the filter in Gmail",
+      "paste": "Or paste it into Gmail's \"Has the words\" yourself — it names only this address, so it never needs copying again",
+      "copyFailed": "Could not copy — select the query and copy it by hand"
+    },
+    "manual": "Mail to any other address stays in Gmail — forward a message by hand to {{address}} and it is read the same way",
+    "privacy": "Only what you forward is read — a message is kept as its sender, subject, date and the line that decided the verdict, not as its body"
+  }
+}

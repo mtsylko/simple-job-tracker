@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Tracker — Track applications, interviews and CV versions</title>
+    <meta
+      name="description"
+      content="Job Tracker helps you organize your job search — track applications and interview stages, and keep your CV versions in one place"
+    />
+    <link rel="canonical" href="https://simplejobtracker.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Job Tracker" />
+    <meta
+      property="og:title"
+      content="Job Tracker — Track applications, interviews and CV versions"
+    />
+    <meta
+      property="og:description"
+      content="Organize your job search — track applications and interview stages, and keep your CV versions in one place"
+    />
+    <meta property="og:url" content="https://simplejobtracker.com/" />
+    <meta property="og:image" content="https://simplejobtracker.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Job Tracker — Track applications, interviews and CV versions"
+    />
+    <meta
+      name="twitter:description"
+      content="Organize your job search — track applications and interview stages, and keep your CV versions in one place"
+    />
+    <meta name="twitter:image" content="https://simplejobtracker.com/og-image.png" />
+    <script>
+      // Applies the stored theme before first paint, so a dark-mode reload does
+      // not flash a light screen. The key is duplicated from src/app/theme.ts,
+      // which this cannot import — change both together.
+      (function () {
+        try {
+          var mode = localStorage.getItem('jt-theme') || 'system';
+          var dark =
+            mode === 'dark' ||
+            (mode === 'system' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (error) {
+          // Blocked storage — fall through to the light default.
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

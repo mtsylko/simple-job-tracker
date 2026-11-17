@@ -1,0 +1,27 @@
+{
+  "launcher": {
+    "label": "Feedback"
+  },
+  "kinds": {
+    "bug": "Problem",
+    "idea": "Idea",
+    "question": "Question"
+  },
+  "dialog": {
+    "title": "Help & feedback",
+    "description": "Report a problem, suggest an idea or ask a question. We reply by email to {{email}}",
+    "kindLabel": "What is it about?",
+    "messageLabel": "Message",
+    "placeholders": {
+      "bug": "What happened, and what did you expect instead?",
+      "idea": "What would make the tracker more useful to you?",
+      "question": "What would you like to know?"
+    },
+    "context": "The page you are on and your browser version are sent along with it",
+    "cancel": "Cancel",
+    "send": "Send",
+    "sending": "Sending…",
+    "sent": "Thanks — your message has been sent",
+    "sendFailed": "Could not send your message"
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "sections": {
+    "role": {
+      "title": "Stanowiska",
+      "description": "Rodzaj stanowiska, na które aplikujesz",
+      "addLabel": "Nowe stanowisko",
+      "addPlaceholder": "Dodaj stanowisko (np. Engineering Manager)…"
+    },
+    "level": {
+      "title": "Poziomy",
+      "description": "Poziom doświadczenia przypisany do stanowiska",
+      "addLabel": "Nowy poziom",
+      "addPlaceholder": "Dodaj poziom (np. Director)…"
+    },
+    "type": {
+      "title": "Tryb pracy",
+      "description": "Gdzie odbywa się praca — zdalnie, hybrydowo czy stacjonarnie",
+      "addLabel": "Nowy tryb pracy",
+      "addPlaceholder": "Dodaj tryb pracy (np. Hybrydowo)…"
+    },
+    "employmentType": {
+      "title": "Wymiar pracy",
+      "description": "Ile czasu zajmuje praca — pełny etat, część etatu i podobne",
+      "addLabel": "Nowy wymiar pracy",
+      "addPlaceholder": "Dodaj wymiar pracy (np. Część etatu)…"
+    },
+    "contractType": {
+      "title": "Rodzaje umów",
+      "description": "Umowa, na jakiej oferowane jest stanowisko — umowa o pracę, B2B i podobne",
+      "addLabel": "Nowy rodzaj umowy",
+      "addPlaceholder": "Dodaj rodzaj umowy (np. B2B)…"
+    },
+    "status": {
+      "title": "Statusy",
+      "description": "Etapy, przez które przechodzi aplikacja — każdy ma kolor i może być zakładką na stronie Aplikacje",
+      "addLabel": "Nowy status",
+      "addPlaceholder": "Dodaj status (np. Screening)…",
+      "colorLabel": "Kolor",
+      "tabLabel": "Pokaż jako zakładkę w Aplikacjach"
+    },
+    "outcome": {
+      "title": "Wyniki",
+      "description": "Powody zakończenia aplikacji — ustawiane, gdy aplikacja zostanie zamknięta",
+      "addLabel": "Nowy wynik",
+      "addPlaceholder": "Dodaj wynik (np. Odrzucona oferta)…"
+    }
+  },
+  "columns": {
+    "name": "Nazwa",
+    "applications": "Aplikacje",
+    "tab": "Zakładka w Aplikacjach"
+  },
+  "menu": {
+    "move": "Przenieś: {{value}}",
+    "moveUp": "Przenieś wyżej",
+    "moveDown": "Przenieś niżej"
+  },
+  "colors": {
+    "presets": "Gotowe kolory",
+    "slate": "Łupkowy",
+    "blue": "Niebieski",
+    "teal": "Morski",
+    "green": "Zielony",
+    "amber": "Bursztynowy",
+    "violet": "Fioletowy",
+    "red": "Czerwony",
+    "grey": "Szary"
+  },
+  "addButton": "Dodaj",
+  "cancel": "Anuluj",
+  "save": "Zapisz",
+  "edit": "Edytuj",
+  "renameLabel": "Zmień nazwę {{value}}",
+  "delete": "Usuń",
+  "default": "Domyślna",
+  "setDefault": "Ustaw domyślną",
+  "empty": "Brak wartości.",
+  "usageCount_one": "{{count}} aplikacja",
+  "usageCount_few": "{{count}} aplikacje",
+  "usageCount_many": "{{count}} aplikacji",
+  "usageCount_other": "{{count}} aplikacji",
+  "duplicate": "Ta wartość już istnieje.",
+  "loadError": "Nie udało się załadować wartości.",
+  "loadStatusesError": "Nie udało się załadować statusów.",
+  "addError": "Nie udało się dodać wartości.",
+  "renameError": "Nie udało się zmienić nazwy.",
+  "retry": "Spróbuj ponownie",
+  "deleteDialog": {
+    "title": "Usunąć „{{value}}”?",
+    "body": "Usunięcie tej wartości nie zmienia wcześniejszych aplikacji — wartość jest tylko ukrywana w nowych."
+  },
+  "presets": {
+    "step": "Krok {{current}} z {{total}}",
+    "stepNumber": "Krok {{current}}",
+    "pickTitle": "Czym się zajmujesz?",
+    "pickSubtitle": "Przygotujemy stanowiska, poziomy i formy pracy dla Twojej branży. Zanim cokolwiek dodamy, możesz odznaczyć to, czego nie potrzebujesz",
+    "directionTitle": "W jakim obszarze pracujesz?",
+    "directionSubtitle": "Możesz wybrać kilka. Potem doprecyzujemy specjalizację, jeśli w obszarze jest z czego wybierać",
+    "specializeTitle": "Jaka jest Twoja specjalizacja?",
+    "specializeSubtitle": "Możesz wybrać kilka. Od nich zależą stanowiska i poziomy na Twoich listach",
+    "includedTitle": "Dodamy w całości, nie ma tam wyboru",
+    "reviewTitle": "Co dodać do Twoich list",
+    "reviewSubtitle": "Odznacz to, czego nie potrzebujesz. Później możesz zmienić nazwy lub usunąć wartości na stronie Kategorie",
+    "fieldsGroup": "Własne pola",
+    "selectedOf": "{{selected}} z {{total}}",
+    "selectAll": "Zaznacz wszystkie",
+    "clearAll": "Odznacz wszystkie",
+    "next": "Dalej",
+    "back": "Wstecz",
+    "skip": "Zacznij od pustych list",
+    "skipConfirmTitle": "Zacząć od pustych list?",
+    "skipConfirmBody": "Nic z wybranych rzeczy nie zostanie dodane, a ten ekran już się nie pojawi. Wartości możesz potem dodać pojedynczo na stronie Kategorie",
+    "skipConfirmCancel": "Wróć do wyboru",
+    "skipConfirm": "Zacznij od pustych",
+    "add_one": "Dodaj {{count}} wartość",
+    "add_few": "Dodaj {{count}} wartości",
+    "add_many": "Dodaj {{count}} wartości",
+    "add_other": "Dodaj {{count}} wartości",
+    "addNone": "Kontynuuj bez wartości",
+    "skipError": "Nie udało się zapisać wyboru",
+    "applyError": "Nie udało się zastosować zestawu",
+    "options": {
+      "generic": {
+        "label": "Inne / ogólne",
+        "description": "Neutralny zestaw startowy dla każdej branży"
+      },
+      "software": {
+        "label": "Oprogramowanie i IT",
+        "directions": {
+          "engineering": "Inżynieria oprogramowania",
+          "qa": "Testy i QA",
+          "management": "Zarządzanie zespołami IT",
+          "product": "Zarządzanie produktem i projektami"
+        },
+        "specializations": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "fullstack": "Full-stack",
+          "mobile": "Aplikacje mobilne",
+          "qa": "Testy i QA",
+          "devops": "DevOps i infrastruktura",
+          "data": "Dane i ML",
+          "security": "Bezpieczeństwo",
+          "management": "Zarządzanie zespołami IT",
+          "product": "Produkt i projekty"
+        }
+      },
+      "design": {
+        "label": "Design",
+        "specializations": {
+          "product-ux": "Projektowanie produktu i UX",
+          "ui": "UI i projektowanie wizualne",
+          "graphic": "Grafika i marka",
+          "motion": "Motion i 3D",
+          "research": "Badania i UX writing"
+        }
+      },
+      "healthcare": {
+        "label": "Ochrona zdrowia",
+        "specializations": {
+          "physicians": "Lekarze",
+          "nursing": "Pielęgniarstwo",
+          "pharmacy": "Farmacja",
+          "lab": "Laboratorium i diagnostyka",
+          "allied": "Rehabilitacja i terapia",
+          "care": "Opieka"
+        }
+      },
+      "finance": {
+        "label": "Finanse i księgowość",
+        "specializations": {
+          "accounting": "Księgowość",
+          "audit": "Audyt i compliance",
+          "analysis": "Analiza finansowa",
+          "tax": "Podatki",
+          "controlling": "Controlling i skarbowość"
+        }
+      },
+      "education": {
+        "label": "Edukacja",
+        "specializations": {
+          "school": "Szkoła",
+          "higher": "Uczelnia i nauka",
+          "tutoring": "Korepetycje i kursy",
+          "early": "Edukacja przedszkolna",
+          "admin": "Administracja"
+        }
+      },
+      "sales-marketing": {
+        "label": "Sprzedaż i marketing",
+        "specializations": {
+          "sales": "Sprzedaż",
+          "accounts": "Obsługa klientów",
+          "marketing": "Marketing",
+          "content": "Content i SEO"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "launcher": {
+    "label": "Opinie"
+  },
+  "kinds": {
+    "bug": "Problem",
+    "idea": "Pomysł",
+    "question": "Pytanie"
+  },
+  "dialog": {
+    "title": "Pomoc i opinie",
+    "description": "Zgłoś problem, zaproponuj pomysł lub zadaj pytanie. Odpowiemy e-mailem na {{email}}",
+    "kindLabel": "Czego dotyczy?",
+    "messageLabel": "Wiadomość",
+    "placeholders": {
+      "bug": "Co się stało i jaki był oczekiwany efekt?",
+      "idea": "Co sprawiłoby, że tracker byłby dla Ciebie bardziej przydatny?",
+      "question": "Co chcesz wiedzieć?"
+    },
+    "context": "Razem z wiadomością wysyłamy stronę, na której jesteś, i wersję przeglądarki",
+    "cancel": "Anuluj",
+    "send": "Wyślij",
+    "sending": "Wysyłanie…",
+    "sent": "Dziękujemy — wiadomość została wysłana",
+    "sendFailed": "Nie udało się wysłać wiadomości"
+  }
+}

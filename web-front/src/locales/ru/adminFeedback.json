@@ -1,0 +1,28 @@
+{
+  "page": {
+    "title": "Обратная связь",
+    "summary_one": "Открыто: {{open}} из {{count}} сообщения",
+    "summary_few": "Открыто: {{open}} из {{count}} сообщений",
+    "summary_many": "Открыто: {{open}} из {{count}} сообщений",
+    "summary_other": "Открыто: {{open}} из {{count}} сообщения"
+  },
+  "tabs": {
+    "open": "Открытые",
+    "resolved": "Решённые"
+  },
+  "list": {
+    "emptyOpen": "Нет сообщений, ждущих ответа",
+    "emptyResolved": "Решённых сообщений пока нет",
+    "loadFailed": "Не удалось загрузить обратную связь"
+  },
+  "item": {
+    "from": "{{name}} · {{email}}",
+    "page": "Страница",
+    "browser": "Браузер",
+    "reply": "Ответить",
+    "replySubject": "Re: ваш отзыв о Job Tracker",
+    "resolve": "Отметить решённым",
+    "reopen": "Открыть снова",
+    "updateFailed": "Не удалось обновить сообщение"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "list": {
+    "title": "Версии резюме",
+    "newCvVersion": "Новая версия резюме",
+    "searchLabel": "Фильтр версий резюме",
+    "searchPlaceholder": "Фильтр по названию или файлу…",
+    "tabs": {
+      "all": "Все",
+      "enabled": "Включённые",
+      "disabled": "Отключённые"
+    },
+    "shownOfTotal": "Показано <strong>{{shown}}</strong> из <strong>{{total}}</strong>",
+    "versionCount_one": "<strong>{{count}}</strong> версия",
+    "versionCount_few": "<strong>{{count}}</strong> версии",
+    "versionCount_many": "<strong>{{count}}</strong> версий",
+    "versionCount_other": "<strong>{{count}}</strong> версии",
+    "disabledCount_one": "{{count}} отключена",
+    "disabledCount_few": "{{count}} отключены",
+    "disabledCount_many": "{{count}} отключено",
+    "disabledCount_other": "{{count}} отключены",
+    "columns": {
+      "version": "Версия резюме",
+      "description": "Описание",
+      "source": "Источник",
+      "enabled": "Включена"
+    },
+    "openSource": "Открыть",
+    "toggle": {
+      "on": "Вкл.",
+      "off": "Выкл.",
+      "onHint": "Включена — доступна при выборе резюме",
+      "offHint": "Отключена — скрыта при выборе резюме"
+    },
+    "deleteLabel": "Удалить {{name}}",
+    "noMatch": "Нет версий резюме, подходящих под фильтр",
+    "footer": {
+      "showing_one": "Показана <strong>{{count}}</strong> версия",
+      "showing_few": "Показаны <strong>{{count}}</strong> версии",
+      "showing_many": "Показано <strong>{{count}}</strong> версий",
+      "showing_other": "Показаны <strong>{{count}}</strong> версии",
+      "enabled": "включено: {{enabled}}",
+      "enabledAndDisabled": "включено: {{enabled}}, отключено: {{disabled}}"
+    },
+    "addAnother": "Добавить ещё версию",
+    "disabledInfo": "Отключённые версии сохраняются для истории, чтобы старые отклики по-прежнему на них ссылались, но не предлагаются при выборе резюме для нового отклика"
+  },
+  "route": {
+    "loadingListTitle": "Загрузка версий резюме",
+    "loadingListSubtitle": "Получаем версии резюме из API...",
+    "loadListErrorTitle": "Не удалось загрузить версии резюме",
+    "loadingTitle": "Загрузка версии резюме",
+    "loadingSubtitle": "Получаем данные версии резюме из API...",
+    "loadErrorTitle": "Не удалось загрузить версию резюме",
+    "notFoundTitle": "Версия резюме не найдена",
+    "notFoundBody": "Этой версии резюме нет или она была удалена",
+    "retry": "Повторить"
+  },
+  "form": {
+    "backToCvVersions": "Назад к версиям резюме",
+    "newCvVersionTitle": "Новая версия резюме",
+    "editCvVersionTitle": "Редактирование версии резюме",
+    "submit": "Создать",
+    "saveChanges": "Сохранить изменения",
+    "sections": {
+      "details": "Данные версии резюме",
+      "visibility": "Видимость"
+    },
+    "fields": {
+      "name": "Название",
+      "sourceLink": "Ссылка на исходник",
+      "attachment": "Вложение",
+      "description": "Описание",
+      "enabledTitle": "Показывать при выборе резюме",
+      "enabledDescription": "Включённая версия предлагается при добавлении нового отклика. Отключите её, чтобы убрать в архив, не удаляя."
+    },
+    "placeholders": {
+      "sourceLink": "https://..."
+    },
+    "attachmentUpload": {
+      "label": "Ход загрузки вложения"
+    },
+    "validation": {
+      "nameRequired": "Укажите название",
+      "sourceLinkInvalid": "Ссылка на исходник должна быть корректным URL",
+      "attachmentUploading": "Дождитесь окончания загрузки вложения",
+      "failedToSave": "Не удалось сохранить версию резюме"
+    }
+  },
+  "viewer": {
+    "preview": "Просмотр PDF",
+    "openInNewTab": "Открыть в новой вкладке",
+    "download": "Скачать",
+    "close": "Закрыть",
+    "downloadFailed": "Не удалось скачать вложение",
+    "frameTitle": "{{name}} — просмотр PDF"
+  },
+  "deleteDialog": {
+    "title": "Удалить эту версию резюме?",
+    "body": "<name>{{name}}</name> будет удалена безвозвратно. Отклики, которые на неё ссылались, потеряют ссылку на резюме",
+    "confirm": "Удалить",
+    "cancel": "Отмена"
+  },
+  "empty": {
+    "title": "Версий резюме пока нет",
+    "subtitle": "Добавьте адаптированное резюме для каждого типа должностей, и оно появится здесь",
+    "cta": "Добавить первую версию резюме",
+    "features": {
+      "tailor": {
+        "title": "Под каждую роль",
+        "description": "Frontend, full-stack, lead — отдельные файлы, отдельные истории"
+      },
+      "usage": {
+        "title": "Следите за использованием",
+        "description": "Смотрите, какая версия ушла в какую компанию и как она сработала"
+      },
+      "source": {
+        "title": "Исходник под рукой",
+        "description": "Открывайте редактируемый оригинал в один клик, без повторной загрузки"
+      }
+    }
+  },
+  "api": {
+    "invalidId": "API вернул некорректный id версии резюме",
+    "invalidUploadResponse": "Некорректный ответ на загрузку вложения",
+    "uploadFailed": "Не удалось загрузить вложение",
+    "uploadCancelled": "Загрузка вложения отменена"
+  }
+}

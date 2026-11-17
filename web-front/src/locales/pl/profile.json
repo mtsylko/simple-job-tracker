@@ -1,0 +1,153 @@
+{
+  "page": {
+    "title": "Profil",
+    "loading": "Ładowanie…"
+  },
+  "form": {
+    "sections": {
+      "personal": "Dane osobowe",
+      "links": "Linki",
+      "defaults": "Domyślne odpowiedzi w aplikacjach",
+      "experience": "Doświadczenie i wykształcenie",
+      "background": "Na czym opierają się odpowiedzi"
+    },
+    "sectionHints": {
+      "personal": "Podstawowe dane, o które formularz pyta na początku — formularze dostają adres do aplikacji zamiast tego, którym się logujesz",
+      "links": "Pełne adresy URL, razem z https://",
+      "defaults": "To, co inaczej wpisujesz w każdym formularzu od nowa.",
+      "experience": "Gdzie teraz pracujesz i jakie masz wykształcenie — pola, o które pytają dłuższe formularze.",
+      "background": "Twoje CV jako zwykły tekst i sposób, w jaki chcesz odpowiadać na otwarte pytania — treść i forma"
+    },
+    "fields": {
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "phone": "Telefon",
+      "applicationEmail": "E-mail do aplikacji",
+      "location": "Lokalizacja",
+      "linkedinUrl": "LinkedIn",
+      "githubUrl": "GitHub",
+      "portfolioUrl": "Portfolio",
+      "salaryExpectations": "Oczekiwania finansowe",
+      "noticePeriod": "Okres wypowiedzenia",
+      "workAuthorization": "Prawo do pracy",
+      "addressLine": "Adres",
+      "postalCode": "Kod pocztowy",
+      "country": "Kraj",
+      "nationality": "Obywatelstwo",
+      "currentCompany": "Obecna firma",
+      "currentTitle": "Obecne stanowisko",
+      "yearsOfExperience": "Lata doświadczenia",
+      "university": "Uczelnia",
+      "degree": "Kierunek i stopień",
+      "workAuthorized": "Prawo do pracy",
+      "needsSponsorship": "Wymaga sponsorowania wizy",
+      "background": "Doświadczenie własnymi słowami",
+      "answerGuidance": "Jak odpowiadać na otwarte pytania"
+    },
+    "placeholders": {
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "phone": "+48 123 456 789",
+      "applicationEmail": "ty+praca@gmail.com",
+      "location": "Warszawa, Polska",
+      "linkedinUrl": "https://linkedin.com/in/username",
+      "githubUrl": "https://github.com/username",
+      "portfolioUrl": "https://example.com",
+      "salaryExpectations": "np. 25 000 zł netto / mies.",
+      "noticePeriod": "np. 1 miesiąc",
+      "workAuthorization": "np. obywatel UE, bez potrzeby sponsorowania",
+      "addressLine": "ul. Przykładowa 1/2",
+      "postalCode": "00-001",
+      "country": "Polska",
+      "nationality": "ukraińskie",
+      "currentCompany": "Acme",
+      "currentTitle": "Senior Frontend Engineer",
+      "yearsOfExperience": "np. 10",
+      "university": "Politechnika Warszawska",
+      "degree": "np. inżynier, informatyka",
+      "background": "Wklej tutaj swoje CV",
+      "answerGuidance": "np. w pierwszej osobie, prostym językiem, bez buzzwordów — i nigdy nie przypisuj mi prowadzenia zespołu"
+    },
+    "save": "Zapisz profil",
+    "discard": "Odrzuć zmiany",
+    "allSaved": "Wszystkie zmiany zapisane",
+    "saveFailed": "Nie udało się zapisać profilu",
+    "flags": {
+      "unset": "Bez odpowiedzi",
+      "yes": "Tak",
+      "no": "Nie"
+    }
+  },
+  "validation": {
+    "urlInvalid": "Wpisz pełny adres URL, razem z https://",
+    "tooLong": "Maksymalnie {{max}} znaków",
+    "flagInvalid": "Odpowiedz tak lub nie albo zostaw bez odpowiedzi",
+    "emailInvalid": "Wpisz pełny adres e-mail"
+  },
+  "tabs": {
+    "details": "Dane",
+    "answers": "Odpowiedzi",
+    "account": "Konto"
+  },
+  "answers": {
+    "title": "Przygotowane odpowiedzi",
+    "subtitle": "Napisane raz, używane wszędzie, gdzie formularz pyta o to samo innymi słowami",
+    "add": "Dodaj odpowiedź",
+    "loading": "Ładowanie…",
+    "empty": "Nic tu jeszcze nie ma — dodaj odpowiedź, którą ciągle wpisujesz od nowa, a trafi też do formularza, który pyta o to inaczej",
+    "full": "Możesz mieć najwyżej {{count}} odpowiedzi — edytuj lub usuń jedną, aby dodać kolejną",
+    "card": {
+      "edit": "Edytuj odpowiedź",
+      "delete": "Usuń",
+      "deleteTitle": "Usunąć tę odpowiedź?",
+      "deleteBody": "„{{title}}” nie będzie już używana do odpowiadania na otwarte pytania",
+      "deleteFailed": "Nie udało się usunąć odpowiedzi"
+    },
+    "form": {
+      "titleLabel": "Czego dotyczy",
+      "titlePlaceholder": "np. Migracja z Vue na React w czasie zamrożenia wydań",
+      "titleHint": "Wyświetlane obok wypełnionego pola, żeby od razu było widać, której odpowiedzi użyto",
+      "contentLabel": "Odpowiedź",
+      "contentPlaceholder": "Opowiedz to tak, jak opowiadasz na żywo — jaki był problem, Twoje działania i jak się skończyło",
+      "contentHint": "Zachowywana tak, jak jest napisana, dopasowywana tylko do sformułowania i długości, jakich wymaga formularz",
+      "aliasesLabel": "Na jakie pytania odpowiada",
+      "aliasesPlaceholder": "Najtrudniejszy problem, jaki udało Ci się rozwiązać\nTwoje największe osiągnięcie",
+      "aliasesHint": "Jedno w linii, opcjonalnie — to tylko przykłady, pytanie sformułowane inaczej też może dostać tę odpowiedź",
+      "required": "Potrzebny jest tytuł i odpowiedź",
+      "save": "Zapisz odpowiedź",
+      "cancel": "Anuluj",
+      "saveFailed": "Nie udało się zapisać odpowiedzi"
+    }
+  },
+  "asked": {
+    "title": "Pytania, które Ci zadano",
+    "subtitle": "Otwarte pola, które stawiają przed Tobą pracodawcy — te bez odpowiedzi warto napisać raz",
+    "noAnswer": "Brak odpowiedzi",
+    "answeredFrom": "Odpowiedź z „{{title}}”",
+    "seen": "zadane {{count}} razy",
+    "write": "Napisz odpowiedź",
+    "dismiss": "Usuń z listy",
+    "dismissFailed": "Nie udało się usunąć pytania z listy"
+  },
+  "account": {
+    "export": {
+      "title": "Eksport danych",
+      "body": "Pobierz wszystko, co zawiera Twoje konto, jako jeden plik JSON — pliki PDF z CV pobierzesz z każdej wersji CV",
+      "action": "Pobierz moje dane",
+      "pending": "Przygotowuję…",
+      "failed": "Nie udało się przygotować eksportu — spróbuj ponownie"
+    },
+    "delete": {
+      "title": "Usuń konto",
+      "body": "Trwale usuwa Twoje aplikacje, wersje CV z plikami, profil i ustawienia — tego nie można cofnąć",
+      "action": "Usuń konto…",
+      "confirmTitle": "Usunąć konto?",
+      "confirmBody": "Wszystko z Twojego konta zostanie usunięte od razu i nie da się tego przywrócić — jeśli chcesz kopię, najpierw pobierz dane",
+      "phrase": "usuń moje konto",
+      "phraseLabel": "Wpisz „{{phrase}}”, aby potwierdzić",
+      "confirm": "Usuń konto",
+      "cancel": "Anuluj",
+      "failed": "Nie udało się usunąć konta — spróbuj ponownie"
+    }
+  }
+}

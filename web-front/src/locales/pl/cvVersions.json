@@ -1,0 +1,128 @@
+{
+  "list": {
+    "title": "Wersje CV",
+    "newCvVersion": "Nowa wersja CV",
+    "searchLabel": "Filtruj wersje CV",
+    "searchPlaceholder": "Filtruj po nazwie lub pliku…",
+    "tabs": {
+      "all": "Wszystkie",
+      "enabled": "Włączone",
+      "disabled": "Wyłączone"
+    },
+    "shownOfTotal": "Widoczne: <strong>{{shown}}</strong> z <strong>{{total}}</strong>",
+    "versionCount_one": "<strong>{{count}}</strong> wersja",
+    "versionCount_few": "<strong>{{count}}</strong> wersje",
+    "versionCount_many": "<strong>{{count}}</strong> wersji",
+    "versionCount_other": "<strong>{{count}}</strong> wersji",
+    "disabledCount_one": "wyłączone: {{count}}",
+    "disabledCount_few": "wyłączone: {{count}}",
+    "disabledCount_many": "wyłączone: {{count}}",
+    "disabledCount_other": "wyłączone: {{count}}",
+    "columns": {
+      "version": "Wersja CV",
+      "description": "Opis",
+      "source": "Źródło",
+      "enabled": "Włączona"
+    },
+    "openSource": "Otwórz",
+    "toggle": {
+      "on": "Wł.",
+      "off": "Wył.",
+      "onHint": "Włączona — widoczna przy wyborze CV",
+      "offHint": "Wyłączona — ukryta przy wyborze CV"
+    },
+    "deleteLabel": "Usuń {{name}}",
+    "noMatch": "Żadna wersja CV nie pasuje do tego filtra",
+    "footer": {
+      "showing_one": "Widoczna <strong>{{count}}</strong> wersja",
+      "showing_few": "Widoczne <strong>{{count}}</strong> wersje",
+      "showing_many": "Widocznych <strong>{{count}}</strong> wersji",
+      "showing_other": "Widocznych <strong>{{count}}</strong> wersji",
+      "enabled": "włączone: {{enabled}}",
+      "enabledAndDisabled": "włączone: {{enabled}}, wyłączone: {{disabled}}"
+    },
+    "addAnother": "Dodaj kolejną wersję",
+    "disabledInfo": "Wyłączone wersje zostają w historii, żeby starsze aplikacje nadal mogły się do nich odwoływać, ale nie pojawiają się przy wyborze CV dla nowej aplikacji"
+  },
+  "route": {
+    "loadingListTitle": "Ładowanie wersji CV",
+    "loadingListSubtitle": "Pobieranie wersji CV z API...",
+    "loadListErrorTitle": "Nie udało się załadować wersji CV",
+    "loadingTitle": "Ładowanie wersji CV",
+    "loadingSubtitle": "Pobieranie szczegółów wersji CV z API...",
+    "loadErrorTitle": "Nie udało się załadować wersji CV",
+    "notFoundTitle": "Nie znaleziono wersji CV",
+    "notFoundBody": "Ta wersja CV nie istnieje albo została usunięta",
+    "retry": "Spróbuj ponownie"
+  },
+  "form": {
+    "backToCvVersions": "Wróć do wersji CV",
+    "newCvVersionTitle": "Nowa wersja CV",
+    "editCvVersionTitle": "Edycja wersji CV",
+    "submit": "Zapisz",
+    "saveChanges": "Zapisz zmiany",
+    "sections": {
+      "details": "Szczegóły wersji CV",
+      "visibility": "Widoczność"
+    },
+    "fields": {
+      "name": "Nazwa",
+      "sourceLink": "Link do źródła",
+      "attachment": "Załącznik",
+      "description": "Opis",
+      "enabledTitle": "Pokazuj przy wyborze CV",
+      "enabledDescription": "Gdy jest włączona, ta wersja pojawia się przy dodawaniu nowej aplikacji. Wyłącz ją, aby ją zarchiwizować bez usuwania."
+    },
+    "placeholders": {
+      "sourceLink": "https://..."
+    },
+    "attachmentUpload": {
+      "label": "Postęp przesyłania załącznika"
+    },
+    "validation": {
+      "nameRequired": "Nazwa jest wymagana",
+      "sourceLinkInvalid": "Link do źródła musi być poprawnym adresem URL",
+      "attachmentUploading": "Poczekaj, aż załącznik zostanie przesłany",
+      "failedToSave": "Nie udało się zapisać wersji CV"
+    }
+  },
+  "viewer": {
+    "preview": "Podgląd PDF",
+    "openInNewTab": "Otwórz w nowej karcie",
+    "download": "Pobierz",
+    "close": "Zamknij",
+    "downloadFailed": "Nie udało się pobrać załącznika",
+    "frameTitle": "{{name}} — podgląd PDF"
+  },
+  "deleteDialog": {
+    "title": "Usunąć tę wersję CV?",
+    "body": "<name>{{name}}</name> zostanie trwale usunięta. Aplikacje, które się do niej odwoływały, stracą powiązanie z CV",
+    "confirm": "Usuń",
+    "cancel": "Anuluj"
+  },
+  "empty": {
+    "title": "Nie masz jeszcze wersji CV",
+    "subtitle": "Dodaj dopasowane CV dla każdej grupy stanowisk, a pojawi się tutaj",
+    "cta": "Dodaj pierwszą wersję CV",
+    "features": {
+      "tailor": {
+        "title": "Dopasuj do stanowiska",
+        "description": "Frontend, full-stack, lead — osobne pliki, osobne historie"
+      },
+      "usage": {
+        "title": "Śledź użycie",
+        "description": "Zobacz, która wersja trafiła do której firmy i jak się sprawdziła"
+      },
+      "source": {
+        "title": "Źródło pod ręką",
+        "description": "Otwórz edytowalny oryginał jednym kliknięciem, bez ponownego przesyłania"
+      }
+    }
+  },
+  "api": {
+    "invalidId": "API zwróciło nieprawidłowy identyfikator wersji CV",
+    "invalidUploadResponse": "Nieprawidłowa odpowiedź po przesłaniu załącznika",
+    "uploadFailed": "Nie udało się przesłać załącznika",
+    "uploadCancelled": "Przesyłanie załącznika zostało anulowane"
+  }
+}

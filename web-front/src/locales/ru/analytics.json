@@ -1,0 +1,119 @@
+{
+  "route": {
+    "loadingTitle": "Загрузка",
+    "loadingSubtitle": "Получаем данные…",
+    "errorTitle": "Не удалось загрузить",
+    "retry": "Повторить"
+  },
+  "page": {
+    "title": "Аналитика"
+  },
+  "finding": {
+    "none": "За этот период ничего не отправлено",
+    "plain": "Ответили на {{heard}} из {{sent}}",
+    "best": "Ответили на {{heard}} из {{sent}} — лучше всего работает {{best}}: {{bestHeard}} из {{bestSent}}",
+    "compare": "Ответили на {{heard}} из {{sent}} — лучше всего работает {{best}} ({{bestPct}}%), ваше самое отправляемое резюме — {{topPct}}%"
+  },
+  "range": {
+    "options": {
+      "all": "За всё время",
+      "1m": "Последний месяц",
+      "3m": "Последние 3 месяца",
+      "6m": "Последние 6 месяцев",
+      "12m": "Последние 12 месяцев"
+    }
+  },
+  "kpi": {
+    "label": "Итоги",
+    "sent": {
+      "label": "Отправлено",
+      "since": "с {{date}}"
+    },
+    "heard": {
+      "label": "Ответили",
+      "detail": "дальше этапа «{{status}}»"
+    },
+    "interviewing": {
+      "label": "Собеседования сейчас",
+      "none": "Нет открытых переговоров"
+    },
+    "final": {
+      "label": "Офферы",
+      "none": "Открытых нет",
+      "one_one": "{{company}}, {{count}} день на этапе",
+      "one_few": "{{company}}, {{count}} дня на этапе",
+      "one_many": "{{company}}, {{count}} дней на этапе",
+      "one_other": "{{company}}, {{count}} дня на этапе",
+      "two": "{{first}} и {{second}}",
+      "many_one": "{{companies}} и ещё {{count}}",
+      "many_few": "{{companies}} и ещё {{count}}",
+      "many_many": "{{companies}} и ещё {{count}}",
+      "many_other": "{{companies}} и ещё {{count}}"
+    }
+  },
+  "sent": {
+    "titleWeek": "Отправлено по неделям",
+    "titleMonth": "Отправлено по месяцам",
+    "metaWeek": "На этой неделе {{current}} · в среднем {{average}} в неделю",
+    "metaMonth": "В этом месяце {{current}} · в среднем {{average}} в месяц",
+    "chartLabel_one": "{{count}} отклик отправлен в период с {{from}} по {{to}}",
+    "chartLabel_few": "{{count}} отклика отправлено в период с {{from}} по {{to}}",
+    "chartLabel_many": "{{count}} откликов отправлено в период с {{from}} по {{to}}",
+    "chartLabel_other": "{{count}} отклика отправлено в период с {{from}} по {{to}}"
+  },
+  "pipeline": {
+    "title": "Где они сейчас",
+    "meta": "Открыто: {{open}}, закрыто: {{closed}}",
+    "unstaged": "Статус в архиве",
+    "closed": "Закрыты"
+  },
+  "cvs": {
+    "title": "Версии резюме",
+    "meta_one": "{{count}} версия",
+    "meta_few": "{{count}} версии",
+    "meta_many": "{{count}} версий",
+    "meta_other": "{{count}} версии",
+    "metaDisabled_one": ", {{count}} отключена",
+    "metaDisabled_few": ", {{count}} отключены",
+    "metaDisabled_many": ", {{count}} отключено",
+    "metaDisabled_other": ", {{count}} отключены",
+    "empty": "В этих откликах не указано резюме",
+    "columns": {
+      "cv": "Резюме",
+      "sent": "Отправлено",
+      "heard": "Ответили",
+      "rate": "Доля ответов"
+    },
+    "disabled": "Отключена",
+    "tooFew": "слишком мало для оценки",
+    "total": "Все резюме",
+    "withoutCv_one": "{{count}} отклик без резюме",
+    "withoutCv_few": "{{count}} отклика без резюме",
+    "withoutCv_many": "{{count}} откликов без резюме",
+    "withoutCv_other": "{{count}} отклика без резюме",
+    "showMore_one": "Показать ещё {{count}}",
+    "showMore_few": "Показать ещё {{count}}",
+    "showMore_many": "Показать ещё {{count}}",
+    "showMore_other": "Показать ещё {{count}}",
+    "showLess": "Свернуть"
+  },
+  "closed": {
+    "title": "Чем закончились",
+    "meta_one": "Закрыто: {{count}}",
+    "meta_few": "Закрыто: {{count}}",
+    "meta_many": "Закрыто: {{count}}",
+    "meta_other": "Закрыто: {{count}}",
+    "empty": "Пока ничего не закрыто",
+    "columns": {
+      "outcome": "Результат",
+      "atEntry": "На этапе «{{status}}»",
+      "past": "После «{{status}}»",
+      "total": "Всего"
+    },
+    "total": "Все закрытые",
+    "finding_one": "{{count}} из {{total}} закрылся, не пройдя дальше «{{status}}»",
+    "finding_few": "{{count}} из {{total}} закрылись, не пройдя дальше «{{status}}»",
+    "finding_many": "{{count}} из {{total}} закрылись, не пройдя дальше «{{status}}»",
+    "finding_other": "{{count}} из {{total}} закрылись, не пройдя дальше «{{status}}»"
+  }
+}

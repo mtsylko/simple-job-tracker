@@ -1,0 +1,280 @@
+{
+  "taxonomy": {
+    "status": {
+      "applied": "Wysłano",
+      "hr": "HR",
+      "technical": "Techniczna",
+      "contacted-me": "Kontakt od rekrutera",
+      "test-task": "Zadanie testowe",
+      "offer": "Oferta"
+    }
+  },
+  "list": {
+    "title": "Aplikacje",
+    "export": "Eksportuj",
+    "newApplication": "Nowa aplikacja",
+    "tabs": {
+      "all": "Wszystkie",
+      "applied": "Wysłane",
+      "hr": "HR",
+      "technical": "Techniczne",
+      "offer": "Oferty"
+    },
+    "filters": {
+      "allRoles": "Wszystkie stanowiska",
+      "allTypes": "Wszystkie tryby pracy",
+      "allEmploymentTypes": "Każdy wymiar pracy",
+      "allContractTypes": "Wszystkie rodzaje umów",
+      "allLevels": "Wszystkie poziomy",
+      "allOutcomes": "Wszystkie wyniki",
+      "scopeActive": "Tylko aktywne",
+      "scopeArchived": "Tylko zarchiwizowane",
+      "scopeAll": "Wszystkie aplikacje",
+      "scopeLabel": "Pokaż",
+      "productCompanyCheckbox": "Firma produktowa",
+      "companyLabel": "Filtruj według firmy",
+      "companyPlaceholder": "Filtruj według firmy…",
+      "button": "Filtry",
+      "roleLabel": "Stanowisko",
+      "levelLabel": "Poziom",
+      "typeLabel": "Tryb pracy",
+      "employmentTypeLabel": "Wymiar pracy",
+      "contractTypeLabel": "Rodzaj umowy",
+      "outcomeLabel": "Wynik",
+      "appliedFromLabel": "Wysłane od",
+      "appliedToLabel": "Wysłane do",
+      "appliedFromPlaceholder": "Wysłane od",
+      "appliedToPlaceholder": "Wysłane do",
+      "clearDate": "Wyczyść datę",
+      "clearFilter": "Wyczyść filtr",
+      "clearAll": "Wyczyść wszystko",
+      "matchingCount": "Pasuje <filtered>{{filtered}}</filtered> z <total>{{total}}</total>"
+    },
+    "columns": {
+      "button": "Kolumny",
+      "title": "Widoczne kolumny",
+      "narrower": "Zwęż kolumnę {{column}}",
+      "wider": "Poszerz kolumnę {{column}}",
+      "reset": "Przywróć",
+      "hiddenCount_one": "ukryte: {{count}}",
+      "hiddenCount_few": "ukryte: {{count}}",
+      "hiddenCount_many": "ukryte: {{count}}",
+      "hiddenCount_other": "ukryte: {{count}}"
+    },
+    "grouping": {
+      "label": "Grupuj według",
+      "none": "Bez grupowania"
+    },
+    "table": {
+      "columns": {
+        "company": "Firma",
+        "status": "Status",
+        "statusChanged": "Zmiana statusu",
+        "outcome": "Wynik",
+        "post": "Ogłoszenie",
+        "role": "Stanowisko",
+        "level": "Poziom",
+        "type": "Tryb pracy",
+        "employmentType": "Wymiar pracy",
+        "contractType": "Rodzaj umowy",
+        "salary": "Wynagrodzenie",
+        "cv": "CV",
+        "applied": "Wysłano",
+        "notes": "Notatki",
+        "applicationQuestions": "Pytania w aplikacji"
+      },
+      "open": "Otwórz",
+      "previewCv": "Podgląd CV",
+      "resizeColumn": "Zmień szerokość kolumny {{column}}",
+      "columnWidth": "{{width}} pikseli",
+      "rowMenu": "Akcje dla {{company}}",
+      "menuEdit": "Edytuj",
+      "menuArchive": "Archiwizuj",
+      "menuUnarchive": "Przywróć",
+      "menuBlacklist": "Dodaj firmę do czarnej listy",
+      "menuDelete": "Usuń",
+      "archivedMarker": "Zarchiwizowana",
+      "archivedAt": "Zarchiwizowano {{date}}",
+      "noMatch": "Żadna aplikacja nie pasuje do tych filtrów",
+      "noMatchHint": "Spróbuj wyczyścić filtr albo dodaj nową aplikację.",
+      "loadedCount": "Załadowano {{count}} z {{total}}",
+      "productCompany": "Firma produktowa",
+      "agencyStudio": "Agencja / studio",
+      "askPrefix": "oczekuję {{value}}",
+      "noCompany": "Brak nazwy firmy",
+      "groupNoValue": "Nie ustawiono",
+      "groupCount_one": "{{count}} aplikacja",
+      "groupCount_few": "{{count}} aplikacje",
+      "groupCount_many": "{{count}} aplikacji",
+      "groupCount_other": "{{count}} aplikacji"
+    },
+    "deleteDialog": {
+      "title": "Usunąć aplikację do {{company}}?",
+      "body": "Aplikacja zostanie trwale usunięta razem ze statusem, notatkami i powiązanym CV. Tej operacji nie można cofnąć.",
+      "confirm": "Usuń",
+      "cancel": "Anuluj"
+    }
+  },
+  "empty": {
+    "title": "Nie masz jeszcze aplikacji",
+    "subtitle": "Dodaj pierwszą ofertę, na którą aplikujesz, a pojawi się tutaj",
+    "cta": "Nowa aplikacja",
+    "features": {
+      "capture": {
+        "title": "Szczegóły aplikacji",
+        "description": "Firma, stanowisko, poziom, widełki i własne notatki"
+      },
+      "funnel": {
+        "title": "Przegląd procesu",
+        "description": "Ile aplikacji jest na każdym etapie, od wysłania do oferty"
+      },
+      "stayOut": {
+        "title": "Wersje CV",
+        "description": "Które CV trafiło do której firmy i jak sprawdziła się każda wersja"
+      }
+    }
+  },
+  "combobox": {
+    "placeholder": "Wyszukaj lub wpisz firmę",
+    "useValue": "Użyj „{{value}}”"
+  },
+  "route": {
+    "loadingTitle": "Ładowanie aplikacji",
+    "loadingSubtitle": "Pobieranie listy aplikacji z API...",
+    "loadErrorTitle": "Nie udało się załadować aplikacji",
+    "loadJobErrorTitle": "Nie udało się załadować aplikacji",
+    "retry": "Spróbuj ponownie"
+  },
+  "form": {
+    "backToApplications": "Wróć do aplikacji",
+    "newApplicationTitle": "Nowa aplikacja",
+    "editApplicationTitle": "Edycja aplikacji",
+    "appliedPrefix": "· Wysłano {{date}}",
+    "submit": "Zapisz",
+    "saveChanges": "Zapisz zmiany",
+    "sections": {
+      "applicationDetails": "Szczegóły aplikacji",
+      "roleDetails": "Szczegóły stanowiska",
+      "applicationStatus": "Status aplikacji",
+      "compensation": "Wynagrodzenie",
+      "notesQuestions": "Notatki i pytania",
+      "customFields": "Dodatkowe pola",
+      "attachments": "Załączniki"
+    },
+    "reorderField": "Zmień kolejność pola",
+    "reorderSaveFailed": "Nie udało się zapisać kolejności pól",
+    "fields": {
+      "companyName": "Nazwa firmy",
+      "jobPostLink": "Link do ogłoszenia",
+      "jobPostLinkRefresh": "Pobierz szczegóły oferty z linku",
+      "dateOfApplication": "Data wysłania",
+      "companyType": "Typ firmy",
+      "productCompanyCheckbox": "To firma produktowa (nie agencja ani studio)",
+      "location": "Lokalizacja",
+      "role": "Stanowisko",
+      "level": "Poziom",
+      "workType": "Tryb pracy",
+      "employmentType": "Wymiar pracy",
+      "contractType": "Rodzaj umowy",
+      "cvUsed": "Wysłane CV",
+      "status": "Status",
+      "outcome": "Wynik",
+      "outcomeOptional": "Wynik (opcjonalnie)",
+      "postedSalaryRange": "Widełki z ogłoszenia",
+      "mySalaryExpectation": "Moje oczekiwania finansowe",
+      "notes": "Notatki",
+      "applicationQuestions": "Pytania w aplikacji",
+      "applicationQuestionsHint": "Niestandardowe pytania, które zadał pracodawca",
+      "customFields": "Pola własne"
+    },
+    "placeholders": {
+      "location": "Miasto lub kraj",
+      "selectRole": "Wybierz stanowisko",
+      "selectLevel": "Wybierz poziom",
+      "selectType": "Wybierz tryb pracy",
+      "selectEmploymentType": "Wybierz wymiar pracy",
+      "selectContractType": "Wybierz rodzaj umowy",
+      "selectCv": "Wybierz CV",
+      "selectOutcome": "Wybierz wynik",
+      "typeNewRole": "Wpisz nowe stanowisko",
+      "typeNewLevel": "Wpisz nowy poziom",
+      "typeNewType": "Wpisz nowy tryb pracy",
+      "typeNewEmploymentType": "Wpisz nowy wymiar pracy",
+      "typeNewContractType": "Wpisz nowy rodzaj umowy",
+      "noOutcomeYet": "Brak wyniku"
+    },
+    "addNew": {
+      "role": "Dodaj nowe stanowisko",
+      "level": "Dodaj nowy poziom",
+      "type": "Dodaj nowy tryb pracy",
+      "employmentType": "Dodaj nowy wymiar pracy",
+      "contractType": "Dodaj nowy rodzaj umowy"
+    },
+    "validation": {
+      "valueRequired": "Wartość jest wymagana",
+      "failedToSaveOption": "Nie udało się zapisać opcji",
+      "companyRequired": "Nazwa firmy jest wymagana",
+      "jobPostLinkRequired": "Link do ogłoszenia jest wymagany",
+      "jobPostLinkInvalid": "Link do ogłoszenia musi być poprawnym adresem URL",
+      "roleRequired": "Stanowisko jest wymagane",
+      "levelRequired": "Poziom jest wymagany",
+      "dateRequired": "Data wysłania jest wymagana",
+      "typeRequired": "Tryb pracy jest wymagany",
+      "cvRequired": "CV jest wymagane",
+      "statusRequired": "Status jest wymagany",
+      "customFieldRequired": "Pole „{{label}}” jest wymagane",
+      "genericValidationError": "Błąd walidacji",
+      "failedToSaveJob": "Nie udało się zapisać aplikacji",
+      "extractNoData": "Nie udało się odczytać żadnych szczegółów z tego linku. Uzupełnij pola ręcznie.",
+      "extractFailed": "Nie udało się pobrać szczegółów oferty z tego linku"
+    },
+    "attachments": {
+      "add": "Dodaj plik",
+      "list": "Załączone pliki",
+      "loading": "Wczytywanie plików…",
+      "emptyTitle": "Brak plików",
+      "emptyHint": "Transkrypcje rozmów, zadania rekrutacyjne, oferty",
+      "loadFailed": "Nie udało się wczytać załączników",
+      "uploadsOnSave": "zostanie wysłany przy zapisie",
+      "removedOnSave": "Zostanie usunięty przy zapisie",
+      "undo": "Cofnij",
+      "undoRemove": "Zachowaj {{name}}",
+      "download": "Pobierz {{name}}",
+      "remove": "Usuń {{name}}",
+      "downloadFailed": "Nie udało się pobrać {{name}}",
+      "limitReached": "Aplikacja może mieć maksymalnie {{limit}} plików",
+      "saveFailed": "Aplikacja zapisana, ale te pliki nie: {{names}}"
+    }
+  },
+  "export": {
+    "headers": {
+      "id": "id",
+      "companyName": "Nazwa firmy",
+      "isProductCompany": "Firma produktowa",
+      "notes": "Notatki",
+      "applicationQuestions": "Pytania w aplikacji",
+      "jobPostLink": "Link do ogłoszenia",
+      "role": "Stanowisko",
+      "level": "Poziom",
+      "stage": "Etap",
+      "outcome": "Wynik",
+      "customCv": "Własne CV",
+      "salaryRange": "Widełki",
+      "mySalaryExpectations": "Moje oczekiwania finansowe",
+      "cv": "CV",
+      "dateOfApplication": "Data wysłania",
+      "statusChanged": "Zmiana statusu",
+      "type": "Tryb pracy",
+      "employmentType": "Wymiar pracy",
+      "contractType": "Rodzaj umowy",
+      "location": "Lokalizacja",
+      "blacklisted": "Na czarnej liście"
+    },
+    "booleanTrue": "Tak",
+    "booleanFalse": "Nie"
+  },
+  "api": {
+    "invalidJobId": "API zwróciło nieprawidłowy identyfikator aplikacji",
+    "aiLimitReached": "Wykorzystano dzienny limit {{limit}} odczytów AI. Spróbuj ponownie jutro."
+  }
+}

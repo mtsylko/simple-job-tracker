@@ -1,0 +1,232 @@
+{
+  "brand": {
+    "name": "Job Tracker"
+  },
+  "breadcrumbs": {
+    "workspace": "Робочий простір",
+    "applications": "Відгуки",
+    "cvVersions": "Версії резюме",
+    "taxonomies": "Категорії",
+    "newApplication": "Новий відгук",
+    "edit": "Редагування",
+    "new": "Створення",
+    "jobFields": "Власні поля",
+    "companies": "Компанії",
+    "profile": "Профіль",
+    "admin": "Адміністрування",
+    "users": "Користувачі",
+    "feedback": "Зворотний зв’язок",
+    "translations": "Переклади"
+  },
+  "sidebar": {
+    "workspaceGroup": "Робочий простір",
+    "goToApplications": "Перейти до відгуків",
+    "logOut": "Вийти",
+    "profile": "Профіль",
+    "userMenu": "Обліковий запис і налаштування",
+    "primaryNavigation": "Основна навігація",
+    "toggle": "Показати або сховати бічну панель",
+    "mobileDescription": "Посилання на всі сторінки застосунку",
+    "nav": {
+      "applications": "Відгуки",
+      "cvVersions": "Версії резюме",
+      "analytics": "Аналітика",
+      "taxonomies": "Категорії",
+      "jobFields": "Власні поля",
+      "companies": "Компанії",
+      "mail": "Пошта",
+      "mailConnection": "Налаштування пересилання",
+      "mailMatch": "Перевірити лист",
+      "mailQueue": "Вхідні",
+      "admin": "Адміністрування",
+      "adminUsers": "Користувачі",
+      "adminFeedback": "Зворотний зв’язок",
+      "adminTranslations": "Переклади"
+    }
+  },
+  "header": {
+    "logOut": "Вийти"
+  },
+  "dialog": {
+    "close": "Закрити"
+  },
+  "theme": {
+    "label": "Тема",
+    "light": "Світла",
+    "dark": "Темна",
+    "system": "Системна"
+  },
+  "language": {
+    "label": "Мова",
+    "en": "English",
+    "pl": "Polski",
+    "ru": "Русский",
+    "be": "Беларуская",
+    "uk": "Українська"
+  },
+  "layout": {
+    "skipToContent": "Перейти до вмісту",
+    "documentTitle": "{{page}} — {{brand}}",
+    "openMenu": "Відкрити меню навігації"
+  },
+  "notifications": {
+    "entities": {
+      "job": "Відгук",
+      "cvVersion": "Версія резюме",
+      "jobRole": "Посада",
+      "jobLevel": "Рівень",
+      "jobType": "Формат роботи",
+      "jobEmploymentType": "Тип зайнятості",
+      "jobContractType": "Тип договору",
+      "jobStatus": "Статус",
+      "jobOutcome": "Результат",
+      "jobField": "Поле",
+      "candidateProfile": "Профіль"
+    },
+    "success": {
+      "created": "{{entity}}: створено",
+      "updated": "{{entity}}: зміни збережено",
+      "deleted": "{{entity}}: видалено",
+      "archived": "{{entity}}: перенесено в архів",
+      "restored": "{{entity}}: відновлено"
+    },
+    "error": {
+      "created": "{{entity}}: не вдалося створити",
+      "updated": "{{entity}}: не вдалося зберегти зміни",
+      "deleted": "{{entity}}: не вдалося видалити",
+      "archived": "{{entity}}: не вдалося перенести в архів",
+      "restored": "{{entity}}: не вдалося відновити"
+    }
+  },
+  "form": {
+    "saving": "Збереження...",
+    "cancel": "Скасувати",
+    "unsavedChanges": "Незбережені зміни",
+    "discardDialog": {
+      "title": "Скасувати незбережені зміни?",
+      "body": "Ви змінили цей відгук, але ще не зберегли його. Якщо піти зараз, правки буде втрачено.",
+      "keepEditing": "Продовжити редагування",
+      "discardChanges": "Скасувати зміни"
+    }
+  },
+  "routes": {
+    "default": {
+      "title": "Job Tracker",
+      "subtitle": "Керуйте своїми відгуками на вакансії"
+    },
+    "jobsCreate": {
+      "title": "Новий відгук",
+      "subtitle": "Відстежуйте новий відгук на вакансію",
+      "backToApplications": "Назад до відгуків"
+    },
+    "jobsEdit": {
+      "title": "Редагування відгуку",
+      "subtitle": "Оновіть дані відгуку",
+      "backToApplications": "Назад до відгуків"
+    },
+    "cvVersions": {
+      "title": "Версії резюме",
+      "subtitle": "Перегляд і керування версіями резюме",
+      "addCvVersion": "Додати версію резюме"
+    },
+    "cvVersionsCreate": {
+      "title": "Нова версія резюме",
+      "subtitle": "Створіть запис про нову версію резюме",
+      "backToCvVersions": "Назад до версій резюме"
+    },
+    "cvVersionsEdit": {
+      "title": "Редагування версії резюме",
+      "subtitle": "Оновіть дані версії резюме",
+      "backToCvVersions": "Назад до версій резюме"
+    },
+    "applications": {
+      "title": "Відгуки",
+      "subtitle": "Перегляд і керування вашими відгуками",
+      "addJob": "Додати відгук"
+    },
+    "taxonomies": {
+      "title": "Категорії",
+      "subtitle": "Значення посад, рівнів і форматів роботи, які використовуються у ваших відгуках"
+    },
+    "jobFields": {
+      "title": "Власні поля",
+      "subtitle": "Додайте до форми відгуку власні поля — вони з’являться в розділі «Додаткові поля»"
+    },
+    "companies": {
+      "title": "Компанії",
+      "subtitle": "Усі компанії з ваших відгуків і ті, яких ви вирішили уникати"
+    },
+    "analytics": {
+      "title": "Аналітика"
+    },
+    "mailConnection": {
+      "title": "Підключення пошти"
+    },
+    "mailMatch": {
+      "title": "Зіставлення листів"
+    },
+    "mailQueue": {
+      "title": "Черга листів"
+    },
+    "profile": {
+      "title": "Профіль",
+      "subtitle": "Ваші дані зберігаються в одному місці, щоб не вводити їх заново для кожного відгуку"
+    },
+    "adminUsers": {
+      "title": "Користувачі"
+    },
+    "adminFeedback": {
+      "title": "Зворотний зв’язок"
+    },
+    "adminTranslations": {
+      "title": "Переклади"
+    }
+  },
+  "api": {
+    "requestFailed": "Запит не виконано"
+  },
+  "errors": {
+    "unexpected": "Неочікувана помилка"
+  },
+  "fileUpload": {
+    "upload": "Завантажити файл",
+    "dropTitle": "Перетягніть файл сюди",
+    "dropHint": "або натисніть, щоб вибрати його на пристрої",
+    "uploadingTitle": "Завантаження файлу...",
+    "uploadingHint": "Будь ласка, зачекайте",
+    "acceptedFormats": "Допустимі формати: {{formats}}",
+    "maxSize": "Максимальний розмір: {{size}} МБ",
+    "unsupportedFormat": "Непідтримуваний формат файлу — допустимі формати: {{formats}}",
+    "tooLarge": "Файл більший за {{size}} МБ",
+    "uploadFailed": "Не вдалося завантажити файл",
+    "clearFile": "Прибрати вибраний файл"
+  },
+  "search": {
+    "searching": "Пошук...",
+    "failed": "Не вдалося виконати пошук",
+    "minLetters_one": "Введіть щонайменше {{count}} літеру для пошуку",
+    "minLetters_few": "Введіть щонайменше {{count}} літери для пошуку",
+    "minLetters_many": "Введіть щонайменше {{count}} літер для пошуку",
+    "minLetters_other": "Введіть щонайменше {{count}} літери для пошуку",
+    "noResults": "Нічого не знайдено"
+  },
+  "multiSelect": {
+    "empty": "Немає доступних варіантів"
+  },
+  "selectField": {
+    "accept": "Застосувати",
+    "cancel": "Скасувати"
+  },
+  "cookieConsent": {
+    "title": "Аналітичні cookie",
+    "body": "Ми хотіли б використовувати cookie Google Analytics, щоб бачити, якими сторінками й функціями користуються, — у них ніколи не потрапляють ваші відгуки, компанії чи резюме",
+    "withdraw": "Передумати можна будь-коли в налаштуваннях cookie",
+    "current": {
+      "granted": "Аналітичні cookie зараз дозволено",
+      "denied": "Аналітичні cookie зараз заблоковано"
+    },
+    "accept": "Прийняти",
+    "reject": "Відхилити",
+    "settings": "Налаштування cookie"
+  }
+}

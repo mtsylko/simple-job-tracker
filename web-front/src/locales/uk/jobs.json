@@ -1,0 +1,280 @@
+{
+  "taxonomy": {
+    "status": {
+      "applied": "Відгук надіслано",
+      "hr": "HR",
+      "technical": "Технічна",
+      "contacted-me": "Написали мені",
+      "test-task": "Тестове завдання",
+      "offer": "Офер"
+    }
+  },
+  "list": {
+    "title": "Відгуки",
+    "export": "Експорт",
+    "newApplication": "Новий відгук",
+    "tabs": {
+      "all": "Усі",
+      "applied": "Надіслані",
+      "hr": "HR",
+      "technical": "Технічні",
+      "offer": "Офери"
+    },
+    "filters": {
+      "allRoles": "Усі посади",
+      "allTypes": "Усі формати",
+      "allEmploymentTypes": "Усі типи зайнятості",
+      "allContractTypes": "Усі типи договору",
+      "allLevels": "Усі рівні",
+      "allOutcomes": "Усі результати",
+      "scopeActive": "Лише активні",
+      "scopeArchived": "Лише архівні",
+      "scopeAll": "Усі відгуки",
+      "scopeLabel": "Показати",
+      "productCompanyCheckbox": "Продуктова компанія",
+      "companyLabel": "Фільтр за компанією",
+      "companyPlaceholder": "Фільтр за компанією…",
+      "button": "Фільтри",
+      "roleLabel": "Посада",
+      "levelLabel": "Рівень",
+      "typeLabel": "Формат",
+      "employmentTypeLabel": "Тип зайнятості",
+      "contractTypeLabel": "Тип договору",
+      "outcomeLabel": "Результат",
+      "appliedFromLabel": "Відгук від",
+      "appliedToLabel": "Відгук до",
+      "appliedFromPlaceholder": "Відгук від",
+      "appliedToPlaceholder": "Відгук до",
+      "clearDate": "Очистити дату",
+      "clearFilter": "Скинути фільтр",
+      "clearAll": "Скинути все",
+      "matchingCount": "Підходить <filtered>{{filtered}}</filtered> з <total>{{total}}</total>"
+    },
+    "columns": {
+      "button": "Стовпці",
+      "title": "Видимі стовпці",
+      "narrower": "Звузити стовпець «{{column}}»",
+      "wider": "Розширити стовпець «{{column}}»",
+      "reset": "Скинути",
+      "hiddenCount_one": "приховано: {{count}}",
+      "hiddenCount_few": "приховано: {{count}}",
+      "hiddenCount_many": "приховано: {{count}}",
+      "hiddenCount_other": "приховано: {{count}}"
+    },
+    "grouping": {
+      "label": "Групувати за",
+      "none": "Без групування"
+    },
+    "table": {
+      "columns": {
+        "company": "Компанія",
+        "status": "Статус",
+        "statusChanged": "Статус змінено",
+        "outcome": "Результат",
+        "post": "Вакансія",
+        "role": "Посада",
+        "level": "Рівень",
+        "type": "Формат",
+        "employmentType": "Тип зайнятості",
+        "contractType": "Тип договору",
+        "salary": "Зарплата",
+        "cv": "Резюме",
+        "applied": "Відгук",
+        "notes": "Нотатки",
+        "applicationQuestions": "Питання у відгуку"
+      },
+      "open": "Відкрити",
+      "previewCv": "Переглянути резюме",
+      "resizeColumn": "Змінити ширину стовпця «{{column}}»",
+      "columnWidth": "{{width}} пікселів",
+      "rowMenu": "Дії для {{company}}",
+      "menuEdit": "Змінити",
+      "menuArchive": "В архів",
+      "menuUnarchive": "Відновити",
+      "menuBlacklist": "Компанію до чорного списку",
+      "menuDelete": "Видалити",
+      "archivedMarker": "В архіві",
+      "archivedAt": "В архіві з {{date}}",
+      "noMatch": "Немає відгуків, що відповідають цим фільтрам",
+      "noMatchHint": "Спробуйте скинути фільтр або додати новий відгук.",
+      "loadedCount": "Завантажено {{count}} з {{total}}",
+      "productCompany": "Продуктова компанія",
+      "agencyStudio": "Агенція / студія",
+      "askPrefix": "очікую {{value}}",
+      "noCompany": "Без назви компанії",
+      "groupNoValue": "Не вказано",
+      "groupCount_one": "{{count}} відгук",
+      "groupCount_few": "{{count}} відгуки",
+      "groupCount_many": "{{count}} відгуків",
+      "groupCount_other": "{{count}} відгуку"
+    },
+    "deleteDialog": {
+      "title": "Видалити відгук у {{company}}?",
+      "body": "Відгук буде видалено назавжди разом зі статусом, нотатками й посиланням на резюме. Цю дію не можна скасувати.",
+      "confirm": "Видалити",
+      "cancel": "Скасувати"
+    }
+  },
+  "empty": {
+    "title": "Відгуків поки немає",
+    "subtitle": "Додайте першу вакансію, на яку ви відгукнулися, і вона з’явиться тут",
+    "cta": "Новий відгук",
+    "features": {
+      "capture": {
+        "title": "Дані відгуку",
+        "description": "Компанія, посада, рівень, вилка зарплати й ваші нотатки"
+      },
+      "funnel": {
+        "title": "Огляд воронки",
+        "description": "Скільки відгуків на кожному етапі — від надсилання до оферу"
+      },
+      "stayOut": {
+        "title": "Версії резюме",
+        "description": "Яке резюме ви надіслали в кожну компанію і як спрацювала кожна версія"
+      }
+    }
+  },
+  "combobox": {
+    "placeholder": "Знайдіть або введіть компанію",
+    "useValue": "Використати «{{value}}»"
+  },
+  "route": {
+    "loadingTitle": "Завантаження відгуків",
+    "loadingSubtitle": "Отримуємо список відгуків з API...",
+    "loadErrorTitle": "Не вдалося завантажити відгуки",
+    "loadJobErrorTitle": "Не вдалося завантажити відгук",
+    "retry": "Повторити"
+  },
+  "form": {
+    "backToApplications": "Назад до відгуків",
+    "newApplicationTitle": "Новий відгук",
+    "editApplicationTitle": "Редагування відгуку",
+    "appliedPrefix": "· Відгук від {{date}}",
+    "submit": "Створити",
+    "saveChanges": "Зберегти зміни",
+    "sections": {
+      "applicationDetails": "Дані відгуку",
+      "roleDetails": "Дані вакансії",
+      "applicationStatus": "Статус відгуку",
+      "compensation": "Зарплата",
+      "notesQuestions": "Нотатки й питання",
+      "customFields": "Додаткові поля",
+      "attachments": "Вкладення"
+    },
+    "reorderField": "Перемістити поле",
+    "reorderSaveFailed": "Не вдалося зберегти порядок полів",
+    "fields": {
+      "companyName": "Назва компанії",
+      "jobPostLink": "Посилання на вакансію",
+      "jobPostLinkRefresh": "Отримати дані вакансії за посиланням",
+      "dateOfApplication": "Дата відгуку",
+      "companyType": "Тип компанії",
+      "productCompanyCheckbox": "Це продуктова компанія (не агенція й не студія)",
+      "location": "Місцезнаходження",
+      "role": "Посада",
+      "level": "Рівень",
+      "workType": "Формат роботи",
+      "employmentType": "Тип зайнятості",
+      "contractType": "Тип договору",
+      "cvUsed": "Надіслане резюме",
+      "status": "Статус",
+      "outcome": "Результат",
+      "outcomeOptional": "Результат (необов’язково)",
+      "postedSalaryRange": "Вилка з вакансії",
+      "mySalaryExpectation": "Мої очікування щодо зарплати",
+      "notes": "Нотатки",
+      "applicationQuestions": "Питання у відгуку",
+      "applicationQuestionsHint": "Нестандартні питання, які вам поставили",
+      "customFields": "Власні поля"
+    },
+    "placeholders": {
+      "location": "Місто або країна",
+      "selectRole": "Виберіть посаду",
+      "selectLevel": "Виберіть рівень",
+      "selectType": "Виберіть формат",
+      "selectEmploymentType": "Виберіть тип зайнятості",
+      "selectContractType": "Виберіть тип договору",
+      "selectCv": "Виберіть резюме",
+      "selectOutcome": "Виберіть результат",
+      "typeNewRole": "Введіть нову посаду",
+      "typeNewLevel": "Введіть новий рівень",
+      "typeNewType": "Введіть новий формат",
+      "typeNewEmploymentType": "Введіть новий тип зайнятості",
+      "typeNewContractType": "Введіть новий тип договору",
+      "noOutcomeYet": "Результату поки немає"
+    },
+    "addNew": {
+      "role": "Додати посаду",
+      "level": "Додати рівень",
+      "type": "Додати формат",
+      "employmentType": "Додати тип зайнятості",
+      "contractType": "Додати тип договору"
+    },
+    "validation": {
+      "valueRequired": "Вкажіть значення",
+      "failedToSaveOption": "Не вдалося зберегти варіант",
+      "companyRequired": "Вкажіть назву компанії",
+      "jobPostLinkRequired": "Вкажіть посилання на вакансію",
+      "jobPostLinkInvalid": "Посилання на вакансію має бути коректною URL-адресою",
+      "roleRequired": "Вкажіть посаду",
+      "levelRequired": "Вкажіть рівень",
+      "dateRequired": "Вкажіть дату відгуку",
+      "typeRequired": "Вкажіть формат",
+      "cvRequired": "Вкажіть резюме",
+      "statusRequired": "Вкажіть статус",
+      "customFieldRequired": "Заповніть поле «{{label}}»",
+      "genericValidationError": "Помилка перевірки даних",
+      "failedToSaveJob": "Не вдалося зберегти відгук",
+      "extractNoData": "Не вдалося видобути дані за цим посиланням. Заповніть поля вручну.",
+      "extractFailed": "Не вдалося отримати дані вакансії за цим посиланням"
+    },
+    "attachments": {
+      "add": "Додати файл",
+      "list": "Прикріплені файли",
+      "loading": "Завантажуємо файли…",
+      "emptyTitle": "Файлів поки немає",
+      "emptyHint": "Транскрипти співбесід, тестові завдання, офери",
+      "loadFailed": "Не вдалося завантажити вкладення",
+      "uploadsOnSave": "завантажиться під час збереження",
+      "removedOnSave": "Видалиться під час збереження",
+      "undo": "Скасувати",
+      "undoRemove": "Залишити {{name}}",
+      "download": "Завантажити {{name}}",
+      "remove": "Видалити {{name}}",
+      "downloadFailed": "Не вдалося завантажити {{name}}",
+      "limitReached": "До заявки можна прикріпити до {{limit}} файлів",
+      "saveFailed": "Заявку збережено, але ці файли — ні: {{names}}"
+    }
+  },
+  "export": {
+    "headers": {
+      "id": "id",
+      "companyName": "Назва компанії",
+      "isProductCompany": "Продуктова компанія",
+      "notes": "Нотатки",
+      "applicationQuestions": "Питання у відгуку",
+      "jobPostLink": "Посилання на вакансію",
+      "role": "Посада",
+      "level": "Рівень",
+      "stage": "Етап",
+      "outcome": "Результат",
+      "customCv": "Власне резюме",
+      "salaryRange": "Вилка зарплати",
+      "mySalaryExpectations": "Мої очікування щодо зарплати",
+      "cv": "Резюме",
+      "dateOfApplication": "Дата відгуку",
+      "statusChanged": "Статус змінено",
+      "type": "Формат",
+      "employmentType": "Тип зайнятості",
+      "contractType": "Тип договору",
+      "location": "Місцезнаходження",
+      "blacklisted": "У чорному списку"
+    },
+    "booleanTrue": "Так",
+    "booleanFalse": "Ні"
+  },
+  "api": {
+    "invalidJobId": "API повернув некоректний id відгуку",
+    "aiLimitReached": "Ви вичерпали денний ліміт видобувань за допомогою ШІ ({{limit}}). Спробуйте завтра."
+  }
+}

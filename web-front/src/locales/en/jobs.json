@@ -1,0 +1,276 @@
+{
+  "taxonomy": {
+    "status": {
+      "applied": "Applied",
+      "hr": "HR",
+      "technical": "Technical",
+      "contacted-me": "Contacted me",
+      "test-task": "Test task",
+      "offer": "Offer"
+    }
+  },
+  "list": {
+    "title": "Applications",
+    "export": "Export",
+    "newApplication": "New application",
+    "tabs": {
+      "all": "All",
+      "applied": "Applied",
+      "hr": "HR",
+      "technical": "Technical",
+      "offer": "Offers"
+    },
+    "filters": {
+      "allRoles": "All roles",
+      "allTypes": "All types",
+      "allEmploymentTypes": "All employment types",
+      "allContractTypes": "All contract types",
+      "allLevels": "All levels",
+      "allOutcomes": "All outcomes",
+      "scopeActive": "Active only",
+      "scopeArchived": "Archived only",
+      "scopeAll": "All applications",
+      "scopeLabel": "Show",
+      "productCompanyCheckbox": "Product company",
+      "companyLabel": "Filter by company",
+      "companyPlaceholder": "Filter by company…",
+      "button": "Filters",
+      "roleLabel": "Role",
+      "levelLabel": "Level",
+      "typeLabel": "Type",
+      "employmentTypeLabel": "Employment type",
+      "contractTypeLabel": "Contract type",
+      "outcomeLabel": "Outcome",
+      "appliedFromLabel": "Applied from",
+      "appliedToLabel": "Applied to",
+      "appliedFromPlaceholder": "Applied from",
+      "appliedToPlaceholder": "Applied to",
+      "clearDate": "Clear date",
+      "clearFilter": "Clear filter",
+      "clearAll": "Clear all",
+      "matchingCount": "<filtered>{{filtered}}</filtered> of <total>{{total}}</total> matching"
+    },
+    "columns": {
+      "button": "Columns",
+      "title": "Visible columns",
+      "narrower": "Make {{column}} narrower",
+      "wider": "Make {{column}} wider",
+      "reset": "Reset",
+      "hiddenCount_one": "{{count}} hidden",
+      "hiddenCount_other": "{{count}} hidden"
+    },
+    "grouping": {
+      "label": "Group by",
+      "none": "Nothing"
+    },
+    "table": {
+      "columns": {
+        "company": "Company",
+        "status": "Status",
+        "statusChanged": "Status changed",
+        "outcome": "Outcome",
+        "post": "Post",
+        "role": "Role",
+        "level": "Level",
+        "type": "Type",
+        "employmentType": "Employment type",
+        "contractType": "Contract type",
+        "salary": "Salary",
+        "cv": "CV",
+        "applied": "Applied",
+        "notes": "Notes",
+        "applicationQuestions": "Application questions"
+      },
+      "open": "Open",
+      "previewCv": "Preview CV",
+      "resizeColumn": "Resize {{column}}",
+      "columnWidth": "{{width}} pixels",
+      "rowMenu": "Actions for {{company}}",
+      "menuEdit": "Edit",
+      "menuArchive": "Archive",
+      "menuUnarchive": "Restore",
+      "menuBlacklist": "Blacklist company",
+      "menuDelete": "Delete",
+      "archivedMarker": "Archived",
+      "archivedAt": "Archived {{date}}",
+      "noMatch": "No applications match these filters",
+      "noMatchHint": "Try clearing a filter or logging a new application.",
+      "loadedCount": "{{count}} of {{total}} loaded",
+      "productCompany": "Product company",
+      "agencyStudio": "Agency / Studio",
+      "askPrefix": "ask {{value}}",
+      "noCompany": "No company name",
+      "groupNoValue": "Not set",
+      "groupCount_one": "{{count}} application",
+      "groupCount_other": "{{count}} applications"
+    },
+    "deleteDialog": {
+      "title": "Delete the {{company}} application?",
+      "body": "This application will be permanently removed, along with its status, notes and CV link. This can't be undone.",
+      "confirm": "Delete",
+      "cancel": "Cancel"
+    }
+  },
+  "empty": {
+    "title": "No applications yet",
+    "subtitle": "Add the first job you applied to and it will show up here",
+    "cta": "New application",
+    "features": {
+      "capture": {
+        "title": "Application details",
+        "description": "Company, role, level, salary range and your own notes"
+      },
+      "funnel": {
+        "title": "Pipeline overview",
+        "description": "How many applications sit at each stage, from applied to offer"
+      },
+      "stayOut": {
+        "title": "CV versions",
+        "description": "Which CV you sent to each company, and how each version did"
+      }
+    }
+  },
+  "combobox": {
+    "placeholder": "Search or type company",
+    "useValue": "Use \"{{value}}\""
+  },
+  "route": {
+    "loadingTitle": "Loading jobs",
+    "loadingSubtitle": "Fetching job list from API...",
+    "loadErrorTitle": "Failed to load jobs",
+    "loadJobErrorTitle": "Failed to load job",
+    "retry": "Retry"
+  },
+  "form": {
+    "backToApplications": "Back to Applications",
+    "newApplicationTitle": "New application",
+    "editApplicationTitle": "Edit application",
+    "appliedPrefix": "· Applied {{date}}",
+    "submit": "Submit",
+    "saveChanges": "Save changes",
+    "sections": {
+      "applicationDetails": "Application details",
+      "roleDetails": "Role details",
+      "applicationStatus": "Application status",
+      "compensation": "Compensation",
+      "notesQuestions": "Notes & questions",
+      "customFields": "Additional fields",
+      "attachments": "Attachments"
+    },
+    "reorderField": "Reorder field",
+    "reorderSaveFailed": "Could not save the field order",
+    "fields": {
+      "companyName": "Company name",
+      "jobPostLink": "Job post link",
+      "jobPostLinkRefresh": "Fetch job details from link",
+      "dateOfApplication": "Date of application",
+      "companyType": "Company type",
+      "productCompanyCheckbox": "This is a product company (not an agency or studio)",
+      "location": "Location",
+      "role": "Role",
+      "level": "Level",
+      "workType": "Work type",
+      "employmentType": "Employment type",
+      "contractType": "Contract type",
+      "cvUsed": "CV used",
+      "status": "Status",
+      "outcome": "Outcome",
+      "outcomeOptional": "Outcome (optional)",
+      "postedSalaryRange": "Posted salary range",
+      "mySalaryExpectation": "My salary expectation",
+      "notes": "Notes",
+      "applicationQuestions": "Application questions",
+      "applicationQuestionsHint": "The custom ones they asked",
+      "customFields": "Custom fields"
+    },
+    "placeholders": {
+      "location": "City or country",
+      "selectRole": "Select role",
+      "selectLevel": "Select level",
+      "selectType": "Select type",
+      "selectEmploymentType": "Select employment type",
+      "selectContractType": "Select contract type",
+      "selectCv": "Select CV",
+      "selectOutcome": "Select outcome",
+      "typeNewRole": "Type new role",
+      "typeNewLevel": "Type new level",
+      "typeNewType": "Type new type",
+      "typeNewEmploymentType": "Type new employment type",
+      "typeNewContractType": "Type new contract type",
+      "noOutcomeYet": "No outcome yet"
+    },
+    "addNew": {
+      "role": "Add new role",
+      "level": "Add new level",
+      "type": "Add new type",
+      "employmentType": "Add new employment type",
+      "contractType": "Add new contract type"
+    },
+    "validation": {
+      "valueRequired": "Value is required",
+      "failedToSaveOption": "Failed to save option",
+      "companyRequired": "Company name is required",
+      "jobPostLinkRequired": "Job post link is required",
+      "jobPostLinkInvalid": "Job post link must be a valid URL",
+      "roleRequired": "Role is required",
+      "levelRequired": "Level is required",
+      "dateRequired": "Date of application is required",
+      "typeRequired": "Type is required",
+      "cvRequired": "CV is required",
+      "statusRequired": "Status is required",
+      "customFieldRequired": "{{label}} is required",
+      "genericValidationError": "Validation error",
+      "failedToSaveJob": "Failed to save job",
+      "extractNoData": "Could not extract any details from this link. Please fill in the fields manually.",
+      "extractFailed": "Failed to fetch job details from this link"
+    },
+    "attachments": {
+      "add": "Add a file",
+      "list": "Attached files",
+      "loading": "Loading files…",
+      "emptyTitle": "No files yet",
+      "emptyHint": "Interview transcripts, take-home tasks, offer letters",
+      "loadFailed": "Couldn't load the attachments",
+      "uploadsOnSave": "uploads on save",
+      "removedOnSave": "Removed on save",
+      "undo": "Undo",
+      "undoRemove": "Keep {{name}}",
+      "download": "Download {{name}}",
+      "remove": "Remove {{name}}",
+      "downloadFailed": "Couldn't download {{name}}",
+      "limitReached": "An application holds up to {{limit}} files",
+      "saveFailed": "Application saved, but these files weren't: {{names}}"
+    }
+  },
+  "export": {
+    "headers": {
+      "id": "id",
+      "companyName": "Company name",
+      "isProductCompany": "Is product company",
+      "notes": "Notes",
+      "applicationQuestions": "Application questions",
+      "jobPostLink": "Job post link",
+      "role": "Role",
+      "level": "Level",
+      "stage": "Stage",
+      "outcome": "Outcome",
+      "customCv": "Custom CV",
+      "salaryRange": "Salary range",
+      "mySalaryExpectations": "My salary expectations",
+      "cv": "CV",
+      "dateOfApplication": "Date of application",
+      "statusChanged": "Status changed",
+      "type": "Type",
+      "employmentType": "Employment type",
+      "contractType": "Contract type",
+      "location": "Location",
+      "blacklisted": "Blacklisted"
+    },
+    "booleanTrue": "True",
+    "booleanFalse": "False"
+  },
+  "api": {
+    "invalidJobId": "Invalid job id returned by API",
+    "aiLimitReached": "You've reached your daily limit of {{limit}} AI extractions. Please try again tomorrow."
+  }
+}
