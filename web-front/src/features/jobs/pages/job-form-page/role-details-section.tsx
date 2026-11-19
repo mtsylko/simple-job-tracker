@@ -18,6 +18,8 @@ import {
   createJobTypeOption
 } from '@/features/jobs/job-api';
 import type { JobFormValues } from '@/features/jobs/types';
+import { useTaxonomyStore } from '@/features/taxonomies/taxonomy-store';
+import type { TaxonomyKind } from '@/features/taxonomies/use-taxonomy-lists';
 
 import { LocationField } from '@/features/jobs/components/LocationField';
 
@@ -57,6 +59,15 @@ export function RoleDetailsSection({
   onOrderChange: (next: SectionField<'roleDetails'>[]) => void;
   t: TFunction<'jobs'>;
 }) {
+  const reloadTaxonomy = useTaxonomyStore((store) => store.reloadTaxonomy);
+  // The store feeds every form's options, so a value added here is reloaded into it.
+  const persistOption =
+    (kind: TaxonomyKind, create: (value: string) => Promise<void>) =>
+    async (value: string) => {
+      await create(value);
+      await reloadTaxonomy(kind);
+    };
+
   const mergedCvOptions = useMemo(() => {
     const valuesToMerge = normalizeUniqueValues([...cvOptions, values.cv]);
     return valuesToMerge.map((value) => ({ value, label: value }));
@@ -73,7 +84,7 @@ export function RoleDetailsSection({
           value={values.role}
           onChange={(value) => onFieldChange('role', value)}
           values={roleOptions}
-          onPersist={createJobRoleOption}
+          onPersist={persistOption('role', createJobRoleOption)}
           addNewOptionLabel={t('form.addNew.role')}
           newOptionPlaceholder={t('form.placeholders.typeNewRole')}
           placeholder={t('form.placeholders.selectRole')}
@@ -92,7 +103,7 @@ export function RoleDetailsSection({
           value={values.level}
           onChange={(value) => onFieldChange('level', value)}
           values={levelOptions}
-          onPersist={createJobLevelOption}
+          onPersist={persistOption('level', createJobLevelOption)}
           addNewOptionLabel={t('form.addNew.level')}
           newOptionPlaceholder={t('form.placeholders.typeNewLevel')}
           placeholder={t('form.placeholders.selectLevel')}
@@ -120,7 +131,7 @@ export function RoleDetailsSection({
           value={values.type}
           onChange={(value) => onFieldChange('type', value)}
           values={typeOptions}
-          onPersist={createJobTypeOption}
+          onPersist={persistOption('type', createJobTypeOption)}
           addNewOptionLabel={t('form.addNew.type')}
           newOptionPlaceholder={t('form.placeholders.typeNewType')}
           placeholder={t('form.placeholders.selectType')}
@@ -139,7 +150,10 @@ export function RoleDetailsSection({
           value={values.employmentType}
           onChange={(value) => onFieldChange('employmentType', value)}
           values={employmentTypeOptions}
-          onPersist={createJobEmploymentTypeOption}
+          onPersist={persistOption(
+            'employmentType',
+            createJobEmploymentTypeOption
+          )}
           addNewOptionLabel={t('form.addNew.employmentType')}
           newOptionPlaceholder={t('form.placeholders.typeNewEmploymentType')}
           placeholder={t('form.placeholders.selectEmploymentType')}
@@ -158,7 +172,7 @@ export function RoleDetailsSection({
           value={values.contractType}
           onChange={(value) => onFieldChange('contractType', value)}
           values={contractTypeOptions}
-          onPersist={createJobContractTypeOption}
+          onPersist={persistOption('contractType', createJobContractTypeOption)}
           addNewOptionLabel={t('form.addNew.contractType')}
           newOptionPlaceholder={t('form.placeholders.typeNewContractType')}
           placeholder={t('form.placeholders.selectContractType')}

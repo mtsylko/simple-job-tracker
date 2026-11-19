@@ -16,15 +16,17 @@ export function useCvVersionsLoadState() {
     );
 
   useEffect(() => {
-    if (!hasLoaded && !storeIsLoading) {
+    // A failed first load waits for the retry button rather than looping.
+    if (!storeIsLoading && !hasLoaded && !error) {
       void refreshCvVersions();
     }
-  }, [hasLoaded, refreshCvVersions, storeIsLoading]);
+  }, [error, hasLoaded, refreshCvVersions, storeIsLoading]);
 
   return {
     cvVersions,
-    isLoading: storeIsLoading || !hasLoaded,
-    error,
+    // Only a list never loaded holds the page; a failed action leaves it on screen.
+    isLoading: !hasLoaded && !error,
+    error: hasLoaded ? null : error,
     refreshCvVersions
   };
 }

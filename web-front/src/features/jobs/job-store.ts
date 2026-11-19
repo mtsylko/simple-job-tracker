@@ -9,21 +9,27 @@ import {
 } from '@/features/jobs/job-api';
 import { type JobFormValues, type JobRow } from '@/features/jobs/types';
 import { readErrorMessage } from '@/features/utils';
+import i18n from '@/i18n';
 import {
   trackJobArchived,
   trackJobCreated,
   trackJobDeleted,
   trackJobUpdated
 } from '@/lib/analytics-events';
+import { notify } from '@/lib/notifications';
 
 type JobsState = {
   jobs: JobRow[];
+  /** A list request is in flight. */
   isLoading: boolean;
+  /** Why the list could not be loaded; a failed mutation is reported to its caller instead. */
   error: string | null;
+  /** `jobs` holds a list fetched from the API. */
   hasLoaded: boolean;
+  /** The list changed on the server, so the next list view refetches it behind the rows on screen. */
+  isStale: boolean;
   refreshJobs: () => Promise<void>;
-  /** Drops the loaded flag so the next list view refetches — used when a taxonomy
-   *  rename changes labels the list resolves from the server. */
+  /** Marks the list stale, e.g. after a taxonomy rename changes labels the list resolves from the server. */
   invalidateJobs: () => void;
   createJob: (values: JobFormValues) => Promise<JobRow>;
   updateJob: (id: string, values: JobFormValues) => Promise<void>;
@@ -36,42 +42,45 @@ export const useJobsStore = create<JobsState>((set, get) => ({
   isLoading: false,
   error: null,
   hasLoaded: false,
+  isStale: false,
   async refreshJobs() {
     if (get().isLoading) {
       return;
     }
 
-    set({ isLoading: true, error: null });
+    set({ isLoading: true, isStale: false, error: null });
 
     try {
       const data = await listJobs();
-      set({ jobs: data, error: null, hasLoaded: true });
+      set({ jobs: data, hasLoaded: true });
     } catch (caughtError) {
-      set({ error: readErrorMessage(caughtError), hasLoaded: true });
+      const message = readErrorMessage(caughtError);
+      set({ error: message });
+      // The rows on screen stay; only the background refresh failed.
+      if (get().hasLoaded) {
+        notify.error(
+          i18n.t('route.refreshErrorTitle', { ns: 'jobs' }),
+          message
+        );
+      }
     } finally {
       set({ isLoading: false });
     }
   },
   invalidateJobs() {
-    set({ hasLoaded: false });
+    set({ isStale: true });
   },
   async createJob(values) {
-    set({ error: null });
-
     try {
       const created = await createJobRequest(values);
       set((state) => ({ jobs: [created, ...state.jobs] }));
       trackJobCreated();
       return created;
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   },
   async updateJob(id, values) {
-    set({ error: null });
-
     try {
       const updated = await updateJobRequest(id, values);
       set((state) => ({
@@ -79,14 +88,10 @@ export const useJobsStore = create<JobsState>((set, get) => ({
       }));
       trackJobUpdated();
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   },
   async setJobArchived(id, archived) {
-    set({ error: null });
-
     try {
       const updated = await setJobArchivedRequest(id, archived);
       set((state) => ({
@@ -94,14 +99,10 @@ export const useJobsStore = create<JobsState>((set, get) => ({
       }));
       trackJobArchived(archived);
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   },
   async deleteJob(id) {
-    set({ error: null });
-
     try {
       await deleteJobRequest(id);
       set((state) => ({
@@ -109,9 +110,7 @@ export const useJobsStore = create<JobsState>((set, get) => ({
       }));
       trackJobDeleted();
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   }
 }));

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { UserRole } from '@job-tracker/shared';
 
+import { useTaxonomyStore } from '@/features/taxonomies/taxonomy-store';
+
 export type CurrentUser = {
   id: string;
   email: string;
@@ -39,6 +41,9 @@ export function useCurrentUser() {
         return;
       }
 
+      if (nextUser) {
+        useTaxonomyStore.getState().bindUser(nextUser.id);
+      }
       setUser(nextUser);
       setIsLoading(false);
     };

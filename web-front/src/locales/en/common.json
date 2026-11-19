@@ -183,7 +183,8 @@
     }
   },
   "api": {
-    "requestFailed": "Request failed"
+    "requestFailed": "Request failed",
+    "sessionExpired": "Your session has expired. Sign in again"
   },
   "errors": {
     "unexpected": "Unexpected error"
@@ -226,5 +227,10 @@
     "accept": "Accept",
     "reject": "Reject",
     "settings": "Cookie settings"
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "body": "This page failed to display. The rest of the app still works",
+    "reload": "Reload page"
   }
 }

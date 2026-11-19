@@ -1,18 +1,8 @@
 import 'reflect-metadata';
-import fs from 'node:fs';
-import path from 'node:path';
-import dotenv from 'dotenv';
-import { DataSource } from 'typeorm';
-
 // The CLI does not boot Nest, so it loads the same env files main.ts does.
-for (const envPath of [
-  path.resolve(process.cwd(), '.env'),
-  path.resolve(process.cwd(), 'web-api/.env')
-]) {
-  if (fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
-  }
-}
+import './load-env';
+import path from 'node:path';
+import { DataSource } from 'typeorm';
 
 /**
  * Standalone DataSource for the TypeORM CLI (generate/run/revert). It has no

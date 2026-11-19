@@ -26,6 +26,7 @@ import { JobOutcomesService } from '../job-outcomes/job-outcomes.service';
 import { JobRolesService } from '../job-roles/job-roles.service';
 import { JobStatusesService } from '../job-statuses/job-statuses.service';
 import { JobTypesService } from '../job-types/job-types.service';
+import type { TaxonomyOptionEntity } from '../taxonomies/taxonomy-option.entity';
 import { JobEntity } from './job.entity';
 import { JobAttachmentsService } from './job-attachments.service';
 
@@ -165,6 +166,18 @@ export class JobsService {
     };
   }
 
+  /** A re-save sends every field: an unchanged label keeps its option, so an archived one stays archived. */
+  private relink<T extends TaxonomyOptionEntity, R extends T | null>(
+    taxonomy: { resolveOption(userId: string, value: string): Promise<R> },
+    userId: string,
+    current: T | null,
+    rawValue: string
+  ): Promise<T | R> {
+    return current !== null && current.value === rawValue.trim()
+      ? Promise.resolve(current)
+      : taxonomy.resolveOption(userId, rawValue);
+  }
+
   async create(userId: string, input: CreateJobInput): Promise<Job> {
     const now = new Date();
     const customFields = await this.validateCustomFields(
@@ -297,8 +310,10 @@ export class JobsService {
     }
 
     if (input.role !== undefined) {
-      const option = await this.jobRolesService.resolveOption(
+      const option = await this.relink(
+        this.jobRolesService,
         userId,
+        row.roleOption,
         input.role
       );
       row.roleOption = option;
@@ -306,8 +321,10 @@ export class JobsService {
     }
 
     if (input.level !== undefined) {
-      const option = await this.jobLevelsService.resolveOption(
+      const option = await this.relink(
+        this.jobLevelsService,
         userId,
+        row.levelOption,
         input.level
       );
       row.levelOption = option;
@@ -315,8 +332,10 @@ export class JobsService {
     }
 
     if (input.type !== undefined) {
-      const option = await this.jobTypesService.resolveOption(
+      const option = await this.relink(
+        this.jobTypesService,
         userId,
+        row.typeOption,
         input.type
       );
       row.typeOption = option;
@@ -326,8 +345,10 @@ export class JobsService {
     if (input.employmentType !== undefined) {
       // Clearing (null/empty) drops the link; otherwise resolve it.
       const option = input.employmentType
-        ? await this.jobEmploymentTypesService.resolveOption(
+        ? await this.relink(
+            this.jobEmploymentTypesService,
             userId,
+            row.employmentTypeOption,
             input.employmentType
           )
         : null;
@@ -337,8 +358,10 @@ export class JobsService {
 
     if (input.contractType !== undefined) {
       const option = input.contractType
-        ? await this.jobContractTypesService.resolveOption(
+        ? await this.relink(
+            this.jobContractTypesService,
             userId,
+            row.contractTypeOption,
             input.contractType
           )
         : null;
@@ -367,8 +390,10 @@ export class JobsService {
     }
 
     if (input.status !== undefined && input.status !== null) {
-      const option = await this.jobStatusesService.resolveOption(
+      const option = await this.relink(
+        this.jobStatusesService,
         userId,
+        row.statusOption,
         input.status
       );
       // Only a real change of status advances the timestamp; re-saving the same
@@ -383,7 +408,12 @@ export class JobsService {
     if (input.outcome !== undefined) {
       // Clearing the outcome (null/empty) drops the link; otherwise resolve it.
       const option = input.outcome
-        ? await this.jobOutcomesService.resolveOption(userId, input.outcome)
+        ? await this.relink(
+            this.jobOutcomesService,
+            userId,
+            row.outcomeOption,
+            input.outcome
+          )
         : null;
       row.outcomeOption = option;
       row.outcomeOptionId = option?.id ?? null;

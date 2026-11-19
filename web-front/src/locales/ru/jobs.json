@@ -143,6 +143,9 @@
     "loadingSubtitle": "Получаем список откликов из API...",
     "loadErrorTitle": "Не удалось загрузить отклики",
     "loadJobErrorTitle": "Не удалось загрузить отклик",
+    "notFoundTitle": "Отклик не найден",
+    "notFoundBody": "Этого отклика нет или он был удалён",
+    "refreshErrorTitle": "Не удалось обновить отклики",
     "retry": "Повторить"
   },
   "form": {

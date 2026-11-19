@@ -21,10 +21,28 @@ describe('USER_OWNED_ENTITIES', () => {
   });
 
   it('lists every entity with a user_id column', () => {
+    const storage = getMetadataArgsStorage();
+    // Per table, with inherited columns: the taxonomies get `user_id` from a base class.
+    type Target = (typeof storage.tables)[number]['target'];
+    const lineage = (target: Target): Target[] => {
+      const chain: Target[] = [];
+      for (
+        let current: unknown = target;
+        typeof current === 'function' && current !== Function.prototype;
+        current = Object.getPrototypeOf(current)
+      ) {
+        chain.push(current as Target);
+      }
+      return chain;
+    };
     const owned = new Set(
-      getMetadataArgsStorage()
-        .columns.filter((column) => column.options.name === 'user_id')
-        .map((column) => column.target)
+      storage.tables
+        .map((table) => table.target)
+        .filter((target) =>
+          storage
+            .filterColumns(lineage(target))
+            .some((column) => column.options.name === 'user_id')
+        )
     );
 
     const missing = [...owned]

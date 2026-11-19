@@ -139,6 +139,9 @@
     "loadingSubtitle": "Fetching job list from API...",
     "loadErrorTitle": "Failed to load jobs",
     "loadJobErrorTitle": "Failed to load job",
+    "notFoundTitle": "Application not found",
+    "notFoundBody": "This application does not exist or has been removed",
+    "refreshErrorTitle": "Couldn't refresh applications",
     "retry": "Retry"
   },
   "form": {

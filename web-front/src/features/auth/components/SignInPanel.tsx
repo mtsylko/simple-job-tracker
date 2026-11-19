@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { trackLogin } from '@/lib/analytics-events';
 import { useAnalyticsConsentStore } from '@/lib/analytics-consent-store';
 import { isAnalyticsEnabled } from '@/lib/google-analytics';
+import { keepReturnTo } from '@/lib/session-expiry';
 
 import { SIGN_IN_HIGHLIGHTS } from '../sign-in-highlights';
 
@@ -51,6 +52,7 @@ export function SignInPanel() {
         className="mt-8 flex h-11 w-full gap-2.5 rounded-xl border-warm-line-2 bg-warm-surface text-sm text-ink hover:bg-warm-surface-2"
         onClick={() => {
           trackLogin();
+          keepReturnTo(window.location.search);
           window.location.href = '/auth/google';
         }}
       >

@@ -1,6 +1,7 @@
 import { isApiErrorCode } from '@job-tracker/shared';
 
 import i18n from '@/i18n';
+import { redirectIfSignedOut } from '@/lib/session-expiry';
 import { viewAsHeaders } from '@/lib/view-as';
 
 /** Carries the HTTP status so callers can react to specific failures, e.g. 429. */
@@ -52,6 +53,10 @@ export function apiErrorFallback(statusText: string): string {
 }
 
 export async function readApiError(response: Response): Promise<string> {
+  // Passport answers 401 with no code, so its English text would reach the toast.
+  if (response.status === 401) {
+    return i18n.t('api.sessionExpired');
+  }
   const fallback = apiErrorFallback(response.statusText);
 
   try {
@@ -72,6 +77,7 @@ export async function request<T>(url: string, init?: RequestInit): Promise<T> {
   });
 
   if (!response.ok) {
+    redirectIfSignedOut(response.status);
     throw new ApiError(await readApiError(response), response.status);
   }
 

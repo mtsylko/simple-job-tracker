@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet, useOutletContext } from 'react-router-dom';
+import { Outlet, useLocation, useOutletContext } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { AppSidebar } from '@/components/app-sidebar';
@@ -17,10 +17,12 @@ import { useTaxonomyStore } from '@/features/taxonomies/taxonomy-store';
 import { AppFooterActionPanel } from './AppFooterActionPanel';
 import { AppFooterActionProvider } from './app-footer-action-provider';
 import { AppHeaderActionProvider } from './app-header-action-provider';
+import { RouteErrorBoundary } from './RouteErrorBoundary';
 
 export function AppLayout() {
   const { t } = useTranslation('common');
   const user = useOutletContext<CurrentUser>();
+  const { pathname } = useLocation();
   const ensureTaxonomiesLoaded = useTaxonomyStore(
     (store) => store.ensureLoaded
   );
@@ -64,7 +66,9 @@ export function AppLayout() {
                   tabIndex={-1}
                   className="col-start-1 row-start-1 flex min-h-0 flex-col overflow-y-auto outline-none"
                 >
-                  <Outlet />
+                  <RouteErrorBoundary resetKey={pathname}>
+                    <Outlet />
+                  </RouteErrorBoundary>
                 </div>
                 <AppFooterActionPanel />
                 <FeedbackLauncher

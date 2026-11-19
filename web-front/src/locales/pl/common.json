@@ -183,7 +183,8 @@
     }
   },
   "api": {
-    "requestFailed": "Żądanie nie powiodło się"
+    "requestFailed": "Żądanie nie powiodło się",
+    "sessionExpired": "Sesja wygasła. Zaloguj się ponownie"
   },
   "errors": {
     "unexpected": "Nieoczekiwany błąd"
@@ -228,5 +229,10 @@
     "accept": "Akceptuję",
     "reject": "Odrzucam",
     "settings": "Ustawienia plików cookie"
+  },
+  "errorBoundary": {
+    "title": "Coś poszło nie tak",
+    "body": "Nie udało się wyświetlić tej strony. Reszta aplikacji działa dalej",
+    "reload": "Odśwież stronę"
   }
 }

@@ -2,6 +2,7 @@ import type { JobAttachment } from '@job-tracker/shared';
 
 import { saveBlobAs } from '@/features/cv-versions/attachment';
 import { readApiError, request } from '@/lib/api-client';
+import { redirectIfSignedOut } from '@/lib/session-expiry';
 import { viewAsHeaders } from '@/lib/view-as';
 
 function attachmentsUrl(jobId: string): string {
@@ -31,6 +32,7 @@ export async function uploadJobAttachment(
     body
   });
   if (!response.ok) {
+    redirectIfSignedOut(response.status);
     throw new Error(await readApiError(response));
   }
   return (await response.json()) as JobAttachment;
@@ -52,6 +54,7 @@ export async function downloadJobAttachment(
   const url = attachmentUrl(jobId, attachment.id);
   const response = await fetch(url, { headers: viewAsHeaders(url) });
   if (!response.ok) {
+    redirectIfSignedOut(response.status);
     throw new Error(await readApiError(response));
   }
 

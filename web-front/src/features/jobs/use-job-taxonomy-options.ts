@@ -1,32 +1,29 @@
-import {
-  listJobContractTypeOptions,
-  listJobEmploymentTypeOptions,
-  listJobLevelOptions,
-  listJobRoleOptions,
-  listJobTypeOptions
-} from '@/features/jobs/job-api';
-import { useAsyncData } from '@/hooks/use-async-data';
+import { useEffect, useMemo } from 'react';
+import type { JobTaxonomyOption } from '@job-tracker/shared';
 
-const EMPTY: string[] = [];
+import { useTaxonomyStore } from '@/features/taxonomies/taxonomy-store';
 
+function labels(options: JobTaxonomyOption[]): string[] {
+  return options.map((option) => option.value);
+}
+
+/** The active labels of each form taxonomy in the user's order, read from the shared store instead of fetched per form. */
 export function useJobTaxonomyOptions() {
-  const { data: roleOptions } = useAsyncData(listJobRoleOptions, EMPTY);
-  const { data: levelOptions } = useAsyncData(listJobLevelOptions, EMPTY);
-  const { data: typeOptions } = useAsyncData(listJobTypeOptions, EMPTY);
-  const { data: employmentTypeOptions } = useAsyncData(
-    listJobEmploymentTypeOptions,
-    EMPTY
-  );
-  const { data: contractTypeOptions } = useAsyncData(
-    listJobContractTypeOptions,
-    EMPTY
-  );
+  const taxonomy = useTaxonomyStore((store) => store.taxonomy);
+  const ensureLoaded = useTaxonomyStore((store) => store.ensureLoaded);
 
-  return {
-    roleOptions,
-    levelOptions,
-    typeOptions,
-    employmentTypeOptions,
-    contractTypeOptions
-  };
+  useEffect(() => {
+    ensureLoaded();
+  }, [ensureLoaded]);
+
+  return useMemo(
+    () => ({
+      roleOptions: labels(taxonomy.role.options),
+      levelOptions: labels(taxonomy.level.options),
+      typeOptions: labels(taxonomy.type.options),
+      employmentTypeOptions: labels(taxonomy.employmentType.options),
+      contractTypeOptions: labels(taxonomy.contractType.options)
+    }),
+    [taxonomy]
+  );
 }

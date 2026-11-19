@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { SelectField } from '@/components/ui/select-field';
@@ -31,6 +32,8 @@ export function EditableSelectField({
   });
 
   const selectedValue = fieldState.isAddingNew ? '' : value.trim();
+  // Cancelling "add new" puts back what was selected before it.
+  const valueBeforeAdding = useRef('');
 
   return (
     <>
@@ -43,6 +46,7 @@ export function EditableSelectField({
           onChange(nextValue);
         }}
         onAddNewOption={() => {
+          valueBeforeAdding.current = value;
           fieldState.setIsAddingNew(true);
           onChange('');
         }}
@@ -53,7 +57,7 @@ export function EditableSelectField({
         onAcceptAddNewOption={() => fieldState.handleAccept(onChange)}
         onCancelAddNewOption={() => {
           fieldState.setIsAddingNew(false);
-          onChange('');
+          onChange(valueBeforeAdding.current);
         }}
         newOptionPlaceholder={newOptionPlaceholder}
         acceptAddNewOptionLabel={t('selectField.accept')}

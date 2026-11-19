@@ -112,7 +112,13 @@ yarn workspace job-tracker-api lint
 yarn workspace job-tracker-api test
 yarn workspace web-front lint
 yarn workspace web-front build
+yarn workspace job-tracker-e2e lint
+yarn workspace job-tracker-e2e compile
+yarn workspace job-tracker-e2e test
 ```
+
+The last one runs the browser tests of the main flow. It needs Postgres and a
+local Chromium: see [e2e/README.md](e2e/README.md).
 
 ## How this repository is published
 

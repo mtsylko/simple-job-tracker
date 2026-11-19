@@ -19,6 +19,7 @@ import { AdminFeedbackRoute } from '@/features/admin-feedback/routes/admin-feedb
 import { AdminTranslationsRoute } from '@/features/admin-translations/routes/admin-translations-route';
 import { ProfileRoute } from '@/features/profile/routes/profile-route';
 
+import { HomeRedirect } from '@/features/auth/HomeRedirect';
 import { RequireAuth } from '@/features/auth/RequireAuth';
 import { RequireRole } from '@/features/auth/RequireRole';
 import { SignInPage } from '@/features/auth/SignInPage';
@@ -42,10 +43,7 @@ export function AppRoutes() {
       <Route path={ROUTES.terms} element={<LegalPage document="terms" />} />
       <Route element={<RequireAuth />}>
         <Route element={<AppLayout />}>
-          <Route
-            path={ROUTES.home}
-            element={<Navigate to={ROUTES.applications} replace />}
-          />
+          <Route path={ROUTES.home} element={<HomeRedirect />} />
           <Route path={ROUTES.applications} element={<ListJobsRoute />} />
           <Route
             path="/interviews"

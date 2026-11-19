@@ -1,21 +1,10 @@
 import 'reflect-metadata';
-import dotenv from 'dotenv';
+import './load-env';
 import { NestFactory } from '@nestjs/core';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import fs from 'node:fs';
-import path from 'node:path';
 import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
-
-for (const envPath of [
-  path.resolve(process.cwd(), '.env'),
-  path.resolve(process.cwd(), 'web-api/.env')
-]) {
-  if (fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
-  }
-}
 
 async function bootstrap(): Promise<void> {
   // bufferLogs holds bootstrap output until pino is resolved, so nothing is

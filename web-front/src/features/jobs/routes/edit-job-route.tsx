@@ -23,72 +23,13 @@ export function EditJobRoute() {
   // Carries the list filters the user came in with back to the list.
   const { search: listSearch } = useLocation();
   const { t } = useTranslation('jobs');
-  const { jobs, isLoading, error, refreshJobs } = useJobsLoadState();
+  const { jobs, isLoading, isFetching, error, refreshJobs } =
+    useJobsLoadState();
   const { cvVersions } = useCvVersionsLoadState();
   const taxonomyOptions = useJobTaxonomyOptions();
   const updateJob = useJobsStore((state) => state.updateJob);
   const { id: jobId = '' } = useParams();
   const job = jobs.find((item) => item.id === jobId);
-  const roleOptions = useMemo(
-    () =>
-      Array.from(
-        new Set([
-          ...taxonomyOptions.roleOptions,
-          ...jobs
-            .map((item) => item.role.trim())
-            .filter((role) => role.length > 0)
-        ])
-      ).sort((first, second) => first.localeCompare(second)),
-    [jobs, taxonomyOptions.roleOptions]
-  );
-  const levelOptions = useMemo(
-    () =>
-      Array.from(
-        new Set([
-          ...taxonomyOptions.levelOptions,
-          ...jobs
-            .map((item) => item.level.trim())
-            .filter((level) => level.length > 0)
-        ])
-      ).sort((first, second) => first.localeCompare(second)),
-    [jobs, taxonomyOptions.levelOptions]
-  );
-  const typeOptions = useMemo(
-    () =>
-      Array.from(
-        new Set([
-          ...taxonomyOptions.typeOptions,
-          ...jobs
-            .map((item) => item.type.trim())
-            .filter((type) => type.length > 0)
-        ])
-      ).sort((first, second) => first.localeCompare(second)),
-    [jobs, taxonomyOptions.typeOptions]
-  );
-  const employmentTypeOptions = useMemo(
-    () =>
-      Array.from(
-        new Set([
-          ...taxonomyOptions.employmentTypeOptions,
-          ...jobs
-            .map((item) => item.employmentType.trim())
-            .filter((value) => value.length > 0)
-        ])
-      ).sort((first, second) => first.localeCompare(second)),
-    [jobs, taxonomyOptions.employmentTypeOptions]
-  );
-  const contractTypeOptions = useMemo(
-    () =>
-      Array.from(
-        new Set([
-          ...taxonomyOptions.contractTypeOptions,
-          ...jobs
-            .map((item) => item.contractType.trim())
-            .filter((value) => value.length > 0)
-        ])
-      ).sort((first, second) => first.localeCompare(second)),
-    [jobs, taxonomyOptions.contractTypeOptions]
-  );
   const companyOptions = useMemo(
     () =>
       Array.from(
@@ -109,7 +50,23 @@ export function EditJobRoute() {
     [cvVersions]
   );
 
-  if (error && !job) {
+  // A job missing from a list being refetched may be the one just saved elsewhere.
+  if (isLoading || (!job && isFetching)) {
+    return (
+      <main className="mx-auto w-full max-w-4xl py-8 md:py-10">
+        <section className="rounded-lg border bg-card p-4">
+          <h1 className="m-0 text-2xl font-medium text-foreground">
+            {t('route.loadingTitle')}
+          </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t('route.loadingSubtitle')}
+          </p>
+        </section>
+      </main>
+    );
+  }
+
+  if (error) {
     return (
       <main className="mx-auto w-full max-w-6xl py-8 md:py-10">
         <section className="w-full max-w-3xl">
@@ -133,6 +90,26 @@ export function EditJobRoute() {
     );
   }
 
+  if (!job) {
+    return (
+      <main className="mx-auto w-full max-w-4xl py-8 md:py-10">
+        <section className="rounded-lg border bg-card p-4">
+          <h1 className="m-0 text-2xl font-medium text-foreground">
+            {t('route.notFoundTitle')}
+          </h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t('route.notFoundBody')}
+          </p>
+          <div className="mt-4">
+            <Button variant="outline" onClick={handleCancel}>
+              {t('form.backToApplications')}
+            </Button>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   async function handleSubmit(values: JobFormValues): Promise<string> {
     await updateJob(jobId, values);
     return jobId;
@@ -149,16 +126,11 @@ export function EditJobRoute() {
 
   return (
     <JobFormPage
-      key={`job-edit-${jobId}-${job?.id ?? 'unloaded'}`}
+      key={`job-edit-${jobId}`}
       mode="edit"
       job={job}
-      isLoadingJob={isLoading}
       companyOptions={companyOptions}
-      roleOptions={roleOptions}
-      levelOptions={levelOptions}
-      typeOptions={typeOptions}
-      employmentTypeOptions={employmentTypeOptions}
-      contractTypeOptions={contractTypeOptions}
+      {...taxonomyOptions}
       cvOptions={cvOptions}
       onSubmit={handleSubmit}
       onSaved={handleSaved}

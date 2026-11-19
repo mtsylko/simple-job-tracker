@@ -7,6 +7,7 @@ COPY package.json yarn.lock .yarnrc.yml ./
 COPY web-api/package.json web-api/package.json
 COPY web-front/package.json web-front/package.json
 COPY shared/package.json shared/package.json
+COPY e2e/package.json e2e/package.json
 
 RUN yarn install --immutable --mode=skip-build
 

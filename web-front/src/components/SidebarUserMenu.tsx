@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useCurrentUser } from '@/features/auth/use-current-user';
+import { clearTaxonomyCache } from '@/features/taxonomies/taxonomy-store';
 import { useAnalyticsConsentStore } from '@/lib/analytics-consent-store';
 import { isAnalyticsEnabled } from '@/lib/google-analytics';
 
@@ -105,6 +106,7 @@ export function SidebarUserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
+            clearTaxonomyCache();
             window.location.href = '/auth/logout';
           }}
         >

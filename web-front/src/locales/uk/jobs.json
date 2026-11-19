@@ -143,6 +143,9 @@
     "loadingSubtitle": "Отримуємо список відгуків з API...",
     "loadErrorTitle": "Не вдалося завантажити відгуки",
     "loadJobErrorTitle": "Не вдалося завантажити відгук",
+    "notFoundTitle": "Відгук не знайдено",
+    "notFoundBody": "Такого відгуку немає або його було видалено",
+    "refreshErrorTitle": "Не вдалося оновити відгуки",
     "retry": "Повторити"
   },
   "form": {

@@ -143,6 +143,9 @@
     "loadingSubtitle": "Pobieranie listy aplikacji z API...",
     "loadErrorTitle": "Nie udało się załadować aplikacji",
     "loadJobErrorTitle": "Nie udało się załadować aplikacji",
+    "notFoundTitle": "Nie znaleziono aplikacji",
+    "notFoundBody": "Ta aplikacja nie istnieje albo została usunięta",
+    "refreshErrorTitle": "Nie udało się odświeżyć aplikacji",
     "retry": "Spróbuj ponownie"
   },
   "form": {

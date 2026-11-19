@@ -57,17 +57,36 @@ export function DailyQuotaGuard({
       if (user.role === 'admin') return true;
 
       const today = utcDay();
-      const used = user[fields.date] === today ? user[fields.count] : 0;
+      const count = this.column(fields.count);
+      const date = this.column(fields.date);
 
-      if (used >= limit) {
+      // One conditional UPDATE, so parallel requests cannot all read the same count.
+      const { affected } = await this.userRepo
+        .createQueryBuilder()
+        .update()
+        .set({
+          [fields.count]: () =>
+            `CASE WHEN ${date} = :today THEN ${count} + 1 ELSE 1 END`,
+          [fields.date]: today
+        })
+        .where('id = :id', { id: user.id })
+        .andWhere(`(${date} IS DISTINCT FROM :today OR ${count} < :limit)`, {
+          today,
+          limit
+        })
+        .execute();
+
+      if (!affected) {
         throw new HttpException(body, HttpStatus.TOO_MANY_REQUESTS);
       }
-
-      await this.userRepo.update(user.id, {
-        [fields.count]: used + 1,
-        [fields.date]: today
-      });
       return true;
+    }
+
+    private column(property: string): string {
+      const column =
+        this.userRepo.metadata.findColumnWithPropertyName(property);
+      if (!column) throw new Error(`UserEntity has no column ${property}`);
+      return `"${column.databaseName}"`;
     }
   }
 

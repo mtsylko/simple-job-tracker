@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { ROUTES } from '@/app/routes';
+import { clearTaxonomyCache } from '@/features/taxonomies/taxonomy-store';
 
 import { deleteAccount, downloadAccountExport } from '../account-api';
 
@@ -59,6 +60,7 @@ export function AccountSection() {
     setDeleteError(null);
     try {
       await deleteAccount();
+      clearTaxonomyCache();
       // A full load, so no state from the deleted account survives.
       window.location.replace(ROUTES.signIn);
     } catch (error) {

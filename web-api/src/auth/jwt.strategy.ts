@@ -3,6 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { jwtSecret } from './jwt-secret';
 import { UserEntity } from './user.entity';
 
 export interface JwtPayload {
@@ -21,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
         (req: Request & { cookies?: Record<string, string> }) =>
           req?.cookies?.['access_token'] ?? null
       ]),
-      secretOrKey: process.env.JWT_SECRET || 'dev-secret-change-in-production'
+      secretOrKey: jwtSecret()
     });
   }
 

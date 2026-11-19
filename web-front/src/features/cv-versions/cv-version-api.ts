@@ -8,6 +8,7 @@ import type {
 } from '@/features/cv-versions/types';
 import i18n from '@/i18n';
 import { apiErrorFallback, parseApiErrorBody, request } from '@/lib/api-client';
+import { redirectIfSignedOut } from '@/lib/session-expiry';
 import { viewAsHeaders } from '@/lib/view-as';
 
 type ApiCvVersion = {
@@ -163,12 +164,15 @@ export function uploadCvVersionAttachment(
 
     xhr.addEventListener('load', () => {
       if (xhr.status < 200 || xhr.status >= 300) {
+        redirectIfSignedOut(xhr.status);
         reject(
           new Error(
-            parseApiErrorBody(
-              xhr.responseText,
-              apiErrorFallback(xhr.statusText)
-            )
+            xhr.status === 401
+              ? i18n.t('api.sessionExpired')
+              : parseApiErrorBody(
+                  xhr.responseText,
+                  apiErrorFallback(xhr.statusText)
+                )
           )
         );
         return;

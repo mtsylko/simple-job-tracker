@@ -12,6 +12,7 @@ import {
   type TaxonomyOptionClient
 } from '@/features/jobs/job-api';
 import i18n from '@/i18n';
+import { getViewAs } from '@/lib/view-as';
 
 import type { TaxonomyKind, TaxonomyListState } from './use-taxonomy-lists';
 import type { StatusListState } from './use-status-list';
@@ -21,9 +22,15 @@ import type { StatusListState } from './use-status-list';
 // reloads and sessions; a stale read is corrected by the background revalidate.
 const CACHE_PREFIX = 'jt.taxonomy-cache.';
 
+// The account the cache belongs to; null until the session is known and while viewing another account.
+let cacheOwner: string | null = null;
+
 function readCache<T>(key: string): T | null {
+  if (!cacheOwner) {
+    return null;
+  }
   try {
-    const raw = localStorage.getItem(CACHE_PREFIX + key);
+    const raw = localStorage.getItem(`${CACHE_PREFIX}${cacheOwner}.${key}`);
     return raw ? (JSON.parse(raw) as T) : null;
   } catch {
     return null;
@@ -31,11 +38,37 @@ function readCache<T>(key: string): T | null {
 }
 
 function writeCache(key: string, value: unknown): void {
+  if (!cacheOwner) {
+    return;
+  }
   try {
-    localStorage.setItem(CACHE_PREFIX + key, JSON.stringify(value));
+    localStorage.setItem(
+      `${CACHE_PREFIX}${cacheOwner}.${key}`,
+      JSON.stringify(value)
+    );
   } catch {
     // Ignore quota / serialization failures — the cache is best-effort.
   }
+}
+
+/** Removes cached lists of every account but `keep`, including the unkeyed ones of older builds. */
+function removeCachedLists(keep: string | null): void {
+  try {
+    for (const key of Object.keys(localStorage)) {
+      const kept = keep !== null && key.startsWith(`${CACHE_PREFIX}${keep}.`);
+      if (key.startsWith(CACHE_PREFIX) && !kept) {
+        localStorage.removeItem(key);
+      }
+    }
+  } catch {
+    // Storage blocked: nothing was cached either.
+  }
+}
+
+/** Drops every cached list, so none outlives a sign-out or a deleted account. */
+export function clearTaxonomyCache(): void {
+  cacheOwner = null;
+  removeCachedLists(null);
 }
 
 function errorMessage(error: unknown, fallback: string): string {
@@ -86,6 +119,7 @@ let inFlight: Promise<void> | null = null;
 type TaxonomyStore = {
   taxonomy: Record<TaxonomyKind, TaxonomyListState>;
   status: StatusListState;
+  bindUser: (userId: string) => void;
   ensureLoaded: () => void;
   reloadTaxonomy: (kind: TaxonomyKind) => Promise<void>;
   reloadStatus: () => Promise<void>;
@@ -96,16 +130,31 @@ type TaxonomyStore = {
   setStatusOptions: (options: JobStatusOption[]) => void;
 };
 
-export const useTaxonomyStore = create<TaxonomyStore>((set, get) => ({
-  taxonomy: {
+function initTaxonomies(): Record<TaxonomyKind, TaxonomyListState> {
+  return {
     role: initTaxonomyState('role'),
     level: initTaxonomyState('level'),
     type: initTaxonomyState('type'),
     employmentType: initTaxonomyState('employmentType'),
     contractType: initTaxonomyState('contractType'),
     outcome: initTaxonomyState('outcome')
-  },
+  };
+}
+
+export const useTaxonomyStore = create<TaxonomyStore>((set, get) => ({
+  taxonomy: initTaxonomies(),
   status: initStatusState(),
+
+  // Called once the session is known, before the layout reads any list.
+  bindUser(userId) {
+    const owner = getViewAs() ? null : userId;
+    if (owner === cacheOwner) {
+      return;
+    }
+    cacheOwner = owner;
+    removeCachedLists(owner);
+    set({ taxonomy: initTaxonomies(), status: initStatusState() });
+  },
 
   ensureLoaded() {
     if (inFlight) {

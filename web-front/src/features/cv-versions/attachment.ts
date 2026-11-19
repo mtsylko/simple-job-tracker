@@ -1,3 +1,5 @@
+import { redirectIfSignedOut } from '@/lib/session-expiry';
+
 /** Attachments are stored as `/uploads/...` paths, or absolute URLs on imported records. */
 
 export function attachmentLabel(path: string): string {
@@ -14,6 +16,7 @@ export async function downloadAttachment(
 ): Promise<void> {
   const response = await fetch(url);
   if (!response.ok) {
+    redirectIfSignedOut(response.status);
     throw new Error(`Failed to download attachment (${response.status})`);
   }
 

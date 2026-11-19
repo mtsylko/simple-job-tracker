@@ -67,7 +67,6 @@ export function JobFormPage({
 }: {
   mode: 'create' | 'edit';
   job?: JobRow;
-  isLoadingJob?: boolean;
   companyOptions?: string[];
   roleOptions?: string[];
   levelOptions?: string[];
@@ -82,8 +81,8 @@ export function JobFormPage({
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation('jobs');
-  const [values, setValues] = useState<JobFormValues>(
-    job ? toFormValues(job) : emptyJobFormValues
+  const [values, setValues] = useState<JobFormValues>(() =>
+    job ? toFormValues(job) : emptyJobFormValues()
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -117,8 +116,8 @@ export function JobFormPage({
   });
 
   // Dirty state — compare current values against the snapshot taken on mount
-  const [initialValues] = useState<JobFormValues>(
-    job ? toFormValues(job) : emptyJobFormValues
+  const [initialValues] = useState<JobFormValues>(() =>
+    job ? toFormValues(job) : emptyJobFormValues()
   );
 
   const {

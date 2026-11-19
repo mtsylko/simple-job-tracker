@@ -19,8 +19,11 @@ import {
 
 type CvVersionsState = {
   cvVersions: CvVersionRow[];
+  /** A list request is in flight. */
   isLoading: boolean;
+  /** Why the list could not be loaded; a failed mutation is reported to its caller instead. */
   error: string | null;
+  /** `cvVersions` holds a list fetched from the API. */
   hasLoaded: boolean;
   refreshCvVersions: () => Promise<void>;
   createCvVersion: (values: CvVersionFormValues) => Promise<void>;
@@ -43,29 +46,23 @@ export const useCvVersionsStore = create<CvVersionsState>((set, get) => ({
 
     try {
       const data = await listCvVersions();
-      set({ cvVersions: data, error: null, hasLoaded: true });
+      set({ cvVersions: data, hasLoaded: true });
     } catch (caughtError) {
-      set({ error: readErrorMessage(caughtError), hasLoaded: true });
+      set({ error: readErrorMessage(caughtError) });
     } finally {
       set({ isLoading: false });
     }
   },
   async createCvVersion(values) {
-    set({ error: null });
-
     try {
       const created = await createCvVersionRequest(values);
       set((state) => ({ cvVersions: [created, ...state.cvVersions] }));
       trackCvVersionCreated();
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   },
   async updateCvVersion(id, values) {
-    set({ error: null });
-
     try {
       const updated = await updateCvVersionRequest(id, values);
       set((state) => ({
@@ -74,9 +71,7 @@ export const useCvVersionsStore = create<CvVersionsState>((set, get) => ({
         )
       }));
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   },
   async toggleCvVersionEnabled(id, enabled) {
@@ -105,8 +100,6 @@ export const useCvVersionsStore = create<CvVersionsState>((set, get) => ({
     }
   },
   async deleteCvVersion(id) {
-    set({ error: null });
-
     try {
       await deleteCvVersionRequest(id);
       set((state) => ({
@@ -114,9 +107,7 @@ export const useCvVersionsStore = create<CvVersionsState>((set, get) => ({
       }));
       trackCvVersionDeleted();
     } catch (caughtError) {
-      const message = readErrorMessage(caughtError);
-      set({ error: message });
-      throw new Error(message);
+      throw new Error(readErrorMessage(caughtError));
     }
   }
 }));

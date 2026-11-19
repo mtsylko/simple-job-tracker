@@ -91,24 +91,27 @@ function getTodayDateValue(): string {
   return date.toISOString().slice(0, 10);
 }
 
-export const emptyJobFormValues: JobFormValues = {
-  company: '',
-  isProductCompany: false,
-  jobPostLink: '',
-  location: '',
-  role: '',
-  level: '',
-  salaryRange: '',
-  salaryExpectations: '',
-  appliedAt: getTodayDateValue(),
-  type: '',
-  employmentType: '',
-  contractType: '',
-  cv: '',
-  // Filled from the user's default status once the options load.
-  status: '',
-  outcome: '',
-  notes: '',
-  applicationQuestions: '',
-  customFields: {}
-};
+/** A new application's values; built per form so the date is the day it opens. */
+export function emptyJobFormValues(): JobFormValues {
+  return {
+    company: '',
+    isProductCompany: false,
+    jobPostLink: '',
+    location: '',
+    role: '',
+    level: '',
+    salaryRange: '',
+    salaryExpectations: '',
+    appliedAt: getTodayDateValue(),
+    type: '',
+    employmentType: '',
+    contractType: '',
+    cv: '',
+    // Filled from the user's default status once the options load.
+    status: '',
+    outcome: '',
+    notes: '',
+    applicationQuestions: '',
+    customFields: {}
+  };
+}

@@ -143,6 +143,9 @@
     "loadingSubtitle": "Атрымліваем спіс водгукаў з API...",
     "loadErrorTitle": "Не ўдалося загрузіць водгукі",
     "loadJobErrorTitle": "Не ўдалося загрузіць водгук",
+    "notFoundTitle": "Водгук не знойдзены",
+    "notFoundBody": "Такога водгуку няма або ён быў выдалены",
+    "refreshErrorTitle": "Не ўдалося абнавіць водгукі",
     "retry": "Паўтарыць"
   },
   "form": {

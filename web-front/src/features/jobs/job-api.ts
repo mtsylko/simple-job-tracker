@@ -152,36 +152,6 @@ export async function listJobs(): Promise<JobRow[]> {
   return payload.map(mapApiJob);
 }
 
-export async function listJobRoleOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-roles');
-  return normalizeStringOptions(payload);
-}
-
-export async function listJobLevelOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-levels');
-  return normalizeStringOptions(payload);
-}
-
-export async function listJobTypeOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-types');
-  return normalizeStringOptions(payload);
-}
-
-export async function listJobEmploymentTypeOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-employment-types');
-  return normalizeStringOptions(payload);
-}
-
-export async function listJobContractTypeOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-contract-types');
-  return normalizeStringOptions(payload);
-}
-
-export async function listJobOutcomeOptions(): Promise<string[]> {
-  const payload = await request<unknown>('/api/job-outcomes');
-  return normalizeStringOptions(payload);
-}
-
 export async function createJobRoleOption(value: string): Promise<void> {
   await request<{ value: string }>('/api/job-roles', {
     method: 'POST',
