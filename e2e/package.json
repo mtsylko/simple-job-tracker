@@ -6,7 +6,7 @@
   "scripts": {
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "compile": "../node_modules/.bin/tsc --noEmit",
+    "compile": "yarn workspace @job-tracker/shared build && ../node_modules/.bin/tsc --noEmit",
     "lint": "node ../node_modules/.bin/eslint . && node ../node_modules/.bin/prettier --check \"**/*.{ts,mjs}\"",
     "lint:fix": "node ../node_modules/.bin/eslint . --fix && node ../node_modules/.bin/prettier --write \"**/*.{ts,mjs}\""
   },
