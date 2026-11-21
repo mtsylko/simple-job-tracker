@@ -57,23 +57,26 @@ export class AuthService {
       user.role = resolveRole(profile.email);
       return this.userRepo.save(user);
     }
-    const created = await this.userRepo.save(
-      this.userRepo.create({
-        id: randomUUID(),
-        email: profile.email,
-        googleId: profile.googleId,
-        displayName: profile.displayName,
-        avatarUrl: profile.avatarUrl,
-        role: resolveRole(profile.email)
-      })
-    );
-    // Statuses and outcomes are picked lists, not typed like role/level/type, so
-    // a new user needs the built-ins before their first application form loads.
-    await this.jobStatusesService.seedDefaults(created.id);
-    await this.jobOutcomesService.seedDefaults(created.id);
-    await this.jobEmploymentTypesService.seedDefaults(created.id);
-    await this.jobContractTypesService.seedDefaults(created.id);
-    return created;
+    // One transaction: an account left without its built-in lists would never get them, so a failed seed signs nobody up.
+    return this.userRepo.manager.transaction(async (manager) => {
+      const created = await manager.save(
+        manager.create(UserEntity, {
+          id: randomUUID(),
+          email: profile.email,
+          googleId: profile.googleId,
+          displayName: profile.displayName,
+          avatarUrl: profile.avatarUrl,
+          role: resolveRole(profile.email)
+        })
+      );
+      // Statuses and outcomes are picked lists, not typed like role/level/type, so
+      // a new user needs the built-ins before their first application form loads.
+      await this.jobStatusesService.seedDefaults(created.id, manager);
+      await this.jobOutcomesService.seedDefaults(created.id, manager);
+      await this.jobEmploymentTypesService.seedDefaults(created.id, manager);
+      await this.jobContractTypesService.seedDefaults(created.id, manager);
+      return created;
+    });
   }
 
   signJwt(user: UserEntity): string {

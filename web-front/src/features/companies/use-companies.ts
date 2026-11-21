@@ -29,33 +29,43 @@ export function useCompanies() {
 
   // `silent` keeps the current rows on screen while a mutation's refetch is in
   // flight, matching the taxonomy and custom-fields pages.
-  const load = useCallback(async ({ silent = false } = {}) => {
-    if (!silent) {
-      setState((prev) => ({ ...prev, isLoading: true, error: null }));
-    }
+  const load = useCallback(
+    async ({ silent = false } = {}): Promise<CompanySummary[] | null> => {
+      if (!silent) {
+        setState((prev) => ({ ...prev, isLoading: true, error: null }));
+      }
 
-    try {
-      const companies = await listCompanies();
-      setState({ companies, isLoading: false, error: null });
-    } catch (error) {
-      setState((prev) => ({
-        companies: prev.companies,
-        isLoading: false,
-        error:
-          error instanceof Error
-            ? error.message
-            : i18n.t('page.loadFailed', { ns: 'companies' })
-      }));
-    }
-  }, []);
+      try {
+        const companies = await listCompanies();
+        setState({ companies, isLoading: false, error: null });
+        return companies;
+      } catch (error) {
+        setState((prev) => ({
+          companies: prev.companies,
+          isLoading: false,
+          error:
+            error instanceof Error
+              ? error.message
+              : i18n.t('page.loadFailed', { ns: 'companies' })
+        }));
+        return null;
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     void load();
   }, [load]);
 
+  // One read after a write refreshes both this page and the marks in the applications list.
   const afterMutation = useCallback(async () => {
-    void useBlacklistStore.getState().reload();
-    await load({ silent: true });
+    const companies = await load({ silent: true });
+    if (companies) {
+      useBlacklistStore.getState().replace(companies);
+    } else {
+      void useBlacklistStore.getState().reload();
+    }
   }, [load]);
 
   // Add surfaces its failure to the caller (an inline form error) rather than a

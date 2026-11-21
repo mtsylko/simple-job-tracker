@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import type { AdminUserSummary } from '@job-tracker/shared';
 
+import i18n from '@/i18n';
 import { listAdminUsers } from './admin-users-api';
 
 export type AdminUsersState = {
@@ -11,7 +11,6 @@ export type AdminUsersState = {
 };
 
 export function useAdminUsers(): AdminUsersState {
-  const { t } = useTranslation('adminUsers');
   const [state, setState] = useState<AdminUsersState>({
     users: [],
     isLoading: true,
@@ -32,7 +31,10 @@ export function useAdminUsers(): AdminUsersState {
           setState({
             users: [],
             isLoading: false,
-            error: error instanceof Error ? error.message : t('list.loadFailed')
+            error:
+              error instanceof Error
+                ? error.message
+                : i18n.t('list.loadFailed', { ns: 'adminUsers' })
           });
         }
       });
@@ -40,7 +42,7 @@ export function useAdminUsers(): AdminUsersState {
     return () => {
       cancelled = true;
     };
-  }, [t]);
+  }, []);
 
   return state;
 }

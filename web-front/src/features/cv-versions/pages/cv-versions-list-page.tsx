@@ -150,7 +150,9 @@ export function CvVersionsListPage({
       try {
         await onDelete(id);
         notifyActionSuccess('deleted', 'cvVersion');
+        setPendingDeleteId(null);
       } catch (error) {
+        // Keep the dialog open so the user can retry after the error toast.
         notifyActionError('deleted', 'cvVersion', error);
       } finally {
         setDeletingId(null);
@@ -496,7 +498,7 @@ export function CvVersionsListPage({
 
                     {filtered.length === 0 && (
                       <tr>
-                        <td colSpan={6} className="py-10 text-center">
+                        <td colSpan={5} className="py-10 text-center">
                           <div className="font-serif text-lg font-normal text-foreground">
                             {t('list.noMatch')}
                           </div>
@@ -579,9 +581,7 @@ export function CvVersionsListPage({
         confirmPending={deletingId === pendingDeleteId}
         onConfirm={() => {
           if (pendingDeleteId) {
-            void handleDelete(pendingDeleteId).then(() =>
-              setPendingDeleteId(null)
-            );
+            void handleDelete(pendingDeleteId);
           }
         }}
         onCancel={() => setPendingDeleteId(null)}

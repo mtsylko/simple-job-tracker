@@ -87,14 +87,16 @@ export function JobsCardList({
       ))}
 
       {hasMore && (
-        <div ref={sentinelRef} className="py-3 text-center">
-          <span className="num text-xs text-muted-foreground">
-            {t('list.table.loadedCount', {
-              count: visibleCount,
-              total: jobs.length
-            })}
-          </span>
-        </div>
+        <li>
+          <div ref={sentinelRef} className="py-3 text-center">
+            <span className="num text-xs text-muted-foreground">
+              {t('list.table.loadedCount', {
+                count: visibleCount,
+                total: jobs.length
+              })}
+            </span>
+          </div>
+        </li>
       )}
     </ul>
   );

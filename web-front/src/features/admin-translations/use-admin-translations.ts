@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import type { TranslationOverride } from '@job-tracker/shared';
 
+import i18n from '@/i18n';
 import { listTranslationOverrides } from './admin-translations-api';
 
 export type AdminTranslationsState = {
@@ -19,7 +19,6 @@ function sameString(a: TranslationOverride, b: TranslationOverride): boolean {
 export function useAdminTranslations(): AdminTranslationsState & {
   update: (saved: TranslationOverride[], removedIds: string[]) => void;
 } {
-  const { t } = useTranslation('adminTranslations');
   const [state, setState] = useState<AdminTranslationsState>({
     overrides: [],
     isLoading: true,
@@ -40,7 +39,10 @@ export function useAdminTranslations(): AdminTranslationsState & {
           setState({
             overrides: [],
             isLoading: false,
-            error: error instanceof Error ? error.message : t('list.loadFailed')
+            error:
+              error instanceof Error
+                ? error.message
+                : i18n.t('list.loadFailed', { ns: 'adminTranslations' })
           });
         }
       });
@@ -48,7 +50,7 @@ export function useAdminTranslations(): AdminTranslationsState & {
     return () => {
       cancelled = true;
     };
-  }, [t]);
+  }, []);
 
   const update = useCallback(
     (saved: TranslationOverride[], removedIds: string[]) => {

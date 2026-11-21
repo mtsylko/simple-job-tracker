@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import {
   normalizeCompanyName,
-  type CompanyBlacklist
+  type CompanyBlacklist,
+  type CompanySummary
 } from '@job-tracker/shared';
 
 import { listCompanies } from './companies-api';
@@ -16,9 +17,23 @@ type BlacklistStore = {
   ensureLoaded: () => void;
   /** Always refetches — call after a mutation to refresh the marks. */
   reload: () => Promise<void>;
+  /** Takes the marks from a company list the caller has just read. */
+  replace: (companies: CompanySummary[]) => void;
 };
 
 let inFlight: Promise<void> | null = null;
+// Only the newest read may land: an older one can predate the write that asked for a refresh.
+let latest = 0;
+
+function marks(companies: CompanySummary[]): Map<string, CompanyBlacklist> {
+  const byCompany = new Map<string, CompanyBlacklist>();
+  for (const company of companies) {
+    if (company.blacklist) {
+      byCompany.set(normalizeCompanyName(company.name), company.blacklist);
+    }
+  }
+  return byCompany;
+}
 
 export const useBlacklistStore = create<BlacklistStore>((set, get) => ({
   byCompany: new Map(),
@@ -32,30 +47,32 @@ export const useBlacklistStore = create<BlacklistStore>((set, get) => ({
   },
 
   reload() {
-    if (inFlight) {
-      return inFlight;
-    }
-    inFlight = (async () => {
-      try {
-        const companies = await listCompanies();
-        const byCompany = new Map<string, CompanyBlacklist>();
-        for (const company of companies) {
-          if (company.blacklist) {
-            byCompany.set(
-              normalizeCompanyName(company.name),
-              company.blacklist
-            );
+    latest += 1;
+    const ticket = latest;
+    const request: Promise<void> = listCompanies()
+      .then(
+        (companies) => {
+          if (ticket === latest) {
+            set({ byCompany: marks(companies), isLoaded: true });
           }
+        },
+        () => {
+          // Best-effort: leave the prior map in place. A failed refresh just means
+          // the marks are stale, never that the list breaks.
         }
-        set({ byCompany, isLoaded: true });
-      } catch {
-        // Best-effort: leave the prior map in place. A failed refresh just means
-        // the marks are stale, never that the list breaks.
-      } finally {
-        inFlight = null;
-      }
-    })();
-    return inFlight;
+      )
+      .finally(() => {
+        if (inFlight === request) {
+          inFlight = null;
+        }
+      });
+    inFlight = request;
+    return request;
+  },
+
+  replace(companies) {
+    latest += 1;
+    set({ byCompany: marks(companies), isLoaded: true });
   }
 }));
 

@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -51,6 +51,15 @@ const INLINE_ERROR_FIELDS = new Set<keyof JobFormValues>([
   'cv'
 ]);
 
+/** Fields "Fill from link" can fill. */
+const EXTRACTED_FIELDS = [
+  'company',
+  'role',
+  'level',
+  'type',
+  'salaryRange'
+] as const;
+
 export function JobFormPage({
   mode,
   job,
@@ -95,12 +104,22 @@ export function JobFormPage({
     statusOptions.find((option) => option.value === values.status)?.color ??
     job?.statusColor ??
     '#4a6088';
+  // The fields when the posting was asked for and as they are now: one typed into while it was read keeps the typing.
+  const valuesAtExtract = useRef(values);
+  const currentValues = useRef(values);
+  useEffect(() => {
+    currentValues.current = values;
+  }, [values]);
   const extraction = useExtractFromLink(values.jobPostLink, (result) => {
-    if (result.company) handleChange('company', result.company);
-    if (result.role) handleChange('role', result.role);
-    if (result.level) handleChange('level', result.level);
-    if (result.type) handleChange('type', result.type);
-    if (result.salaryRange) handleChange('salaryRange', result.salaryRange);
+    for (const field of EXTRACTED_FIELDS) {
+      const value = result[field];
+      if (
+        value &&
+        currentValues.current[field] === valuesAtExtract.current[field]
+      ) {
+        handleChange(field, value);
+      }
+    }
   });
 
   const { orders, reorder, isReady: isLayoutReady } = useFormFieldOrder();
@@ -298,7 +317,10 @@ export function JobFormPage({
             errors={fieldErrors}
             companyOptions={companyOptions}
             onFieldChange={handleChange}
-            onExtractFromLink={() => void extraction.extract()}
+            onExtractFromLink={() => {
+              valuesAtExtract.current = values;
+              void extraction.extract();
+            }}
             canExtractFromLink={extraction.canExtract}
             isExtracting={extraction.isExtracting}
             extractError={extraction.extractError}

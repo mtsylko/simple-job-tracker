@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import type { AdminFeedback } from '@job-tracker/shared';
 
+import i18n from '@/i18n';
 import { listAdminFeedback } from './admin-feedback-api';
 
 export type AdminFeedbackState = {
@@ -13,7 +13,6 @@ export type AdminFeedbackState = {
 export function useAdminFeedback(): AdminFeedbackState & {
   replace: (item: AdminFeedback) => void;
 } {
-  const { t } = useTranslation('adminFeedback');
   const [state, setState] = useState<AdminFeedbackState>({
     items: [],
     isLoading: true,
@@ -34,7 +33,10 @@ export function useAdminFeedback(): AdminFeedbackState & {
           setState({
             items: [],
             isLoading: false,
-            error: error instanceof Error ? error.message : t('list.loadFailed')
+            error:
+              error instanceof Error
+                ? error.message
+                : i18n.t('list.loadFailed', { ns: 'adminFeedback' })
           });
         }
       });
@@ -42,7 +44,7 @@ export function useAdminFeedback(): AdminFeedbackState & {
     return () => {
       cancelled = true;
     };
-  }, [t]);
+  }, []);
 
   const replace = useCallback((updated: AdminFeedback) => {
     setState((current) => ({

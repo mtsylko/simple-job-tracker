@@ -1,6 +1,15 @@
 import type { TFunction } from 'i18next';
+import { normalizeCompanyName } from '@job-tracker/shared';
 
+import { saveBlobAs } from '@/features/cv-versions/attachment';
+import { useBlacklistStore } from '@/features/companies/blacklist-store';
 import { type JobRow } from '@/features/jobs/types';
+
+// Excel reads a file without a byte order mark as the system code page and garbles Cyrillic and Polish letters.
+const BYTE_ORDER_MARK = '\uFEFF';
+
+// A cell starting with one of these runs as a formula when the file is opened in a spreadsheet.
+const FORMULA_START = /^[=+\-@\t\r]/;
 
 function csvCell(
   value: string | boolean | number | null | undefined,
@@ -10,7 +19,10 @@ function csvCell(
   if (typeof value === 'boolean') {
     return value ? t('export.booleanTrue') : t('export.booleanFalse');
   }
-  const s = String(value);
+  let s = String(value);
+  if (FORMULA_START.test(s)) {
+    s = `'${s}`;
+  }
   if (
     s.includes(',') ||
     s.includes('"') ||
@@ -37,7 +49,6 @@ export function exportApplicationsCSV(
     t('export.headers.level'),
     t('export.headers.stage'),
     t('export.headers.outcome'),
-    t('export.headers.customCv'),
     t('export.headers.salaryRange'),
     t('export.headers.mySalaryExpectations'),
     t('export.headers.cv'),
@@ -49,6 +60,13 @@ export function exportApplicationsCSV(
     t('export.headers.location'),
     t('export.headers.blacklisted')
   ];
+
+  const blacklist = useBlacklistStore.getState();
+  // Left empty rather than "False" while the blacklist has not loaded.
+  const isBlacklisted = (company: string) =>
+    blacklist.isLoaded
+      ? blacklist.byCompany.has(normalizeCompanyName(company))
+      : null;
 
   const rows = jobs.map((job) =>
     [
@@ -62,7 +80,6 @@ export function exportApplicationsCSV(
       job.level,
       job.status,
       job.outcome,
-      '',
       job.salaryRange,
       job.salaryExpectations,
       job.cv,
@@ -72,20 +89,15 @@ export function exportApplicationsCSV(
       job.employmentType,
       job.contractType,
       job.location,
-      ''
+      isBlacklisted(job.company)
     ]
       .map((value) => csvCell(value, t))
       .join(',')
   );
 
-  const csv = [HEADERS.join(','), ...rows].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `interviews-export-${new Date().toISOString().slice(0, 10)}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  const csv = BYTE_ORDER_MARK + [HEADERS.join(','), ...rows].join('\n');
+  saveBlobAs(
+    new Blob([csv], { type: 'text/csv;charset=utf-8;' }),
+    `interviews-export-${new Date().toISOString().slice(0, 10)}.csv`
+  );
 }

@@ -42,14 +42,16 @@ export abstract class TaxonomyService<
     private readonly seeds: readonly TaxonomySeed<T>[] = []
   ) {}
 
-  /** Seeds the built-in options once, when the account is created; ON CONFLICT keeps a repeat from adding anything. */
-  async seedDefaults(userId: string): Promise<void> {
+  /** Seeds the built-in options once, in the transaction that creates the account; ON CONFLICT keeps a repeat from adding anything. */
+  async seedDefaults(userId: string, manager?: EntityManager): Promise<void> {
     if (this.seeds.length === 0) {
       return;
     }
 
+    const repository =
+      manager?.getRepository(this.repository.target) ?? this.repository;
     const now = new Date();
-    await this.repository
+    await repository
       .createQueryBuilder()
       .insert()
       .values(
