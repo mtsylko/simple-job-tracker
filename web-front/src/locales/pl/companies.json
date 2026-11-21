@@ -38,7 +38,6 @@
     "editReason": "Edytuj powód"
   },
   "form": {
-    "addTitle": "Nowa firma",
     "companyLabel": "Firma",
     "companyPlaceholder": "np. Acme Corp",
     "reasonLabel": "Powód (opcjonalnie)",

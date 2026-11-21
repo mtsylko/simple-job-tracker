@@ -141,7 +141,7 @@ export function CompaniesPage({
               onClick={() => setIsAdding(true)}
             >
               <Plus className="size-3.5" aria-hidden="true" />
-              {t('form.addTitle')}
+              {t('common:form.addNew')}
             </Button>
           )}
         </div>

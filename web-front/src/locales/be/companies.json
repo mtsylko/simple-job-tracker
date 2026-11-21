@@ -38,7 +38,6 @@
     "editReason": "Змяніць прычыну"
   },
   "form": {
-    "addTitle": "Новая кампанія",
     "companyLabel": "Кампанія",
     "companyPlaceholder": "напрыклад, Acme Corp",
     "reasonLabel": "Прычына (неабавязкова)",

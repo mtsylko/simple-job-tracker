@@ -74,7 +74,7 @@ export function TaxonomiesPage({
               onClick={() => setIsAddOpen(true)}
             >
               <Plus className="size-3.5" aria-hidden="true" />
-              {t(`sections.${kind}.addLabel`)}
+              {t('common:form.addNew')}
             </Button>
           </div>
           <p className="mt-2 text-sm text-muted-foreground">

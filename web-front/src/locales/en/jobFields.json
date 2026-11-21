@@ -1,8 +1,8 @@
 {
   "page": {
     "title": "Custom fields",
-    "subtitle": "Add your own fields to the application form — drag-free list, shown under \"Additional fields\" when adding or editing an application",
-    "empty": "No custom fields yet — add one below",
+    "subtitle": "Add your own fields to the application form. They show under \"Additional fields\" when you add or edit an application",
+    "empty": "No custom fields yet",
     "loadFailed": "Failed to load fields"
   },
   "list": {
@@ -19,7 +19,6 @@
     "multiselect": "Multiple choice"
   },
   "form": {
-    "addTitle": "New field",
     "labelLabel": "Label",
     "labelPlaceholder": "e.g. Referral name",
     "typeLabel": "Type",

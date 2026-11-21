@@ -1,8 +1,8 @@
 {
   "page": {
     "title": "Pola własne",
-    "subtitle": "Dodaj własne pola do formularza aplikacji — pojawiają się w sekcji „Dodatkowe pola” przy dodawaniu lub edycji aplikacji",
-    "empty": "Nie ma jeszcze pól własnych — dodaj pierwsze poniżej",
+    "subtitle": "Dodaj własne pola do formularza aplikacji. Pojawiają się w sekcji „Dodatkowe pola” przy dodawaniu lub edycji aplikacji",
+    "empty": "Nie ma jeszcze pól własnych",
     "loadFailed": "Nie udało się załadować pól"
   },
   "list": {
@@ -19,7 +19,6 @@
     "multiselect": "Wielokrotny wybór"
   },
   "form": {
-    "addTitle": "Nowe pole",
     "labelLabel": "Etykieta",
     "labelPlaceholder": "np. Osoba polecająca",
     "typeLabel": "Typ",
