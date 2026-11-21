@@ -26,6 +26,7 @@
   "JOB_FIELD_OPTIONS_IN_USE": "These options are still used by existing applications: {{options}}",
   "COMPANY_NOT_FOUND": "Blacklisted company not found",
   "COMPANY_ALREADY_BLACKLISTED": "This company is already on your blacklist",
+  "COMPANY_HAS_NO_APPLICATIONS": "Only a company from your applications can be blacklisted",
   "ANSWER_NOT_FOUND": "Answer not found",
   "ANSWER_TITLE_TAKEN": "An answer with this title already exists",
   "ANSWER_LIMIT_REACHED": "You can keep {{limit}} prepared answers — edit or remove one first",

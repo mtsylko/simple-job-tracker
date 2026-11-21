@@ -39,7 +39,8 @@
   },
   "form": {
     "companyLabel": "Firma",
-    "companyPlaceholder": "np. Acme Corp",
+    "companyPlaceholder": "Wybierz firmę ze swoich aplikacji",
+    "noCompanies": "Brak pasujących firm w Twoich aplikacjach",
     "reasonLabel": "Powód (opcjonalnie)",
     "reasonPlaceholder": "Dlaczego unikasz tej firmy",
     "add": "Dodaj",

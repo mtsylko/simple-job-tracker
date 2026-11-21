@@ -83,6 +83,15 @@ export function CompaniesPage({
     [state.companies]
   );
 
+  // Only companies from the user's applications can be blacklisted from the form.
+  const blacklistCandidates = useMemo(
+    () =>
+      state.companies
+        .filter((company) => !company.blacklist && company.applicationCount > 0)
+        .map((company) => company.name),
+    [state.companies]
+  );
+
   const query = normalizeCompanyName(search);
   const visible = (
     tab === 'blacklisted' ? blacklisted : state.companies
@@ -192,6 +201,7 @@ export function CompaniesPage({
             ) : tab === 'blacklisted' ? (
               <BlacklistPanel
                 companies={visible}
+                candidates={blacklistCandidates}
                 emptyMessage={emptyMessage}
                 isAdding={isAdding}
                 onAddClose={() => setIsAdding(false)}

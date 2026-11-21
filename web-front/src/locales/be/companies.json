@@ -39,7 +39,8 @@
   },
   "form": {
     "companyLabel": "Кампанія",
-    "companyPlaceholder": "напрыклад, Acme Corp",
+    "companyPlaceholder": "Выберыце кампанію са сваіх водгукаў",
+    "noCompanies": "Сярод вашых водгукаў няма такой кампаніі",
     "reasonLabel": "Прычына (неабавязкова)",
     "reasonPlaceholder": "Чаму вы пазбягаеце гэтай кампаніі",
     "add": "Дадаць",

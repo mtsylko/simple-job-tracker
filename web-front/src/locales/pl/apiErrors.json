@@ -26,6 +26,7 @@
   "JOB_FIELD_OPTIONS_IN_USE": "Te opcje są nadal używane w istniejących aplikacjach: {{options}}",
   "COMPANY_NOT_FOUND": "Nie znaleziono firmy na czarnej liście",
   "COMPANY_ALREADY_BLACKLISTED": "Ta firma jest już na Twojej czarnej liście",
+  "COMPANY_HAS_NO_APPLICATIONS": "Na czarną listę można dodać tylko firmę z Twoich aplikacji",
   "ANSWER_NOT_FOUND": "Nie znaleziono odpowiedzi",
   "ANSWER_TITLE_TAKEN": "Odpowiedź o tym tytule już istnieje",
   "ANSWER_LIMIT_REACHED": "Limit przygotowanych odpowiedzi to {{limit}} — edytuj albo usuń jedną z nich",

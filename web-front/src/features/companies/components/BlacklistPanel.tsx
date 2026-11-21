@@ -13,6 +13,7 @@ import { BlacklistRow } from '@/features/companies/components/BlacklistRow';
 
 export function BlacklistPanel({
   companies,
+  candidates,
   emptyMessage,
   isAdding,
   onAddClose,
@@ -21,6 +22,8 @@ export function BlacklistPanel({
   onRemove
 }: {
   companies: CompanySummary[];
+  /** Companies the add form can pick from: the user's own, not yet blacklisted. */
+  candidates: string[];
   emptyMessage: string;
   // Opened from the page's header button.
   isAdding: boolean;
@@ -37,6 +40,7 @@ export function BlacklistPanel({
         <div className="border-b border-warm-line bg-warm-surface-2">
           <div className="max-w-xl">
             <BlacklistAddForm
+              companies={candidates}
               onSubmit={async (company, reason) => {
                 await onAdd(company, reason);
                 onAddClose();

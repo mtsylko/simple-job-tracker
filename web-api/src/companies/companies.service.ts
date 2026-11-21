@@ -1,4 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomUUID } from 'node:crypto';
 import { Repository } from 'typeorm';
@@ -139,6 +143,14 @@ export class CompaniesService {
         )
       );
     }
+    if (!(await this.hasApplicationFor(userId, nameNormalized))) {
+      throw new NotFoundException(
+        apiError(
+          'COMPANY_HAS_NO_APPLICATIONS',
+          'Only a company from your applications can be blacklisted'
+        )
+      );
+    }
 
     const now = new Date();
     const company =
@@ -156,6 +168,19 @@ export class CompaniesService {
     await this.repository.save(company);
 
     return toResponse(company);
+  }
+
+  private async hasApplicationFor(
+    userId: string,
+    nameNormalized: string
+  ): Promise<boolean> {
+    const jobs = await this.jobRepository.find({
+      where: { userId },
+      select: { id: true, company: true }
+    });
+    return jobs.some(
+      (job) => normalizeCompanyName(job.company) === nameNormalized
+    );
   }
 
   async updateBlacklistReason(

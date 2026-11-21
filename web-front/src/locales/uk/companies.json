@@ -39,7 +39,8 @@
   },
   "form": {
     "companyLabel": "Компанія",
-    "companyPlaceholder": "наприклад, Acme Corp",
+    "companyPlaceholder": "Оберіть компанію зі своїх відгуків",
+    "noCompanies": "Серед ваших відгуків немає такої компанії",
     "reasonLabel": "Причина (необов’язково)",
     "reasonPlaceholder": "Чому ви уникаєте цієї компанії",
     "add": "Додати",

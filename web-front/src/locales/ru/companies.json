@@ -39,7 +39,8 @@
   },
   "form": {
     "companyLabel": "Компания",
-    "companyPlaceholder": "например, Acme Corp",
+    "companyPlaceholder": "Выберите компанию из своих откликов",
+    "noCompanies": "Среди ваших откликов нет такой компании",
     "reasonLabel": "Причина (необязательно)",
     "reasonPlaceholder": "Почему вы избегаете эту компанию",
     "add": "Добавить",

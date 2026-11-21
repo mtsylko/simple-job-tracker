@@ -2,27 +2,36 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '@/components/ui/button';
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList
+} from '@/components/ui/combobox';
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 export function BlacklistAddForm({
+  companies,
   onSubmit,
   onCancel
 }: {
+  /** Names of the not-yet-blacklisted companies from the user's applications. */
+  companies: string[];
   onSubmit: (company: string, reason: string | null) => Promise<void>;
   onCancel: () => void;
 }) {
   const { t } = useTranslation('companies');
-  const [company, setCompany] = useState('');
+  const [company, setCompany] = useState<string | null>(null);
   const [reason, setReason] = useState('');
   const [companyError, setCompanyError] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = async () => {
-    const trimmed = company.trim();
-    if (!trimmed) {
+    if (!company) {
       setCompanyError(t('validation.companyRequired'));
       return;
     }
@@ -30,7 +39,7 @@ export function BlacklistAddForm({
     setSubmitError(null);
     setIsSubmitting(true);
     try {
-      await onSubmit(trimmed, reason.trim() || null);
+      await onSubmit(company, reason.trim() || null);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : t('form.add'));
     } finally {
@@ -44,17 +53,33 @@ export function BlacklistAddForm({
         <FieldLabel htmlFor="blacklist-company">
           {t('form.companyLabel')}
         </FieldLabel>
-        <Input
-          id="blacklist-company"
-          autoFocus
+        <Combobox
+          items={companies}
           value={company}
-          placeholder={t('form.companyPlaceholder')}
           disabled={isSubmitting}
-          onChange={(event) => {
-            setCompany(event.target.value);
+          onValueChange={(next) => {
+            setCompany(next);
             if (companyError) setCompanyError(null);
           }}
-        />
+        >
+          <ComboboxInput
+            id="blacklist-company"
+            autoFocus
+            className="w-full"
+            placeholder={t('form.companyPlaceholder')}
+            disabled={isSubmitting}
+          />
+          <ComboboxContent>
+            <ComboboxEmpty>{t('form.noCompanies')}</ComboboxEmpty>
+            <ComboboxList>
+              {(name: string) => (
+                <ComboboxItem key={name} value={name}>
+                  {name}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
         <FieldError>{companyError}</FieldError>
       </Field>
 
@@ -86,9 +111,9 @@ export function BlacklistAddForm({
         <Button
           type="button"
           onClick={() => void submit()}
-          disabled={isSubmitting || company.trim().length === 0}
+          disabled={isSubmitting || !company}
         >
-          {t('form.save')}
+          {t('form.add')}
         </Button>
       </div>
     </div>
