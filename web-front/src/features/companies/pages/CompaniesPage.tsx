@@ -1,10 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Search } from 'lucide-react';
+import { Plus, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { normalizeCompanyName, type CompanySummary } from '@job-tracker/shared';
 
 import { Modal } from '@/components/Modal';
 import { PageTabs } from '@/components/PageTabs';
+import { Button } from '@/components/ui/button';
 import {
   InputGroup,
   InputGroupAddon,
@@ -38,6 +39,7 @@ export function CompaniesPage({
 }) {
   const { t } = useTranslation('companies');
   const [search, setSearch] = useState('');
+  const [isAdding, setIsAdding] = useState(false);
   // Kept after the dialog closes so its title survives the exit animation.
   const [pendingRemoval, setPendingRemoval] = useState<CompanySummary | null>(
     null
@@ -126,9 +128,23 @@ export function CompaniesPage({
   return (
     <main className="flex min-h-0 flex-1 flex-col">
       <div className="flex flex-col gap-1 px-4 pb-4 pt-5 sm:px-7 sm:pb-5 sm:pt-7">
-        <h1 className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground">
-          {t('page.title')}
-        </h1>
+        {/* The same row as on Categories; adding only exists on the Blacklisted tab */}
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+          <h1 className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground">
+            {t('page.title')}
+          </h1>
+          {tab === 'blacklisted' && (
+            <Button
+              size="lg"
+              className="shrink-0 gap-1.5"
+              disabled={isAdding}
+              onClick={() => setIsAdding(true)}
+            >
+              <Plus className="size-3.5" aria-hidden="true" />
+              {t('form.addTitle')}
+            </Button>
+          )}
+        </div>
         <p className="text-sm text-muted-foreground">{t('page.subtitle')}</p>
       </div>
 
@@ -146,7 +162,10 @@ export function CompaniesPage({
           }
         ]}
         value={tab}
-        onChange={onTabChange}
+        onChange={(next) => {
+          setIsAdding(false);
+          onTabChange(next);
+        }}
       />
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-20 pt-4 sm:px-7">
@@ -174,6 +193,8 @@ export function CompaniesPage({
               <BlacklistPanel
                 companies={visible}
                 emptyMessage={emptyMessage}
+                isAdding={isAdding}
+                onAddClose={() => setIsAdding(false)}
                 onAdd={onAddToBlacklist}
                 onEditReason={requestReasonEdit}
                 onRemove={requestRemoval}

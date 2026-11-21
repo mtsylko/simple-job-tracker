@@ -19,7 +19,7 @@
     "multiselect": "Multiple choice"
   },
   "form": {
-    "addTitle": "Add a field",
+    "addTitle": "New field",
     "labelLabel": "Label",
     "labelPlaceholder": "e.g. Referral name",
     "typeLabel": "Type",
@@ -29,7 +29,6 @@
     "optionPlaceholder": "Add an option…",
     "optionAdd": "Add",
     "optionsHint": "At least one option is needed for choice fields",
-    "add": "Add field",
     "save": "Save",
     "cancel": "Cancel",
     "edit": "Edit",

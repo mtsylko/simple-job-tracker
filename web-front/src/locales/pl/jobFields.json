@@ -19,7 +19,7 @@
     "multiselect": "Wielokrotny wybór"
   },
   "form": {
-    "addTitle": "Dodaj pole",
+    "addTitle": "Nowe pole",
     "labelLabel": "Etykieta",
     "labelPlaceholder": "np. Osoba polecająca",
     "typeLabel": "Typ",
@@ -29,7 +29,6 @@
     "optionPlaceholder": "Dodaj opcję…",
     "optionAdd": "Dodaj",
     "optionsHint": "Pola wyboru potrzebują co najmniej jednej opcji",
-    "add": "Dodaj pole",
     "save": "Zapisz",
     "cancel": "Anuluj",
     "edit": "Edytuj",

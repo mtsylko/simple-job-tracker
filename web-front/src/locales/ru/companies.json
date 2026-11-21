@@ -38,7 +38,7 @@
     "editReason": "Изменить причину"
   },
   "form": {
-    "addTitle": "Добавить компанию",
+    "addTitle": "Новая компания",
     "companyLabel": "Компания",
     "companyPlaceholder": "например, Acme Corp",
     "reasonLabel": "Причина (необязательно)",

@@ -88,7 +88,7 @@ export function BlacklistAddForm({
           onClick={() => void submit()}
           disabled={isSubmitting || company.trim().length === 0}
         >
-          {t('form.add')}
+          {t('form.save')}
         </Button>
       </div>
     </div>

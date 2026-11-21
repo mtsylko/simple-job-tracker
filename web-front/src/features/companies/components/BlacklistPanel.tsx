@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { CompanySummary } from '@job-tracker/shared';
 
@@ -16,21 +14,38 @@ import { BlacklistRow } from '@/features/companies/components/BlacklistRow';
 export function BlacklistPanel({
   companies,
   emptyMessage,
+  isAdding,
+  onAddClose,
   onAdd,
   onEditReason,
   onRemove
 }: {
   companies: CompanySummary[];
   emptyMessage: string;
+  // Opened from the page's header button.
+  isAdding: boolean;
+  onAddClose: () => void;
   onAdd: (company: string, reason: string | null) => Promise<void>;
   onEditReason: (company: CompanySummary) => void;
   onRemove: (company: CompanySummary) => void;
 }) {
   const { t } = useTranslation('companies');
-  const [isAdding, setIsAdding] = useState(false);
 
   return (
     <>
+      {isAdding && (
+        <div className="border-b border-warm-line bg-warm-surface-2">
+          <div className="max-w-xl">
+            <BlacklistAddForm
+              onSubmit={async (company, reason) => {
+                await onAdd(company, reason);
+                onAddClose();
+              }}
+              onCancel={onAddClose}
+            />
+          </div>
+        </div>
+      )}
       {companies.length === 0 ? (
         <p className="px-5 py-4 text-sm text-muted-foreground">
           {emptyMessage}
@@ -65,29 +80,6 @@ export function BlacklistPanel({
           </TableBody>
         </Table>
       )}
-
-      <div className="border-t border-warm-line bg-warm-surface-2">
-        {isAdding ? (
-          <div className="max-w-xl">
-            <BlacklistAddForm
-              onSubmit={async (company, reason) => {
-                await onAdd(company, reason);
-                setIsAdding(false);
-              }}
-              onCancel={() => setIsAdding(false)}
-            />
-          </div>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setIsAdding(true)}
-            className="flex w-full items-center gap-2.5 px-5 py-2.5 text-left text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            <Plus className="size-3.5" aria-hidden="true" />
-            {t('form.addTitle')}
-          </button>
-        )}
-      </div>
     </>
   );
 }

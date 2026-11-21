@@ -38,7 +38,7 @@
     "editReason": "Edit reason"
   },
   "form": {
-    "addTitle": "Add a company",
+    "addTitle": "New company",
     "companyLabel": "Company",
     "companyPlaceholder": "e.g. Acme Corp",
     "reasonLabel": "Reason (optional)",
