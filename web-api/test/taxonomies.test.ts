@@ -290,3 +290,43 @@ describe('statuses', () => {
     ).rejects.toBeInstanceOf(BadRequestException);
   });
 });
+
+describe('archiving many jobs', () => {
+  it('archives only the caller’s active rows and restores them', async () => {
+    const userId = await newUser();
+    const otherId = await newUser();
+    const [first, second, alreadyArchived] = await Promise.all([
+      jobs.create(userId, jobInput({ company: 'First' })),
+      jobs.create(userId, jobInput({ company: 'Second' })),
+      jobs.create(userId, jobInput({ company: 'Third' }))
+    ]);
+    const archivedEarlier = await jobs.setArchived(
+      userId,
+      alreadyArchived._id,
+      true
+    );
+    const foreign = await jobs.create(otherId, jobInput());
+
+    const archived = await jobs.setArchivedMany(
+      userId,
+      [first._id, second._id, alreadyArchived._id, foreign._id],
+      true
+    );
+
+    expect(archived.map((job) => job._id).sort()).toEqual(
+      [first._id, second._id].sort()
+    );
+    expect(archived.every((job) => job.archivedAt !== null)).toBe(true);
+    expect(
+      (await jobs.findById(userId, alreadyArchived._id))?.archivedAt
+    ).toEqual(archivedEarlier?.archivedAt);
+    expect((await jobs.findById(otherId, foreign._id))?.archivedAt).toBeNull();
+
+    const restored = await jobs.setArchivedMany(
+      userId,
+      [first._id, second._id],
+      false
+    );
+    expect(restored.map((job) => job.archivedAt)).toEqual([null, null]);
+  });
+});

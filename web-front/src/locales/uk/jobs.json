@@ -113,6 +113,23 @@
       "body": "Відгук буде видалено назавжди разом зі статусом, нотатками й посиланням на резюме. Цю дію не можна скасувати.",
       "confirm": "Видалити",
       "cancel": "Скасувати"
+    },
+    "bulk": {
+      "toolbar": "Вибрані відгуки",
+      "selectAll": "Вибрати всі відгуки",
+      "selectRow": "Вибрати {{company}}",
+      "selected": "Вибрано: {{count}}",
+      "archive": "В архів",
+      "restore": "Відновити",
+      "clear": "Зняти виділення",
+      "archivedToast_one": "До архіву перенесено {{count}} відгук",
+      "archivedToast_few": "До архіву перенесено {{count}} відгуки",
+      "archivedToast_many": "До архіву перенесено {{count}} відгуків",
+      "archivedToast_other": "До архіву перенесено {{count}} відгуку",
+      "restoredToast_one": "Відновлено {{count}} відгук",
+      "restoredToast_few": "Відновлено {{count}} відгуки",
+      "restoredToast_many": "Відновлено {{count}} відгуків",
+      "restoredToast_other": "Відновлено {{count}} відгуку"
     }
   },
   "empty": {

@@ -15,6 +15,11 @@ import { CompanyCell } from './TableCells/CompanyCell.tsx';
 import { CvCell } from './TableCells/CvCell.tsx';
 import { JobOpenLink } from './TableCells/JobOpenLink.tsx';
 import { RowMenu } from './TableCells/RowMenu.tsx';
+import { SelectCheckbox } from './TableCells/SelectCheckbox.tsx';
+import {
+  SELECT_COLUMN_ID,
+  SELECT_COLUMN_WIDTH
+} from './JobsTable/column-pinning';
 import type { HideableJobColumnId } from './use-job-table-layout';
 
 type UseJobListColumnsArgs = {
@@ -178,6 +183,33 @@ export function useJobListColumns({
     ];
 
     return [
+      {
+        id: SELECT_COLUMN_ID,
+        header: ({ table }) => (
+          <SelectCheckbox
+            checked={table.getIsAllRowsSelected()}
+            indeterminate={table.getIsSomeRowsSelected()}
+            label={t('list.bulk.selectAll')}
+            onCheckedChange={(checked) => table.toggleAllRowsSelected(checked)}
+          />
+        ),
+        minSize: SELECT_COLUMN_WIDTH,
+        size: SELECT_COLUMN_WIDTH,
+        maxSize: SELECT_COLUMN_WIDTH,
+        enableSorting: false,
+        enableResizing: false,
+        enableHiding: false,
+        enableGrouping: false,
+        cell: ({ row }) => (
+          <SelectCheckbox
+            checked={row.getIsSelected()}
+            label={t('list.bulk.selectRow', {
+              company: row.original.company.trim() || t('list.table.noCompany')
+            })}
+            onCheckedChange={(checked) => row.toggleSelected(checked)}
+          />
+        )
+      },
       {
         accessorKey: 'company',
         header: t('list.table.columns.company'),

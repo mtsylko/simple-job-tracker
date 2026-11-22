@@ -20,7 +20,14 @@ const SCROLL_BATCH_SIZE = 50;
  * them a batch at a time, so filter counts and CSV export still see the whole
  * result set.
  */
-export function JobsTable({ table }: { table: Table<JobRow> }) {
+export function JobsTable({
+  table,
+  hasActionBar = false
+}: {
+  table: Table<JobRow>;
+  /** The bulk action bar floats over the foot, so the last row needs room to scroll clear of it. */
+  hasActionBar?: boolean;
+}) {
   const { t } = useTranslation('jobs');
 
   // A company with a single application is shown as that application rather
@@ -50,6 +57,7 @@ export function JobsTable({ table }: { table: Table<JobRow> }) {
     <div
       className={cn(
         'min-h-0 flex-1 overflow-auto rounded-xl border border-warm-line bg-warm-surface pb-12',
+        hasActionBar && 'pb-24',
         isEmpty && 'flex flex-col'
       )}
     >

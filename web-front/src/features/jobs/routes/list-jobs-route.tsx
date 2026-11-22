@@ -16,6 +16,7 @@ export function ListJobsRoute() {
   const { jobs, isLoading, error, refreshJobs } = useJobsLoadState();
   const deleteJob = useJobsStore((state) => state.deleteJob);
   const setJobArchived = useJobsStore((state) => state.setJobArchived);
+  const setJobsArchived = useJobsStore((state) => state.setJobsArchived);
 
   // Restore stored filters/sort on a bare URL before the list paints, so they
   // never flash in from a second render. A one-shot at mount: once redirected
@@ -75,6 +76,7 @@ export function ListJobsRoute() {
       jobs={jobs}
       onEdit={handleEdit}
       onSetArchived={setJobArchived}
+      onSetManyArchived={setJobsArchived}
       onDelete={deleteJob}
     />
   );

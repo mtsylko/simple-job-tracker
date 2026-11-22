@@ -7,6 +7,7 @@ import { GroupHeaderCell } from '../TableCells/GroupHeaderCell.tsx';
 import { useGroupLabel } from '../use-group-label';
 import {
   PINNED_START_COLUMN_ID,
+  SELECT_COLUMN_ID,
   pinnedCellClass,
   pinnedCellStyle
 } from './column-pinning';
@@ -45,7 +46,8 @@ export function JobsTableRow({
               // taller than its neighbours. Stacked cells (company, salary) use
               // block children, which `nowrap` leaves alone.
               'h-14 overflow-hidden border-b border-warm-line bg-inherit px-3.5 align-middle text-ellipsis whitespace-nowrap',
-              pinnedCellClass(columnId)
+              pinnedCellClass(columnId),
+              columnId === SELECT_COLUMN_ID && 'px-0'
             )}
           >
             {/* The group header always occupies the first column, whichever

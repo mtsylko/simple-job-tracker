@@ -1,14 +1,20 @@
 import type { CSSProperties } from 'react';
 
 /**
- * The two columns that stay put while the rest scroll sideways: the row's title
- * and, beside it, its menu. Both pin to the inline start, which is where
- * react-data-grid put them — it sorted every `frozen` column to the front.
+ * The columns that stay put while the rest scroll sideways: the row's
+ * checkbox, its title and, beside it, its menu. All pin to the inline start,
+ * which is where react-data-grid put them — it sorted every `frozen` column to
+ * the front.
  */
+export const SELECT_COLUMN_ID = 'select';
 export const PINNED_START_COLUMN_ID = 'company';
 export const PINNED_END_COLUMN_ID = 'actions';
 
+/** Fixed, so the company column can pin at a known offset after it. */
+export const SELECT_COLUMN_WIDTH = 44;
+
 const PINNED_COLUMN_IDS: readonly string[] = [
+  SELECT_COLUMN_ID,
   PINNED_START_COLUMN_ID,
   PINNED_END_COLUMN_ID
 ];
@@ -28,9 +34,11 @@ export function pinnedCellStyle(
   columnId: string,
   companyWidth: number
 ): CSSProperties | undefined {
-  if (columnId === PINNED_START_COLUMN_ID) return { insetInlineStart: 0 };
+  if (columnId === SELECT_COLUMN_ID) return { insetInlineStart: 0 };
+  if (columnId === PINNED_START_COLUMN_ID)
+    return { insetInlineStart: SELECT_COLUMN_WIDTH };
   if (columnId === PINNED_END_COLUMN_ID)
-    return { insetInlineStart: companyWidth };
+    return { insetInlineStart: SELECT_COLUMN_WIDTH + companyWidth };
   return undefined;
 }
 

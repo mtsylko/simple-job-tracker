@@ -113,6 +113,23 @@
       "body": "Aplikacja zostanie trwale usunięta razem ze statusem, notatkami i powiązanym CV. Tej operacji nie można cofnąć.",
       "confirm": "Usuń",
       "cancel": "Anuluj"
+    },
+    "bulk": {
+      "toolbar": "Zaznaczone aplikacje",
+      "selectAll": "Zaznacz wszystkie aplikacje",
+      "selectRow": "Zaznacz {{company}}",
+      "selected": "Zaznaczono: {{count}}",
+      "archive": "Archiwizuj",
+      "restore": "Przywróć",
+      "clear": "Wyczyść zaznaczenie",
+      "archivedToast_one": "Zarchiwizowano {{count}} aplikację",
+      "archivedToast_few": "Zarchiwizowano {{count}} aplikacje",
+      "archivedToast_many": "Zarchiwizowano {{count}} aplikacji",
+      "archivedToast_other": "Zarchiwizowano {{count}} aplikacji",
+      "restoredToast_one": "Przywrócono {{count}} aplikację",
+      "restoredToast_few": "Przywrócono {{count}} aplikacje",
+      "restoredToast_many": "Przywrócono {{count}} aplikacji",
+      "restoredToast_other": "Przywrócono {{count}} aplikacji"
     }
   },
   "empty": {

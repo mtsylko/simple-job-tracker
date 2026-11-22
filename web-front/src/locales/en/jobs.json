@@ -109,6 +109,19 @@
       "body": "This application will be permanently removed, along with its status, notes and CV link. This can't be undone.",
       "confirm": "Delete",
       "cancel": "Cancel"
+    },
+    "bulk": {
+      "toolbar": "Selected applications",
+      "selectAll": "Select all applications",
+      "selectRow": "Select {{company}}",
+      "selected": "{{count}} selected",
+      "archive": "Archive",
+      "restore": "Restore",
+      "clear": "Clear selection",
+      "archivedToast_one": "{{count}} application archived",
+      "archivedToast_other": "{{count}} applications archived",
+      "restoredToast_one": "{{count}} application restored",
+      "restoredToast_other": "{{count}} applications restored"
     }
   },
   "empty": {

@@ -5,6 +5,7 @@ import {
   deleteJob as deleteJobRequest,
   listJobs,
   setJobArchived as setJobArchivedRequest,
+  setJobsArchived as setJobsArchivedRequest,
   updateJob as updateJobRequest
 } from '@/features/jobs/job-api';
 import { type JobFormValues, type JobRow } from '@/features/jobs/types';
@@ -12,6 +13,7 @@ import { readErrorMessage } from '@/features/utils';
 import i18n from '@/i18n';
 import {
   trackJobArchived,
+  trackJobsBulkArchived,
   trackJobCreated,
   trackJobDeleted,
   trackJobUpdated
@@ -34,6 +36,8 @@ type JobsState = {
   createJob: (values: JobFormValues) => Promise<JobRow>;
   updateJob: (id: string, values: JobFormValues) => Promise<void>;
   setJobArchived: (id: string, archived: boolean) => Promise<void>;
+  /** Resolves to how many rows changed; ones already in that state are skipped. */
+  setJobsArchived: (ids: string[], archived: boolean) => Promise<number>;
   deleteJob: (id: string) => Promise<void>;
 };
 
@@ -99,6 +103,21 @@ export const useJobsStore = create<JobsState>((set, get) => ({
       }));
       trackJobArchived(archived);
     } catch (caughtError) {
+      throw new Error(readErrorMessage(caughtError));
+    }
+  },
+  async setJobsArchived(ids, archived) {
+    try {
+      const changed = await setJobsArchivedRequest(ids, archived);
+      const byId = new Map(changed.map((job) => [job.id, job]));
+      set((state) => ({
+        jobs: state.jobs.map((job) => byId.get(job.id) ?? job)
+      }));
+      trackJobsBulkArchived(archived, changed.length);
+      return changed.length;
+    } catch (caughtError) {
+      // Earlier batches may have landed, so the rows on screen can be out of date
+      void get().refreshJobs();
       throw new Error(readErrorMessage(caughtError));
     }
   },

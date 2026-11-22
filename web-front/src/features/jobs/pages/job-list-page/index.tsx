@@ -6,12 +6,13 @@ import {
   getGroupedRowModel,
   useReactTable,
   type ExpandedState,
-  type GroupingState
+  type GroupingState,
+  type RowSelectionState
 } from '@tanstack/react-table';
 import { useTranslation } from 'react-i18next';
 
 import { ROUTES } from '@/app/routes';
-import { type JobRow } from '@/features/jobs/types';
+import { isArchived, type JobRow } from '@/features/jobs/types';
 import { exportApplicationsCSV } from '@/features/jobs/export-applications-csv';
 import { trackApplicationsExported } from '@/lib/analytics-events';
 
@@ -21,11 +22,13 @@ import { BlacklistDialog } from '@/features/companies/components/BlacklistDialog
 import { useCompanyBlacklisting } from '@/features/companies/use-company-blacklisting';
 import { useCvVersionsLoadState } from '@/features/cv-versions/use-cv-versions-load-state';
 
+import { BulkActionBar } from './BulkActionBar';
 import { Header } from './Header';
 import { JobsTable } from './JobsTable';
 import { JobsCardList } from './JobsCardList';
 import { ListToolbar } from './ListToolbar';
 import { StatusTabs } from './StatusTabs';
+import { useBulkArchiving } from './use-bulk-archiving';
 import { useJobArchiving } from './use-job-archiving';
 import { useJobTableLayout } from './use-job-table-layout';
 import { useJobDeletion } from './use-job-deletion';
@@ -46,11 +49,13 @@ export function JobListPage({
   jobs,
   onEdit,
   onSetArchived,
+  onSetManyArchived,
   onDelete
 }: {
   jobs: JobRow[];
   onEdit: (id: string) => void;
   onSetArchived: (id: string, archived: boolean) => Promise<void>;
+  onSetManyArchived: (ids: string[], archived: boolean) => Promise<number>;
   onDelete: (id: string) => Promise<void>;
 }) {
   const navigate = useNavigate();
@@ -85,6 +90,8 @@ export function JobListPage({
     confirmDelete
   } = useJobDeletion(onDelete);
   const { archivingJobId, toggleArchive } = useJobArchiving(onSetArchived);
+  const { isBulkArchiving, setManyArchived } =
+    useBulkArchiving(onSetManyArchived);
   const {
     companyPendingBlacklist,
     isBlacklisting,
@@ -149,6 +156,15 @@ export function JobListPage({
 
   const [grouping, setGrouping] = useState<GroupingState>([]);
   const [expanded, setExpanded] = useState<ExpandedState>({});
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+
+  // A new tab or filter starts a new selection, so an action never reaches rows out of view
+  const viewKey = JSON.stringify([effectiveTab, filterValues]);
+  const [selectionViewKey, setSelectionViewKey] = useState(viewKey);
+  if (selectionViewKey !== viewKey) {
+    setSelectionViewKey(viewKey);
+    setRowSelection({});
+  }
 
   // Loads CV versions for the CV column, which reads them per cell.
   useCvVersionsLoadState();
@@ -180,7 +196,16 @@ export function JobListPage({
     // is what labels each group.
     groupedColumnMode: false,
     columnResizeMode: 'onChange',
-    state: { sorting, columnVisibility, columnSizing, grouping, expanded },
+    enableRowSelection: (row) => !row.getIsGrouped(),
+    state: {
+      sorting,
+      columnVisibility,
+      columnSizing,
+      grouping,
+      expanded,
+      rowSelection
+    },
+    onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnVisibilityChange: setColumnVisibility,
     onColumnSizingChange: setColumnSizing,
@@ -189,6 +214,23 @@ export function JobListPage({
   });
 
   const hasJobs = jobs.length > 0;
+
+  // Built from the rows in the table, so ids left over from an archived row drop out
+  const selectedJobs = table
+    .getSelectedRowModel()
+    .flatRows.map((row) => row.original);
+  const archivableIds = selectedJobs
+    .filter((job) => !isArchived(job))
+    .map((job) => job.id);
+  const restorableIds = selectedJobs
+    .filter((job) => isArchived(job))
+    .map((job) => job.id);
+
+  const handleBulkArchive = (ids: string[], archived: boolean) => {
+    void setManyArchived(ids, archived).then((done) => {
+      if (done) setRowSelection({});
+    });
+  };
 
   return (
     <main className="flex min-h-0 flex-1 flex-col">
@@ -231,8 +273,20 @@ export function JobListPage({
               />
             </div>
 
-            <div className="hidden min-h-0 flex-1 md:flex md:flex-col">
-              <JobsTable table={table} />
+            <div className="relative hidden min-h-0 flex-1 md:flex md:flex-col">
+              <JobsTable table={table} hasActionBar={selectedJobs.length > 0} />
+
+              {selectedJobs.length > 0 && (
+                <BulkActionBar
+                  selectedCount={selectedJobs.length}
+                  archivableCount={archivableIds.length}
+                  restorableCount={restorableIds.length}
+                  isPending={isBulkArchiving}
+                  onArchive={() => handleBulkArchive(archivableIds, true)}
+                  onRestore={() => handleBulkArchive(restorableIds, false)}
+                  onClear={() => setRowSelection({})}
+                />
+              )}
             </div>
 
             {/* Cards overflow the padded box above, so the launcher clearance goes here (mb-4 + pb-16) */}

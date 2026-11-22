@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomUUID } from 'node:crypto';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import type {
   CreateJobInput,
   JobContractType,
@@ -478,6 +478,39 @@ export class JobsService {
 
     const saved = await this.repository.save(row);
     return this.mapEntityToJob(saved);
+  }
+
+  /**
+   * `setArchived` for many records at once. Only rows that change state are
+   * touched, so an archived row keeps its original `archivedAt`. Ids that are
+   * not the caller's are skipped; returns the rows it changed.
+   */
+  async setArchivedMany(
+    userId: string,
+    ids: string[],
+    archived: boolean
+  ): Promise<Job[]> {
+    const now = new Date();
+    const result = await this.repository
+      .createQueryBuilder()
+      .update(JobEntity)
+      .set({ archivedAt: archived ? now : null, updatedAt: now })
+      .where('user_id = :userId', { userId })
+      .andWhere('id IN (:...ids)', { ids })
+      .andWhere(archived ? 'archived_at IS NULL' : 'archived_at IS NOT NULL')
+      .returning(['id'])
+      .execute();
+
+    const changedIds = (result.raw as { id: string }[]).map((row) => row.id);
+    if (changedIds.length === 0) {
+      return [];
+    }
+
+    const rows = await this.repository.find({
+      where: { userId, id: In(changedIds) },
+      relations: JobsService.TAXONOMY_RELATIONS
+    });
+    return rows.map((row) => this.mapEntityToJob(row));
   }
 
   async remove(userId: string, id: string): Promise<boolean> {

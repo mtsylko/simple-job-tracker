@@ -42,3 +42,12 @@ export type CreateJobInput = {
 };
 
 export type UpdateJobInput = Partial<CreateJobInput>;
+
+/** Most ids one `POST /api/jobs/bulk-archive` accepts; the client sends larger selections in batches. */
+export const BULK_ARCHIVE_MAX_IDS = 500;
+
+/** `POST /api/jobs/bulk-archive`: archives (or restores) the caller's listed applications. */
+export type BulkArchiveJobsInput = {
+  ids: string[];
+  archived: boolean;
+};

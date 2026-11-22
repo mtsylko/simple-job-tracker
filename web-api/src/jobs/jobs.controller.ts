@@ -12,7 +12,12 @@ import {
   UseGuards
 } from '@nestjs/common';
 import { z } from 'zod';
-import type { CreateJobInput, UpdateJobInput } from '@job-tracker/shared';
+import {
+  BULK_ARCHIVE_MAX_IDS,
+  type BulkArchiveJobsInput,
+  type CreateJobInput,
+  type UpdateJobInput
+} from '@job-tracker/shared';
 import { JobsService, Job } from './jobs.service';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipe';
 import { JwtAuthGuard } from '../common/guards/jwt-auth.guard';
@@ -69,6 +74,13 @@ const updateJobSchema = createJobSchema
 
 const idSchema = z.string().uuid({ message: 'Invalid job id' });
 
+const bulkArchiveSchema = z
+  .object({
+    ids: z.array(idSchema).min(1).max(BULK_ARCHIVE_MAX_IDS),
+    archived: z.boolean()
+  })
+  .strict();
+
 @Controller('api/jobs')
 @UseGuards(JwtAuthGuard)
 export class JobsController {
@@ -85,6 +97,21 @@ export class JobsController {
   @Get()
   async findAll(@CurrentUser() user: UserEntity): Promise<Job[]> {
     return this.jobsService.findAll(user.id);
+  }
+
+  /** Returns only the rows that changed; ids already in that state or not the caller's are skipped. */
+  @Post('bulk-archive')
+  @HttpCode(HttpStatus.OK)
+  async bulkArchive(
+    @CurrentUser() user: UserEntity,
+    @Body(new ZodValidationPipe(bulkArchiveSchema))
+    payload: BulkArchiveJobsInput
+  ): Promise<Job[]> {
+    return this.jobsService.setArchivedMany(
+      user.id,
+      [...new Set(payload.ids)],
+      payload.archived
+    );
   }
 
   @Get(':id')

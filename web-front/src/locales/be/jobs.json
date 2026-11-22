@@ -113,6 +113,23 @@
       "body": "Водгук будзе выдалены назаўсёды разам са статусам, нататкамі і спасылкай на рэзюмэ. Гэта дзеянне нельга адмяніць.",
       "confirm": "Выдаліць",
       "cancel": "Скасаваць"
+    },
+    "bulk": {
+      "toolbar": "Выбраныя водгукі",
+      "selectAll": "Выбраць усе водгукі",
+      "selectRow": "Выбраць {{company}}",
+      "selected": "Выбрана: {{count}}",
+      "archive": "У архіў",
+      "restore": "Аднавіць",
+      "clear": "Зняць вылучэнне",
+      "archivedToast_one": "У архіў перанесены {{count}} водгук",
+      "archivedToast_few": "У архіў перанесена {{count}} водгукі",
+      "archivedToast_many": "У архіў перанесена {{count}} водгукаў",
+      "archivedToast_other": "У архіў перанесена {{count}} водгуку",
+      "restoredToast_one": "Адноўлены {{count}} водгук",
+      "restoredToast_few": "Адноўлена {{count}} водгукі",
+      "restoredToast_many": "Адноўлена {{count}} водгукаў",
+      "restoredToast_other": "Адноўлена {{count}} водгуку"
     }
   },
   "empty": {

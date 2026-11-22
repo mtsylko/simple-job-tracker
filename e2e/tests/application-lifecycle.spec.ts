@@ -46,6 +46,24 @@ test('archives an application out of the active list', async ({ page }) => {
   await expect(applicationRow(page, 'Acme')).toBeVisible();
 });
 
+test('archives the selected applications at once', async ({ api, page }) => {
+  await api.createJob(applicationInput({ company: 'Globex' }));
+  await api.createJob(applicationInput({ company: 'Initech' }));
+  await page.goto('/applications');
+
+  await page.getByRole('checkbox', { name: 'Select Acme' }).check();
+  await page.getByRole('checkbox', { name: 'Select Globex' }).check();
+  await page
+    .getByRole('toolbar', { name: 'Selected applications' })
+    .getByRole('button', { name: 'Archive' })
+    .click();
+
+  await expect(page.getByText('2 applications archived')).toBeVisible();
+  await expect(applicationRow(page, 'Acme')).toBeHidden();
+  await expect(applicationRow(page, 'Globex')).toBeHidden();
+  await expect(applicationRow(page, 'Initech')).toBeVisible();
+});
+
 test('deletes an application once confirmed', async ({ page }) => {
   await page.goto('/applications');
 

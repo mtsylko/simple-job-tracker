@@ -23,6 +23,10 @@ export function trackJobArchived(archived: boolean): void {
   trackEvent('job_archived', { archived });
 }
 
+export function trackJobsBulkArchived(archived: boolean, count: number): void {
+  trackEvent('jobs_bulk_archived', { archived, count });
+}
+
 export function trackJobDeleted(): void {
   trackEvent('job_deleted');
 }

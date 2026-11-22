@@ -5,7 +5,11 @@ import { flexRender, type Header } from '@tanstack/react-table';
 import type { JobRow } from '@/features/jobs/types';
 import { cn } from '@/lib/utils';
 import { SortIndicator } from '../SortIndicator.tsx';
-import { pinnedCellClass, pinnedCellStyle } from './column-pinning';
+import {
+  SELECT_COLUMN_ID,
+  pinnedCellClass,
+  pinnedCellStyle
+} from './column-pinning';
 import {
   COLUMN_RESIZE_SHIFT_STEPS,
   COLUMN_RESIZE_STEP,
@@ -58,7 +62,8 @@ export function JobsTableHeaderCell({
       className={cn(
         // Sentence case: tracked capitals read louder than the data under them.
         'sticky top-0 z-20 h-10 border-b border-warm-line bg-warm-surface px-3.5 text-left text-xs font-medium text-ink-3',
-        pinnedCellClass(column.id, true)
+        pinnedCellClass(column.id, true),
+        column.id === SELECT_COLUMN_ID && 'px-0'
       )}
       // Named by its label alone; the resize handle's width would join it otherwise.
       aria-labelledby={labelId}

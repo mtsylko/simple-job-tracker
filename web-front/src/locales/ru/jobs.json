@@ -113,6 +113,23 @@
       "body": "Отклик будет удалён безвозвратно вместе со статусом, заметками и ссылкой на резюме. Это действие нельзя отменить.",
       "confirm": "Удалить",
       "cancel": "Отмена"
+    },
+    "bulk": {
+      "toolbar": "Выбранные отклики",
+      "selectAll": "Выбрать все отклики",
+      "selectRow": "Выбрать {{company}}",
+      "selected": "Выбрано: {{count}}",
+      "archive": "В архив",
+      "restore": "Восстановить",
+      "clear": "Снять выделение",
+      "archivedToast_one": "В архив перенесён {{count}} отклик",
+      "archivedToast_few": "В архив перенесено {{count}} отклика",
+      "archivedToast_many": "В архив перенесено {{count}} откликов",
+      "archivedToast_other": "В архив перенесено {{count}} отклика",
+      "restoredToast_one": "Восстановлен {{count}} отклик",
+      "restoredToast_few": "Восстановлено {{count}} отклика",
+      "restoredToast_many": "Восстановлено {{count}} откликов",
+      "restoredToast_other": "Восстановлено {{count}} отклика"
     }
   },
   "empty": {

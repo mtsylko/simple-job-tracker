@@ -1,4 +1,6 @@
 import {
+  BULK_ARCHIVE_MAX_IDS,
+  type BulkArchiveJobsInput,
   type CreateJobFieldInput,
   type CreateJobInput,
   type CreateJobStatusOptionInput,
@@ -391,6 +393,26 @@ export async function setJobArchived(
   );
 
   return mapApiJob(payload);
+}
+
+/** Sends large selections in batches the API accepts; returns only the rows that changed. */
+export async function setJobsArchived(
+  ids: string[],
+  archived: boolean
+): Promise<JobRow[]> {
+  const changed: JobRow[] = [];
+  for (let start = 0; start < ids.length; start += BULK_ARCHIVE_MAX_IDS) {
+    const body: BulkArchiveJobsInput = {
+      ids: ids.slice(start, start + BULK_ARCHIVE_MAX_IDS),
+      archived
+    };
+    const payload = await request<ApiJob[]>(`${JOBS_ENDPOINT}/bulk-archive`, {
+      method: 'POST',
+      body: JSON.stringify(body)
+    });
+    changed.push(...payload.map(mapApiJob));
+  }
+  return changed;
 }
 
 export async function deleteJob(id: string): Promise<void> {
