@@ -25,7 +25,8 @@
       "on": "On",
       "off": "Off",
       "onHint": "Enabled — appears in CV picker",
-      "offHint": "Disabled — hidden from CV picker"
+      "offHint": "Disabled — hidden from CV picker",
+      "label": "Show {{name}} in CV picker"
     },
     "deleteLabel": "Delete {{name}}",
     "noMatch": "No CV versions match this filter",

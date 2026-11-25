@@ -12,15 +12,19 @@ import { JobFieldForm, type JobFieldFormValues } from './JobFieldForm';
 
 export function JobFieldRow({
   definition,
+  isEditing,
+  onEditingChange,
   onUpdate,
   onDelete
 }: {
   definition: JobFieldDefinition;
+  /** Held by the page, so one form (add or edit) is open at a time. */
+  isEditing: boolean;
+  onEditingChange: (open: boolean) => void;
   onUpdate: (values: JobFieldFormValues) => Promise<void>;
   onDelete: () => Promise<void>;
 }) {
   const { t } = useTranslation('jobFields');
-  const [isEditing, setIsEditing] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -48,9 +52,9 @@ export function JobFieldRow({
           submitLabel={t('form.save')}
           onSubmit={async (values) => {
             await onUpdate(values);
-            setIsEditing(false);
+            onEditingChange(false);
           }}
-          onCancel={() => setIsEditing(false)}
+          onCancel={() => onEditingChange(false)}
         />
       </div>
     );
@@ -90,7 +94,7 @@ export function JobFieldRow({
           size="icon-lg"
           className="text-muted-foreground"
           {...ROW_OPENER}
-          onClick={() => setIsEditing(true)}
+          onClick={() => onEditingChange(true)}
           aria-label={t('form.edit')}
         >
           <Pencil aria-hidden="true" />

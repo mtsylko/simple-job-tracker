@@ -1,4 +1,9 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Route
+} from 'react-router-dom';
 
 import {
   CreateJobRoute,
@@ -26,18 +31,14 @@ import { SignInPage } from '@/features/auth/SignInPage';
 import { LegalPage } from '@/features/legal/pages/LegalPage';
 
 import { AppLayout } from './AppLayout';
+import { AppRoot } from './AppRoot';
 import { ROUTES, taxonomiesListPath } from './routes';
-import { useDocumentTitle } from './use-document-title';
-import { useGoogleAnalytics } from './use-google-analytics';
 
-export function AppRoutes() {
-  // Before the page view, which reports document.title.
-  useDocumentTitle();
-  // Sits here rather than in App, which is outside the router that useLocation needs.
-  useGoogleAnalytics();
-
-  return (
-    <Routes>
+// A data router rather than <BrowserRouter>: it is what lets a form hold a
+// navigation (useBlocker) while it has unsaved changes.
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<AppRoot />}>
       <Route path={ROUTES.signIn} element={<SignInPage />} />
       <Route path={ROUTES.privacy} element={<LegalPage document="privacy" />} />
       <Route path={ROUTES.terms} element={<LegalPage document="terms" />} />
@@ -93,6 +94,6 @@ export function AppRoutes() {
           />
         </Route>
       </Route>
-    </Routes>
-  );
-}
+    </Route>
+  )
+);

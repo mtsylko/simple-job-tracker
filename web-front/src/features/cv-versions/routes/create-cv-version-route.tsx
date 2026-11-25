@@ -12,6 +12,9 @@ export function CreateCvVersionRoute() {
 
   async function handleSubmit(values: CvVersionFormValues) {
     await createCvVersion(values);
+  }
+
+  function handleSaved() {
     notifyActionSuccess('created', 'cvVersion');
     navigate(ROUTES.cvVersions);
   }
@@ -24,6 +27,7 @@ export function CreateCvVersionRoute() {
     <CvVersionFormPage
       mode="create"
       onSubmit={handleSubmit}
+      onSaved={handleSaved}
       onCancel={handleCancel}
     />
   );

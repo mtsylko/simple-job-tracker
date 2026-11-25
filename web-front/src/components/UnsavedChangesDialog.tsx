@@ -33,7 +33,7 @@ export function UnsavedChangesDialog({
           {dirtyFieldLabels.map((label) => (
             <li
               key={label}
-              className="flex items-start gap-2 py-[3px] before:mt-[7px] before:size-[5px] before:shrink-0 before:rounded-full before:[background:var(--clay)]"
+              className="flex items-center gap-2 py-[3px] before:size-[5px] before:shrink-0 before:rounded-full before:[background:var(--clay)]"
             >
               <span className="font-medium text-foreground">{label}</span>
             </li>

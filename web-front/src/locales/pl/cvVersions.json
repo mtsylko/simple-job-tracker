@@ -29,7 +29,8 @@
       "on": "Wł.",
       "off": "Wył.",
       "onHint": "Włączona — widoczna przy wyborze CV",
-      "offHint": "Wyłączona — ukryta przy wyborze CV"
+      "offHint": "Wyłączona — ukryta przy wyborze CV",
+      "label": "Pokazuj {{name}} przy wyborze CV"
     },
     "deleteLabel": "Usuń {{name}}",
     "noMatch": "Żadna wersja CV nie pasuje do tego filtra",

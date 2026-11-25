@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { JobStatusColor } from '@job-tracker/shared';
 import { useTranslation } from 'react-i18next';
 
@@ -32,6 +33,8 @@ export function StatusManagerSection({
     onReorder
   );
   const lastIndex = state.options.length - 1;
+  // One rename at a time: opening another row's closes this one
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   return (
     <CategoryPanel
@@ -62,6 +65,12 @@ export function StatusManagerSection({
         <StatusRow
           key={option.id}
           option={option}
+          isEditing={editingId === option.id}
+          onEditingChange={(open) =>
+            setEditingId((current) =>
+              open ? option.id : current === option.id ? null : current
+            )
+          }
           canMoveUp={index > 0}
           canMoveDown={index < lastIndex}
           isDragging={isDragging(option.id)}

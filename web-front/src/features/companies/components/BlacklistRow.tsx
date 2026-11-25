@@ -64,6 +64,7 @@ export function BlacklistRow({
           <button
             type="button"
             className="cv-icon-btn"
+            aria-label={t('blacklisted.editReason')}
             title={t('blacklisted.editReason')}
             onClick={() => onEditReason(company)}
           >
@@ -72,6 +73,7 @@ export function BlacklistRow({
           <button
             type="button"
             className="cv-icon-btn"
+            aria-label={t('list.unblacklistAction')}
             title={t('list.unblacklistAction')}
             onClick={() => onRemove(company)}
           >

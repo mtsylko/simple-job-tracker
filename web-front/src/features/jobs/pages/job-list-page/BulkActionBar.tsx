@@ -26,12 +26,12 @@ export function BulkActionBar({
 }) {
   const { t } = useTranslation('jobs');
 
-  // Same surface as the app's popovers and menus
+  // Same surface as the app's popovers and menus; 10px above and below the 32px buttons, the toast's height
   return (
     <div
       role="toolbar"
       aria-label={t('list.bulk.toolbar')}
-      className="absolute bottom-8 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1.5 rounded-lg bg-popover p-1.5 text-popover-foreground shadow-md ring-1 ring-foreground/10"
+      className="absolute bottom-8 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1.5 rounded-lg bg-popover px-2 py-2.5 text-popover-foreground shadow-md ring-1 ring-foreground/10"
     >
       <span className="num px-2 text-sm font-medium whitespace-nowrap">
         {t('list.bulk.selected', { count: selectedCount })}

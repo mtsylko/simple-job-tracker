@@ -9,6 +9,8 @@ import { cn } from '@/lib/utils';
 type FormActionsFooterProps = {
   formId: string;
   isSubmitting: boolean;
+  /** When given, the "Unsaved changes" hint shows only while true. */
+  isDirty?: boolean;
   submitLabel: string;
   submittingLabel?: string;
   onCancel?: () => void;
@@ -20,6 +22,7 @@ type FormActionsFooterProps = {
 export function FormActionsFooter({
   formId,
   isSubmitting,
+  isDirty,
   submitLabel,
   submittingLabel,
   onCancel,
@@ -30,7 +33,8 @@ export function FormActionsFooter({
   const { t } = useTranslation('common');
   const resolvedSubmittingLabel = submittingLabel ?? t('form.saving');
   const resolvedCancelLabel = cancelLabel ?? t('form.cancel');
-  const resolvedHint = hint ?? t('form.unsavedChanges');
+  const resolvedHint =
+    hint ?? (isDirty === false ? null : t('form.unsavedChanges'));
 
   const actionNode = useMemo(
     () => (
@@ -40,10 +44,14 @@ export function FormActionsFooter({
           className
         )}
       >
-        <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-          <Pencil className="size-3" aria-hidden="true" />
-          {resolvedHint}
-        </span>
+        {resolvedHint ? (
+          <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Pencil className="size-3" aria-hidden="true" />
+            {resolvedHint}
+          </span>
+        ) : (
+          <span />
+        )}
         <div className="flex items-center gap-2">
           {onCancel ? (
             <Button

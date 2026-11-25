@@ -96,7 +96,8 @@
       "deleted": "{{entity}}: nie udało się usunąć",
       "archived": "{{entity}}: nie udało się zarchiwizować",
       "restored": "{{entity}}: nie udało się przywrócić"
-    }
+    },
+    "undo": "Cofnij"
   },
   "form": {
     "saving": "Zapisywanie...",
@@ -105,7 +106,7 @@
     "unsavedChanges": "Niezapisane zmiany",
     "discardDialog": {
       "title": "Odrzucić niezapisane zmiany?",
-      "body": "Ta aplikacja ma zmiany, które nie zostały jeszcze zapisane. Jeśli teraz wyjdziesz, przepadną.",
+      "body": "Masz zmiany, które nie zostały jeszcze zapisane. Jeśli teraz wyjdziesz, przepadną",
       "keepEditing": "Edytuj dalej",
       "discardChanges": "Odrzuć zmiany"
     }

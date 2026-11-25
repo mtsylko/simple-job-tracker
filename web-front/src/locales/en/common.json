@@ -96,7 +96,8 @@
       "deleted": "{{entity}} could not be deleted",
       "archived": "{{entity}} could not be archived",
       "restored": "{{entity}} could not be restored"
-    }
+    },
+    "undo": "Undo"
   },
   "form": {
     "saving": "Saving...",
@@ -105,7 +106,7 @@
     "unsavedChanges": "Unsaved changes",
     "discardDialog": {
       "title": "Discard unsaved changes?",
-      "body": "You've edited this application but haven't saved yet. If you leave now, your edits will be lost.",
+      "body": "You have changes that haven't been saved yet. If you leave now, they will be lost",
       "keepEditing": "Keep editing",
       "discardChanges": "Discard changes"
     }

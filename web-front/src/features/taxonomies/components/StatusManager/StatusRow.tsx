@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { Check, X } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { JobStatusColor, JobStatusOption } from '@job-tracker/shared';
 
-import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
+import { notifyActionError } from '@/lib/notifications';
 import { ROW_OPEN_CLASS, rowOpenHandlers } from '@/lib/row-open';
 import { cn } from '@/lib/utils';
 
@@ -30,6 +29,8 @@ import { ColorSwatchPicker } from './ColorSwatchPicker';
 
 export function StatusRow({
   option,
+  isEditing,
+  onEditingChange,
   canMoveUp,
   canMoveDown,
   isDragging,
@@ -45,6 +46,9 @@ export function StatusRow({
   onSetDefault
 }: {
   option: JobStatusOption;
+  /** Held by the list, so one rename is open at a time. */
+  isEditing: boolean;
+  onEditingChange: (open: boolean) => void;
   canMoveUp: boolean;
   canMoveDown: boolean;
   isDragging: boolean;
@@ -61,42 +65,51 @@ export function StatusRow({
 }) {
   const { t } = useTranslation('taxonomies');
   const badge = statusBadgeStyle(option.color);
-  const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(option.value);
   const [isSavingRename, setIsSavingRename] = useState(false);
+  // Enter and the blur it causes both reach saveRename; the ref lets one through
+  const savingRef = useRef(false);
   const [renameError, setRenameError] = useState<string | null>(null);
   const [isBusy, setIsBusy] = useState(false);
 
   const startEditing = () => {
     setDraft(option.value);
     setRenameError(null);
-    setIsEditing(true);
+    onEditingChange(true);
   };
 
   const saveRename = async () => {
+    if (savingRef.current) return;
+
     const value = draft.trim();
     if (!value || value === option.value) {
-      setIsEditing(false);
+      onEditingChange(false);
       return;
     }
+
+    savingRef.current = true;
     setIsSavingRename(true);
     setRenameError(null);
     try {
       await onRename(value);
-      setIsEditing(false);
+      onEditingChange(false);
     } catch (error) {
       setRenameError(error instanceof Error ? error.message : t('renameError'));
     } finally {
+      savingRef.current = false;
       setIsSavingRename(false);
     }
   };
 
   // Colour/tab/default edits share one busy flag: they refetch the list, so
   // disabling the row's controls until it settles prevents overlapping writes.
+  // None of them has an inline error slot, so a failure is a toast.
   const runBusy = async (action: () => Promise<void>) => {
     setIsBusy(true);
     try {
       await action();
+    } catch (error) {
+      notifyActionError('updated', 'jobStatus', error);
     } finally {
       setIsBusy(false);
     }
@@ -136,45 +149,25 @@ export function StatusRow({
 
       <div className="min-w-0">
         {isEditing ? (
-          <div className="flex items-center gap-1.5">
-            <Input
-              autoFocus
-              aria-label={t('renameLabel', { value: option.value })}
-              value={draft}
-              disabled={isSavingRename}
-              onChange={(event) => setDraft(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  void saveRename();
-                }
-                if (event.key === 'Escape') {
-                  event.preventDefault();
-                  setIsEditing(false);
-                }
-              }}
-            />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon-sm"
-              onClick={() => void saveRename()}
-              disabled={isSavingRename}
-              aria-label={t('save')}
-            >
-              <Check aria-hidden="true" />
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon-sm"
-              onClick={() => setIsEditing(false)}
-              disabled={isSavingRename}
-              aria-label={t('cancel')}
-            >
-              <X aria-hidden="true" />
-            </Button>
-          </div>
+          // Enter and leaving the field save, Escape cancels: no buttons, as a rename in place works everywhere
+          <Input
+            autoFocus
+            aria-label={t('renameLabel', { value: option.value })}
+            value={draft}
+            disabled={isSavingRename}
+            onChange={(event) => setDraft(event.target.value)}
+            onBlur={() => void saveRename()}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                void saveRename();
+              }
+              if (event.key === 'Escape') {
+                event.preventDefault();
+                onEditingChange(false);
+              }
+            }}
+          />
         ) : (
           <div className="flex">
             <span className="status-badge max-w-full" style={badge.badge}>

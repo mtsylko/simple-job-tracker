@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,8 @@ import { StatusBadge } from '../job-list-page/TableCells/StatusBadge.tsx';
 import { normalizeCompanyName } from '@/features/jobs/components/company-combobox-utils';
 
 import { useExtractFromLink } from '@/features/jobs/use-extract-from-link';
+import { useUnsavedChangesGuard } from '@/hooks/use-unsaved-changes-guard';
+import { dirtyKeys } from '@/lib/dirty-fields';
 import { formatDisplayDate } from '@/lib/format-date';
 import { notify } from '@/lib/notifications';
 import { cn } from '@/lib/utils';
@@ -29,6 +31,7 @@ import { useFormFieldOrder } from './form-field-order';
 import {
   buildJobFormSchema,
   collectFieldErrors,
+  getDirtyFieldLabels,
   toFormValues,
   type JobFormErrors
 } from './job-form.schema';
@@ -38,7 +41,6 @@ import { StatusSection } from './status-section';
 import { useJobAttachments } from './use-job-attachments';
 import { useJobStatusOptions } from '@/features/jobs/use-job-status-options';
 import { useJobOutcomeOptions } from '@/features/jobs/use-job-outcome-options';
-import { useDirtyFormGuard } from './use-dirty-form-guard';
 
 /** Fields that render their own error message underneath the input. */
 const INLINE_ERROR_FIELDS = new Set<keyof JobFormValues>([
@@ -94,6 +96,8 @@ export function JobFormPage({
     job ? toFormValues(job) : emptyJobFormValues()
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // State lags a render behind, so Enter pressed twice in one tick needs a ref
+  const submitLock = useRef(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<JobFormErrors>({});
   const { statusOptions } = useJobStatusOptions();
@@ -139,19 +143,15 @@ export function JobFormPage({
     job ? toFormValues(job) : emptyJobFormValues()
   );
 
-  const {
-    dirtyFieldLabels,
-    showDiscardDialog,
-    guardNavigation,
-    onKeepEditing,
-    onDiscard
-  } = useDirtyFormGuard({
-    values,
-    initialValues,
-    extraDirtyLabels: attachments.hasChanges
-      ? [t('form.sections.attachments')]
-      : []
-  });
+  const dirtyFieldLabels = useMemo(() => {
+    const labels = getDirtyFieldLabels(t);
+    const changed = dirtyKeys(values, initialValues).map((key) => labels[key]);
+    return attachments.hasChanges
+      ? [...changed, t('form.sections.attachments')]
+      : changed;
+  }, [values, initialValues, attachments.hasChanges, t]);
+  const isDirty = dirtyFieldLabels.length > 0;
+  const guard = useUnsavedChangesGuard(isDirty);
 
   const formId = 'job-form';
 
@@ -172,6 +172,8 @@ export function JobFormPage({
   }
 
   async function handleSubmit() {
+    if (submitLock.current) return;
+
     // The status picker shows only in edit mode, so a new application inherits
     // the user's default status here; edit mode already carries the chosen one.
     const defaultStatus =
@@ -208,6 +210,7 @@ export function JobFormPage({
 
     setFieldErrors({});
     setSubmitError(null);
+    submitLock.current = true;
     setIsSubmitting(true);
 
     try {
@@ -232,6 +235,8 @@ export function JobFormPage({
           failures[0]?.message
         );
       }
+      // The saved values still differ from the mount snapshot, so the guard is told to let this one through
+      guard.release();
       onSaved();
     } catch (error) {
       setSubmitError(
@@ -240,6 +245,7 @@ export function JobFormPage({
           : t('form.validation.failedToSaveJob')
       );
     } finally {
+      submitLock.current = false;
       setIsSubmitting(false);
     }
   }
@@ -259,7 +265,7 @@ export function JobFormPage({
           <Button
             type="button"
             variant="link"
-            onClick={() => guardNavigation(() => navigate(backTo))}
+            onClick={() => navigate(backTo)}
             className="text-sm mb-2 px-0 text-muted-foreground hover:no-underline"
           >
             <ArrowLeft className="size-3.5" aria-hidden="true" />
@@ -312,99 +318,102 @@ export function JobFormPage({
             !isLayoutReady && 'invisible'
           )}
         >
-          <ApplicationDetailsSection
-            values={values}
-            errors={fieldErrors}
-            companyOptions={companyOptions}
-            onFieldChange={handleChange}
-            onExtractFromLink={() => {
-              valuesAtExtract.current = values;
-              void extraction.extract();
-            }}
-            canExtractFromLink={extraction.canExtract}
-            isExtracting={extraction.isExtracting}
-            extractError={extraction.extractError}
-            order={orders.applicationDetails}
-            onOrderChange={(next) => reorder('applicationDetails', next)}
-            t={t}
-          />
+          {/* One disabled fieldset locks every control while the save is in flight */}
+          <fieldset disabled={isSubmitting} className="min-w-0">
+            <ApplicationDetailsSection
+              values={values}
+              errors={fieldErrors}
+              companyOptions={companyOptions}
+              onFieldChange={handleChange}
+              onExtractFromLink={() => {
+                valuesAtExtract.current = values;
+                void extraction.extract();
+              }}
+              canExtractFromLink={extraction.canExtract}
+              isExtracting={extraction.isExtracting}
+              extractError={extraction.extractError}
+              order={orders.applicationDetails}
+              onOrderChange={(next) => reorder('applicationDetails', next)}
+              t={t}
+            />
 
-          <div className="my-6 border-t border-border" />
+            <div className="my-6 border-t border-border" />
 
-          <RoleDetailsSection
-            values={values}
-            errors={fieldErrors}
-            roleOptions={roleOptions}
-            levelOptions={levelOptions}
-            typeOptions={typeOptions}
-            employmentTypeOptions={employmentTypeOptions}
-            contractTypeOptions={contractTypeOptions}
-            cvOptions={cvOptions}
-            onFieldChange={handleChange}
-            order={orders.roleDetails}
-            onOrderChange={(next) => reorder('roleDetails', next)}
-            t={t}
-          />
+            <RoleDetailsSection
+              values={values}
+              errors={fieldErrors}
+              roleOptions={roleOptions}
+              levelOptions={levelOptions}
+              typeOptions={typeOptions}
+              employmentTypeOptions={employmentTypeOptions}
+              contractTypeOptions={contractTypeOptions}
+              cvOptions={cvOptions}
+              onFieldChange={handleChange}
+              order={orders.roleDetails}
+              onOrderChange={(next) => reorder('roleDetails', next)}
+              t={t}
+            />
 
-          <div className="my-6 border-t border-border" />
+            <div className="my-6 border-t border-border" />
 
-          {mode === 'edit' && (
-            <>
-              {/* Status — edit mode only; new applications default to "applied" */}
-              <StatusSection
-                values={values}
-                statusOptions={statusOptions}
-                outcomeOptions={outcomeOptions}
-                onFieldChange={handleChange}
-                order={orders.status}
-                onOrderChange={(next) => reorder('status', next)}
-                t={t}
-              />
+            {mode === 'edit' && (
+              <>
+                {/* Status — edit mode only; new applications default to "applied" */}
+                <StatusSection
+                  values={values}
+                  statusOptions={statusOptions}
+                  outcomeOptions={outcomeOptions}
+                  onFieldChange={handleChange}
+                  order={orders.status}
+                  onOrderChange={(next) => reorder('status', next)}
+                  t={t}
+                />
 
-              <div className="my-6 border-t border-border" />
-            </>
-          )}
+                <div className="my-6 border-t border-border" />
+              </>
+            )}
 
-          <CompensationSection
-            values={values}
-            onFieldChange={handleChange}
-            order={orders.compensation}
-            onOrderChange={(next) => reorder('compensation', next)}
-            t={t}
-          />
+            <CompensationSection
+              values={values}
+              onFieldChange={handleChange}
+              order={orders.compensation}
+              onOrderChange={(next) => reorder('compensation', next)}
+              t={t}
+            />
 
-          <div className="my-6 border-t border-border" />
+            <div className="my-6 border-t border-border" />
 
-          <NotesSection
-            values={values}
-            onFieldChange={handleChange}
-            order={orders.notes}
-            onOrderChange={(next) => reorder('notes', next)}
-            t={t}
-          />
+            <NotesSection
+              values={values}
+              onFieldChange={handleChange}
+              order={orders.notes}
+              onOrderChange={(next) => reorder('notes', next)}
+              t={t}
+            />
 
-          {custom.definitions.length > 0 && (
-            <>
-              <div className="my-6 border-t border-border" />
+            {custom.definitions.length > 0 && (
+              <>
+                <div className="my-6 border-t border-border" />
 
-              <CustomFieldsSection
-                definitions={custom.definitions}
-                values={values.customFields}
-                errors={custom.errors}
-                onFieldChange={custom.handleChange}
-                t={t}
-              />
-            </>
-          )}
+                <CustomFieldsSection
+                  definitions={custom.definitions}
+                  values={values.customFields}
+                  errors={custom.errors}
+                  onFieldChange={custom.handleChange}
+                  t={t}
+                />
+              </>
+            )}
 
-          <div className="my-6 border-t border-border" />
+            <div className="my-6 border-t border-border" />
 
-          <AttachmentsSection
-            jobId={job?.id}
-            attachments={attachments}
-            disabled={isSubmitting}
-            t={t}
-          />
+            <AttachmentsSection
+              jobId={job?.id}
+              attachments={attachments}
+              disabled={isSubmitting}
+              t={t}
+            />
+          </fieldset>
 
           {submitError && (
             <p className="mt-4 text-xs text-destructive">{submitError}</p>
@@ -415,17 +424,18 @@ export function JobFormPage({
       <FormActionsFooter
         formId={formId}
         isSubmitting={isSubmitting}
+        isDirty={isDirty}
         submitLabel={
           mode === 'create' ? t('form.submit') : t('form.saveChanges')
         }
-        onCancel={onCancel ? () => guardNavigation(onCancel) : undefined}
+        onCancel={onCancel}
       />
 
       <UnsavedChangesDialog
-        open={showDiscardDialog}
+        open={guard.isBlocked}
         dirtyFieldLabels={dirtyFieldLabels}
-        onKeepEditing={onKeepEditing}
-        onDiscard={onDiscard}
+        onKeepEditing={guard.keepEditing}
+        onDiscard={guard.discard}
       />
     </main>
   );

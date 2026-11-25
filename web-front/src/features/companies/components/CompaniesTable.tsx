@@ -120,6 +120,11 @@ export function CompaniesTable({
                   type="button"
                   className="cv-icon-btn"
                   aria-pressed={company.blacklist !== null}
+                  aria-label={t(
+                    company.blacklist
+                      ? 'list.unblacklistAction'
+                      : 'list.blacklistAction'
+                  )}
                   title={t(
                     company.blacklist
                       ? 'list.unblacklistAction'

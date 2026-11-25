@@ -7,7 +7,8 @@ import type {
 
 import { jobStatusTaxonomy } from '@/features/jobs/job-api';
 import { useJobsStore } from '@/features/jobs/job-store';
-import { notifyActionError } from '@/lib/notifications';
+import i18n from '@/i18n';
+import { notify, notifyActionError } from '@/lib/notifications';
 import { useTaxonomyStore } from '@/features/taxonomies/taxonomy-store';
 
 export type StatusListState = {
@@ -83,11 +84,15 @@ export function useStatusList() {
 
       setStatusOptions(reordered);
 
+      // The drop handler has nowhere to show an error, so the rollback is explained by a toast
       try {
         await jobStatusTaxonomy.reorder(orderedIds);
       } catch (error) {
         await reloadStatus();
-        throw error;
+        notify.error(
+          i18n.t('reorderError', { ns: 'taxonomies' }),
+          error instanceof Error ? error.message : undefined
+        );
       }
     },
     [reloadStatus, setStatusOptions]

@@ -28,19 +28,42 @@ function entityLabel(entity: NotificationEntity): string {
   return i18n.t(`notifications.entities.${entity}`, { ns: 'common' });
 }
 
+/** Longer than a plain confirmation, so the Undo can be reached. */
+const UNDOABLE_DURATION_MS = 8000;
+
+type SuccessOptions = {
+  description?: string;
+  /** Adds an Undo button that runs this. */
+  undo?: () => void;
+};
+
+function successToastOptions({ description, undo }: SuccessOptions = {}) {
+  if (!undo) return { description };
+  return {
+    description,
+    duration: UNDOABLE_DURATION_MS,
+    action: {
+      label: i18n.t('notifications.undo', { ns: 'common' }),
+      onClick: undo
+    }
+  };
+}
+
 /**
  * Confirms a successful mutation, e.g. `notifyActionSuccess('deleted', 'job')`
  * renders "Application deleted".
  */
 export function notifyActionSuccess(
   action: NotificationAction,
-  entity: NotificationEntity
+  entity: NotificationEntity,
+  options?: SuccessOptions
 ): void {
   toast.success(
     i18n.t(`notifications.success.${action}`, {
       ns: 'common',
       entity: entityLabel(entity)
-    })
+    }),
+    successToastOptions(options)
   );
 }
 
@@ -69,8 +92,8 @@ export function notifyActionError(
 
 /** Escape hatch for messages the caller has already translated. */
 export const notify = {
-  success: (message: string, description?: string) =>
-    toast.success(message, { description }),
+  success: (message: string, options?: SuccessOptions) =>
+    toast.success(message, successToastOptions(options)),
   error: (message: string, description?: string) =>
     toast.error(message, { description }),
   info: (message: string, description?: string) =>

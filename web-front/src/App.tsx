@@ -1,17 +1,13 @@
-import { BrowserRouter } from 'react-router-dom';
-import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
+import { RouterProvider } from 'react-router-dom';
 
-import { AppRoutes } from '@/app/AppRoutes';
+import { router } from '@/app/AppRoutes';
 import { CookieConsentBanner } from '@/components/CookieConsentBanner';
 import { Toaster } from '@/components/ui/sonner';
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* Search-param state (the applications filters) reads the router through this. */}
-      <NuqsAdapter>
-        <AppRoutes />
-      </NuqsAdapter>
+    <>
+      <RouterProvider router={router} />
       {/* Outside the routes, so it shows on the sign-in page as well */}
       <CookieConsentBanner />
       {/* Lifted to rest just above the feedback launcher in the same corner */}
@@ -22,7 +18,7 @@ function App() {
         richColors
         closeButton
       />
-    </BrowserRouter>
+    </>
   );
 }
 

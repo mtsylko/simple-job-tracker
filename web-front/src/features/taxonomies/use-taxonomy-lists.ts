@@ -2,6 +2,7 @@ import { useCallback, useEffect } from 'react';
 import type { JobTaxonomyOption } from '@job-tracker/shared';
 
 import { useJobsStore } from '@/features/jobs/job-store';
+import i18n from '@/i18n';
 
 import {
   createJobContractTypeOption,
@@ -19,6 +20,7 @@ import {
   type TaxonomyOptionClient
 } from '@/features/jobs/job-api';
 import {
+  notify,
   notifyActionError,
   notifyActionSuccess,
   type NotificationEntity
@@ -137,11 +139,15 @@ export function useTaxonomyLists() {
 
       setTaxonomyOptions(kind, reordered);
 
+      // The drop handler has nowhere to show an error, so the rollback is explained by a toast
       try {
         await CLIENTS[kind].reorder(orderedIds);
       } catch (error) {
         await reloadTaxonomy(kind);
-        throw error;
+        notify.error(
+          i18n.t('reorderError', { ns: 'taxonomies' }),
+          error instanceof Error ? error.message : undefined
+        );
       }
     },
     [reloadTaxonomy, setTaxonomyOptions]

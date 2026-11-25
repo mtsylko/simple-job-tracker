@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { Check, X } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { JobTaxonomyOption } from '@job-tracker/shared';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ROW_OPEN_CLASS, rowOpenHandlers } from '@/lib/row-open';
 import { cn } from '@/lib/utils';
@@ -23,6 +21,8 @@ import {
 
 export function TaxonomyRow({
   option,
+  isEditing,
+  onEditingChange,
   canMoveUp,
   canMoveDown,
   isDragging,
@@ -36,6 +36,9 @@ export function TaxonomyRow({
   onSetDefault
 }: {
   option: JobTaxonomyOption;
+  /** Held by the list, so one rename is open at a time. */
+  isEditing: boolean;
+  onEditingChange: (open: boolean) => void;
   canMoveUp: boolean;
   canMoveDown: boolean;
   isDragging: boolean;
@@ -49,38 +52,43 @@ export function TaxonomyRow({
   onSetDefault: () => Promise<void>;
 }) {
   const { t } = useTranslation('taxonomies');
-  const [isEditing, setIsEditing] = useState(false);
   const [draft, setDraft] = useState(option.value);
   const [isSavingRename, setIsSavingRename] = useState(false);
+  // Enter and the blur it causes both reach saveRename; the ref lets one through
+  const savingRef = useRef(false);
   const [renameError, setRenameError] = useState<string | null>(null);
   const [isSettingDefault, setIsSettingDefault] = useState(false);
 
   const startEditing = () => {
     setDraft(option.value);
     setRenameError(null);
-    setIsEditing(true);
+    onEditingChange(true);
   };
 
   const cancelEditing = () => {
-    setIsEditing(false);
+    onEditingChange(false);
     setRenameError(null);
   };
 
   const saveRename = async () => {
+    if (savingRef.current) return;
+
     const value = draft.trim();
     if (!value || value === option.value) {
-      setIsEditing(false);
+      onEditingChange(false);
       return;
     }
 
+    savingRef.current = true;
     setIsSavingRename(true);
     setRenameError(null);
     try {
       await onRename(value);
-      setIsEditing(false);
+      onEditingChange(false);
     } catch (error) {
       setRenameError(error instanceof Error ? error.message : t('renameError'));
     } finally {
+      savingRef.current = false;
       setIsSavingRename(false);
     }
   };
@@ -128,45 +136,25 @@ export function TaxonomyRow({
 
       <div className="min-w-0">
         {isEditing ? (
-          <div className="flex items-center gap-1.5">
-            <Input
-              autoFocus
-              aria-label={t('renameLabel', { value: option.value })}
-              value={draft}
-              disabled={isSavingRename}
-              onChange={(event) => setDraft(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  event.preventDefault();
-                  void saveRename();
-                }
-                if (event.key === 'Escape') {
-                  event.preventDefault();
-                  cancelEditing();
-                }
-              }}
-            />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon-sm"
-              onClick={() => void saveRename()}
-              disabled={isSavingRename}
-              aria-label={t('save')}
-            >
-              <Check aria-hidden="true" />
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon-sm"
-              onClick={cancelEditing}
-              disabled={isSavingRename}
-              aria-label={t('cancel')}
-            >
-              <X aria-hidden="true" />
-            </Button>
-          </div>
+          // Enter and leaving the field save, Escape cancels: no buttons, as a rename in place works everywhere
+          <Input
+            autoFocus
+            aria-label={t('renameLabel', { value: option.value })}
+            value={draft}
+            disabled={isSavingRename}
+            onChange={(event) => setDraft(event.target.value)}
+            onBlur={() => void saveRename()}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                void saveRename();
+              }
+              if (event.key === 'Escape') {
+                event.preventDefault();
+                cancelEditing();
+              }
+            }}
+          />
         ) : (
           <span className="break-words font-medium text-foreground">
             {option.value}

@@ -196,5 +196,6 @@
         }
       }
     }
-  }
+  },
+  "reorderError": "Nie udało się zapisać nowej kolejności"
 }

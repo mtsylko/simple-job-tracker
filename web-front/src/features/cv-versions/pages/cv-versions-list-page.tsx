@@ -22,6 +22,8 @@ import {
   downloadAttachment
 } from '@/features/cv-versions/attachment';
 import { CvAttachmentViewer } from '@/features/cv-versions/components/CvAttachmentViewer';
+import { CvEnabledSwitch } from '@/features/cv-versions/components/CvEnabledSwitch';
+import { CvVersionsCardList } from '@/features/cv-versions/components/CvVersionsCardList';
 import type { CvVersionRow } from '@/features/cv-versions/types';
 import {
   notify,
@@ -35,57 +37,6 @@ import {
   rowOpenHandlers
 } from '@/lib/row-open';
 import { cn } from '@/lib/utils';
-
-// ─── Row toggle ───────────────────────────────────────────────────────────────
-
-function RowToggle({
-  on,
-  disabled,
-  onChange
-}: {
-  on: boolean;
-  disabled?: boolean;
-  onChange: (next: boolean) => void;
-}) {
-  const { t } = useTranslation('cvVersions');
-
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={on}
-      disabled={disabled}
-      title={on ? t('list.toggle.onHint') : t('list.toggle.offHint')}
-      onClick={() => onChange(!on)}
-      style={{
-        width: 30,
-        height: 18,
-        borderRadius: 99,
-        border: 'none',
-        padding: 2,
-        background: on ? 'var(--clay)' : 'var(--warm-line-2)',
-        display: 'inline-flex',
-        alignItems: 'center',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
-        transition: 'background .15s ease',
-        flexShrink: 0
-      }}
-    >
-      <span
-        style={{
-          width: 14,
-          height: 14,
-          borderRadius: 99,
-          background: '#fff',
-          transform: on ? 'translateX(12px)' : 'translateX(0)',
-          transition: 'transform .15s ease',
-          boxShadow: '0 1px 2px rgba(0,0,0,.2)'
-        }}
-      />
-    </button>
-  );
-}
 
 // ─── Empty state ──────────────────────────────────────────────────────────────
 
@@ -297,8 +248,21 @@ export function CvVersionsListPage({
           </div>
 
           <div className="min-h-0 flex-1 overflow-y-auto">
+            {/* Phones get cards, as the applications list does */}
+            <div className="mx-4 mb-20 md:hidden">
+              <CvVersionsCardList
+                cvVersions={filtered}
+                deletingId={deletingId}
+                togglingId={togglingId}
+                onPreview={setPreviewId}
+                onDownload={(attachment) => void handleDownload(attachment)}
+                onDelete={setPendingDeleteId}
+                onToggle={(id, next) => void handleToggle(id, next)}
+              />
+            </div>
+
             {/* Table */}
-            <div className="mx-4 mb-20 overflow-hidden rounded-2xl border bg-card border-warm-line sm:mx-7">
+            <div className="mx-4 mb-20 hidden overflow-hidden rounded-2xl border bg-card border-warm-line sm:mx-7 md:block">
               {/* Scroll sideways on narrow screens rather than crushing columns. */}
               <div className="overflow-x-auto">
                 <table
@@ -415,8 +379,11 @@ export function CvVersionsListPage({
                             onClick={(e) => e.stopPropagation()}
                           >
                             <div className="inline-flex items-center gap-2">
-                              <RowToggle
+                              <CvEnabledSwitch
                                 on={cv.enabled}
+                                label={t('list.toggle.label', {
+                                  name: cv.name
+                                })}
                                 disabled={togglingId === cv.id}
                                 onChange={(next) =>
                                   void handleToggle(cv.id, next)
@@ -448,6 +415,7 @@ export function CvVersionsListPage({
                                 <>
                                   <button
                                     type="button"
+                                    aria-label={t('viewer.preview')}
                                     title={t('viewer.preview')}
                                     className="cv-icon-btn"
                                     onClick={(e) => {
@@ -462,6 +430,7 @@ export function CvVersionsListPage({
                                   </button>
                                   <button
                                     type="button"
+                                    aria-label={t('viewer.download')}
                                     title={t('viewer.download')}
                                     className="cv-icon-btn"
                                     onClick={(e) => {
@@ -478,6 +447,9 @@ export function CvVersionsListPage({
                               )}
                               <button
                                 type="button"
+                                aria-label={t('list.deleteLabel', {
+                                  name: cv.name
+                                })}
                                 title={t('list.deleteLabel', {
                                   name: cv.name
                                 })}

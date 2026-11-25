@@ -93,6 +93,9 @@ export function EditCvVersionRoute() {
 
   async function handleSubmit(values: CvVersionFormValues) {
     await updateCvVersion(cvVersionId, values);
+  }
+
+  function handleSaved() {
     notifyActionSuccess('updated', 'cvVersion');
     navigate(ROUTES.cvVersions);
   }
@@ -107,6 +110,7 @@ export function EditCvVersionRoute() {
       mode="edit"
       cvVersion={cvVersion}
       onSubmit={handleSubmit}
+      onSaved={handleSaved}
       onCancel={handleCancel}
     />
   );

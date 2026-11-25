@@ -23,7 +23,9 @@ export function JobFieldsPage({
   onDelete: (id: string) => Promise<void>;
 }) {
   const { t } = useTranslation('jobFields');
-  const [isAdding, setIsAdding] = useState(false);
+  // The one open form: the add form, or the id of the row being edited
+  const [openForm, setOpenForm] = useState<'add' | string | null>(null);
+  const isAdding = openForm === 'add';
 
   return (
     <main className="flex min-h-0 flex-1 flex-col">
@@ -38,7 +40,7 @@ export function JobFieldsPage({
             size="lg"
             className="shrink-0 gap-1.5"
             disabled={isAdding}
-            onClick={() => setIsAdding(true)}
+            onClick={() => setOpenForm('add')}
           >
             <Plus className="size-3.5" aria-hidden="true" />
             {t('common:form.addNew')}
@@ -57,9 +59,9 @@ export function JobFieldsPage({
                 submitLabel={t('form.save')}
                 onSubmit={async (values) => {
                   await onAdd(values);
-                  setIsAdding(false);
+                  setOpenForm(null);
                 }}
-                onCancel={() => setIsAdding(false)}
+                onCancel={() => setOpenForm(null)}
               />
             </div>
           )}
@@ -73,6 +75,16 @@ export function JobFieldsPage({
                 <JobFieldRow
                   key={definition.id}
                   definition={definition}
+                  isEditing={openForm === definition.id}
+                  onEditingChange={(open) =>
+                    setOpenForm((current) =>
+                      open
+                        ? definition.id
+                        : current === definition.id
+                          ? null
+                          : current
+                    )
+                  }
                   onUpdate={(values) =>
                     onUpdate(definition.id, {
                       label: values.label,
