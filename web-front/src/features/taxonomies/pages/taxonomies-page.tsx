@@ -65,7 +65,7 @@ export function TaxonomiesPage({
         <div className="max-w-3xl">
           {/* The same row as on Applications: the title, its actions on its right */}
           <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
-            <h1 className="m-0 font-serif text-3xl font-normal leading-display tracking-tight text-foreground">
+            <h1 className="m-0 font-serif text-display font-light leading-display tracking-tight text-foreground">
               {t(`sections.${kind}.title`)}
             </h1>
             <Button

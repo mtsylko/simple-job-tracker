@@ -271,7 +271,7 @@ export function JobFormPage({
             <ArrowLeft className="size-3.5" aria-hidden="true" />
             {t('form.backToApplications')}
           </Button>
-          <h1 className="m-0 font-serif text-3xl font-normal leading-display tracking-tight text-foreground">
+          <h1 className="m-0 font-serif text-display font-light leading-display tracking-tight text-foreground">
             {mode === 'create'
               ? t('form.newApplicationTitle')
               : values.company || t('form.editApplicationTitle')}

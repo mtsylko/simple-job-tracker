@@ -33,7 +33,7 @@ export function JobFieldsPage({
       <div className="max-w-3xl box-content px-4 pb-4 pt-5 sm:px-7 sm:pb-5 sm:pt-7">
         {/* The same row as on Categories: the title, its action on its right */}
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
-          <h1 className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground">
+          <h1 className="m-0 font-serif text-display font-light leading-tight tracking-tight text-foreground">
             {t('page.title')}
           </h1>
           <Button

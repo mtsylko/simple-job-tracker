@@ -164,7 +164,7 @@ export function AnalyticsPage({
       <div className="min-h-0 flex-1 overflow-y-auto">
         <div className="z-10 flex flex-wrap items-end justify-between gap-x-6 gap-y-3 bg-background px-4 pt-5 pb-4 sm:sticky sm:top-0 sm:px-7 sm:pt-7 sm:pb-5">
           <div className="flex min-w-0 flex-col gap-1">
-            <h1 className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground">
+            <h1 className="m-0 font-serif text-display font-light leading-tight tracking-tight text-foreground">
               {t('page.title')}
             </h1>
             <p className="text-sm text-muted-foreground">{finding}</p>

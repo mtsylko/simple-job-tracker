@@ -458,10 +458,14 @@ tr.group:last-child { border-bottom: 0 !important; }
   --text-2xs: 0.6875rem;  /* 11px — micro labels, kbd hints, counters */
 
   /* Display headings need tighter leading and a touch of negative tracking
-     than any built-in provides: leading-none (1) is 2.5px looser at 30px, and
+     than any built-in provides: leading-none (1) is 2.2px looser at 28px, and
      tracking-tight (-0.025em) is more than twice this. */
   --leading-display:  1.08;
   --tracking-display: -0.01em;
+  /* Page titles: 28px of Literata stands as tall as the 30px of Newsreader it
+     replaced, and the scale has nothing between text-2xl (24) and text-3xl (30). */
+  --text-display: 1.75rem;
+  --text-display--line-height: var(--leading-display);
 
   --color-danger-hover: #93231a;
 

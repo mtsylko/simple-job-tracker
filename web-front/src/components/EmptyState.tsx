@@ -34,7 +34,7 @@ export function EmptyState({
       <div className="mb-5 grid size-23 place-items-center rounded-full bg-clay-soft text-clay-ink">
         <Icon className="size-9" strokeWidth={1.5} aria-hidden="true" />
       </div>
-      <h2 className="font-serif text-3xl font-normal tracking-tight">
+      <h2 className="font-serif text-display font-light tracking-tight">
         {title}
       </h2>
       <div className="mt-2 mb-6 max-w-100">

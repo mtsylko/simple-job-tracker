@@ -349,7 +349,7 @@ export function OnboardingPage({ onDone }: { onDone: () => void }) {
             <h1
               ref={headingRef}
               tabIndex={-1}
-              className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground outline-none"
+              className="m-0 font-serif text-display font-light leading-tight tracking-tight text-foreground outline-none"
             >
               {titles[step].title}
             </h1>

@@ -17,7 +17,7 @@ export const Header = ({ onExport }: HeaderProps) => {
 
   return (
     <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 px-4 pt-5 pb-4 sm:px-7 sm:pt-7 sm:pb-5">
-      <h1 className="m-0 font-serif text-3xl font-normal leading-display tracking-tight text-foreground">
+      <h1 className="m-0 font-serif text-display font-light leading-display tracking-tight text-foreground">
         {t('list.title')}
       </h1>
       <div className="flex shrink-0 items-center gap-2">

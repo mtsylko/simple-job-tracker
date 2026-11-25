@@ -9,7 +9,7 @@ export function ProfileRoute() {
   return (
     <main className="flex min-h-0 flex-1 flex-col">
       <div className="px-4 pb-3 pt-5 sm:px-7 sm:pt-7">
-        <h1 className="m-0 font-serif text-3xl font-normal leading-tight tracking-tight text-foreground">
+        <h1 className="m-0 font-serif text-display font-light leading-tight tracking-tight text-foreground">
           {t('page.title')}
         </h1>
       </div>
