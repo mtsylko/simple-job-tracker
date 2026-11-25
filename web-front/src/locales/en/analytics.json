@@ -74,7 +74,7 @@
       "heard": "Heard back",
       "rate": "Reply rate"
     },
-    "disabled": "Disabled",
+    "disabled": "Archived",
     "tooFew": "too few to rate",
     "total": "All CVs",
     "withoutCv_one": "{{count}} sent without a CV",

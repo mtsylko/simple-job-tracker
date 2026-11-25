@@ -1,4 +1,11 @@
-import { Archive, ArchiveRestore, Ban, Pencil, Trash2 } from 'lucide-react';
+import {
+  Archive,
+  ArchiveRestore,
+  Ban,
+  MoreHorizontal,
+  Pencil,
+  Trash2
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -42,13 +49,16 @@ export function RowMenu({
         <DropdownMenuTrigger
           // Borderless at rest: an outlined box on every row was the loudest mark in the list.
           className={cn(
-            'border-transparent text-muted-foreground hover:text-foreground dark:bg-transparent',
+            'size-8 border-transparent text-muted-foreground hover:text-foreground dark:bg-transparent',
             triggerClassName
           )}
           aria-label={t('list.table.rowMenu', { company: row.company })}
           disabled={disabled}
           onClick={(e) => e.stopPropagation()}
-        />
+        >
+          {/* 32px to click, as the other row controls; the primitive defaults to 24 */}
+          <MoreHorizontal className="size-4" aria-hidden="true" />
+        </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem className="gap-2" onClick={() => onEdit(row.id)}>
             <Pencil className="size-3.5" aria-hidden="true" />

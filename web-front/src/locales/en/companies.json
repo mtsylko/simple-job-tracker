@@ -23,7 +23,10 @@
     "empty": "No companies yet — they appear here once you log an application",
     "noMatch": "No companies match this search",
     "blacklistAction": "Blacklist",
-    "unblacklistAction": "Remove from blacklist"
+    "unblacklistAction": "Remove from blacklist",
+    "menu": {
+      "actions": "Actions for {{name}}"
+    }
   },
   "marker": {
     "label": "Blacklisted",

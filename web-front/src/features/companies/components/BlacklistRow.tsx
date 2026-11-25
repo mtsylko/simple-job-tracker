@@ -1,9 +1,9 @@
-import { Pencil, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { CompanySummary } from '@job-tracker/shared';
 
 import { TableCell, TableRow } from '@/components/ui/table';
 import { CompanyName } from '@/features/companies/components/CompanyName';
+import { CompanyRowMenu } from '@/features/companies/components/CompanyRowMenu';
 import { hasApplications } from '@/features/companies/company-paths';
 import { companyTypeKey } from '@/features/companies/company-type';
 import { formatDisplayDate } from '@/lib/format-date';
@@ -60,26 +60,11 @@ export function BlacklistRow({
       </TableCell>
 
       <TableCell className="py-1.5 pr-3">
-        <div className="flex justify-end gap-1">
-          <button
-            type="button"
-            className="cv-icon-btn"
-            aria-label={t('blacklisted.editReason')}
-            title={t('blacklisted.editReason')}
-            onClick={() => onEditReason(company)}
-          >
-            <Pencil className="size-4" aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="cv-icon-btn"
-            aria-label={t('list.unblacklistAction')}
-            title={t('list.unblacklistAction')}
-            onClick={() => onRemove(company)}
-          >
-            <Trash2 className="size-4" aria-hidden="true" />
-          </button>
-        </div>
+        <CompanyRowMenu
+          company={company}
+          onToggleBlacklist={onRemove}
+          onEditReason={onEditReason}
+        />
       </TableCell>
     </TableRow>
   );

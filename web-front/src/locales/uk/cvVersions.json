@@ -4,46 +4,29 @@
     "newCvVersion": "Нова версія резюме",
     "searchLabel": "Фільтр версій резюме",
     "searchPlaceholder": "Фільтр за назвою або файлом…",
-    "tabs": {
-      "all": "Усі",
-      "enabled": "Увімкнені",
-      "disabled": "Вимкнені"
-    },
-    "shownOfTotal": "Показано <strong>{{shown}}</strong> з <strong>{{total}}</strong>",
-    "versionCount_one": "<strong>{{count}}</strong> версія",
-    "versionCount_few": "<strong>{{count}}</strong> версії",
-    "versionCount_many": "<strong>{{count}}</strong> версій",
-    "versionCount_other": "<strong>{{count}}</strong> версії",
-    "disabledCount_one": "{{count}} вимкнена",
-    "disabledCount_few": "{{count}} вимкнені",
-    "disabledCount_many": "{{count}} вимкнено",
-    "disabledCount_other": "{{count}} вимкнені",
     "columns": {
       "version": "Версія резюме",
       "description": "Опис",
-      "source": "Джерело",
-      "enabled": "Увімкнена"
+      "source": "Джерело"
     },
     "openSource": "Відкрити",
-    "toggle": {
-      "on": "Увімк.",
-      "off": "Вимк.",
-      "onHint": "Увімкнена — доступна під час вибору резюме",
-      "offHint": "Вимкнена — прихована під час вибору резюме",
-      "label": "Показувати {{name}} під час вибору резюме"
-    },
-    "deleteLabel": "Видалити {{name}}",
     "noMatch": "Немає версій резюме, що відповідають фільтру",
-    "footer": {
-      "showing_one": "Показано <strong>{{count}}</strong> версію",
-      "showing_few": "Показано <strong>{{count}}</strong> версії",
-      "showing_many": "Показано <strong>{{count}}</strong> версій",
-      "showing_other": "Показано <strong>{{count}}</strong> версії",
-      "enabled": "увімкнено: {{enabled}}",
-      "enabledAndDisabled": "увімкнено: {{enabled}}, вимкнено: {{disabled}}"
+    "menu": {
+      "actions": "Дії для {{name}}",
+      "column": "Дії",
+      "edit": "Змінити",
+      "delete": "Видалити",
+      "archive": "В архів",
+      "restore": "Відновити"
     },
-    "addAnother": "Додати ще версію",
-    "disabledInfo": "Вимкнені версії зберігаються для історії, щоб старі відгуки й далі на них посилалися, але не пропонуються під час вибору резюме для нового відгуку"
+    "scopeLabel": "Показати",
+    "scope": {
+      "active": "Лише активні",
+      "archived": "Лише архівні",
+      "all": "Усі версії"
+    },
+    "matchingCount": "Підходить <filtered>{{filtered}}</filtered> з <total>{{total}}</total>",
+    "archivedMarker": "В архіві"
   },
   "route": {
     "loadingListTitle": "Завантаження версій резюме",
@@ -71,8 +54,8 @@
       "sourceLink": "Посилання на вихідний файл",
       "attachment": "Вкладення",
       "description": "Опис",
-      "enabledTitle": "Показувати під час вибору резюме",
-      "enabledDescription": "Увімкнена версія пропонується під час додавання нового відгуку. Вимкніть її, щоб перенести в архів без видалення."
+      "enabledTitle": "Активна",
+      "enabledDescription": "Активна версія пропонується під час додавання нового відгуку. Зніміть прапорець, щоб перенести її в архів без видалення"
     },
     "placeholders": {
       "sourceLink": "https://..."

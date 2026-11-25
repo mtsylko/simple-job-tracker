@@ -84,7 +84,7 @@
       "heard": "Z odpowiedzią",
       "rate": "Odsetek odpowiedzi"
     },
-    "disabled": "Wyłączona",
+    "disabled": "Zarchiwizowana",
     "tooFew": "za mało danych",
     "total": "Wszystkie CV",
     "withoutCv_one": "{{count}} wysłana bez CV",

@@ -29,8 +29,13 @@ test('uploads a CV and serves the file back to its owner', async ({ page }) => {
     .filter({ has: page.getByRole('link', { name: 'Backend CV' }) });
   await expect(row).toBeVisible();
 
+  // Download sits in the row's menu, as every table action does
   const download = page.waitForEvent('download');
-  await row.getByRole('button', { name: 'Download' }).click();
+  await row.getByRole('button', { name: 'Actions for Backend CV' }).click();
+  await page
+    .getByRole('menu', { name: 'Actions for Backend CV' })
+    .getByRole('menuitem', { name: 'Download' })
+    .click();
   const downloaded = await (await download).path();
   expect(await readFile(downloaded)).toEqual(await readFile(CV_FILE));
 });

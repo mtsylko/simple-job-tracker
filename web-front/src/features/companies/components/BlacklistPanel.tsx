@@ -67,7 +67,7 @@ export function BlacklistPanel({
               <TableHead className="hidden w-32 lg:table-cell">
                 {t('blacklisted.date')}
               </TableHead>
-              <TableHead className="w-24 pr-3">
+              <TableHead className="w-14 pr-3">
                 <span className="sr-only">{t('list.actions')}</span>
               </TableHead>
             </TableRow>

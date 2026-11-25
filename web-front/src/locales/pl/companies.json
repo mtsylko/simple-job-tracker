@@ -23,7 +23,10 @@
     "empty": "Nie ma jeszcze firm — pojawią się tutaj, gdy dodasz aplikację",
     "noMatch": "Żadna firma nie pasuje do wyszukiwania",
     "blacklistAction": "Dodaj do czarnej listy",
-    "unblacklistAction": "Usuń z czarnej listy"
+    "unblacklistAction": "Usuń z czarnej listy",
+    "menu": {
+      "actions": "Akcje dla {{name}}"
+    }
   },
   "marker": {
     "label": "Na czarnej liście",

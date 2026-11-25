@@ -1,28 +1,19 @@
 import { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trans, useTranslation } from 'react-i18next';
-import {
-  Download,
-  Eye,
-  ExternalLink,
-  FileStack,
-  Info,
-  Plus,
-  Search,
-  Trash2
-} from 'lucide-react';
+import { ExternalLink, FileStack, Plus, Search } from 'lucide-react';
 
 import { cvVersionEditPath, ROUTES } from '@/app/routes';
 import { EmptyState as EmptyStateLayout } from '@/components/EmptyState';
 import { Modal } from '@/components/Modal';
-import { PageTabs, type PageTab } from '@/components/PageTabs';
 import { Button } from '@/components/ui/button';
+import { SelectField } from '@/components/ui/select-field';
 import {
   attachmentLabel,
   downloadAttachment
 } from '@/features/cv-versions/attachment';
 import { CvAttachmentViewer } from '@/features/cv-versions/components/CvAttachmentViewer';
-import { CvEnabledSwitch } from '@/features/cv-versions/components/CvEnabledSwitch';
+import { CvRowMenu } from '@/features/cv-versions/components/CvRowMenu';
 import { CvVersionsCardList } from '@/features/cv-versions/components/CvVersionsCardList';
 import type { CvVersionRow } from '@/features/cv-versions/types';
 import {
@@ -73,7 +64,8 @@ function EmptyState({ onAdd }: { onAdd: () => void }) {
   );
 }
 
-type TabKey = 'all' | 'enabled' | 'disabled';
+/** Which versions the list shows, as the applications list scopes its rows. */
+type CvScope = 'active' | 'archived' | 'all';
 
 // ─── List page ────────────────────────────────────────────────────────────────
 
@@ -88,7 +80,7 @@ export function CvVersionsListPage({
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation('cvVersions');
-  const [activeTab, setActiveTab] = useState<TabKey>('all');
+  const [scope, setScope] = useState<CvScope>('active');
   const [search, setSearch] = useState('');
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
@@ -126,30 +118,59 @@ export function CvVersionsListPage({
     [t]
   );
 
-  const handleToggle = useCallback(
-    async (id: string, next: boolean) => {
-      setTogglingId(id);
-      try {
-        await onToggleEnabled(id, next);
-      } catch (error) {
-        notifyActionError('updated', 'cvVersion', error);
-      } finally {
-        setTogglingId(null);
-      }
+  // The Undo: the same request the other way, reported without an Undo of its own
+  const undoArchive = useCallback(
+    (cv: CvVersionRow, enabled: boolean) => {
+      void onToggleEnabled(cv.id, enabled)
+        .then(() =>
+          notifyActionSuccess(enabled ? 'restored' : 'archived', 'cvVersion')
+        )
+        .catch((error: unknown) =>
+          notifyActionError(
+            enabled ? 'restored' : 'archived',
+            'cvVersion',
+            error
+          )
+        );
     },
     [onToggleEnabled]
   );
 
-  // Tab filtering
-  const tabFiltered = cvVersions.filter((cv) => {
-    if (activeTab === 'enabled') return cv.enabled;
-    if (activeTab === 'disabled') return !cv.enabled;
+  // Archiving a version takes it out of the CV picker; the same request as before, the applications' words
+  const handleToggleArchive = useCallback(
+    async (cv: CvVersionRow) => {
+      const enabled = !cv.enabled;
+      const action = enabled ? 'restored' : 'archived';
+      setTogglingId(cv.id);
+      try {
+        await onToggleEnabled(cv.id, enabled);
+        notifyActionSuccess(action, 'cvVersion', {
+          undo: () => undoArchive(cv, !enabled)
+        });
+      } catch (error) {
+        notifyActionError(action, 'cvVersion', error);
+      } finally {
+        setTogglingId(null);
+      }
+    },
+    [onToggleEnabled, undoArchive]
+  );
+
+  // Scope first, as the applications list does: it decides which rows exist before the search
+  const scoped = cvVersions.filter((cv) => {
+    if (scope === 'active') return cv.enabled;
+    if (scope === 'archived') return !cv.enabled;
     return true;
   });
+  const scopeOptions = [
+    { value: 'active', label: t('list.scope.active') },
+    { value: 'archived', label: t('list.scope.archived') },
+    { value: 'all', label: t('list.scope.all') }
+  ];
 
   // Search filtering
   const filtered = search.trim()
-    ? tabFiltered.filter(
+    ? scoped.filter(
         (cv) =>
           cv.name.toLowerCase().includes(search.toLowerCase()) ||
           attachmentLabel(cv.attachment)
@@ -157,19 +178,11 @@ export function CvVersionsListPage({
             .includes(search.toLowerCase()) ||
           cv.description.toLowerCase().includes(search.toLowerCase())
       )
-    : tabFiltered;
+    : scoped;
 
   const previewCv = cvVersions.find((cv) => cv.id === previewId) ?? null;
 
-  const enabledCount = cvVersions.filter((cv) => cv.enabled).length;
-  const disabledCount = cvVersions.filter((cv) => !cv.enabled).length;
   const hasVersions = cvVersions.length > 0;
-
-  const TABS: PageTab<TabKey>[] = [
-    { key: 'all', label: t('list.tabs.all'), count: cvVersions.length },
-    { key: 'enabled', label: t('list.tabs.enabled'), count: enabledCount },
-    { key: 'disabled', label: t('list.tabs.disabled'), count: disabledCount }
-  ];
 
   return (
     <main className="flex min-h-0 flex-1 flex-col">
@@ -189,9 +202,6 @@ export function CvVersionsListPage({
           </Button>
         </div>
       </div>
-
-      {/* ── Tabs ── */}
-      <PageTabs tabs={TABS} value={activeTab} onChange={setActiveTab} />
 
       {/* ── Empty state ── */}
       {!hasVersions && (
@@ -216,34 +226,33 @@ export function CvVersionsListPage({
                 onChange={(e) => setSearch(e.target.value)}
               />
             </label>
+            <label htmlFor="cv-list-scope" className="sr-only">
+              {t('list.scopeLabel')}
+            </label>
+            <SelectField
+              id="cv-list-scope"
+              className="w-40"
+              options={scopeOptions}
+              value={scope}
+              onChange={(value) => setScope(value as CvScope)}
+            />
 
-            <div className="ml-auto text-xs text-muted-foreground">
-              {filtered.length !== cvVersions.length ? (
-                <Trans
-                  t={t}
-                  i18nKey="list.shownOfTotal"
-                  values={{ shown: filtered.length, total: cvVersions.length }}
-                  components={{
-                    strong: <strong className="font-medium text-foreground" />
-                  }}
-                />
-              ) : (
-                <>
-                  <Trans
-                    t={t}
-                    i18nKey="list.versionCount"
-                    count={cvVersions.length}
-                    components={{
-                      strong: <strong className="font-medium text-foreground" />
-                    }}
-                  />
-                  {disabledCount > 0 && (
-                    <span className="ml-1.5 text-muted-foreground">
-                      · {t('list.disabledCount', { count: disabledCount })}
-                    </span>
-                  )}
-                </>
-              )}
+            {/* "X of N", always, so the row holds its width as the scope changes */}
+            <div className="ml-auto text-sm text-muted-foreground">
+              <Trans
+                t={t}
+                i18nKey="list.matchingCount"
+                values={{ filtered: filtered.length, total: scoped.length }}
+                components={{
+                  filtered: (
+                    <span
+                      className="num inline-block text-right font-medium text-foreground"
+                      style={{ minWidth: `${String(scoped.length).length}ch` }}
+                    />
+                  ),
+                  total: <span className="num" />
+                }}
+              />
             </div>
           </div>
 
@@ -254,10 +263,12 @@ export function CvVersionsListPage({
                 cvVersions={filtered}
                 deletingId={deletingId}
                 togglingId={togglingId}
+                onEdit={(id) => navigate(cvVersionEditPath(id))}
                 onPreview={setPreviewId}
                 onDownload={(attachment) => void handleDownload(attachment)}
                 onDelete={setPendingDeleteId}
-                onToggle={(id, next) => void handleToggle(id, next)}
+                showArchivedMarker={scope === 'all'}
+                onToggleArchive={(target) => void handleToggleArchive(target)}
               />
             </div>
 
@@ -278,30 +289,19 @@ export function CvVersionsListPage({
                       <th className="cv-th" style={{ width: 130 }}>
                         {t('list.columns.source')}
                       </th>
-                      <th
-                        className="cv-th"
-                        style={{ width: 120, textAlign: 'center' }}
-                      >
-                        {t('list.columns.enabled')}
+                      <th className="cv-th" style={{ width: 92 }}>
+                        <span className="sr-only">{t('list.menu.column')}</span>
                       </th>
-                      <th
-                        className="cv-th"
-                        style={{ width: 124, textAlign: 'right' }}
-                      ></th>
                     </tr>
                   </thead>
                   <tbody>
                     {filtered.map((cv) => {
-                      const muted = !cv.enabled;
                       return (
                         <tr
                           key={cv.id}
                           {...rowOpenHandlers}
                           className={cn('group', ROW_OPEN_CLASS)}
-                          style={{
-                            borderBottom: '1px solid var(--warm-line)',
-                            opacity: muted ? 0.62 : 1
-                          }}
+                          style={{ borderBottom: '1px solid var(--warm-line)' }}
                         >
                           {/* CV version: name + filename */}
                           <td className="cv-td">
@@ -313,13 +313,7 @@ export function CvVersionsListPage({
                                   'block text-sm font-medium leading-tight',
                                   ROW_OPENER_CLASS
                                 )}
-                                style={{
-                                  color: 'var(--ink)',
-                                  textDecorationLine: muted
-                                    ? 'line-through'
-                                    : 'none',
-                                  textDecorationColor: 'var(--ink-3)'
-                                }}
+                                style={{ color: 'var(--ink)' }}
                               >
                                 {cv.name}
                               </Link>
@@ -335,6 +329,11 @@ export function CvVersionsListPage({
                                 >
                                   {attachmentLabel(cv.attachment)}
                                 </button>
+                              )}
+                              {scope === 'all' && !cv.enabled && (
+                                <span className="mt-0.5 block text-xs font-medium text-muted-foreground">
+                                  {t('list.archivedMarker')}
+                                </span>
                               )}
                             </div>
                           </td>
@@ -371,98 +370,23 @@ export function CvVersionsListPage({
                             )}
                           </td>
 
-                          {/* Enabled toggle */}
-                          {/* Toggling enabled must not open the record */}
-                          <td
-                            className="cv-td cursor-default"
-                            style={{ width: 120, textAlign: 'center' }}
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <div className="inline-flex items-center gap-2">
-                              <CvEnabledSwitch
-                                on={cv.enabled}
-                                label={t('list.toggle.label', {
-                                  name: cv.name
-                                })}
-                                disabled={togglingId === cv.id}
-                                onChange={(next) =>
-                                  void handleToggle(cv.id, next)
-                                }
-                              />
-                              <span
-                                className="text-xs"
-                                style={{
-                                  color: cv.enabled
-                                    ? 'var(--ink-2)'
-                                    : 'var(--ink-3)',
-                                  minWidth: 24
-                                }}
-                              >
-                                {cv.enabled
-                                  ? t('list.toggle.on')
-                                  : t('list.toggle.off')}
-                              </span>
-                            </div>
-                          </td>
-
-                          {/* Actions */}
-                          <td
-                            className="cv-td"
-                            style={{ width: 124, textAlign: 'right' }}
-                          >
-                            <div className="flex items-center justify-end gap-1">
-                              {cv.attachment.trim().length > 0 && (
-                                <>
-                                  <button
-                                    type="button"
-                                    aria-label={t('viewer.preview')}
-                                    title={t('viewer.preview')}
-                                    className="cv-icon-btn"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setPreviewId(cv.id);
-                                    }}
-                                  >
-                                    <Eye
-                                      className="size-4"
-                                      aria-hidden="true"
-                                    />
-                                  </button>
-                                  <button
-                                    type="button"
-                                    aria-label={t('viewer.download')}
-                                    title={t('viewer.download')}
-                                    className="cv-icon-btn"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      void handleDownload(cv.attachment);
-                                    }}
-                                  >
-                                    <Download
-                                      className="size-4"
-                                      aria-hidden="true"
-                                    />
-                                  </button>
-                                </>
-                              )}
-                              <button
-                                type="button"
-                                aria-label={t('list.deleteLabel', {
-                                  name: cv.name
-                                })}
-                                title={t('list.deleteLabel', {
-                                  name: cv.name
-                                })}
-                                className="cv-icon-btn"
-                                disabled={deletingId === cv.id}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setPendingDeleteId(cv.id);
-                                }}
-                              >
-                                <Trash2 className="size-4" aria-hidden="true" />
-                              </button>
-                            </div>
+                          {/* Actions: the preview in view, the rest in one menu */}
+                          <td className="cv-td" style={{ width: 92 }}>
+                            <CvRowMenu
+                              cv={cv}
+                              disabled={
+                                deletingId === cv.id || togglingId === cv.id
+                              }
+                              onToggleArchive={(target) =>
+                                void handleToggleArchive(target)
+                              }
+                              onEdit={(id) => navigate(cvVersionEditPath(id))}
+                              onPreview={setPreviewId}
+                              onDownload={(attachment) =>
+                                void handleDownload(attachment)
+                              }
+                              onDelete={setPendingDeleteId}
+                            />
                           </td>
                         </tr>
                       );
@@ -470,7 +394,7 @@ export function CvVersionsListPage({
 
                     {filtered.length === 0 && (
                       <tr>
-                        <td colSpan={5} className="py-10 text-center">
+                        <td colSpan={4} className="py-10 text-center">
                           <div className="font-serif text-lg font-normal text-foreground">
                             {t('list.noMatch')}
                           </div>
@@ -480,52 +404,6 @@ export function CvVersionsListPage({
                   </tbody>
                 </table>
               </div>
-
-              {/* Table footer */}
-              <div
-                className="flex items-center justify-between px-3.5 py-2.5 text-xs"
-                style={{
-                  borderTop: '1px solid var(--warm-line)',
-                  color: 'var(--ink-3)',
-                  background: 'var(--warm-surface)'
-                }}
-              >
-                <div>
-                  <Trans
-                    t={t}
-                    i18nKey="list.footer.showing"
-                    count={filtered.length}
-                    components={{ strong: <strong className="text-ink" /> }}
-                  />
-                  {(enabledCount > 0 || disabledCount > 0) && (
-                    <>
-                      {' · '}
-                      <span className="text-ink-3">
-                        {disabledCount > 0
-                          ? t('list.footer.enabledAndDisabled', {
-                              enabled: enabledCount,
-                              disabled: disabledCount
-                            })
-                          : t('list.footer.enabled', { enabled: enabledCount })}
-                      </span>
-                    </>
-                  )}
-                </div>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-1.5 rounded-md border-0 bg-transparent px-2 py-1 text-xs font-medium hover:bg-muted text-ink-2"
-                  onClick={() => navigate(ROUTES.cvVersionsCreate)}
-                >
-                  <Plus className="size-3" aria-hidden="true" />
-                  {t('list.addAnother')}
-                </button>
-              </div>
-            </div>
-
-            {/* Info banner */}
-            <div className="mx-4 mb-7 flex items-center gap-3 rounded-md border px-4 py-3 text-xs border-warm-line bg-warm-surface text-ink-2 sm:mx-7">
-              <Info className="size-4 shrink-0 text-ink-3" aria-hidden="true" />
-              <p className="flex-1 leading-normal">{t('list.disabledInfo')}</p>
             </div>
           </div>
         </>

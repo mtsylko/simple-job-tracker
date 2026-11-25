@@ -320,28 +320,6 @@ body {
   vertical-align: middle;
   color: var(--ink);
 }
-.cv-icon-btn {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  border-radius: 6px;
-  /* Borderless at rest, like the other row actions; the hover fill is the affordance. */
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--ink-3);
-  cursor: pointer;
-  transition: background 0.12s, color 0.12s;
-}
-.cv-icon-btn:hover {
-  background: var(--warm-surface-2);
-  color: var(--ink);
-}
-.cv-icon-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
 tr.group:last-child { border-bottom: 0 !important; }
 
 /* Toast action (Undo): in the toast's own colour, not sonner's ink-on-white default. Outranks sonner's three-attribute rule. */

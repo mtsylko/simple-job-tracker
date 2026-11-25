@@ -4,46 +4,29 @@
     "newCvVersion": "Nowa wersja CV",
     "searchLabel": "Filtruj wersje CV",
     "searchPlaceholder": "Filtruj po nazwie lub pliku…",
-    "tabs": {
-      "all": "Wszystkie",
-      "enabled": "Włączone",
-      "disabled": "Wyłączone"
-    },
-    "shownOfTotal": "Widoczne: <strong>{{shown}}</strong> z <strong>{{total}}</strong>",
-    "versionCount_one": "<strong>{{count}}</strong> wersja",
-    "versionCount_few": "<strong>{{count}}</strong> wersje",
-    "versionCount_many": "<strong>{{count}}</strong> wersji",
-    "versionCount_other": "<strong>{{count}}</strong> wersji",
-    "disabledCount_one": "wyłączone: {{count}}",
-    "disabledCount_few": "wyłączone: {{count}}",
-    "disabledCount_many": "wyłączone: {{count}}",
-    "disabledCount_other": "wyłączone: {{count}}",
     "columns": {
       "version": "Wersja CV",
       "description": "Opis",
-      "source": "Źródło",
-      "enabled": "Włączona"
+      "source": "Źródło"
     },
     "openSource": "Otwórz",
-    "toggle": {
-      "on": "Wł.",
-      "off": "Wył.",
-      "onHint": "Włączona — widoczna przy wyborze CV",
-      "offHint": "Wyłączona — ukryta przy wyborze CV",
-      "label": "Pokazuj {{name}} przy wyborze CV"
-    },
-    "deleteLabel": "Usuń {{name}}",
     "noMatch": "Żadna wersja CV nie pasuje do tego filtra",
-    "footer": {
-      "showing_one": "Widoczna <strong>{{count}}</strong> wersja",
-      "showing_few": "Widoczne <strong>{{count}}</strong> wersje",
-      "showing_many": "Widocznych <strong>{{count}}</strong> wersji",
-      "showing_other": "Widocznych <strong>{{count}}</strong> wersji",
-      "enabled": "włączone: {{enabled}}",
-      "enabledAndDisabled": "włączone: {{enabled}}, wyłączone: {{disabled}}"
+    "menu": {
+      "actions": "Akcje dla {{name}}",
+      "column": "Działania",
+      "edit": "Edytuj",
+      "delete": "Usuń",
+      "archive": "Archiwizuj",
+      "restore": "Przywróć"
     },
-    "addAnother": "Dodaj kolejną wersję",
-    "disabledInfo": "Wyłączone wersje zostają w historii, żeby starsze aplikacje nadal mogły się do nich odwoływać, ale nie pojawiają się przy wyborze CV dla nowej aplikacji"
+    "scopeLabel": "Pokaż",
+    "scope": {
+      "active": "Tylko aktywne",
+      "archived": "Tylko zarchiwizowane",
+      "all": "Wszystkie wersje"
+    },
+    "matchingCount": "Pasuje <filtered>{{filtered}}</filtered> z <total>{{total}}</total>",
+    "archivedMarker": "Zarchiwizowana"
   },
   "route": {
     "loadingListTitle": "Ładowanie wersji CV",
@@ -71,8 +54,8 @@
       "sourceLink": "Link do źródła",
       "attachment": "Załącznik",
       "description": "Opis",
-      "enabledTitle": "Pokazuj przy wyborze CV",
-      "enabledDescription": "Gdy jest włączona, ta wersja pojawia się przy dodawaniu nowej aplikacji. Wyłącz ją, aby ją zarchiwizować bez usuwania."
+      "enabledTitle": "Aktywna",
+      "enabledDescription": "Aktywna wersja jest proponowana przy dodawaniu nowej aplikacji. Odznacz, aby ją zarchiwizować bez usuwania"
     },
     "placeholders": {
       "sourceLink": "https://..."

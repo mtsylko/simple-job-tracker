@@ -4,46 +4,29 @@
     "newCvVersion": "Новая версия резюме",
     "searchLabel": "Фильтр версий резюме",
     "searchPlaceholder": "Фильтр по названию или файлу…",
-    "tabs": {
-      "all": "Все",
-      "enabled": "Включённые",
-      "disabled": "Отключённые"
-    },
-    "shownOfTotal": "Показано <strong>{{shown}}</strong> из <strong>{{total}}</strong>",
-    "versionCount_one": "<strong>{{count}}</strong> версия",
-    "versionCount_few": "<strong>{{count}}</strong> версии",
-    "versionCount_many": "<strong>{{count}}</strong> версий",
-    "versionCount_other": "<strong>{{count}}</strong> версии",
-    "disabledCount_one": "{{count}} отключена",
-    "disabledCount_few": "{{count}} отключены",
-    "disabledCount_many": "{{count}} отключено",
-    "disabledCount_other": "{{count}} отключены",
     "columns": {
       "version": "Версия резюме",
       "description": "Описание",
-      "source": "Источник",
-      "enabled": "Включена"
+      "source": "Источник"
     },
     "openSource": "Открыть",
-    "toggle": {
-      "on": "Вкл.",
-      "off": "Выкл.",
-      "onHint": "Включена — доступна при выборе резюме",
-      "offHint": "Отключена — скрыта при выборе резюме",
-      "label": "Показывать {{name}} при выборе резюме"
-    },
-    "deleteLabel": "Удалить {{name}}",
     "noMatch": "Нет версий резюме, подходящих под фильтр",
-    "footer": {
-      "showing_one": "Показана <strong>{{count}}</strong> версия",
-      "showing_few": "Показаны <strong>{{count}}</strong> версии",
-      "showing_many": "Показано <strong>{{count}}</strong> версий",
-      "showing_other": "Показаны <strong>{{count}}</strong> версии",
-      "enabled": "включено: {{enabled}}",
-      "enabledAndDisabled": "включено: {{enabled}}, отключено: {{disabled}}"
+    "menu": {
+      "actions": "Действия для {{name}}",
+      "column": "Действия",
+      "edit": "Изменить",
+      "delete": "Удалить",
+      "archive": "В архив",
+      "restore": "Восстановить"
     },
-    "addAnother": "Добавить ещё версию",
-    "disabledInfo": "Отключённые версии сохраняются для истории, чтобы старые отклики по-прежнему на них ссылались, но не предлагаются при выборе резюме для нового отклика"
+    "scopeLabel": "Показать",
+    "scope": {
+      "active": "Только активные",
+      "archived": "Только архивные",
+      "all": "Все версии"
+    },
+    "matchingCount": "Подходит <filtered>{{filtered}}</filtered> из <total>{{total}}</total>",
+    "archivedMarker": "В архиве"
   },
   "route": {
     "loadingListTitle": "Загрузка версий резюме",
@@ -71,8 +54,8 @@
       "sourceLink": "Ссылка на исходник",
       "attachment": "Вложение",
       "description": "Описание",
-      "enabledTitle": "Показывать при выборе резюме",
-      "enabledDescription": "Включённая версия предлагается при добавлении нового отклика. Отключите её, чтобы убрать в архив, не удаляя."
+      "enabledTitle": "Активная",
+      "enabledDescription": "Активная версия предлагается при добавлении нового отклика. Снимите флажок, чтобы убрать её в архив, не удаляя"
     },
     "placeholders": {
       "sourceLink": "https://..."

@@ -1,4 +1,3 @@
-import { Ban } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { CompanySummary } from '@job-tracker/shared';
 
@@ -12,6 +11,7 @@ import {
 } from '@/components/ui/table';
 import { BlacklistedMarker } from '@/features/companies/components/BlacklistedMarker';
 import { CompanyName } from '@/features/companies/components/CompanyName';
+import { CompanyRowMenu } from '@/features/companies/components/CompanyRowMenu';
 import { hasApplications } from '@/features/companies/company-paths';
 import { companyTypeKey } from '@/features/companies/company-type';
 import { StatusBadge } from '@/features/jobs/pages/job-list-page/TableCells/StatusBadge';
@@ -115,37 +115,12 @@ export function CompaniesTable({
               )}
             </TableCell>
             <TableCell className="py-1.5 pr-3">
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  className="cv-icon-btn"
-                  aria-pressed={company.blacklist !== null}
-                  aria-label={t(
-                    company.blacklist
-                      ? 'list.unblacklistAction'
-                      : 'list.blacklistAction'
-                  )}
-                  title={t(
-                    company.blacklist
-                      ? 'list.unblacklistAction'
-                      : 'list.blacklistAction'
-                  )}
-                  onClick={() =>
-                    company.blacklist
-                      ? onUnblacklist(company)
-                      : onBlacklist(company)
-                  }
-                >
-                  {/* The button's unlayered colour beats utilities, so the on state colours the icon */}
-                  <Ban
-                    className={cn(
-                      'size-4',
-                      company.blacklist && 'text-danger-ink'
-                    )}
-                    aria-hidden="true"
-                  />
-                </button>
-              </div>
+              <CompanyRowMenu
+                company={company}
+                onToggleBlacklist={(target) =>
+                  target.blacklist ? onUnblacklist(target) : onBlacklist(target)
+                }
+              />
             </TableCell>
           </TableRow>
         ))}

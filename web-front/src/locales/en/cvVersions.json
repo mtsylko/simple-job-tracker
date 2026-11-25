@@ -4,40 +4,29 @@
     "newCvVersion": "New CV version",
     "searchLabel": "Filter CV versions",
     "searchPlaceholder": "Filter by name or file…",
-    "tabs": {
-      "all": "All",
-      "enabled": "Enabled",
-      "disabled": "Disabled"
-    },
-    "shownOfTotal": "<strong>{{shown}}</strong> of <strong>{{total}}</strong> shown",
-    "versionCount_one": "<strong>{{count}}</strong> version",
-    "versionCount_other": "<strong>{{count}}</strong> versions",
-    "disabledCount_one": "{{count}} disabled",
-    "disabledCount_other": "{{count}} disabled",
     "columns": {
       "version": "CV version",
       "description": "Description",
-      "source": "Source",
-      "enabled": "Enabled"
+      "source": "Source"
     },
     "openSource": "Open",
-    "toggle": {
-      "on": "On",
-      "off": "Off",
-      "onHint": "Enabled — appears in CV picker",
-      "offHint": "Disabled — hidden from CV picker",
-      "label": "Show {{name}} in CV picker"
-    },
-    "deleteLabel": "Delete {{name}}",
     "noMatch": "No CV versions match this filter",
-    "footer": {
-      "showing_one": "Showing <strong>{{count}}</strong> version",
-      "showing_other": "Showing <strong>{{count}}</strong> versions",
-      "enabled": "{{enabled}} enabled",
-      "enabledAndDisabled": "{{enabled}} enabled, {{disabled}} disabled"
+    "menu": {
+      "actions": "Actions for {{name}}",
+      "column": "Actions",
+      "edit": "Edit",
+      "delete": "Delete",
+      "archive": "Archive",
+      "restore": "Restore"
     },
-    "addAnother": "Add another version",
-    "disabledInfo": "Disabled versions are kept for history so old applications still reference them, but won't appear in the CV picker when logging a new application"
+    "scopeLabel": "Show",
+    "scope": {
+      "active": "Active only",
+      "archived": "Archived only",
+      "all": "All versions"
+    },
+    "matchingCount": "<filtered>{{filtered}}</filtered> of <total>{{total}}</total> matching",
+    "archivedMarker": "Archived"
   },
   "route": {
     "loadingListTitle": "Loading CV versions",
@@ -65,8 +54,8 @@
       "sourceLink": "Source link",
       "attachment": "Attachment",
       "description": "Description",
-      "enabledTitle": "Show in CV picker",
-      "enabledDescription": "When enabled, this version appears when logging a new application. Disable to archive it without deleting."
+      "enabledTitle": "Active",
+      "enabledDescription": "An active version is offered when logging a new application. Uncheck to archive it without deleting"
     },
     "placeholders": {
       "sourceLink": "https://..."

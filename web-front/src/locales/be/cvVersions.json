@@ -4,46 +4,29 @@
     "newCvVersion": "Новая версія рэзюмэ",
     "searchLabel": "Фільтр версій рэзюмэ",
     "searchPlaceholder": "Фільтр па назве або файле…",
-    "tabs": {
-      "all": "Усе",
-      "enabled": "Уключаныя",
-      "disabled": "Адключаныя"
-    },
-    "shownOfTotal": "Паказана <strong>{{shown}}</strong> з <strong>{{total}}</strong>",
-    "versionCount_one": "<strong>{{count}}</strong> версія",
-    "versionCount_few": "<strong>{{count}}</strong> версіі",
-    "versionCount_many": "<strong>{{count}}</strong> версій",
-    "versionCount_other": "<strong>{{count}}</strong> версіі",
-    "disabledCount_one": "{{count}} адключана",
-    "disabledCount_few": "{{count}} адключаны",
-    "disabledCount_many": "{{count}} адключана",
-    "disabledCount_other": "{{count}} адключаны",
     "columns": {
       "version": "Версія рэзюмэ",
       "description": "Апісанне",
-      "source": "Крыніца",
-      "enabled": "Уключана"
+      "source": "Крыніца"
     },
     "openSource": "Адкрыць",
-    "toggle": {
-      "on": "Укл.",
-      "off": "Адкл.",
-      "onHint": "Уключана — даступная пры выбары рэзюмэ",
-      "offHint": "Адключана — схаваная пры выбары рэзюмэ",
-      "label": "Паказваць {{name}} пры выбары рэзюмэ"
-    },
-    "deleteLabel": "Выдаліць {{name}}",
     "noMatch": "Няма версій рэзюмэ, якія адпавядаюць фільтру",
-    "footer": {
-      "showing_one": "Паказана <strong>{{count}}</strong> версія",
-      "showing_few": "Паказаны <strong>{{count}}</strong> версіі",
-      "showing_many": "Паказана <strong>{{count}}</strong> версій",
-      "showing_other": "Паказаны <strong>{{count}}</strong> версіі",
-      "enabled": "уключана: {{enabled}}",
-      "enabledAndDisabled": "уключана: {{enabled}}, адключана: {{disabled}}"
+    "menu": {
+      "actions": "Дзеянні для {{name}}",
+      "column": "Дзеянні",
+      "edit": "Змяніць",
+      "delete": "Выдаліць",
+      "archive": "У архіў",
+      "restore": "Аднавіць"
     },
-    "addAnother": "Дадаць яшчэ версію",
-    "disabledInfo": "Адключаныя версіі захоўваюцца для гісторыі, каб старыя водгукі па-ранейшаму на іх спасылаліся, але не прапануюцца пры выбары рэзюмэ для новага водгуку"
+    "scopeLabel": "Паказаць",
+    "scope": {
+      "active": "Толькі актыўныя",
+      "archived": "Толькі архіўныя",
+      "all": "Усе версіі"
+    },
+    "matchingCount": "Падыходзіць <filtered>{{filtered}}</filtered> з <total>{{total}}</total>",
+    "archivedMarker": "У архіве"
   },
   "route": {
     "loadingListTitle": "Загрузка версій рэзюмэ",
@@ -71,8 +54,8 @@
       "sourceLink": "Спасылка на зыходны файл",
       "attachment": "Укладанне",
       "description": "Апісанне",
-      "enabledTitle": "Паказваць пры выбары рэзюмэ",
-      "enabledDescription": "Уключаная версія прапануецца пры даданні новага водгуку. Адключыце яе, каб перанесці ў архіў без выдалення."
+      "enabledTitle": "Актыўная",
+      "enabledDescription": "Актыўная версія прапануецца пры даданні новага водгуку. Зніміце сцяжок, каб перанесці яе ў архіў без выдалення"
     },
     "placeholders": {
       "sourceLink": "https://..."
