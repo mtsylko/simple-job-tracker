@@ -1,18 +1,18 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/newsreader';
-/* Newsreader has no Cyrillic; its unicode-range lets Literata draw only those glyphs. */
-@import '@fontsource-variable/literata';
+@import '@fontsource-variable/golos-text';
+/* The opsz build: the browser picks the display cut for 30px headings and the text cut below. */
+@import '@fontsource-variable/literata/opsz.css';
 @import '@fontsource-variable/jetbrains-mono';
 
 @custom-variant dark (&:is(.dark *));
 
 /* =========================================================================
    Job Tracker — cool neutral palette
-   Blue accent on slate. Newsreader (serif) for headings only, Inter for UI,
-   body and figures (tabular), JetBrains Mono for code and raw text.
+   Blue accent on slate. Literata (serif) for headings only, Golos Text for
+   UI, body and figures (tabular), JetBrains Mono for code and raw text. Both
+   carry Cyrillic, so every locale sets the same faces.
 
    The --warm-* / --clay-* token names predate this palette and are kept
    because ~80 call sites generate Tailwind utilities from them (bg-clay,
@@ -22,8 +22,8 @@
 
 :root {
   /* Type stacks */
-  --sans:    'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --serif:   'Newsreader Variable', 'Literata Variable', 'Newsreader', 'Source Serif Pro', Georgia, serif;
+  --sans:    'Golos Text Variable', 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --serif:   'Literata Variable', 'Literata', Georgia, serif;
   --heading: var(--serif);
   --mono:    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
@@ -391,8 +391,8 @@ tr.group:last-child { border-bottom: 0 !important; }
 
 /* Theme inline (Tailwind v4 token export) --------------------------------- */
 @theme inline {
-  --font-sans:  'Inter Variable', sans-serif;
-  --font-serif: 'Newsreader Variable', 'Literata Variable', serif;
+  --font-sans:  'Golos Text Variable', sans-serif;
+  --font-serif: 'Literata Variable', serif;
   --font-mono:  'JetBrains Mono Variable', ui-monospace, monospace;
 
   --color-background:            var(--background);

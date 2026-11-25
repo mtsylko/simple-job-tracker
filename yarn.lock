@@ -1022,10 +1022,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/inter@npm:^5.2.8":
-  version: 5.2.8
-  resolution: "@fontsource-variable/inter@npm:5.2.8"
-  checksum: 10c0/35b46df31c8c18f55f87228acf6297e4dac6cc9f38d0faaafdaf5a40e40c386cf1bfb115fb0fe0dcdb9b7e14f582843693ccf070d9c903072a5b2fc0f8dfde56
+"@fontsource-variable/golos-text@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/golos-text@npm:5.3.0"
+  checksum: 10c0/1099289c772beb4530d6663e846efbf1338e02a750a90420b0bdf926d516c9a810b77b9526fb2a9ba5e3232619696104872d767df011f69ebed9dfadf4a9b3f2
   languageName: node
   linkType: hard
 
@@ -1040,13 +1040,6 @@ __metadata:
   version: 5.3.0
   resolution: "@fontsource-variable/literata@npm:5.3.0"
   checksum: 10c0/5b9414e6427f29c653941f2d35dee794d490f002a70c33f61cd14374c2260722f13f41073966a621230ceb3ae9ea8831b7f186cbe35c9e4fa8e2ff2e084b9aae
-  languageName: node
-  linkType: hard
-
-"@fontsource-variable/newsreader@npm:^5.2.10":
-  version: 5.2.10
-  resolution: "@fontsource-variable/newsreader@npm:5.2.10"
-  checksum: 10c0/0ec4a397e1aeb798d5118bbd1a4b129c53e83cf6a108de4dc7ec9ec9513731645358dcd7e94123bffb71c002208e613370ba83eb1a3d1f9ff2d2d016bc44761d
   languageName: node
   linkType: hard
 
@@ -9041,10 +9034,9 @@ __metadata:
     "@dnd-kit/helpers": "npm:^0.5.0"
     "@dnd-kit/react": "npm:0.5.0"
     "@eslint/js": "npm:^9.39.4"
-    "@fontsource-variable/inter": "npm:^5.2.8"
+    "@fontsource-variable/golos-text": "npm:^5.3.0"
     "@fontsource-variable/jetbrains-mono": "npm:^5.2.8"
     "@fontsource-variable/literata": "npm:^5.3.0"
-    "@fontsource-variable/newsreader": "npm:^5.2.10"
     "@hugeicons/core-free-icons": "npm:^4.0.0"
     "@hugeicons/react": "npm:^1.1.6"
     "@job-tracker/shared": "workspace:*"
