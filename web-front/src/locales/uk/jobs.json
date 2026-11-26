@@ -169,7 +169,7 @@
     "backToApplications": "Назад до відгуків",
     "newApplicationTitle": "Новий відгук",
     "editApplicationTitle": "Редагування відгуку",
-    "appliedPrefix": "· Відгук від {{date}}",
+    "appliedOn": "Відгук від {{date}}",
     "submit": "Створити",
     "saveChanges": "Зберегти зміни",
     "sections": {

@@ -169,7 +169,7 @@
     "backToApplications": "Wróć do aplikacji",
     "newApplicationTitle": "Nowa aplikacja",
     "editApplicationTitle": "Edycja aplikacji",
-    "appliedPrefix": "· Wysłano {{date}}",
+    "appliedOn": "Wysłano {{date}}",
     "submit": "Zapisz",
     "saveChanges": "Zapisz zmiany",
     "sections": {

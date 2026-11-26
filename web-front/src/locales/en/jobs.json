@@ -161,7 +161,7 @@
     "backToApplications": "Back to Applications",
     "newApplicationTitle": "New application",
     "editApplicationTitle": "Edit application",
-    "appliedPrefix": "· Applied {{date}}",
+    "appliedOn": "Applied {{date}}",
     "submit": "Submit",
     "saveChanges": "Save changes",
     "sections": {

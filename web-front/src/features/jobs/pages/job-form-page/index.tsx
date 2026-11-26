@@ -1,4 +1,12 @@
-import { SyntheticEvent, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Fragment,
+  type ReactElement,
+  SyntheticEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -277,24 +285,29 @@ export function JobFormPage({
               : values.company || t('form.editApplicationTitle')}
           </h1>
           {mode === 'edit' && values.status && (
-            <div className="mt-2 flex items-center gap-3 text-sm text-muted-foreground">
-              {values.role && <span>{values.role}</span>}
-              {values.appliedAt && (
-                <span>
-                  {t('form.appliedPrefix', {
-                    date: formatDisplayDate(values.appliedAt)
-                  })}
-                </span>
-              )}
-              {values.status && (
-                <>
-                  <span>·</span>
-                  <StatusBadge
-                    status={values.status}
-                    color={headerStatusColor}
-                  />
-                </>
-              )}
+            <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+              {[
+                values.role && <span key="role">{values.role}</span>,
+                values.appliedAt && (
+                  <span key="applied">
+                    {t('form.appliedOn', {
+                      date: formatDisplayDate(values.appliedAt)
+                    })}
+                  </span>
+                ),
+                <StatusBadge
+                  key="status"
+                  status={values.status}
+                  color={headerStatusColor}
+                />
+              ]
+                .filter((item): item is ReactElement => Boolean(item))
+                .map((item, index) => (
+                  <Fragment key={item.key}>
+                    {index > 0 && <span aria-hidden="true">·</span>}
+                    {item}
+                  </Fragment>
+                ))}
             </div>
           )}
         </div>

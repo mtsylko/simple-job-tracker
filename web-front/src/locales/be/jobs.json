@@ -169,7 +169,7 @@
     "backToApplications": "Назад да водгукаў",
     "newApplicationTitle": "Новы водгук",
     "editApplicationTitle": "Рэдагаванне водгуку",
-    "appliedPrefix": "· Водгук ад {{date}}",
+    "appliedOn": "Водгук ад {{date}}",
     "submit": "Стварыць",
     "saveChanges": "Захаваць змены",
     "sections": {

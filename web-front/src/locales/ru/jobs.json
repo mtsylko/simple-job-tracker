@@ -169,7 +169,7 @@
     "backToApplications": "Назад к откликам",
     "newApplicationTitle": "Новый отклик",
     "editApplicationTitle": "Редактирование отклика",
-    "appliedPrefix": "· Отклик от {{date}}",
+    "appliedOn": "Отклик от {{date}}",
     "submit": "Создать",
     "saveChanges": "Сохранить изменения",
     "sections": {
