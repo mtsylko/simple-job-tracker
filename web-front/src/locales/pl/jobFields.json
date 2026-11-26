@@ -1,7 +1,7 @@
 {
   "page": {
     "title": "Pola własne",
-    "subtitle": "Dodaj własne pola do formularza aplikacji. Pojawiają się w sekcji „Dodatkowe pola” przy dodawaniu lub edycji aplikacji",
+    "subtitle": "Dodatkowe dane do każdej aplikacji",
     "empty": "Nie ma jeszcze pól własnych",
     "loadFailed": "Nie udało się załadować pól"
   },
