@@ -32,6 +32,51 @@ export type CompanyLatestStatus = {
   color: string;
 };
 
+/** One application on a company's page, newest first. */
+export type CompanyApplication = {
+  id: string;
+  role: string | null;
+  level: string | null;
+  status: CompanyLatestStatus | null;
+  appliedAt: string;
+  archived: boolean;
+};
+
+/** A company's page: its stored row, if any, and every application to it. */
+export type CompanyDetails = {
+  /** Null while nothing is stored for the company beyond its applications. */
+  id: string | null;
+  name: string;
+  website: string | null;
+  notes: string | null;
+  /** The most recent application's; null when there is none. */
+  isProductCompany: boolean | null;
+  blacklist: CompanyBlacklist | null;
+  applications: CompanyApplication[];
+};
+
+/** A company added by hand, before any application to it. */
+export type CreateCompanyInput = {
+  name: string;
+  website?: string | null;
+  notes?: string | null;
+  blacklisted?: boolean;
+  blacklistReason?: string | null;
+};
+
+/** Saves a company's page. `company` names it as it is now; the rest are changes. */
+export type UpdateCompanyInput = {
+  company: string;
+  /** Renames the company in every application to it. */
+  name?: string;
+  website?: string | null;
+  notes?: string | null;
+  /** Applies to every application to the company. */
+  isProductCompany?: boolean;
+  blacklisted?: boolean;
+  blacklistReason?: string | null;
+};
+
 export type BlacklistCompanyInput = {
   company: string;
   reason?: string | null;

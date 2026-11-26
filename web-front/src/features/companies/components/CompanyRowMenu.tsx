@@ -1,4 +1,4 @@
-import { Ban, MoreHorizontal, Pencil } from 'lucide-react';
+import { Ban, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { CompanySummary } from '@job-tracker/shared';
 
@@ -6,17 +6,22 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { canDelete } from '@/features/companies/company-paths';
 
 /** One menu per row, as in the applications table; the items follow the company's blacklist state. */
 export function CompanyRowMenu({
   company,
   onToggleBlacklist,
-  onEditReason
+  onEditReason,
+  onDelete
 }: {
   company: CompanySummary;
   onToggleBlacklist: (company: CompanySummary) => void;
+  /** Offered only for a company added by hand and never applied to. */
+  onDelete: (company: CompanySummary) => void;
   /** Shown for a blacklisted company when given, on the Blacklisted tab. */
   onEditReason?: (company: CompanySummary) => void;
 }) {
@@ -52,6 +57,18 @@ export function CompanyRowMenu({
             <Ban className="size-3.5" aria-hidden="true" />
             {t(blacklisted ? 'list.unblacklistAction' : 'list.blacklistAction')}
           </DropdownMenuItem>
+          {canDelete(company) && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="gap-2 text-destructive"
+                onClick={() => onDelete(company)}
+              >
+                <Trash2 className="size-3.5" aria-hidden="true" />
+                {t('list.deleteAction')}
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

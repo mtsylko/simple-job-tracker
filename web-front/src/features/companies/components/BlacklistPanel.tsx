@@ -8,48 +8,25 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table';
-import { BlacklistAddForm } from '@/features/companies/components/BlacklistAddForm';
 import { BlacklistRow } from '@/features/companies/components/BlacklistRow';
 
 export function BlacklistPanel({
   companies,
-  candidates,
   emptyMessage,
-  isAdding,
-  onAddClose,
-  onAdd,
   onEditReason,
-  onRemove
+  onRemove,
+  onDelete
 }: {
   companies: CompanySummary[];
-  /** Companies the add form can pick from: the user's own, not yet blacklisted. */
-  candidates: string[];
   emptyMessage: string;
-  // Opened from the page's header button.
-  isAdding: boolean;
-  onAddClose: () => void;
-  onAdd: (company: string, reason: string | null) => Promise<void>;
   onEditReason: (company: CompanySummary) => void;
   onRemove: (company: CompanySummary) => void;
+  onDelete: (company: CompanySummary) => void;
 }) {
   const { t } = useTranslation('companies');
 
   return (
     <>
-      {isAdding && (
-        <div className="border-b border-warm-line bg-warm-surface-2">
-          <div className="max-w-xl">
-            <BlacklistAddForm
-              companies={candidates}
-              onSubmit={async (company, reason) => {
-                await onAdd(company, reason);
-                onAddClose();
-              }}
-              onCancel={onAddClose}
-            />
-          </div>
-        </div>
-      )}
       {companies.length === 0 ? (
         <p className="px-5 py-4 text-sm text-muted-foreground">
           {emptyMessage}
@@ -79,6 +56,7 @@ export function BlacklistPanel({
                 company={company}
                 onEditReason={onEditReason}
                 onRemove={onRemove}
+                onDelete={onDelete}
               />
             ))}
           </TableBody>

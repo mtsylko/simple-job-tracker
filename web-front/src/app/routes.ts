@@ -15,6 +15,8 @@ export const ROUTES = {
   taxonomiesList: '/taxonomies/:list',
   jobFields: '/custom-fields',
   companies: '/companies',
+  companyCreate: '/companies/create',
+  company: '/companies/:name',
   adminUsers: '/admin/users',
   adminFeedback: '/admin/feedback',
   adminTranslations: '/admin/translations',
@@ -28,6 +30,11 @@ export function jobEditPath(id: string): string {
 
 export function taxonomiesListPath(list: string): string {
   return `/taxonomies/${encodeURIComponent(list)}`;
+}
+
+/** A company's own page; companies have no id until something is stored for them. */
+export function companyPath(name: string): string {
+  return `/companies/${encodeURIComponent(name)}`;
 }
 
 export function cvVersionEditPath(id: string): string {

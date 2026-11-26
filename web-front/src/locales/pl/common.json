@@ -81,6 +81,7 @@
       "jobStatus": "Status",
       "jobOutcome": "Wynik",
       "jobField": "Pole",
+      "company": "Firma",
       "candidateProfile": "Profil"
     },
     "success": {

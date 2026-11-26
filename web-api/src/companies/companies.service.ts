@@ -1,23 +1,22 @@
-import {
-  ConflictException,
-  Injectable,
-  NotFoundException
-} from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { randomUUID } from 'node:crypto';
-import { Repository } from 'typeorm';
+import { EntityManager, In, Repository } from 'typeorm';
 import {
   normalizeCompanyName,
   type Company,
   type CompanyBlacklist,
-  type CompanySummary
+  type CompanyDetails,
+  type CompanySummary,
+  type CreateCompanyInput,
+  type UpdateCompanyInput
 } from '@job-tracker/shared';
 import { JobEntity } from '../jobs/job.entity';
 import { CompanyEntity } from './company.entity';
 import { apiError } from '../common/errors/api-error';
 
-/** Empty or whitespace-only reasons collapse to null rather than a blank note. */
-function normalizeReason(raw: string | null | undefined): string | null {
+/** Empty or whitespace-only text collapses to null rather than a blank value. */
+function normalizeText(raw: string | null | undefined): string | null {
   const trimmed = raw?.trim();
   return trimmed ? trimmed : null;
 }
@@ -29,6 +28,32 @@ function toBlacklist(entity: CompanyEntity): CompanyBlacklist | null {
         blacklistedAt: entity.blacklistedAt.toISOString()
       }
     : null;
+}
+
+/** A company's page from its stored row and its applications, newest first. */
+function toDetails(
+  row: CompanyEntity | null,
+  jobs: JobEntity[],
+  fallbackName: string
+): CompanyDetails {
+  return {
+    id: row?.id ?? null,
+    name: row?.name ?? jobs[0]?.company.trim() ?? fallbackName,
+    website: row?.website ?? null,
+    notes: row?.notes ?? null,
+    isProductCompany: jobs[0]?.isProductCompany ?? null,
+    blacklist: row ? toBlacklist(row) : null,
+    applications: jobs.map((job) => ({
+      id: job.id,
+      role: job.roleOption?.value ?? null,
+      level: job.levelOption?.value ?? null,
+      status: job.statusOption
+        ? { value: job.statusOption.value, color: job.statusOption.color }
+        : null,
+      appliedAt: job.appliedAt.toISOString(),
+      archived: job.archivedAt !== null
+    }))
+  };
 }
 
 function toResponse(entity: CompanyEntity): Company {
@@ -124,6 +149,203 @@ export class CompaniesService {
     );
   }
 
+  async details(
+    userId: string,
+    rawName: string
+  ): Promise<CompanyDetails | null> {
+    const key = normalizeCompanyName(rawName);
+    const [jobs, row] = await Promise.all([
+      this.jobsFor(this.jobRepository, userId, key),
+      this.repository.findOne({ where: { userId, nameNormalized: key } })
+    ]);
+    if (jobs.length === 0 && !row) {
+      return null;
+    }
+    return toDetails(row, jobs, rawName.trim());
+  }
+
+  /** Saves a company's page in one go: its applications first, then its row. */
+  async update(
+    userId: string,
+    input: UpdateCompanyInput
+  ): Promise<CompanyDetails | null> {
+    const key = normalizeCompanyName(input.company);
+
+    return this.repository.manager.transaction(async (manager) => {
+      await manager.query(
+        `SELECT pg_advisory_xact_lock(hashtext('companies:' || $1))`,
+        [userId]
+      );
+      const jobRepository = manager.getRepository(JobEntity);
+      const repository = manager.getRepository(CompanyEntity);
+
+      const jobs = await this.jobsFor(jobRepository, userId, key);
+      let row = await repository.findOne({
+        where: { userId, nameNormalized: key }
+      });
+      if (jobs.length === 0 && !row) {
+        return null;
+      }
+
+      const now = new Date();
+      let name = row?.name ?? jobs[0].company.trim();
+      let nameNormalized = key;
+      if (input.name !== undefined) {
+        name = input.name.trim();
+        nameNormalized = normalizeCompanyName(name);
+        if (nameNormalized !== key) {
+          await this.assertNameFree(manager, userId, nameNormalized);
+        }
+      }
+
+      const jobChanges: Partial<JobEntity> = {};
+      if (
+        input.name !== undefined &&
+        jobs.some((job) => job.company !== name)
+      ) {
+        jobChanges.company = name;
+      }
+      if (
+        input.isProductCompany !== undefined &&
+        jobs.some((job) => job.isProductCompany !== input.isProductCompany)
+      ) {
+        jobChanges.isProductCompany = input.isProductCompany;
+      }
+      if (Object.keys(jobChanges).length > 0) {
+        await jobRepository.update(
+          { userId, id: In(jobs.map((job) => job.id)) },
+          { ...jobChanges, updatedAt: now }
+        );
+      }
+
+      const next =
+        row ?? repository.create({ id: randomUUID(), userId, createdAt: now });
+      next.name = name;
+      next.nameNormalized = nameNormalized;
+      next.website =
+        input.website !== undefined
+          ? normalizeText(input.website)
+          : (row?.website ?? null);
+      next.notes =
+        input.notes !== undefined
+          ? normalizeText(input.notes)
+          : (row?.notes ?? null);
+      next.blacklistedAt = row?.blacklistedAt ?? null;
+      next.blacklistReason = row?.blacklistReason ?? null;
+      if (input.blacklisted === true && !next.blacklistedAt) {
+        next.blacklistedAt = now;
+      }
+      if (input.blacklisted === false) {
+        next.blacklistedAt = null;
+        next.blacklistReason = null;
+      }
+      if (input.blacklistReason !== undefined && next.blacklistedAt) {
+        next.blacklistReason = normalizeText(input.blacklistReason);
+      }
+      next.updatedAt = now;
+      row = await repository.save(next);
+
+      return toDetails(
+        row,
+        await this.jobsFor(jobRepository, userId, nameNormalized),
+        name
+      );
+    });
+  }
+
+  /** Adds a company by hand; one with that name, stored or applied to, is refused. */
+  async create(
+    userId: string,
+    input: CreateCompanyInput
+  ): Promise<CompanyDetails> {
+    const name = input.name.trim();
+    const nameNormalized = normalizeCompanyName(name);
+
+    return this.repository.manager.transaction(async (manager) => {
+      await manager.query(
+        `SELECT pg_advisory_xact_lock(hashtext('companies:' || $1))`,
+        [userId]
+      );
+      await this.assertNameFree(manager, userId, nameNormalized);
+
+      const now = new Date();
+      const blacklisted = input.blacklisted === true;
+      const row = await manager.getRepository(CompanyEntity).save({
+        id: randomUUID(),
+        userId,
+        name,
+        nameNormalized,
+        website: normalizeText(input.website),
+        notes: normalizeText(input.notes),
+        blacklistedAt: blacklisted ? now : null,
+        blacklistReason: blacklisted
+          ? normalizeText(input.blacklistReason)
+          : null,
+        createdAt: now,
+        updatedAt: now
+      });
+      return toDetails(row, [], name);
+    });
+  }
+
+  /** Deletes a company added by hand; one with applications goes with them, not here. */
+  async remove(userId: string, id: string): Promise<boolean> {
+    const company = await this.repository.findOne({ where: { id, userId } });
+    if (!company) {
+      return false;
+    }
+    if (await this.hasApplicationFor(userId, company.nameNormalized)) {
+      throw new ConflictException(
+        apiError(
+          'COMPANY_HAS_APPLICATIONS',
+          'A company with applications cannot be deleted'
+        )
+      );
+    }
+    await this.repository.delete({ id, userId });
+    return true;
+  }
+
+  private async assertNameFree(
+    manager: EntityManager,
+    userId: string,
+    nameNormalized: string
+  ): Promise<void> {
+    const taken =
+      (await manager
+        .getRepository(CompanyEntity)
+        .exists({ where: { userId, nameNormalized } })) ||
+      (await this.hasApplicationFor(
+        userId,
+        nameNormalized,
+        manager.getRepository(JobEntity)
+      ));
+    if (taken) {
+      throw new ConflictException(
+        apiError(
+          'COMPANY_NAME_TAKEN',
+          'A company with this name is already in your list'
+        )
+      );
+    }
+  }
+
+  /** Every application to one company, newest first, with what its page shows. */
+  private async jobsFor(
+    repository: Repository<JobEntity>,
+    userId: string,
+    nameNormalized: string
+  ): Promise<JobEntity[]> {
+    const jobs = await repository.find({
+      where: { userId },
+      relations: { roleOption: true, levelOption: true, statusOption: true },
+      order: { appliedAt: 'DESC', createdAt: 'DESC' }
+    });
+    return jobs.filter(
+      (job) => normalizeCompanyName(job.company) === nameNormalized
+    );
+  }
+
   async blacklist(
     userId: string,
     rawCompany: string,
@@ -143,15 +365,6 @@ export class CompaniesService {
         )
       );
     }
-    if (!(await this.hasApplicationFor(userId, nameNormalized))) {
-      throw new NotFoundException(
-        apiError(
-          'COMPANY_HAS_NO_APPLICATIONS',
-          'Only a company from your applications can be blacklisted'
-        )
-      );
-    }
-
     const now = new Date();
     const company =
       existing ??
@@ -163,7 +376,7 @@ export class CompaniesService {
         createdAt: now
       });
     company.blacklistedAt = now;
-    company.blacklistReason = normalizeReason(rawReason);
+    company.blacklistReason = normalizeText(rawReason);
     company.updatedAt = now;
     await this.repository.save(company);
 
@@ -172,9 +385,10 @@ export class CompaniesService {
 
   private async hasApplicationFor(
     userId: string,
-    nameNormalized: string
+    nameNormalized: string,
+    jobRepository: Repository<JobEntity> = this.jobRepository
   ): Promise<boolean> {
-    const jobs = await this.jobRepository.find({
+    const jobs = await jobRepository.find({
       where: { userId },
       select: { id: true, company: true }
     });
@@ -193,20 +407,23 @@ export class CompaniesService {
       return null;
     }
 
-    company.blacklistReason = normalizeReason(rawReason);
+    company.blacklistReason = normalizeText(rawReason);
     company.updatedAt = new Date();
     await this.repository.save(company);
 
     return toResponse(company);
   }
 
-  /** Nothing else is stored on a company yet, so lifting the blacklist drops the row. */
+  /** Lifting the blacklist keeps the company: it may have been added by hand. */
   async unblacklist(userId: string, id: string): Promise<boolean> {
     const company = await this.repository.findOne({ where: { id, userId } });
     if (!company?.blacklistedAt) {
       return false;
     }
-    await this.repository.delete({ id, userId });
+    company.blacklistedAt = null;
+    company.blacklistReason = null;
+    company.updatedAt = new Date();
+    await this.repository.save(company);
     return true;
   }
 }

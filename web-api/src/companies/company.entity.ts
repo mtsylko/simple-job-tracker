@@ -22,6 +22,12 @@ export class CompanyEntity {
   @Column({ name: 'blacklist_reason', type: 'text', nullable: true })
   blacklistReason!: string | null;
 
+  @Column({ type: 'text', nullable: true })
+  website!: string | null;
+
+  @Column({ type: 'text', nullable: true })
+  notes!: string | null;
+
   @Column({ name: 'created_at', type: 'timestamptz' })
   createdAt!: Date;
 

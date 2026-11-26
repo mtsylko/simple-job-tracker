@@ -19,6 +19,8 @@ import { AnalyticsRoute } from '@/features/analytics/routes/analytics-route';
 import { TaxonomiesRoute } from '@/features/taxonomies/routes/taxonomy-routes';
 import { JobFieldsRoute } from '@/features/job-fields/routes/job-fields-route';
 import { CompaniesRoute } from '@/features/companies/routes/companies-route';
+import { CompanyCreateRoute } from '@/features/companies/routes/company-create-route';
+import { CompanyRoute } from '@/features/companies/routes/company-route';
 import { AdminUsersRoute } from '@/features/admin-users/routes/admin-users-route';
 import { AdminFeedbackRoute } from '@/features/admin-feedback/routes/admin-feedback-route';
 import { AdminTranslationsRoute } from '@/features/admin-translations/routes/admin-translations-route';
@@ -70,6 +72,8 @@ export const router = createBrowserRouter(
           <Route path={ROUTES.taxonomiesList} element={<TaxonomiesRoute />} />
           <Route path={ROUTES.jobFields} element={<JobFieldsRoute />} />
           <Route path={ROUTES.companies} element={<CompaniesRoute />} />
+          <Route path={ROUTES.companyCreate} element={<CompanyCreateRoute />} />
+          <Route path={ROUTES.company} element={<CompanyRoute />} />
           <Route
             path="/blacklist"
             element={

@@ -12,7 +12,6 @@ import {
 import { BlacklistedMarker } from '@/features/companies/components/BlacklistedMarker';
 import { CompanyName } from '@/features/companies/components/CompanyName';
 import { CompanyRowMenu } from '@/features/companies/components/CompanyRowMenu';
-import { hasApplications } from '@/features/companies/company-paths';
 import { companyTypeKey } from '@/features/companies/company-type';
 import { StatusBadge } from '@/features/jobs/pages/job-list-page/TableCells/StatusBadge';
 import { formatDisplayDate } from '@/lib/format-date';
@@ -23,12 +22,14 @@ export function CompaniesTable({
   companies,
   emptyMessage,
   onBlacklist,
-  onUnblacklist
+  onUnblacklist,
+  onDelete
 }: {
   companies: CompanySummary[];
   emptyMessage: string;
   onBlacklist: (company: CompanySummary) => void;
   onUnblacklist: (company: CompanySummary) => void;
+  onDelete: (company: CompanySummary) => void;
 }) {
   const { t } = useTranslation('companies');
 
@@ -67,11 +68,8 @@ export function CompaniesTable({
         {companies.map((company) => (
           <TableRow
             key={company.id ?? company.name}
-            {...(hasApplications(company) ? rowOpenHandlers : {})}
-            className={cn(
-              'border-warm-line',
-              hasApplications(company) ? ROW_OPEN_CLASS : 'hover:bg-transparent'
-            )}
+            {...rowOpenHandlers}
+            className={cn('border-warm-line', ROW_OPEN_CLASS)}
           >
             <TableCell className="pl-5">
               <CompanyName company={company}>
@@ -120,6 +118,7 @@ export function CompaniesTable({
                 onToggleBlacklist={(target) =>
                   target.blacklist ? onUnblacklist(target) : onBlacklist(target)
                 }
+                onDelete={onDelete}
               />
             </TableCell>
           </TableRow>

@@ -5,7 +5,7 @@ import { COMPANIES_TABS } from '@/features/companies/types';
 import { useCompanies } from '@/features/companies/use-companies';
 
 export function CompaniesRoute() {
-  const { state, addToBlacklist, updateReason, removeFromBlacklist, reload } =
+  const { state, removeCompany, updateReason, removeFromBlacklist, reload } =
     useCompanies();
   // In the URL so the old /blacklist link can land on its tab.
   const [tab, setTab] = useQueryState(
@@ -18,7 +18,7 @@ export function CompaniesRoute() {
       state={state}
       tab={tab}
       onTabChange={(next) => void setTab(next)}
-      onAddToBlacklist={addToBlacklist}
+      onDelete={removeCompany}
       onUpdateReason={updateReason}
       onRemoveFromBlacklist={removeFromBlacklist}
       onBlacklisted={() => void reload({ silent: true })}

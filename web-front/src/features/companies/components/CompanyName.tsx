@@ -1,11 +1,9 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import type { CompanySummary } from '@job-tracker/shared';
 
-import {
-  companyApplicationsPath,
-  hasApplications
-} from '@/features/companies/company-paths';
+import { companyPath } from '@/app/routes';
+import type { CompanyPageState } from '@/features/companies/company-paths';
 import { ROW_OPENER, ROW_OPENER_CLASS } from '@/lib/row-open';
 import { cn } from '@/lib/utils';
 
@@ -17,24 +15,24 @@ export function CompanyName({
   company: CompanySummary;
   children: ReactNode;
 }) {
+  const location = useLocation();
+  const state: CompanyPageState = {
+    back: `${location.pathname}${location.search}`
+  };
+
   return (
     <>
-      {hasApplications(company) ? (
-        <Link
-          to={companyApplicationsPath(company.name)}
-          {...ROW_OPENER}
-          className={cn(
-            'block truncate text-sm font-medium text-foreground',
-            ROW_OPENER_CLASS
-          )}
-        >
-          {company.name}
-        </Link>
-      ) : (
-        <span className="block truncate text-sm font-medium text-foreground">
-          {company.name}
-        </span>
-      )}
+      <Link
+        to={companyPath(company.name)}
+        state={state}
+        {...ROW_OPENER}
+        className={cn(
+          'block truncate text-sm font-medium text-foreground',
+          ROW_OPENER_CLASS
+        )}
+      >
+        {company.name}
+      </Link>
       <div className="flex h-4.5 min-w-0 items-center gap-1.5 text-xs text-muted-foreground">
         {children}
       </div>

@@ -81,6 +81,7 @@
       "jobStatus": "Статус",
       "jobOutcome": "Результат",
       "jobField": "Поле",
+      "company": "Компания",
       "candidateProfile": "Профиль"
     },
     "success": {

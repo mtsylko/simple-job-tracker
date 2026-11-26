@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Plus, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { normalizeCompanyName, type CompanySummary } from '@job-tracker/shared';
+
+import { ROUTES } from '@/app/routes';
 
 import { Modal } from '@/components/Modal';
 import { PageTabs } from '@/components/PageTabs';
@@ -15,6 +18,10 @@ import { BlacklistDialog } from '@/features/companies/components/BlacklistDialog
 import { BlacklistPanel } from '@/features/companies/components/BlacklistPanel';
 import { CompaniesTable } from '@/features/companies/components/CompaniesTable';
 import { ReasonDialog } from '@/features/companies/components/ReasonDialog';
+import {
+  canDelete,
+  type CompanyPageState
+} from '@/features/companies/company-paths';
 import type { CompaniesTab } from '@/features/companies/types';
 import type { CompaniesState } from '@/features/companies/use-companies';
 import { useCompanyBlacklisting } from '@/features/companies/use-company-blacklisting';
@@ -24,7 +31,7 @@ export function CompaniesPage({
   state,
   tab,
   onTabChange,
-  onAddToBlacklist,
+  onDelete,
   onUpdateReason,
   onRemoveFromBlacklist,
   onBlacklisted
@@ -32,14 +39,15 @@ export function CompaniesPage({
   state: CompaniesState;
   tab: CompaniesTab;
   onTabChange: (tab: CompaniesTab) => void;
-  onAddToBlacklist: (company: string, reason: string | null) => Promise<void>;
+  onDelete: (company: CompanySummary & { id: string }) => Promise<void>;
   onUpdateReason: (id: string, reason: string | null) => Promise<void>;
   onRemoveFromBlacklist: (company: CompanySummary) => Promise<void>;
   onBlacklisted: () => void;
 }) {
   const { t } = useTranslation('companies');
+  const navigate = useNavigate();
+  const location = useLocation();
   const [search, setSearch] = useState('');
-  const [isAdding, setIsAdding] = useState(false);
   // Kept after the dialog closes so its title survives the exit animation.
   const [pendingRemoval, setPendingRemoval] = useState<CompanySummary | null>(
     null
@@ -83,14 +91,40 @@ export function CompaniesPage({
     [state.companies]
   );
 
-  // Only companies from the user's applications can be blacklisted from the form.
-  const blacklistCandidates = useMemo(
-    () =>
-      state.companies
-        .filter((company) => !company.blacklist && company.applicationCount > 0)
-        .map((company) => company.name),
-    [state.companies]
-  );
+  // Kept after closing for the same reason as the removal above.
+  const [pendingDelete, setPendingDelete] = useState<
+    (CompanySummary & { id: string }) | null
+  >(null);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const requestDelete = (company: CompanySummary) => {
+    if (!canDelete(company)) return;
+    setPendingDelete(company);
+    setIsDeleteOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!pendingDelete) return;
+    setIsDeleting(true);
+    try {
+      await onDelete(pendingDelete);
+      setIsDeleteOpen(false);
+    } catch {
+      // The toast says why; the dialog stays for another try or Cancel
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  // From the Blacklisted tab a new company starts ticked to avoid
+  const openNewCompany = () => {
+    const state: CompanyPageState = {
+      back: `${location.pathname}${location.search}`,
+      avoid: tab === 'blacklisted'
+    };
+    navigate(ROUTES.companyCreate, { state });
+  };
 
   const query = normalizeCompanyName(search);
   const visible = (
@@ -137,22 +171,19 @@ export function CompaniesPage({
   return (
     <main className="flex min-h-0 flex-1 flex-col">
       <div className="flex flex-col gap-1 px-4 pb-4 pt-5 sm:px-7 sm:pb-5 sm:pt-7">
-        {/* The same row as on Categories; adding only exists on the Blacklisted tab */}
+        {/* One list, so one way to add to it: the same button on both tabs */}
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <h1 className="m-0 font-serif text-display font-light leading-tight tracking-tight text-foreground">
             {t('page.title')}
           </h1>
-          {tab === 'blacklisted' && (
-            <Button
-              size="lg"
-              className="shrink-0 gap-1.5"
-              disabled={isAdding}
-              onClick={() => setIsAdding(true)}
-            >
-              <Plus className="size-3.5" aria-hidden="true" />
-              {t('common:form.addNew')}
-            </Button>
-          )}
+          <Button
+            size="lg"
+            className="shrink-0 gap-1.5"
+            onClick={openNewCompany}
+          >
+            <Plus className="size-3.5" aria-hidden="true" />
+            {t('page.newCompany')}
+          </Button>
         </div>
         <p className="text-sm text-muted-foreground">{t('page.subtitle')}</p>
       </div>
@@ -171,10 +202,7 @@ export function CompaniesPage({
           }
         ]}
         value={tab}
-        onChange={(next) => {
-          setIsAdding(false);
-          onTabChange(next);
-        }}
+        onChange={onTabChange}
       />
 
       <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-20 pt-4 sm:px-7">
@@ -201,13 +229,10 @@ export function CompaniesPage({
             ) : tab === 'blacklisted' ? (
               <BlacklistPanel
                 companies={visible}
-                candidates={blacklistCandidates}
                 emptyMessage={emptyMessage}
-                isAdding={isAdding}
-                onAddClose={() => setIsAdding(false)}
-                onAdd={onAddToBlacklist}
                 onEditReason={requestReasonEdit}
                 onRemove={requestRemoval}
+                onDelete={requestDelete}
               />
             ) : (
               <CompaniesTable
@@ -215,6 +240,7 @@ export function CompaniesPage({
                 emptyMessage={emptyMessage}
                 onBlacklist={(company) => requestBlacklist(company.name)}
                 onUnblacklist={requestRemoval}
+                onDelete={requestDelete}
               />
             )}
           </div>
@@ -246,6 +272,18 @@ export function CompaniesPage({
         confirmPending={isRemoving}
         onConfirm={() => void confirmRemoval()}
         onCancel={() => setIsRemoveOpen(false)}
+      />
+
+      <Modal
+        open={isDeleteOpen}
+        tone="danger"
+        title={t('deleteDialog.title', { company: pendingDelete?.name ?? '' })}
+        description={t('deleteDialog.body')}
+        confirmLabel={t('deleteDialog.confirm')}
+        cancelLabel={t('form.cancel')}
+        confirmPending={isDeleting}
+        onConfirm={() => void confirmDelete()}
+        onCancel={() => setIsDeleteOpen(false)}
       />
     </main>
   );

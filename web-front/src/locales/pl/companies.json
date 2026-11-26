@@ -1,10 +1,11 @@
 {
   "page": {
     "title": "Firmy",
-    "subtitle": "Wszystkie firmy z Twoich aplikacji oraz te, których chcesz unikać",
+    "subtitle": "Wszystkie firmy, do których aplikujesz lub które dodasz, oraz te, których chcesz unikać",
     "searchLabel": "Szukaj firm",
     "searchPlaceholder": "Szukaj firm",
-    "loadFailed": "Nie udało się załadować firm"
+    "loadFailed": "Nie udało się załadować firm",
+    "newCompany": "Nowa firma"
   },
   "tabs": {
     "all": "Wszystkie",
@@ -20,13 +21,14 @@
     "productCompany": "Firma produktowa",
     "agencyStudio": "Agencja / studio",
     "noApplications": "Brak aplikacji",
-    "empty": "Nie ma jeszcze firm — pojawią się tutaj, gdy dodasz aplikację",
+    "empty": "Nie ma jeszcze firm. Pojawią się tutaj, gdy dodasz aplikację, albo dodaj firmę przyciskiem Nowa firma",
     "noMatch": "Żadna firma nie pasuje do wyszukiwania",
     "blacklistAction": "Dodaj do czarnej listy",
     "unblacklistAction": "Usuń z czarnej listy",
     "menu": {
       "actions": "Akcje dla {{name}}"
-    }
+    },
+    "deleteAction": "Usuń"
   },
   "marker": {
     "label": "Na czarnej liście",
@@ -41,12 +43,8 @@
     "editReason": "Edytuj powód"
   },
   "form": {
-    "companyLabel": "Firma",
-    "companyPlaceholder": "Wybierz firmę ze swoich aplikacji",
-    "noCompanies": "Brak pasujących firm w Twoich aplikacjach",
     "reasonLabel": "Powód (opcjonalnie)",
     "reasonPlaceholder": "Dlaczego unikasz tej firmy",
-    "add": "Dodaj",
     "save": "Zapisz",
     "cancel": "Anuluj"
   },
@@ -75,5 +73,44 @@
     "removeFailed": "Nie udało się usunąć {{company}} z czarnej listy",
     "reasonSaved": "Zapisano powód",
     "reasonFailed": "Nie udało się zapisać powodu dla {{company}}"
+  },
+  "details": {
+    "back": "Wróć do firm",
+    "loading": "Wczytywanie firmy…",
+    "loadFailed": "Nie udało się wczytać tej firmy",
+    "retry": "Spróbuj ponownie",
+    "notFoundTitle": "Nie znaleziono firmy",
+    "notFoundBody": "Została usunięta albo zmieniono jej nazwę",
+    "applicationCount_one": "{{count}} aplikacja",
+    "applicationCount_few": "{{count}} aplikacje",
+    "applicationCount_many": "{{count}} aplikacji",
+    "applicationCount_other": "{{count}} aplikacji",
+    "lastApplied": "Ostatnia aplikacja {{date}}",
+    "sections": {
+      "details": "Dane firmy",
+      "applications": "Aplikacje"
+    },
+    "fields": {
+      "name": "Nazwa",
+      "website": "Strona internetowa",
+      "type": "Typ firmy",
+      "notes": "Notatki",
+      "blacklisted": "Na czarnej liście"
+    },
+    "notesPlaceholder": "Z kim rozmawiasz, jak przebiega proces, wszystko, co warto zapamiętać",
+    "showInApplications": "Pokaż w aplikacjach",
+    "noApplications": "Nie ma jeszcze aplikacji do tej firmy",
+    "save": "Zapisz zmiany",
+    "saveFailed": "Nie udało się zapisać firmy",
+    "nameRequired": "Wpisz nazwę firmy",
+    "websiteInvalid": "Wpisz pełny link, zaczynający się od https://",
+    "newTitle": "Nowa firma",
+    "create": "Utwórz firmę",
+    "openExisting": "Otwórz {{name}}"
+  },
+  "deleteDialog": {
+    "title": "Usunąć {{company}}?",
+    "body": "Nie ma do niej aplikacji. Jej strona, notatki i wpis na czarnej liście zostaną usunięte razem z nią. Tego nie można cofnąć",
+    "confirm": "Usuń"
   }
 }

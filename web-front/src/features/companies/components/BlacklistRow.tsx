@@ -4,7 +4,6 @@ import type { CompanySummary } from '@job-tracker/shared';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { CompanyName } from '@/features/companies/components/CompanyName';
 import { CompanyRowMenu } from '@/features/companies/components/CompanyRowMenu';
-import { hasApplications } from '@/features/companies/company-paths';
 import { companyTypeKey } from '@/features/companies/company-type';
 import { formatDisplayDate } from '@/lib/format-date';
 import { ROW_OPEN_CLASS, rowOpenHandlers } from '@/lib/row-open';
@@ -13,11 +12,13 @@ import { cn } from '@/lib/utils';
 export function BlacklistRow({
   company,
   onEditReason,
-  onRemove
+  onRemove,
+  onDelete
 }: {
   company: CompanySummary;
   onEditReason: (company: CompanySummary) => void;
   onRemove: (company: CompanySummary) => void;
+  onDelete: (company: CompanySummary) => void;
 }) {
   const { t } = useTranslation('companies');
   const savedReason = company.blacklist?.reason ?? null;
@@ -35,11 +36,8 @@ export function BlacklistRow({
 
   return (
     <TableRow
-      {...(hasApplications(company) ? rowOpenHandlers : {})}
-      className={cn(
-        'border-warm-line',
-        hasApplications(company) ? ROW_OPEN_CLASS : 'hover:bg-transparent'
-      )}
+      {...rowOpenHandlers}
+      className={cn('border-warm-line', ROW_OPEN_CLASS)}
     >
       <TableCell className="pl-5">
         {/* Phones hide the reason column, so its subline carries the reason instead of the type */}
@@ -64,6 +62,7 @@ export function BlacklistRow({
           company={company}
           onToggleBlacklist={onRemove}
           onEditReason={onEditReason}
+          onDelete={onDelete}
         />
       </TableCell>
     </TableRow>

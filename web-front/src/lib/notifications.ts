@@ -22,6 +22,7 @@ export type NotificationEntity =
   | 'jobStatus'
   | 'jobOutcome'
   | 'jobField'
+  | 'company'
   | 'candidateProfile';
 
 function entityLabel(entity: NotificationEntity): string {

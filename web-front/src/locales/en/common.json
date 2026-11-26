@@ -81,6 +81,7 @@
       "jobStatus": "Status",
       "jobOutcome": "Outcome",
       "jobField": "Field",
+      "company": "Company",
       "candidateProfile": "Profile"
     },
     "success": {

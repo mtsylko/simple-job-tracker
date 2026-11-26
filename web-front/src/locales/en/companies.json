@@ -1,10 +1,11 @@
 {
   "page": {
     "title": "Companies",
-    "subtitle": "Every company from your applications, and the ones you've decided to avoid",
+    "subtitle": "Every company you applied to or added, and the ones you've decided to avoid",
     "searchLabel": "Search companies",
     "searchPlaceholder": "Search companies",
-    "loadFailed": "Failed to load companies"
+    "loadFailed": "Failed to load companies",
+    "newCompany": "New company"
   },
   "tabs": {
     "all": "All",
@@ -20,13 +21,14 @@
     "productCompany": "Product company",
     "agencyStudio": "Agency / Studio",
     "noApplications": "No applications",
-    "empty": "No companies yet — they appear here once you log an application",
+    "empty": "No companies yet. They appear here once you log an application, or add one with New company",
     "noMatch": "No companies match this search",
     "blacklistAction": "Blacklist",
     "unblacklistAction": "Remove from blacklist",
     "menu": {
       "actions": "Actions for {{name}}"
-    }
+    },
+    "deleteAction": "Delete"
   },
   "marker": {
     "label": "Blacklisted",
@@ -41,12 +43,8 @@
     "editReason": "Edit reason"
   },
   "form": {
-    "companyLabel": "Company",
-    "companyPlaceholder": "Pick a company from your applications",
-    "noCompanies": "No matching companies in your applications",
     "reasonLabel": "Reason (optional)",
     "reasonPlaceholder": "Why you're avoiding this company",
-    "add": "Add",
     "save": "Save",
     "cancel": "Cancel"
   },
@@ -75,5 +73,42 @@
     "removeFailed": "Couldn't remove {{company}} from the blacklist",
     "reasonSaved": "Reason saved",
     "reasonFailed": "Couldn't save the reason for {{company}}"
+  },
+  "details": {
+    "back": "Back to companies",
+    "loading": "Loading the company…",
+    "loadFailed": "Couldn't load this company",
+    "retry": "Retry",
+    "notFoundTitle": "Company not found",
+    "notFoundBody": "It was deleted or renamed",
+    "applicationCount_one": "{{count}} application",
+    "applicationCount_other": "{{count}} applications",
+    "lastApplied": "Last applied {{date}}",
+    "sections": {
+      "details": "Company details",
+      "applications": "Applications"
+    },
+    "fields": {
+      "name": "Name",
+      "website": "Website",
+      "type": "Company type",
+      "notes": "Notes",
+      "blacklisted": "Blacklisted"
+    },
+    "notesPlaceholder": "People you talked to, how the process goes, anything to remember",
+    "showInApplications": "Show in Applications",
+    "noApplications": "No applications to this company yet",
+    "save": "Save changes",
+    "saveFailed": "Couldn't save the company",
+    "nameRequired": "Enter the company's name",
+    "websiteInvalid": "Enter a full link, starting with https://",
+    "newTitle": "New company",
+    "create": "Create company",
+    "openExisting": "Open {{name}}"
+  },
+  "deleteDialog": {
+    "title": "Delete {{company}}?",
+    "body": "It has no applications. Its website, notes and blacklist entry go with it. This can't be undone",
+    "confirm": "Delete"
   }
 }

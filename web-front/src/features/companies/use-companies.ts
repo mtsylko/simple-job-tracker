@@ -3,10 +3,14 @@ import { useTranslation } from 'react-i18next';
 import type { CompanySummary } from '@job-tracker/shared';
 
 import i18n from '@/i18n';
-import { notify } from '@/lib/notifications';
+import {
+  notify,
+  notifyActionError,
+  notifyActionSuccess
+} from '@/lib/notifications';
 
 import {
-  blacklistCompany,
+  deleteCompany,
   listCompanies,
   unblacklistCompany,
   updateBlacklistReason
@@ -68,17 +72,6 @@ export function useCompanies() {
     }
   }, [load]);
 
-  // Add surfaces its failure to the caller (an inline form error) rather than a
-  // toast, so a duplicate company can be corrected in place.
-  const addToBlacklist = useCallback(
-    async (company: string, reason: string | null) => {
-      await blacklistCompany({ company, reason });
-      notify.success(t('blacklist.added', { company }));
-      await afterMutation();
-    },
-    [afterMutation, t]
-  );
-
   const updateReason = useCallback(
     async (id: string, reason: string | null) => {
       await updateBlacklistReason(id, reason);
@@ -110,9 +103,24 @@ export function useCompanies() {
     [afterMutation, t]
   );
 
+  // Confirmed in a dialog, which stays open on failure so the toast is read beside it.
+  const removeCompany = useCallback(
+    async (company: CompanySummary & { id: string }) => {
+      try {
+        await deleteCompany(company.id);
+      } catch (error) {
+        notifyActionError('deleted', 'company', error);
+        throw error;
+      }
+      notifyActionSuccess('deleted', 'company');
+      await afterMutation();
+    },
+    [afterMutation]
+  );
+
   return {
     state,
-    addToBlacklist,
+    removeCompany,
     updateReason,
     removeFromBlacklist,
     reload: load
